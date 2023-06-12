@@ -8,14 +8,22 @@
 import UIKit
 
 class EntryPageViewController: UIViewController {
-
-    @IBAction func backButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: false)
-//        self.tabBarController?.tabBar.isHidden = false
-    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "Вход"
+        print("Вы перешли на страницу авторизации")
+    }
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: false)
     }
 }
