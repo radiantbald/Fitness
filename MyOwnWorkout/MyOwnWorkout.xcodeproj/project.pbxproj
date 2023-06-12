@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
+		A22BCDCD2A3713ED001071BE /* RegistrationApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
 		A275C9AE2A2B686F00B18420 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */; };
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
-		A275C9B42A2B70FE00B18420 /* RegPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B32A2B70FE00B18420 /* RegPageViewController.swift */; };
+		A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */; };
 		A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF812A18E71400231082 /* AppDelegate.swift */; };
 		A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF832A18E71400231082 /* SceneDelegate.swift */; };
 		A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF852A18E71400231082 /* MainPageViewController.swift */; };
@@ -23,10 +24,11 @@
 
 /* Begin PBXFileReference section */
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
+		A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationApprovePageViewController.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
 		A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
-		A275C9B32A2B70FE00B18420 /* RegPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegPageViewController.swift; sourceTree = "<group>"; };
+		A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageViewController.swift; sourceTree = "<group>"; };
 		A2C3FF7E2A18E71400231082 /* MyOwnWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyOwnWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C3FF812A18E71400231082 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2C3FF832A18E71400231082 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,8 +78,9 @@
 		A275C9B02A2B70C800B18420 /* AuthPage */ = {
 			isa = PBXGroup;
 			children = (
-				A275C9B32A2B70FE00B18420 /* RegPageViewController.swift */,
+				A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */,
 				A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */,
+				A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */,
 			);
 			path = AuthPage;
 			sourceTree = "<group>";
@@ -202,9 +205,10 @@
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
-				A275C9B42A2B70FE00B18420 /* RegPageViewController.swift in Sources */,
+				A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
+				A22BCDCD2A3713ED001071BE /* RegistrationApprovePageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
