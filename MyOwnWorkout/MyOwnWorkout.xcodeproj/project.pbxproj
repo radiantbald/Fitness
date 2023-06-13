@@ -79,8 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */,
-				A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */,
 				A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */,
+				A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */,
 			);
 			path = AuthPage;
 			sourceTree = "<group>";
