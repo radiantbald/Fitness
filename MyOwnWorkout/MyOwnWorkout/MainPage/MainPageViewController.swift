@@ -51,7 +51,7 @@ extension MainPageViewController: RegistrationPageViewControllerDelegate {
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: false)
     }
-    func toTheEntryPage() {
+    func toTheEntryPage(_ viewController: RegistrationPageViewController) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "EntryPageViewController") as! EntryPageViewController
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)

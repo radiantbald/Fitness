@@ -43,12 +43,16 @@ class EntryPageViewController: UIViewController {
         let password = passwordTextField.text ?? ""
         
         if nickname == "" {
+            showAlert(title: "Ошибка", message: "Никнейм не введен")
             print("Никнейм не введен")
+            return
         } else {
             print(nickname)
         }
         if password == "" {
+            showAlert(title: "Ошибка", message: "Пароль не введен")
             print("Пароль не введен")
+            return
         } else {
             print(password)
         }

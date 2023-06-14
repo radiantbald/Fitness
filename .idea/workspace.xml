@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="-Добавлены несколько экранов и предварительно настроена навигация" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="-Добавлены несколько экранов и предварительно настроена навигация">
+      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/AuthPage/Extension-RegistrationPageViewController.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Extensions/String-Ext.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Extensions/UIViewController-Ext.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.xcworkspace/xcuserdata/almazrahmatullin.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.xcworkspace/xcuserdata/almazrahmatullin.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/xcuserdata/almazrahmatullin.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/xcuserdata/almazrahmatullin.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/AuthPage/EntryPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/AuthPage/EntryPageViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/AuthPage/RegistrationPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/AuthPage/RegistrationPageViewController.swift" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,11 +28,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -33,7 +42,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2QQa6VWDrpf4ic1syNCH2g8qN7G" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

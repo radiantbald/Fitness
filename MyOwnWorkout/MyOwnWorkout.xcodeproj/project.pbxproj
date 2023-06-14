@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C3C59542A3A1747005F3141 /* Extension-RegistrationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C59532A3A1747005F3141 /* Extension-RegistrationPageViewController.swift */; };
+		5C3C59562A3A17FF005F3141 /* UIViewController-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C59552A3A17FF005F3141 /* UIViewController-Ext.swift */; };
+		5C3C59582A3A19EE005F3141 /* String-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C59572A3A19EE005F3141 /* String-Ext.swift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22BCDCD2A3713ED001071BE /* RegistrationApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C3C59532A3A1747005F3141 /* Extension-RegistrationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-RegistrationPageViewController.swift"; sourceTree = "<group>"; };
+		5C3C59552A3A17FF005F3141 /* UIViewController-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController-Ext.swift"; sourceTree = "<group>"; };
+		5C3C59572A3A19EE005F3141 /* String-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Ext.swift"; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationApprovePageViewController.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C3C59522A3A16BF005F3141 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C3C59552A3A17FF005F3141 /* UIViewController-Ext.swift */,
+				5C3C59572A3A19EE005F3141 /* String-Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A201C87F2A2B590D006B1781 /* SchedulePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */,
+				5C3C59532A3A1747005F3141 /* Extension-RegistrationPageViewController.swift */,
 				A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */,
 				A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */,
 			);
@@ -104,6 +120,7 @@
 		A2C3FF802A18E71400231082 /* MyOwnWorkout */ = {
 			isa = PBXGroup;
 			children = (
+				5C3C59522A3A16BF005F3141 /* Extensions */,
 				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
 				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
 				A2D601B62A1E29B4001E7EE3 /* MainPage */,
@@ -200,8 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C3C59542A3A1747005F3141 /* Extension-RegistrationPageViewController.swift in Sources */,
+				5C3C59562A3A17FF005F3141 /* UIViewController-Ext.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
+				5C3C59582A3A19EE005F3141 /* String-Ext.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,

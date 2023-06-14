@@ -52,10 +52,11 @@ extension FeedPageViewController: RegistrationPageViewControllerDelegate {
 //        vc.delegate = self
         navigationController?.pushViewController(vc, animated: false)
     }
-    func toTheEntryPage() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "EntryPageViewController") as! EntryPageViewController
-        vc.delegate = self
-        navigationController?.pushViewController(vc, animated: true)
+    func toTheEntryPage(_ viewController: RegistrationPageViewController) {
+        viewController.view.backgroundColor = .red
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "EntryPageViewController") as! EntryPageViewController
+//        vc.delegate = self
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

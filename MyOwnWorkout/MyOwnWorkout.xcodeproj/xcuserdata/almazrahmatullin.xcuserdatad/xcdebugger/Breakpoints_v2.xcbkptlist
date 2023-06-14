@@ -3,4 +3,54 @@
    uuid = "9A395C3F-7CB5-4C6F-B9AD-F01CC1471F52"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "518638E6-E846-48E0-8852-84BDDEED3E2F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyOwnWorkout/Extensions/String-Ext.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "phoneMask(to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "518638E6-E846-48E0-8852-84BDDEED3E2F - 620d24ee556a54cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.String.phoneMask(to: Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.String"
+                  moduleName = "MyOwnWorkout"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/almazrahmatullin/Documents/GitHub/MyOwnWorkout/MyOwnWorkout/MyOwnWorkout/Extensions/String-Ext.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "1488">
+               </Location>
+               <Location
+                  uuid = "518638E6-E846-48E0-8852-84BDDEED3E2F - 620d24ee556a54cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.String.phoneMask(to: Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.String"
+                  moduleName = "MyOwnWorkout"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/almazrahmatullin/Documents/GitHub/MyOwnWorkout/MyOwnWorkout/MyOwnWorkout/Extensions/String-Ext.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "1496">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
