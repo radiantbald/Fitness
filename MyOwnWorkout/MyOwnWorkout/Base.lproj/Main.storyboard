@@ -17,6 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemRedColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="Ccb-Lh-i1y" kind="relationship" relationship="viewControllers" id="q9L-bU-lzB"/>
@@ -260,6 +261,9 @@
                                         <color key="tintColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="SSn-NT-fk6" id="vXS-NG-u58"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLV-eO-OlN">
                                         <rect key="frame" x="0.0" y="114" width="361" height="34"/>
@@ -405,9 +409,49 @@
                     <view key="view" contentMode="scaleToFill" id="aS7-O7-g3c">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="G1R-dN-yaf">
+                                <rect key="frame" x="16" y="79" width="361" height="72"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Никнейм" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6JV-4a-8zr">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ly-nf-lbz">
+                                        <rect key="frame" x="0.0" y="38" width="361" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGH-OR-F1g">
+                                <rect key="frame" x="40" y="171" width="313" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Войти">
+                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="entryButton:" destination="M7S-bY-OFM" eventType="touchUpInside" id="VQz-Xo-r7u"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hqb-av-CJF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="G1R-dN-yaf" firstAttribute="top" secondItem="hqb-av-CJF" secondAttribute="top" constant="20" id="3UB-xP-AcS"/>
+                            <constraint firstItem="eGH-OR-F1g" firstAttribute="leading" secondItem="hqb-av-CJF" secondAttribute="leading" constant="40" id="Neg-oa-Wv9"/>
+                            <constraint firstItem="G1R-dN-yaf" firstAttribute="leading" secondItem="hqb-av-CJF" secondAttribute="leading" constant="16" id="QXI-0z-aV5"/>
+                            <constraint firstItem="hqb-av-CJF" firstAttribute="trailing" secondItem="eGH-OR-F1g" secondAttribute="trailing" constant="40" id="dbs-uZ-ws8"/>
+                            <constraint firstItem="G1R-dN-yaf" firstAttribute="top" secondItem="hqb-av-CJF" secondAttribute="top" constant="90" id="rNQ-LD-R1e"/>
+                            <constraint firstItem="hqb-av-CJF" firstAttribute="trailing" secondItem="G1R-dN-yaf" secondAttribute="trailing" constant="16" id="wge-Vu-eIm"/>
+                            <constraint firstItem="eGH-OR-F1g" firstAttribute="top" secondItem="G1R-dN-yaf" secondAttribute="bottom" constant="20" id="ylI-Ie-dT4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nicknameTextField" destination="6JV-4a-8zr" id="pZ9-be-kpk"/>
+                        <outlet property="passwordTextField" destination="9Ly-nf-lbz" id="Eue-qd-JeF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vv1-wB-Brc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
