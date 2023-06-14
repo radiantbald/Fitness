@@ -7,7 +7,17 @@
 
 import UIKit
 
+protocol EntryPageViewControllerDelegate: AnyObject {
+    func getEntryData(nickname: String,
+                      password: String)
+}
+
 class EntryPageViewController: UIViewController {
+    
+    weak var delegate: EntryPageViewControllerDelegate?
+    
+    @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,5 +35,27 @@ class EntryPageViewController: UIViewController {
     
     @IBAction func backButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: false)
+    }
+    
+    @IBAction func entryButton(_ sender: UIButton) {
+        
+        let nickname = nicknameTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        if nickname == "" {
+            print("Никнейм не введен")
+        } else {
+            print(nickname)
+        }
+        if password == "" {
+            print("Пароль не введен")
+        } else {
+            print(password)
+        }
+        
+        navigationController?.popToRootViewController(animated: false)
+        
+        delegate?.getEntryData(nickname: nickname, password: password)
+        
     }
 }

@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol RegistrationApprovePageViewControllerDelegate: AnyObject {
+    func getCodeFromSMS(codeFromSMS: String)
+}
+
 class RegistrationApprovePageViewController: UIViewController {
+    
+    weak var delegate: RegistrationApprovePageViewControllerDelegate?
     
     @IBOutlet weak var codeFromSMSTextField: UITextField!
     
@@ -31,11 +37,10 @@ class RegistrationApprovePageViewController: UIViewController {
         
         if codeFromSMS == "000000" {
             print("Введенный код корректен")
-            let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
-    //        vc.delegate = self
             
-            //MARK: - TODO: переделать путь делегатом через rootViewController
-            navigationController?.pushViewController(vc, animated: true)
+            navigationController?.popToRootViewController(animated: false)
+            
+            delegate?.getCodeFromSMS(codeFromSMS: codeFromSMS)
             
         } else {
             print("Неправильный код")
