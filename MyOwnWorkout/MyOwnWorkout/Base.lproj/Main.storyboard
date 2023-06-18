@@ -246,9 +246,6 @@
                                         <color key="tintColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="SSn-NT-fk6" id="sbe-bo-VL6"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Фамилия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FOJ-8y-zGf">
                                         <rect key="frame" x="0.0" y="38" width="361" height="34"/>
@@ -261,9 +258,6 @@
                                         <color key="tintColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="SSn-NT-fk6" id="vXS-NG-u58"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLV-eO-OlN">
                                         <rect key="frame" x="0.0" y="114" width="361" height="34"/>
@@ -443,7 +437,6 @@
                             <constraint firstItem="eGH-OR-F1g" firstAttribute="leading" secondItem="hqb-av-CJF" secondAttribute="leading" constant="40" id="Neg-oa-Wv9"/>
                             <constraint firstItem="G1R-dN-yaf" firstAttribute="leading" secondItem="hqb-av-CJF" secondAttribute="leading" constant="16" id="QXI-0z-aV5"/>
                             <constraint firstItem="hqb-av-CJF" firstAttribute="trailing" secondItem="eGH-OR-F1g" secondAttribute="trailing" constant="40" id="dbs-uZ-ws8"/>
-                            <constraint firstItem="G1R-dN-yaf" firstAttribute="top" secondItem="hqb-av-CJF" secondAttribute="top" constant="90" id="rNQ-LD-R1e"/>
                             <constraint firstItem="hqb-av-CJF" firstAttribute="trailing" secondItem="G1R-dN-yaf" secondAttribute="trailing" constant="16" id="wge-Vu-eIm"/>
                             <constraint firstItem="eGH-OR-F1g" firstAttribute="top" secondItem="G1R-dN-yaf" secondAttribute="bottom" constant="20" id="ylI-Ie-dT4"/>
                         </constraints>

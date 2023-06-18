@@ -21,12 +21,14 @@ protocol RegistrationPageViewControllerDelegate: AnyObject {
 class RegistrationPageViewController: UIViewController {
     
     weak var delegate: RegistrationPageViewControllerDelegate?
+
+    //MARK: - Объекты полей ввода пароля
+    var passwordIsPrivate = true
+    var repeatPasswordIsPrivate = true
+    var passwordTextFieldEyeButton = EyeButton()
+    var repeatPasswordTextFieldEyeButton = EyeButton()
     
-    // Константы для форматирования номера телефона
-    private let maxPhoneNumberCount = 11
-    private let regex = try! NSRegularExpression(pattern: "[\\+\\s-\\(\\)]", options: .caseInsensitive)
-    
-    // Текстовые поля со сториборда
+    //MARK: - Текстовые поля со сториборда
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var surnameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -42,13 +44,11 @@ class RegistrationPageViewController: UIViewController {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Регистрация"
-        print("Вы перешли на страницу регистрации")
-        
-        phoneNumberTextField.delegate = self
-        phoneNumberTextField.keyboardType = .numberPad
+        setupView()
+        setupActions()
     }
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -99,7 +99,7 @@ class RegistrationPageViewController: UIViewController {
         
         // возврат на корневой UIViewVontroller
         navigationController?.popToRootViewController(animated: false)
-        
+
         // передача данных подписанным UIViewControllers
         delegate?.getRegistrationData(name: name, surname: surname, phoneNumber: phoneNumber, password: password, nickname: nickname)
     
@@ -107,55 +107,8 @@ class RegistrationPageViewController: UIViewController {
     
     // Функция обработки нажания кнопки "Уже есть аккаунт"
     @IBAction func toTheEntryPageButton(_ sender: UIButton) {
+        navigationController?.popToRootViewController(animated: false)
         delegate?.toTheEntryPage()
     }
     
-    // Функция для форматирования номера телефона
-    private func phoneNumerFormat(phoneNumber: String, shouldRemoveLastDigit: Bool) -> String {
-        
-        // Оставлять "+" при стирании номера
-        guard !(shouldRemoveLastDigit && phoneNumber.count <= 2) else { return "+" }
-        
-        let range = NSString(string: phoneNumber).range(of: phoneNumber)
-        var number = regex.stringByReplacingMatches(in: phoneNumber, options: [], range: range, withTemplate: "")
-        
-        if number.count > maxPhoneNumberCount {
-            let maxIndex = number.index(number.startIndex, offsetBy: maxPhoneNumberCount)
-            number = String(number[number.startIndex..<maxIndex])
-        }
-        
-        if shouldRemoveLastDigit {
-            let maxIndex = number.index(number.startIndex, offsetBy: number.count - 1)
-            number = String(number[number.startIndex..<maxIndex])
-        }
-        
-        let maxIndex = number.index(number.startIndex, offsetBy: number.count)
-        let regRange = number.startIndex..<maxIndex
-        
-        let pattern = "(\\d)(\\d{3})(\\d{3})(\\d{2})(\\d+)"
-        number = number.replacingOccurrences(of: pattern, with: "$1 ($2) $3-$4-$5", options: .regularExpression, range: regRange)
-        
-//        if number.count < 7 {
-//            let pattern = "(\\d)(\\d{3})(\\d+)"
-//            number = number.replacingOccurrences(of: pattern, with: "$1 ($2) $3", options: .regularExpression, range: regRange)
-//        } else {
-//            let pattern = "(\\d)(\\d{3})(\\d{3})(\\d{2})(\\d+)"
-//            number = number.replacingOccurrences(of: pattern, with: "$1 ($2) $3-$4-$5", options: .regularExpression, range: regRange)
-//        }
-
-        return "+" + number
-    }
-}
-
-//MARK: - Text Field
-extension RegistrationPageViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let fullString = (textField.text ?? "") + string
-        textField.text = phoneNumerFormat(phoneNumber: fullString, shouldRemoveLastDigit: range.length == 1)
-        return false
-    }
 }

@@ -29,13 +29,16 @@ class RegistrationApprovePageViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Регистрация"
         print("Вы перешли на страницу подтверждения регистрации")
+        
+        codeFromSMSTextField.delegate = self
+        codeFromSMSTextField.textAlignment = .center
     }
     
     @IBAction func registrationButton(_ sender: UIButton) {
         
         let codeFromSMS = codeFromSMSTextField.text ?? ""
         
-        if codeFromSMS == "000000" {
+        if codeFromSMS.setOnlyNumbers(string: codeFromSMS) == "000000" {
             print("Введенный код корректен")
             
             navigationController?.popToRootViewController(animated: false)
@@ -45,12 +48,5 @@ class RegistrationApprovePageViewController: UIViewController {
         } else {
             print("Неправильный код")
         }
-    }
-}
-
-//MARK: - Text Field
-extension RegistrationApprovePageViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-
     }
 }

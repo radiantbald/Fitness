@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="-Добавлены несколько экранов и предварительно настроена навигация" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- На RegistrationPageViewController настроено форматирование номера телефона (но криво!);&#10;- Налажены переходы между существующими контроллерами;&#10;&#10;TODO: как объединить сохранение данных в разные рутКонтроллеры">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,11 +21,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
-  }
-}]]></component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -38,19 +35,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/almazrahmatullin/Documents/GitHub/MyOwnWorkout&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,6 +52,10 @@
       <workItem from="1685978286983" duration="439000" />
       <workItem from="1686043968572" duration="35000" />
       <workItem from="1686571086308" duration="268000" />
+      <workItem from="1686667458275" duration="130000" />
+      <workItem from="1686668297587" duration="9000" />
+      <workItem from="1686755376830" duration="7497000" />
+      <workItem from="1686910477171" duration="24000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -99,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686571312036</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="- На RegistrationPageViewController настроено форматирование номера телефона (но криво!);&#10;- Налажены переходы между существующими контроллерами;&#10;&#10;TODO: как объединить сохранение данных в разные рутКонтроллеры">
+      <created>1686667582428</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686667582428</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,12 +127,14 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-таб бар" />
     <MESSAGE value="-что то там сделал" />
     <MESSAGE value="-Добавлены несколько экранов&#10;-Предварительно настроена навигация" />
     <MESSAGE value="-Добавлены несколько экранов и предварительно настроена навигация" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Добавлены несколько экранов и предварительно настроена навигация" />
+    <MESSAGE value="- На RegistrationPageViewController настроено форматирование номера телефона (но криво!);&#10;- Налажены переходы между существующими контроллерами;&#10;&#10;TODO: как объединить сохранение данных в разные рутКонтроллеры" />
+    <option name="LAST_COMMIT_MESSAGE" value="- На RegistrationPageViewController настроено форматирование номера телефона (но криво!);&#10;- Налажены переходы между существующими контроллерами;&#10;&#10;TODO: как объединить сохранение данных в разные рутКонтроллеры" />
   </component>
 </project>
