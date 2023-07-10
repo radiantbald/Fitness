@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- На RegistrationPageViewController настроено форматирование номера телефона (но криво!);&#10;- Налажены переходы между существующими контроллерами;&#10;&#10;TODO: как объединить сохранение данных в разные рутКонтроллеры">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- На RegistrationPageViewController настроено форматирование всех полей кроме никнейма,&#10;&#10;TODO: &#10;1. разобраться, как объединить сохранение данных в разные рутКонтроллеры&#10;2. Разобраться, почему стирается текст паролей при повторном выборе поля" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +54,7 @@
       <workItem from="1686668297587" duration="9000" />
       <workItem from="1686755376830" duration="7497000" />
       <workItem from="1686910477171" duration="24000" />
+      <workItem from="1687122580068" duration="416000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -99,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686667582428</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="- На RegistrationPageViewController настроено форматирование всех полей кроме никнейма,&#10;&#10;TODO: &#10;1. разобраться, как объединить сохранение данных в разные рутКонтроллеры&#10;2. Разобраться, почему стирается текст паролей при повторном выборе поля">
+      <created>1687122783417</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687122783417</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +141,7 @@
     <MESSAGE value="-Добавлены несколько экранов&#10;-Предварительно настроена навигация" />
     <MESSAGE value="-Добавлены несколько экранов и предварительно настроена навигация" />
     <MESSAGE value="- На RegistrationPageViewController настроено форматирование номера телефона (но криво!);&#10;- Налажены переходы между существующими контроллерами;&#10;&#10;TODO: как объединить сохранение данных в разные рутКонтроллеры" />
-    <option name="LAST_COMMIT_MESSAGE" value="- На RegistrationPageViewController настроено форматирование номера телефона (но криво!);&#10;- Налажены переходы между существующими контроллерами;&#10;&#10;TODO: как объединить сохранение данных в разные рутКонтроллеры" />
+    <MESSAGE value="- На RegistrationPageViewController настроено форматирование всех полей кроме никнейма,&#10;&#10;TODO: &#10;1. разобраться, как объединить сохранение данных в разные рутКонтроллеры&#10;2. Разобраться, почему стирается текст паролей при повторном выборе поля" />
+    <option name="LAST_COMMIT_MESSAGE" value="- На RegistrationPageViewController настроено форматирование всех полей кроме никнейма,&#10;&#10;TODO: &#10;1. разобраться, как объединить сохранение данных в разные рутКонтроллеры&#10;2. Разобраться, почему стирается текст паролей при повторном выборе поля" />
   </component>
 </project>

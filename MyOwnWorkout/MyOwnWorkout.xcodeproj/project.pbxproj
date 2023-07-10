@@ -13,13 +13,8 @@
 		A275C9AE2A2B686F00B18420 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */; };
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
 		A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */; };
-		A2ACA9382A3C70800028F9FD /* MainPageViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9372A3C70800028F9FD /* MainPageViewControllerExtensions.swift */; };
-		A2ACA93A2A3C714E0028F9FD /* SchedulePageViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9392A3C714E0028F9FD /* SchedulePageViewControllerExtensions.swift */; };
-		A2ACA93C2A3C718E0028F9FD /* FeedPageViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93B2A3C718E0028F9FD /* FeedPageViewControllerExtensions.swift */; };
 		A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */; };
 		A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */; };
-		A2ACA9422A3C788D0028F9FD /* RegistrationPageViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9412A3C788D0028F9FD /* RegistrationPageViewControllerExtensions.swift */; };
-		A2ACA9442A3C7F300028F9FD /* RegistrationApprovePageViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9432A3C7F300028F9FD /* RegistrationApprovePageViewControllerExtension.swift */; };
 		A2ACA9472A3F26E30028F9FD /* EyeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9462A3F26E30028F9FD /* EyeButton.swift */; };
 		A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF812A18E71400231082 /* AppDelegate.swift */; };
 		A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF832A18E71400231082 /* SceneDelegate.swift */; };
@@ -37,13 +32,8 @@
 		A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
 		A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageViewController.swift; sourceTree = "<group>"; };
-		A2ACA9372A3C70800028F9FD /* MainPageViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewControllerExtensions.swift; sourceTree = "<group>"; };
-		A2ACA9392A3C714E0028F9FD /* SchedulePageViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewControllerExtensions.swift; sourceTree = "<group>"; };
-		A2ACA93B2A3C718E0028F9FD /* FeedPageViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		A2ACA9412A3C788D0028F9FD /* RegistrationPageViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageViewControllerExtensions.swift; sourceTree = "<group>"; };
-		A2ACA9432A3C7F300028F9FD /* RegistrationApprovePageViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationApprovePageViewControllerExtension.swift; sourceTree = "<group>"; };
 		A2ACA9462A3F26E30028F9FD /* EyeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButton.swift; sourceTree = "<group>"; };
 		A2C3FF7E2A18E71400231082 /* MyOwnWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyOwnWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C3FF812A18E71400231082 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,11 +96,6 @@
 			children = (
 				A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
-				A2ACA9372A3C70800028F9FD /* MainPageViewControllerExtensions.swift */,
-				A2ACA9392A3C714E0028F9FD /* SchedulePageViewControllerExtensions.swift */,
-				A2ACA93B2A3C718E0028F9FD /* FeedPageViewControllerExtensions.swift */,
-				A2ACA9412A3C788D0028F9FD /* RegistrationPageViewControllerExtensions.swift */,
-				A2ACA9432A3C7F300028F9FD /* RegistrationApprovePageViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,15 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2ACA9442A3C7F300028F9FD /* RegistrationApprovePageViewControllerExtension.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
-				A2ACA9382A3C70800028F9FD /* MainPageViewControllerExtensions.swift in Sources */,
-				A2ACA93C2A3C718E0028F9FD /* FeedPageViewControllerExtensions.swift in Sources */,
-				A2ACA9422A3C788D0028F9FD /* RegistrationPageViewControllerExtensions.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
-				A2ACA93A2A3C714E0028F9FD /* SchedulePageViewControllerExtensions.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
 				A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */,
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,

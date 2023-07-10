@@ -9,6 +9,7 @@ import UIKit
 
 extension UIViewController {
     
+    //MARK: - 
     func showAlert(title: String?, message: String?) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Закрыть", style: .cancel)
