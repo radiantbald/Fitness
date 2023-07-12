@@ -15,21 +15,14 @@ extension RegistrationPageViewController {
 
         navigationItem.title = "Регистрация"
         
-        setupNameTextField()
-        setupSurnameTextField()
-        setupPhoneNumberTextField()
-        setupPasswordTextField()
-        setupRepeatPasswordTextField()
-        setupNicknameTextField()
-        
+        setupDelegate()
+        setupTextFields()
     }
     
     //MARK: - Настройки Действий
     func setupActions() {
         
         print("Вы перешли на страницу регистрации")
-        
-        onPasswordSecurityToggle()
         onRepeatPasswordSecurityToggle()
         
     }
@@ -38,50 +31,41 @@ extension RegistrationPageViewController {
 //MARK: - Настройки текстовых полей
 extension RegistrationPageViewController {
     
-    func setupNameTextField() {
+    func setupDelegate() {
         nameTextField.delegate = self
-    }
-    
-    func setupSurnameTextField() {
         surnameTextField.delegate = self
-    }
-    
-    func setupPhoneNumberTextField() {
         phoneNumberTextField.delegate = self
-        phoneNumberTextField.keyboardType = .numberPad
+        passwordTextField.delegate = self
+        repeatPasswordTextField.delegate = self
+        nicknameTextField.delegate = self
     }
     
-    func setupPasswordTextField() {
-        passwordTextField.delegate = self
+    func setupTextFields() {
+        phoneNumberTextField.keyboardType = .numberPad
+        
         passwordTextField.rightView = passwordTextFieldEyeButton
         passwordTextField.rightViewMode = .always
         passwordTextField.isSecureTextEntry = true
-    }
-    
-    func setupRepeatPasswordTextField() {
-        repeatPasswordTextField.delegate = self
+        
         repeatPasswordTextField.rightView = repeatPasswordTextFieldEyeButton
         repeatPasswordTextField.rightViewMode = .always
         repeatPasswordTextField.isSecureTextEntry = true
         repeatPasswordTextField.clearsOnBeginEditing = false
+        
+        //buttons
+        let eye = UIImage(systemName: "eye")
+        let eyeSlash = UIImage(systemName: "eye.slash")
+        passwordTextFieldEyeButton.setImage(eyeSlash, for: .selected)
+        passwordTextFieldEyeButton.setImage(eye, for: .normal)
+        passwordTextFieldEyeButton.addTarget(self, action: #selector(passwordSecurityToggle(_:)), for: .touchUpInside)
     }
     
-    func setupNicknameTextField() {
-        nicknameTextField.delegate = self
-    }
     
     //MARK: - Обработка кнопки скрытия/показа пароля
-    @objc
-    func passwordSecurityToggle() {
-        let imageName = passwordIsPrivate ? "eye.slash" : "eye"
-        
-        passwordTextField.isSecureTextEntry.toggle()
-        passwordTextFieldEyeButton.setImage(UIImage(systemName: imageName), for: .normal)
-        passwordIsPrivate.toggle()
-    }
-    
-    func onPasswordSecurityToggle() {
-        passwordTextFieldEyeButton.addTarget(self, action: #selector(passwordSecurityToggle), for: .touchUpInside)
+    @objc private func passwordSecurityToggle(_ sender: UIButton) {
+        let status = !sender.isSelected
+        sender.isSelected = status
+        passwordTextField.isSecureTextEntry = !status
     }
     
     @objc
@@ -106,17 +90,27 @@ extension RegistrationPageViewController: UITextFieldDelegate {
         
         guard let text = textField.text else { return }
         
-        if textField == nameTextField {
+        switch textField {
+        case nameTextField:
             textField.text = text.setCapitalLetters()
             textField.text = text.setNameAndSurnameSymbols(string: textField.text!)
-        }
-        if textField == surnameTextField {
+            
+        case surnameTextField:
             textField.text = text.setCapitalLetters()
             textField.text = text.setNameAndSurnameSymbols(string: textField.text!)
-        }
-        
-        if textField == phoneNumberTextField {
+            
+        case phoneNumberTextField:
             textField.text = text.phoneMaskRu()
+            
+        case passwordTextField:
+            if passwordTextField.isSecureTextEntry {
+                let text = textField.text
+                print(text ?? "----")
+                passwordTextField.text = text
+            }
+            
+        default:break
+            
         }
     }
 }

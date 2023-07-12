@@ -95,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */,
+				A2ACA9412A3C788D0028F9FD /* RegistrationPageViewControllerExtensions.swift */,
 				A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */,
 				A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */,
 			);
@@ -106,10 +107,8 @@
 			children = (
 				A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
-				A2ACA9372A3C70800028F9FD /* MainPageViewControllerExtensions.swift */,
 				A2ACA9392A3C714E0028F9FD /* SchedulePageViewControllerExtensions.swift */,
 				A2ACA93B2A3C718E0028F9FD /* FeedPageViewControllerExtensions.swift */,
-				A2ACA9412A3C788D0028F9FD /* RegistrationPageViewControllerExtensions.swift */,
 				A2ACA9432A3C7F300028F9FD /* RegistrationApprovePageViewControllerExtension.swift */,
 			);
 			path = Extensions;
@@ -164,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				A2C3FF852A18E71400231082 /* MainPageViewController.swift */,
+				A2ACA9372A3C70800028F9FD /* MainPageViewControllerExtensions.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
