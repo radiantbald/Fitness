@@ -7,7 +7,7 @@
 
 import UIKit
 
-// Протокол для передачи данных от контроллера
+//MARK: - Протокол для передачи данных от контроллера
 protocol RegistrationPageViewControllerDelegate: AnyObject {
     func getRegistrationData(name: String,
                              surname: String,
@@ -17,18 +17,16 @@ protocol RegistrationPageViewControllerDelegate: AnyObject {
     func toTheEntryPage()
 }
 
-// Основной класс
+//MARK: -
 class RegistrationPageViewController: UIViewController {
     
     weak var delegate: RegistrationPageViewControllerDelegate?
 
     //MARK: - Объекты полей ввода пароля
-    var passwordIsPrivate = true
-    var repeatPasswordIsPrivate = true
     var passwordTextFieldEyeButton = EyeButton()
     var repeatPasswordTextFieldEyeButton = EyeButton()
     
-    //MARK: - Текстовые поля со сториборда
+    //MARK: - Текстовые поля
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var surnameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -36,10 +34,12 @@ class RegistrationPageViewController: UIViewController {
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var nicknameTextField: UITextField!
     
+    //MARK: -
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -49,13 +49,112 @@ class RegistrationPageViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupActions()
+        
+    }
+}
+
+//MARK: - Расширения
+
+//MARK: - Корневые функции из расширений
+extension RegistrationPageViewController {
+    
+    //MARK: - Настройки Отображения
+    func setupView() {
+        navigationItem.title = "Регистрация"
+        setupDelegates()
+        setupTextFields()
+        
     }
     
-    @IBAction func backButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+    //MARK: - Настройки Действий
+    func setupActions() {
+        print("Вы перешли на страницу регистрации")
+        
+    }
+}
+
+//MARK: - Расширение настроек текстовых полей
+extension RegistrationPageViewController {
+    
+    func setupDelegates() {
+        nameTextField.delegate = self
+        surnameTextField.delegate = self
+        phoneNumberTextField.delegate = self
+        passwordTextField.delegate = self
+        repeatPasswordTextField.delegate = self
+        nicknameTextField.delegate = self
     }
     
-    // Функция обработки нажатия кнопки "Получить код по СМС"
+    func setupTextFields() {
+        phoneNumberTextField.keyboardType = .numberPad
+        phoneNumberTextField.textContentType = .telephoneNumber
+        
+        passwordTextField.rightView = passwordTextFieldEyeButton
+        passwordTextField.rightViewMode = .always
+        passwordTextField.textContentType = .password
+        passwordTextField.isSecureTextEntry = true
+        
+        repeatPasswordTextField.rightView = repeatPasswordTextFieldEyeButton
+        repeatPasswordTextField.rightViewMode = .always
+        repeatPasswordTextField.textContentType = .password
+        repeatPasswordTextField.isSecureTextEntry = true
+        
+        //MARK: - Настройка отображения кнопок скрытия/показа пароля
+        let eye = UIImage(systemName: "eye")
+        let eyeSlash = UIImage(systemName: "eye.slash")
+        
+        passwordTextFieldEyeButton.setImage(eye, for: .normal)
+        passwordTextFieldEyeButton.setImage(eyeSlash, for: .selected)
+        passwordTextFieldEyeButton.addTarget(self, action: #selector(passwordSecurityToggle), for: .touchUpInside)
+        
+        repeatPasswordTextFieldEyeButton.setImage(eye, for: .normal)
+        repeatPasswordTextFieldEyeButton.setImage(eyeSlash, for: .selected)
+        repeatPasswordTextFieldEyeButton.addTarget(self, action: #selector(repeatPasswordSecurityToggle), for: .touchUpInside)
+    }
+    
+    //MARK: - Настройка действия кнопок скрытия/показа пароля
+    @objc private func passwordSecurityToggle(_ sender: UIButton) {
+        let status = !sender.isSelected
+        sender.isSelected = status
+        passwordTextField.isSecureTextEntry = !status
+    }
+    @objc private func repeatPasswordSecurityToggle(_ sender: UIButton) {
+        let status = !sender.isSelected
+        sender.isSelected = status
+        repeatPasswordTextField.isSecureTextEntry = !status
+    }
+}
+
+//MARK: - Расширение настроек отображения содержания текстовых полей
+extension RegistrationPageViewController: UITextFieldDelegate {
+
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+        guard let text = textField.text else { return }
+        
+        if textField == nameTextField {
+            textField.text = text.setCapitalLetters()
+            textField.text = text.setLettersHyphenAndApostropheSymbols(string: textField.text!)
+        }
+        if textField == surnameTextField {
+            textField.text = text.setCapitalLetters()
+            textField.text = text.setLettersHyphenAndApostropheSymbols(string: textField.text!)
+        }
+        
+        if textField == phoneNumberTextField {
+            textField.text = text.phoneMaskRu()
+        }
+        
+        if textField == nicknameTextField {
+            textField.text = text.setLettersNumbersAndUnderscoreSymbols(string: textField.text!)
+        }
+    }
+}
+
+//MARK: - Расширение настройки функционала кнопок
+extension RegistrationPageViewController {
+    
+    //MARK: - Функция обработки нажатия кнопки "Получить код по СМС"
     @IBAction func getSMSCodeButton(_ sender: UIButton) {
         
         let name = nameTextField.text ?? ""
@@ -65,50 +164,49 @@ class RegistrationPageViewController: UIViewController {
         let repeatPassword = repeatPasswordTextField.text ?? ""
         let nickname = nicknameTextField.text ?? ""
         
-        // Условия на Текстовые поля
-        if name == "" {
-            print("Имя не введено")
-        } else {
-            print(name)
+        //MARK: - Условия на Текстовые поля
+        
+        var message: String = ""
+        
+        if name.isEmpty {
+            message += " - Имя не введено\n"
         }
-        if surname == "" {
-            print("Фамилия не введена")
-        } else {
-            print(surname)
+        
+        if surname.isEmpty {
+            message += " - Фамилия не введена\n"
         }
-        if phoneNumber == "" {
-            print("Номер телефона не введен")
-        } else {
-            print(phoneNumber)
+        
+        if phoneNumber.isEmpty {
+            message += " - Номер телефона не введен\n"
         }
-        if password == "" {
-            print("Пароль не введен")
-        } else {
-            print(password)
+        
+        if password.isEmpty {
+            message += " - Пароль не введен\n"
         }
-        if repeatPassword == "" {
-            print("Пароль повторно не введен")
-        } else {
-            print(repeatPassword)
+        
+        if repeatPassword.isEmpty {
+            message += " - Пароль повторно не введен\n"
         }
-        if nickname == "" {
-            print("Никнейм не введен")
-        } else {
-            print(nickname)
+        
+        if nickname.isEmpty {
+            message += " - Никнейм не введен\n"
+        }
+        
+        if !message.isEmpty {
+            showAlert(title: "Не заполнены обязательные поля\n", message: message)
+            return
         }
         
         // возврат на корневой UIViewVontroller
         navigationController?.popToRootViewController(animated: false)
-
+        
         // передача данных подписанным UIViewControllers
         delegate?.getRegistrationData(name: name, surname: surname, phoneNumber: phoneNumber, password: password, nickname: nickname)
-    
     }
     
-    // Функция обработки нажания кнопки "Уже есть аккаунт"
+    //MARK: - Функция обработки нажания кнопки "Уже есть аккаунт"
     @IBAction func toTheEntryPageButton(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: false)
         delegate?.toTheEntryPage()
     }
-    
 }

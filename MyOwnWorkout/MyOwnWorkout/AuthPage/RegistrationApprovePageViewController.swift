@@ -50,3 +50,17 @@ class RegistrationApprovePageViewController: UIViewController {
         }
     }
 }
+
+//MARK: - Extensions
+
+extension RegistrationApprovePageViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+        guard let text = textField.text else { return }
+        
+        if textField == codeFromSMSTextField {
+            textField.text = text.codeFromSMSMask()
+        }
+    }
+}

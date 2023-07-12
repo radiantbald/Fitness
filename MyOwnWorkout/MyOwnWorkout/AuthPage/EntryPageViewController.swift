@@ -33,9 +33,9 @@ class EntryPageViewController: UIViewController {
         print("Вы перешли на страницу авторизации")
     }
     
-    @IBAction func backButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: false)
-    }
+//    @IBAction func backButton(_ sender: UIButton) {
+//        navigationController?.popViewController(animated: false)
+//    }
     
     @IBAction func entryButton(_ sender: UIButton) {
         

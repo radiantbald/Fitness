@@ -316,21 +316,6 @@
                             <constraint firstItem="2pd-XV-cc6" firstAttribute="trailing" secondItem="3Mh-Vt-PQn" secondAttribute="trailing" constant="16" id="p3i-pQ-phI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="S5m-TJ-E1Y">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="Ngl-OL-kmB">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wU6-s5-B92">
-                                <rect key="frame" x="16" y="4.6666666666666679" width="74" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Назад">
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="backButton:" destination="SSn-NT-fk6" eventType="touchUpInside" id="kmr-aV-3dS"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="nameTextField" destination="pnS-Iz-Bhq" id="1Ll-la-yzD"/>
                         <outlet property="nicknameTextField" destination="bhh-xE-kpn" id="Yd9-0l-k0O"/>

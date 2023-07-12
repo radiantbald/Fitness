@@ -9,25 +9,38 @@ import Foundation
 
 extension String {
     
-    func setNameAndSurnameSymbols(string: String) -> String {
+    //MARK: -
+    func setLettersNumbersAndUnderscoreSymbols(string: String) -> String {
         
         var newString = ""
         
         for i in string {
-            if i.isLetter || i == "-" || i == "`"{
+            if i.isLetter || i.isNumber || i == "_" {
                 newString.append(i)
             }
         }
-        
         return newString
     }
     
-    func setCapitalLetters() -> String {
+    //MARK: -
+    func setLettersHyphenAndApostropheSymbols(string: String) -> String {
         
-        return prefix(1).uppercased() + self.dropFirst()
+        var newString = ""
         
+        for i in string {
+            if i.isLetter || i == "-" || i == "`" {
+                newString.append(i)
+            }
+        }
+        return newString
     }
     
+    //MARK: -
+    func setCapitalLetters() -> String {
+        return prefix(1).uppercased() + self.dropFirst()
+    }
+    
+    //MARK: -
     func setOnlyNumbers(string: String) -> String {
         
         var newString = ""
@@ -37,10 +50,10 @@ extension String {
                 newString.append(i)
             }
         }
-        
         return newString
     }
     
+    //MARK: -
     func phoneMaskRu(to mask: String! = "+# (###) ###-##-##") -> String {
         
         var phoneNumber = self
@@ -68,9 +81,10 @@ extension String {
         return result
     }
     
+    //MARK: - 
     func codeFromSMSMask(to mask: String! = "#-#-#-#-#-#") -> String {
         
-        var codeFromSMS = self
+        let codeFromSMS = self
         
         let separated = codeFromSMS.components(separatedBy: CharacterSet.decimalDigits.inverted)
         let joined = separated.joined()
