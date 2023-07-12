@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C70897F2A5F02C2009A9826 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70897E2A5F02C2009A9826 /* DataBase.swift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22BCDCD2A3713ED001071BE /* RegistrationApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C70897E2A5F02C2009A9826 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationApprovePageViewController.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C70897D2A5F0295009A9826 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				5C70897E2A5F02C2009A9826 /* DataBase.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 		A201C87F2A2B590D006B1781 /* SchedulePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 		A2C3FF802A18E71400231082 /* MyOwnWorkout */ = {
 			isa = PBXGroup;
 			children = (
+				5C70897D2A5F0295009A9826 /* DataBase */,
 				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
 				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
 				A2ACA9452A3F26C30028F9FD /* Models */,
@@ -227,6 +238,7 @@
 			files = (
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
+				5C70897F2A5F02C2009A9826 /* DataBase.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,

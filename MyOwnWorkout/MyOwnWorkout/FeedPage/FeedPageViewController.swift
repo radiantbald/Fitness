@@ -9,10 +9,21 @@ import UIKit
 
 class FeedPageViewController: UIViewController {
     
-    var isAuth: Bool = false
+    private var isAuth: Bool {
+        get {
+            return DataBase.isAuth
+        }
+        set {
+            DataBase.isAuth = newValue
+            view.backgroundColor = newValue ? UIColor.systemOrange : .white
+            authLabel.text = newValue ? "Авторизован" : "Не авторизован"
+        }
+    }
     
     @IBOutlet weak var feedPageAvatar: UIImageView!
     @IBOutlet weak var feedPageHeader: UILabel!
+    @IBOutlet weak var authLabel: UILabel!
+    @IBOutlet weak var exitButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,6 +35,7 @@ class FeedPageViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        authLabel.text = isAuth ? "Авторизован" : "Не авторизован"
         print("Вы перешли на страницу с лентой новостей")
         
     }
@@ -43,6 +55,13 @@ class FeedPageViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func exitButtonAction(_ sender: UIButton) {
+        let status = !isAuth
+        isAuth = status
+    }
+    
+    
 }
 
 //MARK: - RegistrationPageViewControllerDelegate
