@@ -9,7 +9,14 @@ import UIKit
 
 class MainPageViewController: UIViewController {
     
-    var isAuth: Bool = true
+    private var isAuth: Bool {
+        get {
+            return DataBase.isAuth
+        }
+        set {
+            DataBase.isAuth = newValue
+        }
+    }
 
     @IBOutlet weak var mainPageAvatar: UIImageView!
     @IBOutlet weak var mainPageHeader: UILabel!
@@ -31,12 +38,14 @@ class MainPageViewController: UIViewController {
     
     @IBAction func avatarButton(_ sender: UIButton) {
         
-        if isAuth == false {
+        if isAuth {
+            print("Авторизация пройдена")
             let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
             vc.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "RegistrationPageViewController") as! RegistrationPageViewController
+            print("Авторизация не пройдена")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "EntryPageViewController") as! EntryPageViewController
             vc.modalPresentationStyle = .overFullScreen
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
@@ -45,7 +54,6 @@ class MainPageViewController: UIViewController {
     }
 }
 
-//MARK: - RegistrationPageViewControllerDelegate
 extension MainPageViewController {
     func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -84,6 +92,11 @@ extension MainPageViewController: EntryPageViewControllerDelegate {
     func getEntryData(nickname: String, password: String) {
         print(nickname, password)
         let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    func toTheRegistrationPage() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "RegistrationPageViewController") as! RegistrationPageViewController
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: false)
     }
 }

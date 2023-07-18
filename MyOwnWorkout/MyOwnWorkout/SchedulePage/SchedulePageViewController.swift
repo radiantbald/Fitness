@@ -9,7 +9,14 @@ import UIKit
 
 class SchedulePageViewController: UIViewController {
 
-    var isAuth: Bool = true
+    private var isAuth: Bool {
+        get {
+            return DataBase.isAuth
+        }
+        set {
+            DataBase.isAuth = newValue
+        }
+    }
     
     @IBOutlet weak var schedulePageAvatar: UIImageView!
     @IBOutlet weak var schedulePageHeader: UILabel!
@@ -25,6 +32,7 @@ class SchedulePageViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
     }
     
     @IBAction func avatarButton(_ sender: UIButton) {
@@ -34,7 +42,7 @@ class SchedulePageViewController: UIViewController {
             let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
             navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "RegistrationPageViewController") as! RegistrationPageViewController
+            let vc = storyboard?.instantiateViewController(withIdentifier: "EntryPageViewController") as! EntryPageViewController
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
             
@@ -42,6 +50,14 @@ class SchedulePageViewController: UIViewController {
     }
 }
 
+extension SchedulePageViewController {
+    func setupNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.backButtonTitle = "Назад"
+    }
+}
 //MARK: - RegistrationPageViewControllerDelegate
 
 extension SchedulePageViewController: RegistrationPageViewControllerDelegate {
@@ -74,6 +90,11 @@ extension SchedulePageViewController: EntryPageViewControllerDelegate {
     func getEntryData(nickname: String, password: String) {
         print(nickname, password)
         let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    func toTheRegistrationPage() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "RegistrationPageViewController") as! RegistrationPageViewController
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: false)
     }
 }

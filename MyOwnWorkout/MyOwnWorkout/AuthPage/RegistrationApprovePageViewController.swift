@@ -13,6 +13,15 @@ protocol RegistrationApprovePageViewControllerDelegate: AnyObject {
 
 class RegistrationApprovePageViewController: UIViewController {
     
+    private var isAuth: Bool {
+        get {
+            return DataBase.isAuth
+        }
+        set {
+            DataBase.isAuth = newValue
+        }
+    }
+    
     weak var delegate: RegistrationApprovePageViewControllerDelegate?
     
     @IBOutlet weak var codeFromSMSTextField: UITextField!
@@ -39,12 +48,10 @@ class RegistrationApprovePageViewController: UIViewController {
         let codeFromSMS = codeFromSMSTextField.text ?? ""
         
         if codeFromSMS.setOnlyNumbers(string: codeFromSMS) == "000000" {
-            print("Введенный код корректен")
-            
+            print("Вы вошли в аккаунт")
+            isAuth = true
             navigationController?.popToRootViewController(animated: false)
-            
             delegate?.getCodeFromSMS(codeFromSMS: codeFromSMS)
-            
         } else {
             print("Неправильный код")
         }

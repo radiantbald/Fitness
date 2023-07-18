@@ -171,27 +171,21 @@ extension RegistrationPageViewController {
         if name.isEmpty {
             message += " - Имя не введено\n"
         }
-        
         if surname.isEmpty {
             message += " - Фамилия не введена\n"
         }
-        
         if phoneNumber.isEmpty {
             message += " - Номер телефона не введен\n"
         }
-        
         if password.isEmpty {
             message += " - Пароль не введен\n"
         }
-        
         if repeatPassword.isEmpty {
             message += " - Пароль повторно не введен\n"
         }
-        
         if nickname.isEmpty {
             message += " - Никнейм не введен\n"
         }
-        
         if !message.isEmpty {
             showAlert(title: "Не заполнены обязательные поля\n", message: message)
             return

@@ -10,9 +10,19 @@ import UIKit
 protocol EntryPageViewControllerDelegate: AnyObject {
     func getEntryData(nickname: String,
                       password: String)
+    func toTheRegistrationPage()
 }
 
 class EntryPageViewController: UIViewController {
+    
+    private var isAuth: Bool {
+        get {
+            return DataBase.isAuth
+        }
+        set {
+            DataBase.isAuth = newValue
+        }
+    }
     
     weak var delegate: EntryPageViewControllerDelegate?
     
@@ -41,21 +51,18 @@ class EntryPageViewController: UIViewController {
         
         let nickname = nicknameTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        
-        if nickname == "" {
-            print("Никнейм не введен")
+
+        if nickname == "0" && password == "0" {
+            isAuth = true
+            navigationController?.popToRootViewController(animated: false)
+            delegate?.getEntryData(nickname: nickname, password: password)
         } else {
-            print(nickname)
+            showAlert(title: "Попробуйте еще раз", message: "Неверный никнейм или пароль")
         }
-        if password == "" {
-            print("Пароль не введен")
-        } else {
-            print(password)
-        }
-        
+    }
+    
+    @IBAction func toTheRegistrationPageButton(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: false)
-        
-        delegate?.getEntryData(nickname: nickname, password: password)
-        
+        delegate?.toTheRegistrationPage()
     }
 }

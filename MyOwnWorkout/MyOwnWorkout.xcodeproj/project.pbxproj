@@ -13,6 +13,7 @@
 		A275C9AE2A2B686F00B18420 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */; };
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
 		A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */; };
+		A29C7D8F2A6548C20065B255 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C7D8E2A6548C20065B255 /* DataBase.swift */; };
 		A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */; };
 		A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */; };
 		A2ACA9472A3F26E30028F9FD /* EyeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9462A3F26E30028F9FD /* EyeButton.swift */; };
@@ -32,6 +33,7 @@
 		A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
 		A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageViewController.swift; sourceTree = "<group>"; };
+		A29C7D8E2A6548C20065B255 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A2ACA9462A3F26E30028F9FD /* EyeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButton.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 			path = AuthPage;
 			sourceTree = "<group>";
 		};
+		A29C7D8D2A6548AB0065B255 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				A29C7D8E2A6548C20065B255 /* DataBase.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 		A2ACA9362A3C6DBC0028F9FD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +139,7 @@
 			children = (
 				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
 				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
+				A29C7D8D2A6548AB0065B255 /* DataBase */,
 				A2ACA9452A3F26C30028F9FD /* Models */,
 				A2ACA9362A3C6DBC0028F9FD /* Extensions */,
 				A2D601B62A1E29B4001E7EE3 /* MainPage */,
@@ -227,6 +238,7 @@
 			files = (
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
+				A29C7D8F2A6548C20065B255 /* DataBase.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
