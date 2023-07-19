@@ -1,5 +1,5 @@
 //
-//  SchedulePageViewController.swift
+//  FeedPageViewController.swift
 //  MyOwnWorkout
 //
 //  Created by Radiant Bald on 03.06.2023.
@@ -7,19 +7,10 @@
 
 import UIKit
 
-class SchedulePageViewController: UIViewController {
-
-    private var isAuth: Bool {
-        get {
-            return DataBase.isAuth
-        }
-        set {
-            DataBase.isAuth = newValue
-        }
-    }
+class FeedPageViewController: ViewController {
     
-    @IBOutlet weak var schedulePageAvatar: UIImageView!
-    @IBOutlet weak var schedulePageHeader: UILabel!
+    @IBOutlet weak var feedPageAvatar: UIImageView!
+    @IBOutlet weak var feedPageHeader: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,11 +19,12 @@ class SchedulePageViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        print("Вы перешли на страницу с расписанием")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        print("Вы перешли на страницу с лентой новостей")
+        
     }
     
     @IBAction func avatarButton(_ sender: UIButton) {
@@ -40,9 +32,11 @@ class SchedulePageViewController: UIViewController {
         if isAuth {
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
+            vc.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "EntryPageViewController") as! EntryPageViewController
+            vc.modalPresentationStyle = .overFullScreen
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
             
@@ -50,7 +44,7 @@ class SchedulePageViewController: UIViewController {
     }
 }
 
-extension SchedulePageViewController {
+extension FeedPageViewController {
     func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -58,13 +52,14 @@ extension SchedulePageViewController {
         navigationItem.backButtonTitle = "Назад"
     }
 }
+
 //MARK: - RegistrationPageViewControllerDelegate
 
-extension SchedulePageViewController: RegistrationPageViewControllerDelegate {
+extension FeedPageViewController: RegistrationPageViewControllerDelegate {
     func getRegistrationData(name: String, surname: String, phoneNumber: String, password: String, nickname: String) {
         print(name, surname, phoneNumber, password, nickname)
         let vc = storyboard?.instantiateViewController(withIdentifier: "RegistrationApprovePageViewController") as! RegistrationApprovePageViewController
-        vc.delegate = self
+//        vc.delegate = self
         navigationController?.pushViewController(vc, animated: false)
     }
     func toTheEntryPage() {
@@ -76,7 +71,7 @@ extension SchedulePageViewController: RegistrationPageViewControllerDelegate {
 
 //MARK: - RegistrationApprovePageViewControllerDelegate
 
-extension SchedulePageViewController: RegistrationApprovePageViewControllerDelegate {
+extension FeedPageViewController: RegistrationApprovePageViewControllerDelegate {
     func getCodeFromSMS(codeFromSMS: String) {
         print(codeFromSMS)
         let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
@@ -86,7 +81,7 @@ extension SchedulePageViewController: RegistrationApprovePageViewControllerDeleg
 
 //MARK: - EntryPageViewControllerDelegate
 
-extension SchedulePageViewController: EntryPageViewControllerDelegate {
+extension FeedPageViewController: EntryPageViewControllerDelegate {
     func getEntryData(nickname: String, password: String) {
         print(nickname, password)
         let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController

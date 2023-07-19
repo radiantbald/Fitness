@@ -13,16 +13,7 @@ protocol EntryPageViewControllerDelegate: AnyObject {
     func toTheRegistrationPage()
 }
 
-class EntryPageViewController: UIViewController {
-    
-    private var isAuth: Bool {
-        get {
-            return DataBase.isAuth
-        }
-        set {
-            DataBase.isAuth = newValue
-        }
-    }
+class EntryPageViewController: ViewController {
     
     weak var delegate: EntryPageViewControllerDelegate?
     

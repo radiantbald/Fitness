@@ -7,16 +7,7 @@
 
 import UIKit
 
-class MainPageViewController: UIViewController {
-    
-    private var isAuth: Bool {
-        get {
-            return DataBase.isAuth
-        }
-        set {
-            DataBase.isAuth = newValue
-        }
-    }
+class MainPageViewController: ViewController {
 
     @IBOutlet weak var mainPageAvatar: UIImageView!
     @IBOutlet weak var mainPageHeader: UILabel!
@@ -40,12 +31,12 @@ class MainPageViewController: UIViewController {
         
         if isAuth {
             print("Авторизация пройдена")
-            let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
+            guard let vc = PersonPageViewController.initInStoryboard else { return }
             vc.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(vc, animated: true)
         } else {
             print("Авторизация не пройдена")
-            let vc = storyboard?.instantiateViewController(withIdentifier: "EntryPageViewController") as! EntryPageViewController
+            guard let vc = EntryPageViewController.initInStoryboard else { return }
             vc.modalPresentationStyle = .overFullScreen
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)

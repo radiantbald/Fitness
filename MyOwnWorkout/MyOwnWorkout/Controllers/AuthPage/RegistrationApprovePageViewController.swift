@@ -11,16 +11,7 @@ protocol RegistrationApprovePageViewControllerDelegate: AnyObject {
     func getCodeFromSMS(codeFromSMS: String)
 }
 
-class RegistrationApprovePageViewController: UIViewController {
-    
-    private var isAuth: Bool {
-        get {
-            return DataBase.isAuth
-        }
-        set {
-            DataBase.isAuth = newValue
-        }
-    }
+class RegistrationApprovePageViewController: ViewController {
     
     weak var delegate: RegistrationApprovePageViewControllerDelegate?
     

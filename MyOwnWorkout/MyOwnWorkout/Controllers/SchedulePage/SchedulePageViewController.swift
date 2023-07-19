@@ -1,5 +1,5 @@
 //
-//  FeedPageViewController.swift
+//  SchedulePageViewController.swift
 //  MyOwnWorkout
 //
 //  Created by Radiant Bald on 03.06.2023.
@@ -7,19 +7,10 @@
 
 import UIKit
 
-class FeedPageViewController: UIViewController {
+class SchedulePageViewController: ViewController {
     
-    private var isAuth: Bool {
-        get {
-            return DataBase.isAuth
-        }
-        set {
-            DataBase.isAuth = newValue
-        }
-    }
-    
-    @IBOutlet weak var feedPageAvatar: UIImageView!
-    @IBOutlet weak var feedPageHeader: UILabel!
+    @IBOutlet weak var schedulePageAvatar: UIImageView!
+    @IBOutlet weak var schedulePageHeader: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,12 +19,11 @@ class FeedPageViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
+        print("Вы перешли на страницу с расписанием")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        print("Вы перешли на страницу с лентой новостей")
-        
     }
     
     @IBAction func avatarButton(_ sender: UIButton) {
@@ -41,11 +31,9 @@ class FeedPageViewController: UIViewController {
         if isAuth {
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
-            vc.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "EntryPageViewController") as! EntryPageViewController
-            vc.modalPresentationStyle = .overFullScreen
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
             
@@ -53,7 +41,7 @@ class FeedPageViewController: UIViewController {
     }
 }
 
-extension FeedPageViewController {
+extension SchedulePageViewController {
     func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -61,14 +49,13 @@ extension FeedPageViewController {
         navigationItem.backButtonTitle = "Назад"
     }
 }
-
 //MARK: - RegistrationPageViewControllerDelegate
 
-extension FeedPageViewController: RegistrationPageViewControllerDelegate {
+extension SchedulePageViewController: RegistrationPageViewControllerDelegate {
     func getRegistrationData(name: String, surname: String, phoneNumber: String, password: String, nickname: String) {
         print(name, surname, phoneNumber, password, nickname)
         let vc = storyboard?.instantiateViewController(withIdentifier: "RegistrationApprovePageViewController") as! RegistrationApprovePageViewController
-//        vc.delegate = self
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: false)
     }
     func toTheEntryPage() {
@@ -80,7 +67,7 @@ extension FeedPageViewController: RegistrationPageViewControllerDelegate {
 
 //MARK: - RegistrationApprovePageViewControllerDelegate
 
-extension FeedPageViewController: RegistrationApprovePageViewControllerDelegate {
+extension SchedulePageViewController: RegistrationApprovePageViewControllerDelegate {
     func getCodeFromSMS(codeFromSMS: String) {
         print(codeFromSMS)
         let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController
@@ -90,7 +77,7 @@ extension FeedPageViewController: RegistrationApprovePageViewControllerDelegate 
 
 //MARK: - EntryPageViewControllerDelegate
 
-extension FeedPageViewController: EntryPageViewControllerDelegate {
+extension SchedulePageViewController: EntryPageViewControllerDelegate {
     func getEntryData(nickname: String, password: String) {
         print(nickname, password)
         let vc = storyboard?.instantiateViewController(withIdentifier: "PersonPageViewController") as! PersonPageViewController

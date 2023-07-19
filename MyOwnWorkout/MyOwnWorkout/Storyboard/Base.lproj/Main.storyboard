@@ -209,13 +209,25 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JSX-O8-tG8">
                                 <rect key="frame" x="30" y="89" width="333" height="100"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Popov Oleg" translatesAutoresizingMaskIntoConstraints="NO" id="oRE-CY-xIE">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHb-yy-PXi">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Popov Oleg" translatesAutoresizingMaskIntoConstraints="NO" id="oRE-CY-xIE">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="6Zr-ad-Un2"/>
+                                                    <constraint firstAttribute="width" constant="100" id="KAE-bR-HTc"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="6Zr-ad-Un2"/>
-                                            <constraint firstAttribute="width" constant="100" id="KAE-bR-HTc"/>
+                                            <constraint firstItem="oRE-CY-xIE" firstAttribute="top" secondItem="eHb-yy-PXi" secondAttribute="top" id="7T3-wq-88K"/>
+                                            <constraint firstItem="oRE-CY-xIE" firstAttribute="leading" secondItem="eHb-yy-PXi" secondAttribute="leading" id="CoI-Oo-as2"/>
+                                            <constraint firstAttribute="bottom" secondItem="oRE-CY-xIE" secondAttribute="bottom" id="Q0J-lo-kmC"/>
+                                            <constraint firstAttribute="trailing" secondItem="oRE-CY-xIE" secondAttribute="trailing" id="flW-70-kqi"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ByE-j5-pDm">
                                         <rect key="frame" x="115" y="29.666666666666668" width="218" height="40.666666666666657"/>
                                         <subviews>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CAB50402A68381C00200EE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB503F2A68381C00200EE0 /* ViewController.swift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22BCDCD2A3713ED001071BE /* RegistrationApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5CAB503F2A68381C00200EE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationApprovePageViewController.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CAB503C2A6836DE00200EE0 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
+				A2C3FF8F2A18E71500231082 /* Info.plist */,
+				A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */,
+				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
+				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
+				5CAB503F2A68381C00200EE0 /* ViewController.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		5CAB503D2A68372600200EE0 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A2C3FF872A18E71400231082 /* Main.storyboard */,
+				A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		5CAB503E2A68376400200EE0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A2D601B62A1E29B4001E7EE3 /* MainPage */,
+				A201C87F2A2B590D006B1781 /* SchedulePage */,
+				A275C9AA2A2B5C6900B18420 /* FeedPage */,
+				A275C9B02A2B70C800B18420 /* AuthPage */,
+				A275C9AF2A2B70BA00B18420 /* PersonPage */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		A201C87F2A2B590D006B1781 /* SchedulePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,21 +173,12 @@
 		A2C3FF802A18E71400231082 /* MyOwnWorkout */ = {
 			isa = PBXGroup;
 			children = (
-				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
-				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
+				5CAB503E2A68376400200EE0 /* Controllers */,
 				A29C7D8D2A6548AB0065B255 /* DataBase */,
 				A2ACA9452A3F26C30028F9FD /* Models */,
 				A2ACA9362A3C6DBC0028F9FD /* Extensions */,
-				A2D601B62A1E29B4001E7EE3 /* MainPage */,
-				A201C87F2A2B590D006B1781 /* SchedulePage */,
-				A275C9AA2A2B5C6900B18420 /* FeedPage */,
-				A275C9B02A2B70C800B18420 /* AuthPage */,
-				A275C9AF2A2B70BA00B18420 /* PersonPage */,
-				A2C3FF872A18E71400231082 /* Main.storyboard */,
-				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
-				A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */,
-				A2C3FF8F2A18E71500231082 /* Info.plist */,
-				A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */,
+				5CAB503C2A6836DE00200EE0 /* Support */,
+				5CAB503D2A68372600200EE0 /* Storyboard */,
 			);
 			path = MyOwnWorkout;
 			sourceTree = "<group>";
@@ -240,6 +267,7 @@
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A29C7D8F2A6548C20065B255 /* DataBase.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
+				5CAB50402A68381C00200EE0 /* ViewController.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
 				A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */,
@@ -398,7 +426,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6GN2TT83FY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyOwnWorkout/Info.plist;
+				INFOPLIST_FILE = MyOwnWorkout/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -429,7 +457,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6GN2TT83FY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyOwnWorkout/Info.plist;
+				INFOPLIST_FILE = MyOwnWorkout/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
