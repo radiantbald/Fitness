@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
-		A22BCDCD2A3713ED001071BE /* RegistrationApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */; };
+		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
 		A275C9AE2A2B686F00B18420 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */; };
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
@@ -23,12 +23,13 @@
 		A2C3FF892A18E71400231082 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C3FF872A18E71400231082 /* Main.storyboard */; };
 		A2C3FF8B2A18E71500231082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2C3FF8A2A18E71500231082 /* Assets.xcassets */; };
 		A2C3FF8E2A18E71500231082 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */; };
+		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
-		A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationApprovePageViewController.swift; sourceTree = "<group>"; };
+		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
 		A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		A2C3FF8A2A18E71500231082 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2C3FF8D2A18E71500231082 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2C3FF8F2A18E71500231082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,8 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */,
-				A22BCDCC2A3713ED001071BE /* RegistrationApprovePageViewController.swift */,
 				A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */,
+				A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */,
 			);
 			path = AuthPage;
 			sourceTree = "<group>";
@@ -137,23 +139,48 @@
 		A2C3FF802A18E71400231082 /* MyOwnWorkout */ = {
 			isa = PBXGroup;
 			children = (
-				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
-				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
 				A29C7D8D2A6548AB0065B255 /* DataBase */,
 				A2ACA9452A3F26C30028F9FD /* Models */,
+				A2D2E4512A6DB2AE002E5467 /* Controllers */,
 				A2ACA9362A3C6DBC0028F9FD /* Extensions */,
+				A2D2E44F2A6DB27A002E5467 /* Support */,
+				A2D2E4502A6DB298002E5467 /* Storyboards */,
+			);
+			path = MyOwnWorkout;
+			sourceTree = "<group>";
+		};
+		A2D2E44F2A6DB27A002E5467 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
+				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
+				A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */,
+				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
+				A2C3FF8F2A18E71500231082 /* Info.plist */,
+				A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		A2D2E4502A6DB298002E5467 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */,
+				A2C3FF872A18E71400231082 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A2D2E4512A6DB2AE002E5467 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				A2D601B62A1E29B4001E7EE3 /* MainPage */,
 				A201C87F2A2B590D006B1781 /* SchedulePage */,
 				A275C9AA2A2B5C6900B18420 /* FeedPage */,
 				A275C9B02A2B70C800B18420 /* AuthPage */,
 				A275C9AF2A2B70BA00B18420 /* PersonPage */,
-				A2C3FF872A18E71400231082 /* Main.storyboard */,
-				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
-				A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */,
-				A2C3FF8F2A18E71500231082 /* Info.plist */,
-				A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */,
 			);
-			path = MyOwnWorkout;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A2D601B62A1E29B4001E7EE3 /* MainPage */ = {
@@ -237,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
+				A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A29C7D8F2A6548C20065B255 /* DataBase.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
@@ -248,7 +276,7 @@
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
 				A2ACA9472A3F26E30028F9FD /* EyeButton.swift in Sources */,
-				A22BCDCD2A3713ED001071BE /* RegistrationApprovePageViewController.swift in Sources */,
+				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +426,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6GN2TT83FY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyOwnWorkout/Info.plist;
+				INFOPLIST_FILE = MyOwnWorkout/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -429,7 +457,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6GN2TT83FY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyOwnWorkout/Info.plist;
+				INFOPLIST_FILE = MyOwnWorkout/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

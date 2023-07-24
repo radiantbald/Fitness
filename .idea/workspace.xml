@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="1. Настроен логин/разлогин через UserDefaults&#10;2. На экране PersonPageViewController добавлен stackView с фотографией, фамилией, именем и никнеймом">
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.xcworkspace/xcuserdata/radiantbald.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.xcworkspace/xcuserdata/radiantbald.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Task_7" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,6 +63,7 @@
       <workItem from="1689585874931" duration="82000" />
       <workItem from="1689691577455" duration="210000" />
       <workItem from="1689691797907" duration="13000" />
+      <workItem from="1690139281607" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -157,6 +159,7 @@
     <MESSAGE value="- На RegistrationPageViewController настроено форматирование номера телефона (но криво!);&#10;- Налажены переходы между существующими контроллерами;&#10;&#10;TODO: как объединить сохранение данных в разные рутКонтроллеры" />
     <MESSAGE value="- На RegistrationPageViewController настроено форматирование всех полей кроме никнейма,&#10;&#10;TODO: &#10;1. разобраться, как объединить сохранение данных в разные рутКонтроллеры&#10;2. Разобраться, почему стирается текст паролей при повторном выборе поля" />
     <MESSAGE value="1. Настроен логин/разлогин через UserDefaults&#10;2. На экране PersonPageViewController добавлен stackView с фотографией, фамилией, именем и никнеймом" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Настроен логин/разлогин через UserDefaults&#10;2. На экране PersonPageViewController добавлен stackView с фотографией, фамилией, именем и никнеймом" />
+    <MESSAGE value="тут ниче не вышло, оставляю на память" />
+    <option name="LAST_COMMIT_MESSAGE" value="тут ниче не вышло, оставляю на память" />
   </component>
 </project>

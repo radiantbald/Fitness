@@ -18,7 +18,7 @@ protocol RegistrationPageViewControllerDelegate: AnyObject {
 }
 
 //MARK: -
-class RegistrationPageViewController: UIViewController {
+class RegistrationPageViewController: GeneralViewController {
     
     weak var delegate: RegistrationPageViewControllerDelegate?
 

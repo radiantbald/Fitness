@@ -13,17 +13,8 @@ protocol EntryPageViewControllerDelegate: AnyObject {
     func toTheRegistrationPage()
 }
 
-class EntryPageViewController: UIViewController {
-    
-    private var isAuth: Bool {
-        get {
-            return DataBase.isAuth
-        }
-        set {
-            DataBase.isAuth = newValue
-        }
-    }
-    
+class EntryPageViewController: GeneralViewController {
+
     weak var delegate: EntryPageViewControllerDelegate?
     
     @IBOutlet weak var nicknameTextField: UITextField!
@@ -42,10 +33,6 @@ class EntryPageViewController: UIViewController {
         navigationItem.title = "Вход"
         print("Вы перешли на страницу авторизации")
     }
-    
-//    @IBAction func backButton(_ sender: UIButton) {
-//        navigationController?.popViewController(animated: false)
-//    }
     
     @IBAction func entryButton(_ sender: UIButton) {
         

@@ -7,17 +7,8 @@
 
 import UIKit
 
-class PersonPageViewController: UIViewController {
+class PersonPageViewController: GeneralViewController {
     
-    private var isAuth: Bool {
-        get {
-            return DataBase.isAuth
-        }
-        set {
-            DataBase.isAuth = newValue
-        }
-    }
-
     @IBOutlet weak var personPageAvatar: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {

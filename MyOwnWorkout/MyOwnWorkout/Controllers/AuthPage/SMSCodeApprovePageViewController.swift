@@ -7,22 +7,13 @@
 
 import UIKit
 
-protocol RegistrationApprovePageViewControllerDelegate: AnyObject {
+protocol SMSCodeApprovePageViewControllerDelegate: AnyObject {
     func getCodeFromSMS(codeFromSMS: String)
 }
 
-class RegistrationApprovePageViewController: UIViewController {
+class SMSCodeApprovePageViewController: GeneralViewController {
     
-    private var isAuth: Bool {
-        get {
-            return DataBase.isAuth
-        }
-        set {
-            DataBase.isAuth = newValue
-        }
-    }
-    
-    weak var delegate: RegistrationApprovePageViewControllerDelegate?
+    weak var delegate: SMSCodeApprovePageViewControllerDelegate?
     
     @IBOutlet weak var codeFromSMSTextField: UITextField!
     
@@ -60,7 +51,7 @@ class RegistrationApprovePageViewController: UIViewController {
 
 //MARK: - Extensions
 
-extension RegistrationApprovePageViewController: UITextFieldDelegate {
+extension SMSCodeApprovePageViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         
