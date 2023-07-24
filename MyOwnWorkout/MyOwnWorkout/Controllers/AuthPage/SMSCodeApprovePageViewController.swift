@@ -27,8 +27,8 @@ class SMSCodeApprovePageViewController: GeneralViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Регистрация"
-        print("Вы перешли на страницу подтверждения регистрации")
+        navigationItem.title = "Код авторизации"
+        print("Вы перешли на страницу ввода СМС кода")
         
         codeFromSMSTextField.delegate = self
         codeFromSMSTextField.textAlignment = .center

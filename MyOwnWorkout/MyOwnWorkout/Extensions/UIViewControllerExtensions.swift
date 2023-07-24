@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+    
     class var classIdentifier: String { return String(describing: Self.self) }
     
     class var storyboardInit: Self? {

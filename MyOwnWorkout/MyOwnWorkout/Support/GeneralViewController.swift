@@ -20,6 +20,15 @@ class GeneralViewController: UIViewController {
         }
     }
     
+    var isNewAvatarImage: Bool {
+        get {
+            return DataBase.isNewAvatarImage
+        }
+        set {
+            DataBase.isNewAvatarImage = newValue
+        }
+    }
+    
     //MARK: - Настройка кнопки - аватарки
     
     @IBAction func avatarButton(_ sender: UIButton) {

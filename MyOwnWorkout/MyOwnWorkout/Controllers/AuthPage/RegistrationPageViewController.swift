@@ -191,6 +191,23 @@ extension RegistrationPageViewController {
             return
         }
         
+        let userDataArray = [name, surname, phoneNumber, password, nickname]
+        let userDataString = userDataArray.joined(separator: "\n")
+        let userData = userDataString.data(using: .utf8)
+        
+        let userDataName = "UserData.txt"
+        guard let file = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let path = file.appendingPathComponent(userDataName)
+        print(path.absoluteString)
+        
+        do {
+//            try FileManager.default.removeItem(at: path)
+            try userData?.write(to: path)
+        }
+        catch let error {
+            print(error.localizedDescription)
+        }
+        
         // возврат на корневой UIViewVontroller
         navigationController?.popToRootViewController(animated: false)
         

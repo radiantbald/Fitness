@@ -7,7 +7,9 @@
 
 import UIKit
 
-class PersonPageViewController: GeneralViewController {
+class PersonPageViewController: GeneralViewController, UIGestureRecognizerDelegate {
+    
+    private lazy var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var personPageAvatar: UIImageView!
     
@@ -27,14 +29,83 @@ class PersonPageViewController: GeneralViewController {
         navigationItem.title = "Личный кабинет"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(exit))
         print("Вы перешли в Личный кабинет")
+        
+        imagePicker.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapAction))
+        tapGesture.delegate = self
+        personPageAvatar.superview?.addGestureRecognizer(tapGesture)
     }
+    
     @objc private func exit() {
         isAuth = false
         print("Вы вышли из аккаунта")
         navigationController?.popToRootViewController(animated: true)
     }
+    
+    @objc private func avatarTapAction() {
+        let actionImage = UIAlertController(title: "Сменить аватарку", message: nil, preferredStyle: .actionSheet)
+        
+        let camera = UIAlertAction(title: "Камера", style: .default) { _ in
+            self.imagePicker.sourceType = .camera
+        }
+        
+        let photoLibrary = UIAlertAction(title: "Фотоальбом", style: .default) { _ in
+            self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.allowsEditing = true
+            self.navigationController?.present(self.imagePicker, animated:true)
+        }
+        
+//        let buffer = UIAlertAction(title: "Вставить из буфера", style: .default) { _ in
+//            if let image = UIPasteboard.general.image {
+//                self.saveUserAvatarImage(image)
+//            }
+//        }
+        
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        actionImage.addAction(camera)
+        actionImage.addAction(photoLibrary)
+//        actionImage.addAction(buffer)
+        actionImage.addAction(cancel)
+        
+        if let popover = actionImage.popoverPresentationController {
+            popover.sourceView = self.view
+            let frame = view.frame
+            popover.sourceRect = CGRect(x: frame.midX, y: frame.maxY, width: 1.0, height: 1.0)
+        }
+        present(actionImage, animated: true)
+    }
+    
     @IBAction func backButton(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }
+    
+    func saveUserAvatarImage(_ image: UIImage) {
+        isNewAvatarImage = true
+        personPageAvatar.image = image
+        print(isNewAvatarImage)
+        
+        let imageData = image.jpegData(compressionQuality: 1)
+        let imageDataName = "UserAvatar.jpeg"
+        
+        guard let file = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let path = file.appendingPathComponent(imageDataName)
+        print(path.absoluteString)
+        
+        do {
+//            try FileManager.default.removeItem(at: path)
+            try imageData?.write(to: path)
+        }
+        catch let error {
+            print(error.localizedDescription)
+        }
+    }
+}
 
+extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.saveUserAvatarImage(pickedImage)
+            dismiss(animated: true)
+        }
+    }
 }
