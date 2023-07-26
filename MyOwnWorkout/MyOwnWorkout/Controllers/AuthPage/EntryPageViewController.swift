@@ -32,6 +32,13 @@ class EntryPageViewController: GeneralViewController {
         super.viewDidLoad()
         navigationItem.title = "Вход"
         print("Вы перешли на страницу авторизации")
+        
+        //test
+        guard let data = Keychain.standart.getData("keyAuth") else { return }
+        
+        guard let value = try? JSONDecoder().decode(AuthModel.self, from: data) else { return }
+        nicknameTextField.text = value.login
+        passwordTextField.text = value.password
     }
     
     @IBAction func entryButton(_ sender: UIButton) {

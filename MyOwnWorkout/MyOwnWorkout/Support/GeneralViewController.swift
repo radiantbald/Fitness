@@ -8,8 +8,23 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
+    private let avatarName = "UserAvatar"
     
     //MARK: - get/set статуса авторизациии
+    var avatarImage: UIImage? {
+        get {
+            if let data = FileManager.getObject(name: avatarName, of: "jpeg"),
+               let image = UIImage(data: data) {
+                return image
+            }
+            return nil
+        }
+        
+        set {
+            guard let imageData = newValue?.jpegData(compressionQuality: 1) else { return }
+            let result = FileManager.saveObject(data: imageData, name: avatarName, of: "jpeg")
+        }
+    }
     
     var isAuth: Bool {
         get {
@@ -17,15 +32,6 @@ class GeneralViewController: UIViewController {
         }
         set {
             DataBase.isAuth = newValue
-        }
-    }
-    
-    var isNewAvatarImage: Bool {
-        get {
-            return DataBase.isNewAvatarImage
-        }
-        set {
-            DataBase.isNewAvatarImage = newValue
         }
     }
     
@@ -85,6 +91,9 @@ extension GeneralViewController: RegistrationPageViewControllerDelegate {
 extension GeneralViewController: EntryPageViewControllerDelegate {
     func getEntryData(nickname: String, password: String) {
         print(nickname, password)
+        save(nickname: nickname, password: password)
+        
+        
         guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: false)
@@ -103,5 +112,15 @@ extension GeneralViewController: SMSCodeApprovePageViewControllerDelegate {
         print(codeFromSMS)
         guard let viewController = PersonPageViewController.storyboardInit else { return }
         navigationController?.pushViewController(viewController, animated: false)
+    }
+}
+
+
+extension GeneralViewController {
+    private func save(nickname: String, password: String) {
+        
+        let auth = AuthModel(login: nickname, password: password)
+        guard let data = try? JSONEncoder().encode(auth) else { return }
+        Keychain.standart.set(data, forKey: "keyAuth")
     }
 }

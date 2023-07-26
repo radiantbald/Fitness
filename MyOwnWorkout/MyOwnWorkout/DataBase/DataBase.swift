@@ -13,7 +13,6 @@ class DataBase {
     
     private enum Keys: String {
         case isAuthKey = "IsAuthKey"
-        case isNewAvatarImageKey = "IsNewAvatarImageKey"
     }
     
     //MARK: - Статус авторизации (логин/разлогин)
@@ -25,17 +24,6 @@ class DataBase {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Keys.isAuthKey.rawValue)
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
-    class var isNewAvatarImage: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: Keys.isNewAvatarImageKey.rawValue)
-            
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: Keys.isNewAvatarImageKey.rawValue)
             UserDefaults.standard.synchronize()
         }
     }

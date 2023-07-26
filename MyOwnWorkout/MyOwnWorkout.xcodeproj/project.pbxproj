@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C15C9FC2A7172EF00B19045 /* FileManager-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15C9FB2A7172EF00B19045 /* FileManager-Ext.swift */; };
+		5C15C9FF2A7185FD00B19045 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15C9FE2A7185FD00B19045 /* AuthModel.swift */; };
+		5C15CA012A7189DF00B19045 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15CA002A7189DF00B19045 /* Keychain.swift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
@@ -25,9 +28,16 @@
 		A2C3FF8E2A18E71500231082 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */; };
 		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
+		FD9DB65EFAE6BDFF3A22E5F7 /* Pods_MyOwnWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39811FC695D7F02FA9D0F44A /* Pods_MyOwnWorkout.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0798DEBACAE5C8F3F9AD4DD4 /* Pods-MyOwnWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwnWorkout.debug.xcconfig"; path = "Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout.debug.xcconfig"; sourceTree = "<group>"; };
+		39811FC695D7F02FA9D0F44A /* Pods_MyOwnWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyOwnWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C15C9FB2A7172EF00B19045 /* FileManager-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Ext.swift"; sourceTree = "<group>"; };
+		5C15C9FE2A7185FD00B19045 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		5C15CA002A7189DF00B19045 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		78E41C90ECC769E5734A5C33 /* Pods-MyOwnWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwnWorkout.release.xcconfig"; path = "Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout.release.xcconfig"; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
@@ -55,12 +65,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD9DB65EFAE6BDFF3A22E5F7 /* Pods_MyOwnWorkout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B7F387E7CC6774381F0E704 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0798DEBACAE5C8F3F9AD4DD4 /* Pods-MyOwnWorkout.debug.xcconfig */,
+				78E41C90ECC769E5734A5C33 /* Pods-MyOwnWorkout.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5C15C9FD2A7185E800B19045 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A2ACA9462A3F26E30028F9FD /* EyeButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A201C87F2A2B590D006B1781 /* SchedulePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				A29C7D8E2A6548C20065B255 /* DataBase.swift */,
+				5C15CA002A7189DF00B19045 /* Keychain.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -107,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */,
+				5C15C9FB2A7172EF00B19045 /* FileManager-Ext.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
 			);
 			path = Extensions;
@@ -115,7 +145,7 @@
 		A2ACA9452A3F26C30028F9FD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A2ACA9462A3F26E30028F9FD /* EyeButton.swift */,
+				5C15C9FE2A7185FD00B19045 /* AuthModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +155,8 @@
 			children = (
 				A2C3FF802A18E71400231082 /* MyOwnWorkout */,
 				A2C3FF7F2A18E71400231082 /* Products */,
+				3B7F387E7CC6774381F0E704 /* Pods */,
+				D3D9238C0921C49498BB2C04 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +171,7 @@
 		A2C3FF802A18E71400231082 /* MyOwnWorkout */ = {
 			isa = PBXGroup;
 			children = (
+				5C15C9FD2A7185E800B19045 /* Views */,
 				A29C7D8D2A6548AB0065B255 /* DataBase */,
 				A2ACA9452A3F26C30028F9FD /* Models */,
 				A2D2E4512A6DB2AE002E5467 /* Controllers */,
@@ -191,6 +224,14 @@
 			path = MainPage;
 			sourceTree = "<group>";
 		};
+		D3D9238C0921C49498BB2C04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39811FC695D7F02FA9D0F44A /* Pods_MyOwnWorkout.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -198,9 +239,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A2C3FF922A18E71500231082 /* Build configuration list for PBXNativeTarget "MyOwnWorkout" */;
 			buildPhases = (
+				9214F0900570F4808BA6529C /* [CP] Check Pods Manifest.lock */,
 				A2C3FF7A2A18E71400231082 /* Sources */,
 				A2C3FF7B2A18E71400231082 /* Frameworks */,
 				A2C3FF7C2A18E71400231082 /* Resources */,
+				6DC946D2A36F66DA1ABEC1F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,11 +301,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6DC946D2A36F66DA1ABEC1F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9214F0900570F4808BA6529C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyOwnWorkout-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A2C3FF7A2A18E71400231082 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C15CA012A7189DF00B19045 /* Keychain.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
 				A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
@@ -274,7 +360,9 @@
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
+				5C15C9FC2A7172EF00B19045 /* FileManager-Ext.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
+				5C15C9FF2A7185FD00B19045 /* AuthModel.swift in Sources */,
 				A2ACA9472A3F26E30028F9FD /* EyeButton.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 			);
@@ -418,6 +506,7 @@
 		};
 		A2C3FF932A18E71500231082 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0798DEBACAE5C8F3F9AD4DD4 /* Pods-MyOwnWorkout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -449,6 +538,7 @@
 		};
 		A2C3FF942A18E71500231082 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78E41C90ECC769E5734A5C33 /* Pods-MyOwnWorkout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
