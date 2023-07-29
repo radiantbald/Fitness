@@ -9,6 +9,14 @@ import UIKit
 
 class GeneralViewController: UIViewController {
     
+    enum FilesNames: String {
+        case userAvatar = "UserAvatar"
+    }
+    
+    enum FilesTypes: String {
+        case jpeg = "jpeg"
+    }
+    
     //MARK: - get/set статуса авторизациии
     
     var isAuth: Bool {
@@ -20,31 +28,20 @@ class GeneralViewController: UIViewController {
         }
     }
     
-    var isNewAvatarImage: Bool {
+    //MARK: - Установка Аватарки
+    var avatarImage: UIImage? {
         get {
-            return DataBase.isNewAvatarImage
+            if let data = FileManager.getObject(name: FilesNames.userAvatar.rawValue, type: FilesTypes.jpeg.rawValue),
+               let image = UIImage(data: data),
+               isAuth {
+                return image
+            }
+            return UIImage(named: "AppIcon")
         }
         set {
-            DataBase.isNewAvatarImage = newValue
-        }
-    }
-    
-    //MARK: - Настройка кнопки - аватарки
-    
-    @IBAction func avatarButton(_ sender: UIButton) {
-        
-        if isAuth {
-            print("Авторизация пройдена")
-            guard let viewController = PersonPageViewController.storyboardInit else { return }
-            viewController.modalPresentationStyle = .overFullScreen
-            navigationController?.pushViewController(viewController, animated: true)
-        } else {
-            print("Авторизация не пройдена")
-            guard let viewController = EntryPageViewController.storyboardInit else { return }
-            viewController.modalPresentationStyle = .overFullScreen
-            viewController.delegate = self
-            navigationController?.pushViewController(viewController, animated: true)
-            
+            guard let imageData = newValue?.jpegData(compressionQuality: 1) else { return }
+            let result = FileManager.setObject(data: imageData, name: FilesNames.userAvatar.rawValue, type: FilesTypes.jpeg.rawValue)
+            print("Картинка ", result ? "Сохранилась" : "Не сохранилась")
         }
     }
 }
@@ -61,6 +58,39 @@ extension GeneralViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .black
         navigationItem.backButtonTitle = "Назад"
+    }
+    
+    func setupAvatarBounds(avatar: UIImageView) {
+        avatar.contentMode = .scaleAspectFill
+        avatar.clipsToBounds = true
+        avatar.layer.cornerRadius = avatar.frame.size.width/2
+    }
+}
+
+//MARK: - Настройки жестов
+
+extension GeneralViewController: UIGestureRecognizerDelegate {
+    
+    //MARK: - Настройка кнопки-аватарки на корневых контроллерах
+    
+    func tapAvatarOnTheRootPages(avatar: UIImageView) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarButton))
+        tapGesture.delegate = self
+        avatar.superview?.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func avatarButton() {
+        
+        if isAuth {
+            guard let viewController = PersonPageViewController.storyboardInit else { return }
+            viewController.modalPresentationStyle = .overFullScreen
+            navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            guard let viewController = EntryPageViewController.storyboardInit else { return }
+            viewController.modalPresentationStyle = .overFullScreen
+            viewController.delegate = self
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
@@ -105,3 +135,4 @@ extension GeneralViewController: SMSCodeApprovePageViewControllerDelegate {
         navigationController?.pushViewController(viewController, animated: false)
     }
 }
+

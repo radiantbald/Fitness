@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="Проведен рефакторинг кода" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Настрое">
+      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Extensions/FileManagerExtensions.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.xcworkspace/xcuserdata/radiantbald.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.xcworkspace/xcuserdata/radiantbald.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/EntryPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/EntryPageViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/RegistrationPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/RegistrationPageViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/FeedPage/FeedPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/FeedPage/FeedPageViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/MainPage/MainPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/MainPage/MainPageViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/PersonPage/PersonPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/PersonPage/PersonPageViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/SchedulePage/SchedulePageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/SchedulePage/SchedulePageViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/DataBase.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/DataBase.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Storyboards/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Storyboards/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Task_7_Refactoring" />
+        <entry key="$PROJECT_DIR$" value="Task_7_FileDirectory" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,6 +76,9 @@
       <workItem from="1689691797907" duration="13000" />
       <workItem from="1690139281607" duration="33000" />
       <workItem from="1690179373710" duration="281000" />
+      <workItem from="1690193795663" duration="168000" />
+      <workItem from="1690619711409" duration="135000" />
+      <workItem from="1690638741062" duration="100000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -126,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690179404708</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Настроено сохранение данных в текстовый файл при регистрации&#10;Подключена возможность менять аватарку">
+      <created>1690193842799</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1690193842799</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +167,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/task_6" />
+                        <option value="Task_8" />
                       </list>
                     </value>
                   </entry>
@@ -166,6 +190,7 @@
     <MESSAGE value="1. Настроен логин/разлогин через UserDefaults&#10;2. На экране PersonPageViewController добавлен stackView с фотографией, фамилией, именем и никнеймом" />
     <MESSAGE value="тут ниче не вышло, оставляю на память" />
     <MESSAGE value="Проведен рефакторинг кода" />
-    <option name="LAST_COMMIT_MESSAGE" value="Проведен рефакторинг кода" />
+    <MESSAGE value="Настроено сохранение данных в текстовый файл при регистрации&#10;Подключена возможность менять аватарку" />
+    <option name="LAST_COMMIT_MESSAGE" value="Настроено сохранение данных в текстовый файл при регистрации&#10;Подключена возможность менять аватарку" />
   </component>
 </project>

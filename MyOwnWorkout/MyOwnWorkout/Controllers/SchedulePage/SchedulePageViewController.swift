@@ -12,18 +12,22 @@ class SchedulePageViewController: GeneralViewController {
     @IBOutlet weak var schedulePageAvatar: UIImageView!
     @IBOutlet weak var schedulePageHeader: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = false
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tabBarController?.tabBar.isHidden = false
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        print("Вы перешли на страницу с расписанием")
+        setupAvatarBounds(avatar: schedulePageAvatar)
+        tapAvatarOnTheRootPages(avatar: schedulePageAvatar)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+        schedulePageAvatar.image = avatarImage
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+        schedulePageAvatar.image = avatarImage
     }
 }

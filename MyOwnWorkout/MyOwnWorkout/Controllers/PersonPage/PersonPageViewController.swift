@@ -7,23 +7,12 @@
 
 import UIKit
 
-class PersonPageViewController: GeneralViewController, UIGestureRecognizerDelegate {
+class PersonPageViewController: GeneralViewController {
     
     private lazy var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var personPageAvatar: UIImageView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
-        personPageAvatar.layer.cornerRadius = personPageAvatar.frame.size.width/2
-        personPageAvatar.frame = CGRectMake(30, 100, 100, 100)
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tabBarController?.tabBar.isHidden = true
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Личный кабинет"
@@ -34,6 +23,18 @@ class PersonPageViewController: GeneralViewController, UIGestureRecognizerDelega
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapAction))
         tapGesture.delegate = self
         personPageAvatar.superview?.addGestureRecognizer(tapGesture)
+        
+        personPageAvatar.image = avatarImage
+        setupAvatarBounds(avatar: personPageAvatar)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = true
     }
     
     @objc private func exit() {
@@ -80,24 +81,9 @@ class PersonPageViewController: GeneralViewController, UIGestureRecognizerDelega
     }
     
     func saveUserAvatarImage(_ image: UIImage) {
-        isNewAvatarImage = true
         personPageAvatar.image = image
-        print(isNewAvatarImage)
+        avatarImage = image
         
-        let imageData = image.jpegData(compressionQuality: 1)
-        let imageDataName = "UserAvatar.jpeg"
-        
-        guard let file = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let path = file.appendingPathComponent(imageDataName)
-        print(path.absoluteString)
-        
-        do {
-//            try FileManager.default.removeItem(at: path)
-            try imageData?.write(to: path)
-        }
-        catch let error {
-            print(error.localizedDescription)
-        }
     }
 }
 

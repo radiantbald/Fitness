@@ -12,18 +12,22 @@ class FeedPageViewController: GeneralViewController {
     @IBOutlet weak var feedPageAvatar: UIImageView!
     @IBOutlet weak var feedPageHeader: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = false
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tabBarController?.tabBar.isHidden = false
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        print("Вы перешли на страницу с лентой новостей")
-        
+        setupAvatarBounds(avatar: feedPageAvatar)
+        tapAvatarOnTheRootPages(avatar: feedPageAvatar)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+        feedPageAvatar.image = avatarImage
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+        feedPageAvatar.image = avatarImage
     }
 }

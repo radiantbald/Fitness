@@ -20,6 +20,11 @@ class EntryPageViewController: GeneralViewController {
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "Вход"
+        print("Вы перешли на страницу авторизации")
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -27,11 +32,6 @@ class EntryPageViewController: GeneralViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.title = "Вход"
-        print("Вы перешли на страницу авторизации")
     }
     
     @IBAction func entryButton(_ sender: UIButton) {

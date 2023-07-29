@@ -35,6 +35,13 @@ class RegistrationPageViewController: GeneralViewController {
     @IBOutlet weak var nicknameTextField: UITextField!
     
     //MARK: -
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+        setupActions()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -43,13 +50,6 @@ class RegistrationPageViewController: GeneralViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        setupActions()
-        
     }
 }
 
