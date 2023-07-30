@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EyeButton: UIButton {
+final class EyeButtonView: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

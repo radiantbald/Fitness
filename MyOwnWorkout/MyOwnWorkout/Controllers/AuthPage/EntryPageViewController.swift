@@ -23,7 +23,12 @@ class EntryPageViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Вход"
-        print("Вы перешли на страницу авторизации")
+        
+        guard let data = Keychain.standart.getData(KeychainKeys.AuthKeys.rawValue) else { return }
+        guard let value = try?JSONDecoder().decode(AuthModel.self, from: data) else { return }
+        
+        nicknameTextField.text = value.login
+        passwordTextField.text = value.password
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

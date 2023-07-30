@@ -4,20 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Настрое">
-      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Extensions/FileManagerExtensions.swift" afterDir="false" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки">
+      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/Keychain.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Models/AuthModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MainViewController(0.0.1000).PNG" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.xcworkspace/xcuserdata/radiantbald.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.xcworkspace/xcuserdata/radiantbald.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/xcuserdata/radiantbald.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/xcuserdata/radiantbald.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/EntryPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/EntryPageViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/RegistrationPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/RegistrationPageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/FeedPage/FeedPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/FeedPage/FeedPageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/MainPage/MainPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/MainPage/MainPageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/PersonPage/PersonPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/PersonPage/PersonPageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/SchedulePage/SchedulePageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/SchedulePage/SchedulePageViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/DataBase.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/DataBase.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Storyboards/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Storyboards/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Models/EyeButton.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Views/EyeButton.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/PersonViewController(0.0.1000).PNG" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +79,8 @@
       <workItem from="1690193795663" duration="168000" />
       <workItem from="1690619711409" duration="135000" />
       <workItem from="1690638741062" duration="100000" />
+      <workItem from="1690639000503" duration="100000" />
+      <workItem from="1690712261980" duration="393000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -150,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690193842799</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки">
+      <created>1690639074691</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1690639074692</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +200,7 @@
     <MESSAGE value="тут ниче не вышло, оставляю на память" />
     <MESSAGE value="Проведен рефакторинг кода" />
     <MESSAGE value="Настроено сохранение данных в текстовый файл при регистрации&#10;Подключена возможность менять аватарку" />
-    <option name="LAST_COMMIT_MESSAGE" value="Настроено сохранение данных в текстовый файл при регистрации&#10;Подключена возможность менять аватарку" />
+    <MESSAGE value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки" />
   </component>
 </project>

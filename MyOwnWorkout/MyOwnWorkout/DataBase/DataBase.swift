@@ -13,7 +13,6 @@ class DataBase {
     
     private enum Keys: String {
         case isAuthKey = "IsAuthKey"
-        case isNewAvatarImageKey = "IsNewAvatarImageKey"
     }
     
     //MARK: - Статус авторизации (логин/разлогин)

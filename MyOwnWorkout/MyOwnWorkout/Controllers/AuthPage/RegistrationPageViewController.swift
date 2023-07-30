@@ -23,8 +23,8 @@ class RegistrationPageViewController: GeneralViewController {
     weak var delegate: RegistrationPageViewControllerDelegate?
 
     //MARK: - Объекты полей ввода пароля
-    var passwordTextFieldEyeButton = EyeButton()
-    var repeatPasswordTextFieldEyeButton = EyeButton()
+    var passwordTextFieldEyeButton = EyeButtonView()
+    var repeatPasswordTextFieldEyeButton = EyeButtonView()
     
     //MARK: - Текстовые поля
     @IBOutlet weak var nameTextField: UITextField!

@@ -9,8 +9,12 @@ import UIKit
 
 class GeneralViewController: UIViewController {
     
+    enum KeychainKeys: String {
+        case AuthKeys = "AuthKeys"
+    }
+    
     enum FilesNames: String {
-        case userAvatar = "UserAvatar"
+        case UserAvatar = "UserAvatar"
     }
     
     enum FilesTypes: String {
@@ -31,7 +35,7 @@ class GeneralViewController: UIViewController {
     //MARK: - Установка Аватарки
     var avatarImage: UIImage? {
         get {
-            if let data = FileManager.getObject(name: FilesNames.userAvatar.rawValue, type: FilesTypes.jpeg.rawValue),
+            if let data = FileManager.getObject(name: FilesNames.UserAvatar.rawValue, type: FilesTypes.jpeg.rawValue),
                let image = UIImage(data: data),
                isAuth {
                 return image
@@ -40,7 +44,7 @@ class GeneralViewController: UIViewController {
         }
         set {
             guard let imageData = newValue?.jpegData(compressionQuality: 1) else { return }
-            let result = FileManager.setObject(data: imageData, name: FilesNames.userAvatar.rawValue, type: FilesTypes.jpeg.rawValue)
+            let result = FileManager.setObject(data: imageData, name: FilesNames.UserAvatar.rawValue, type: FilesTypes.jpeg.rawValue)
             print("Картинка ", result ? "Сохранилась" : "Не сохранилась")
         }
     }
@@ -114,7 +118,8 @@ extension GeneralViewController: RegistrationPageViewControllerDelegate {
 
 extension GeneralViewController: EntryPageViewControllerDelegate {
     func getEntryData(nickname: String, password: String) {
-        print(nickname, password)
+        setSensitiveData(nickname: nickname, password: password)
+        
         guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: false)
@@ -136,3 +141,11 @@ extension GeneralViewController: SMSCodeApprovePageViewControllerDelegate {
     }
 }
 
+extension GeneralViewController {
+    private func setSensitiveData(nickname: String, password: String) {
+        
+        let auth = AuthModel(login: nickname, password: password)
+        guard let data = try? JSONEncoder().encode(auth) else { return }
+        Keychain.standart.set(data, forKey: KeychainKeys.AuthKeys.rawValue)
+    }
+}
