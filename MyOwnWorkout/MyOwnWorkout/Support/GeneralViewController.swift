@@ -84,7 +84,6 @@ extension GeneralViewController: UIGestureRecognizerDelegate {
     }
     
     @objc func avatarButton() {
-        
         if isAuth {
             guard let viewController = PersonPageViewController.storyboardInit else { return }
             viewController.modalPresentationStyle = .overFullScreen

@@ -118,19 +118,45 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TN3-uK-otx">
+                                <rect key="frame" x="20" y="258" width="353" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cnk-7V-7rT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGH-aW-LzO">
+                                <rect key="frame" x="20" y="629" width="353" height="40"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dyG-Zd-sCp"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Кнопка"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SGH-aW-LzO" secondAttribute="bottom" constant="100" id="5HW-c1-fbV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SGH-aW-LzO" secondAttribute="trailing" constant="20" id="FTl-PJ-QTG"/>
+                            <constraint firstItem="SGH-aW-LzO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="S4Q-QS-Yi5"/>
                             <constraint firstItem="1kI-nI-P2q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UQp-TW-TZl"/>
+                            <constraint firstItem="TN3-uK-otx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="k0a-VO-7Ev"/>
+                            <constraint firstItem="TN3-uK-otx" firstAttribute="top" secondItem="1kI-nI-P2q" secondAttribute="bottom" constant="80" id="mN8-uY-X75"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1kI-nI-P2q" secondAttribute="trailing" constant="30" id="ubU-FY-4DF"/>
                             <constraint firstItem="1kI-nI-P2q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="yGz-OV-DyQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TN3-uK-otx" secondAttribute="trailing" constant="20" id="zZq-Qw-MbY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PFk-Ch-NEC"/>
                     <connections>
                         <outlet property="mainPageAvatar" destination="mjL-NR-sRH" id="CIQ-gc-ru7"/>
                         <outlet property="mainPageHeader" destination="g3l-JY-shM" id="bq7-X8-8gf"/>
+                        <outlet property="testButton" destination="SGH-aW-LzO" id="sX0-k3-dTH"/>
+                        <outlet property="testLabel" destination="TN3-uK-otx" id="rPP-JT-ir5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -564,6 +590,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
