@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки">
-      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/Keychain.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Models/AuthModel.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MainViewController(0.0.1000).PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/xcuserdata/radiantbald.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/xcuserdata/radiantbald.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/EntryPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/EntryPageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/RegistrationPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/RegistrationPageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/DataBase.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/DataBase.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Models/EyeButton.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Views/EyeButton.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/PersonViewController(0.0.1000).PNG" beforeDir="false" />
-    </list>
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- edit gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +28,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2QQa6VWDrpf4ic1syNCH2g8qN7G" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -159,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690639074692</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="- edit gitignore">
+      <created>1690987986464</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1690987986465</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +182,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-таб бар" />
@@ -201,6 +195,7 @@
     <MESSAGE value="Проведен рефакторинг кода" />
     <MESSAGE value="Настроено сохранение данных в текстовый файл при регистрации&#10;Подключена возможность менять аватарку" />
     <MESSAGE value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки" />
+    <MESSAGE value="- edit gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="- edit gitignore" />
   </component>
 </project>
