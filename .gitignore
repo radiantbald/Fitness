@@ -65,7 +65,8 @@ playground.xcworkspace
 # Carthage/Checkouts
 
 Carthage/Build/
-
+MyOwnWorkout/MyOwnWorkout.xcworkspace/xcuserdata/
+MyOwnWorkout/MyOwnWorkout.xcworkspace/project.xcworkspace/xcuserdata/
 # Accio dependency management
 Dependencies/
 .accio/
