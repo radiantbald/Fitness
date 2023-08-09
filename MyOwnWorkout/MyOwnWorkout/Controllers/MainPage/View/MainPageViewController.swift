@@ -8,12 +8,16 @@
 import UIKit
 
 class MainPageViewController: GeneralViewController {
+    
+    private let presenter = MainPagePresenter()
 
     @IBOutlet weak var mainPageAvatar: UIImageView!
     @IBOutlet weak var mainPageHeader: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter.delegate = self
         setupNavigationBar()
         setupAvatarBounds(avatar: mainPageAvatar)
         tapAvatarOnTheRootPages(avatar: mainPageAvatar)
@@ -30,4 +34,8 @@ class MainPageViewController: GeneralViewController {
         tabBarController?.tabBar.isHidden = false
         mainPageAvatar.image = avatarImage
     }
+}
+
+extension MainPageViewController: MainPagePresenterDelegate {
+    
 }

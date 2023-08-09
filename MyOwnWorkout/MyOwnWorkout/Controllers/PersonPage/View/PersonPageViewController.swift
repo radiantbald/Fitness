@@ -8,15 +8,19 @@
 import UIKit
 
 class PersonPageViewController: GeneralViewController {
+
+    private let presenter = PersonPagePresenter()
     
     private lazy var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var personPageAvatar: UIImageView!
+    @IBOutlet weak var personPageName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Личный кабинет"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(exit))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(exitAction))
         print("Вы перешли в Личный кабинет")
         
         imagePicker.delegate = self
@@ -37,9 +41,8 @@ class PersonPageViewController: GeneralViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
-    @objc private func exit() {
-        isAuth = false
-        print("Вы вышли из аккаунта")
+    @objc private func exitAction() {
+        presenter.exit()
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -95,3 +98,9 @@ extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigatio
         }
     }
 }
+
+extension PersonPageViewController: PersonPagePresenterDelegate {
+
+}
+
+

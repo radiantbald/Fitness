@@ -9,6 +9,8 @@ import UIKit
 
 class GeneralViewController: UIViewController {
     
+    //MARK: - Списки ключей
+    
     enum KeychainKeys: String {
         case AuthKeys = "AuthKeys"
     }

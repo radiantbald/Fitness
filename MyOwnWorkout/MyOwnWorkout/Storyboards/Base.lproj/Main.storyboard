@@ -328,11 +328,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="personPageAvatar" destination="oRE-CY-xIE" id="Gbh-YJ-5Ub"/>
+                        <outlet property="personPageName" destination="fR9-gQ-Tlq" id="DJp-h7-0ft"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uh6-ni-1pL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260.30534351145036" y="-1395.0704225352113"/>
+            <point key="canvasLocation" x="-1932" y="-673"/>
         </scene>
         <!--Registration Page View Controller-->
         <scene sceneID="qma-3I-BYl">
@@ -461,7 +462,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="registrationButton:" destination="a36-KB-Fdz" eventType="touchUpInside" id="cfU-wx-0Ij"/>
+                                    <action selector="registrationButtonAction:" destination="a36-KB-Fdz" eventType="touchUpInside" id="cfU-wx-0Ij"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -483,7 +484,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPh-CC-DNM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1938" y="-753"/>
+            <point key="canvasLocation" x="-274" y="-1395"/>
         </scene>
         <!--Entry Page View Controller-->
         <scene sceneID="99z-Vf-UD0">
@@ -526,8 +527,7 @@
                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="toTheEntryPageButton:" destination="SSn-NT-fk6" eventType="touchUpInside" id="SBH-yA-c9S"/>
-                                    <action selector="toTheRegistrationPageButton:" destination="M7S-bY-OFM" eventType="touchUpInside" id="xhG-xm-9Gh"/>
+                                    <action selector="toTheRegistrationPageButton:" destination="M7S-bY-OFM" eventType="touchUpInside" id="Jym-AS-6Xg"/>
                                 </connections>
                             </button>
                         </subviews>

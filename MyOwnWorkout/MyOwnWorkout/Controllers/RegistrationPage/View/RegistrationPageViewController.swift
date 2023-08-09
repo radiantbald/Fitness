@@ -20,6 +20,8 @@ protocol RegistrationPageViewControllerDelegate: AnyObject {
 //MARK: -
 class RegistrationPageViewController: GeneralViewController {
     
+    private let presenter = RegistrationPagePresenter()
+    
     weak var delegate: RegistrationPageViewControllerDelegate?
 
     //MARK: - Объекты полей ввода пароля
@@ -40,6 +42,7 @@ class RegistrationPageViewController: GeneralViewController {
         super.viewDidLoad()
         setupView()
         setupActions()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -220,4 +223,8 @@ extension RegistrationPageViewController {
         navigationController?.popToRootViewController(animated: false)
         delegate?.toTheEntryPage()
     }
+}
+
+extension RegistrationPageViewController: RegistrationPagePresenterDelegate {
+
 }

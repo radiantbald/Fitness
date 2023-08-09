@@ -13,6 +13,8 @@ protocol SMSCodeApprovePageViewControllerDelegate: AnyObject {
 
 class SMSCodeApprovePageViewController: GeneralViewController {
     
+    private let presenter = SMSCodeApprovePagePresenter()
+    
     weak var delegate: SMSCodeApprovePageViewControllerDelegate?
     
     @IBOutlet weak var codeFromSMSTextField: UITextField!
@@ -34,7 +36,7 @@ class SMSCodeApprovePageViewController: GeneralViewController {
         codeFromSMSTextField.textAlignment = .center
     }
     
-    @IBAction func registrationButton(_ sender: UIButton) {
+    @IBAction func registrationButtonAction(_ sender: UIButton) {
         
         let codeFromSMS = codeFromSMSTextField.text ?? ""
         
@@ -61,4 +63,8 @@ extension SMSCodeApprovePageViewController: UITextFieldDelegate {
             textField.text = text.codeFromSMSMask()
         }
     }
+}
+
+extension SMSCodeApprovePageViewController: SMSCodeApprovePagePresenterDelegate {
+
 }

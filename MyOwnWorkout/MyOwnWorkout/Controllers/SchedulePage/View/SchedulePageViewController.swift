@@ -8,6 +8,8 @@
 import UIKit
 
 class SchedulePageViewController: GeneralViewController {
+    
+    private let presenter = SchedulePagePresenter()
 
     @IBOutlet weak var schedulePageAvatar: UIImageView!
     @IBOutlet weak var schedulePageHeader: UILabel!
@@ -30,4 +32,8 @@ class SchedulePageViewController: GeneralViewController {
         tabBarController?.tabBar.isHidden = false
         schedulePageAvatar.image = avatarImage
     }
+}
+
+extension SchedulePageViewController: SchedulePagePresenterDelegate {
+    
 }

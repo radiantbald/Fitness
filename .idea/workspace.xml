@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки">
-      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/Keychain.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Models/AuthModel.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки&#10;- Установлен CocoaPods&#10;- Установлен Keychain&#10;- Keychain настроен для авторизации">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MainViewController(0.0.1000).PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/xcuserdata/radiantbald.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/xcuserdata/radiantbald.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/EntryPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/EntryPageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/RegistrationPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/AuthPage/RegistrationPageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/DataBase.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/DataBase/DataBase.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Models/EyeButton.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Views/EyeButton.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/PersonViewController(0.0.1000).PNG" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Task_7_FileDirectory" />
+        <entry key="$PROJECT_DIR$" value="Task_8" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,7 +68,9 @@
       <workItem from="1690619711409" duration="135000" />
       <workItem from="1690638741062" duration="100000" />
       <workItem from="1690639000503" duration="100000" />
-      <workItem from="1690712261980" duration="393000" />
+      <workItem from="1690712261980" duration="512000" />
+      <workItem from="1690988614446" duration="769000" />
+      <workItem from="1691047649336" duration="95000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -159,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690639074692</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки&#10;- Установлен CocoaPods&#10;- Установлен Keychain&#10;- Keychain настроен для авторизации">
+      <created>1690712726001</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1690712726003</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +173,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Task_8" />
+                        <option value="Task_9_MVP" />
                       </list>
                     </value>
                   </entry>
@@ -201,6 +198,7 @@
     <MESSAGE value="Проведен рефакторинг кода" />
     <MESSAGE value="Настроено сохранение данных в текстовый файл при регистрации&#10;Подключена возможность менять аватарку" />
     <MESSAGE value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки" />
+    <MESSAGE value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки&#10;- Установлен CocoaPods&#10;- Установлен Keychain&#10;- Keychain настроен для авторизации" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки&#10;- Установлен CocoaPods&#10;- Установлен Keychain&#10;- Keychain настроен для авторизации" />
   </component>
 </project>

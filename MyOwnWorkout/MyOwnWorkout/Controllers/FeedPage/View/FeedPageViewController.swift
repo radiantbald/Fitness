@@ -8,6 +8,8 @@
 import UIKit
 
 class FeedPageViewController: GeneralViewController {
+    
+    private let presenter = FeedPagePresenter()
 
     @IBOutlet weak var feedPageAvatar: UIImageView!
     @IBOutlet weak var feedPageHeader: UILabel!
@@ -30,4 +32,8 @@ class FeedPageViewController: GeneralViewController {
         tabBarController?.tabBar.isHidden = false
         feedPageAvatar.image = avatarImage
     }
+}
+
+extension FeedPageViewController: FeedPagePresenterDelegate {
+    
 }

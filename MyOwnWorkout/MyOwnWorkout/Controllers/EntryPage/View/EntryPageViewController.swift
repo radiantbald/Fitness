@@ -14,6 +14,8 @@ protocol EntryPageViewControllerDelegate: AnyObject {
 }
 
 class EntryPageViewController: GeneralViewController {
+    
+    private let presenter = EntryPagePresenter()
 
     weak var delegate: EntryPageViewControllerDelegate?
     
@@ -57,4 +59,8 @@ class EntryPageViewController: GeneralViewController {
         navigationController?.popToRootViewController(animated: false)
         delegate?.toTheRegistrationPage()
     }
+}
+
+extension EntryPageViewController: EntryPagePresenterDelegate {
+
 }
