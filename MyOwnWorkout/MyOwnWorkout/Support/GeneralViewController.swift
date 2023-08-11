@@ -63,8 +63,9 @@ extension GeneralViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .black
-        navigationItem.backButtonTitle = "Назад"
     }
+    
+    //MARK: - Закругление изображения
     
     func setupAvatarBounds(avatar: UIImageView) {
         avatar.contentMode = .scaleAspectFill
@@ -77,27 +78,7 @@ extension GeneralViewController {
 
 extension GeneralViewController: UIGestureRecognizerDelegate {
     
-    //MARK: - Настройка кнопки-аватарки на корневых контроллерах
     
-    func tapAvatarOnTheRootPages(avatar: UIImageView) {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarButton))
-        tapGesture.delegate = self
-        avatar.superview?.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func avatarButton() {
-        
-        if isAuth {
-            guard let viewController = PersonPageViewController.storyboardInit else { return }
-            viewController.modalPresentationStyle = .overFullScreen
-            navigationController?.pushViewController(viewController, animated: true)
-        } else {
-            guard let viewController = EntryPageViewController.storyboardInit else { return }
-            viewController.modalPresentationStyle = .overFullScreen
-            viewController.delegate = self
-            navigationController?.pushViewController(viewController, animated: true)
-        }
-    }
 }
 
 //MARK: - RegistrationPageViewControllerDelegate
@@ -129,6 +110,7 @@ extension GeneralViewController: EntryPageViewControllerDelegate {
     func toTheRegistrationPage() {
         guard let viewController = RegistrationPageViewController.storyboardInit else { return }
         viewController.delegate = self
+        
         navigationController?.pushViewController(viewController, animated: false)
     }
 }

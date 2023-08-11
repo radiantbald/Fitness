@@ -42,7 +42,6 @@ class RegistrationPageViewController: GeneralViewController {
         super.viewDidLoad()
         setupView()
         setupActions()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

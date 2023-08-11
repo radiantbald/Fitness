@@ -17,6 +17,8 @@
 		A275C9AE2A2B686F00B18420 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */; };
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
 		A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */; };
+		A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */; };
+		A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */; };
 		A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */; };
 		A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */; };
 		A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */; };
@@ -27,7 +29,7 @@
 		A29C7D8F2A6548C20065B255 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C7D8E2A6548C20065B255 /* DataBase.swift */; };
 		A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */; };
 		A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */; };
-		A2ACA9472A3F26E30028F9FD /* EyeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9462A3F26E30028F9FD /* EyeButton.swift */; };
+		A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */; };
 		A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF812A18E71400231082 /* AppDelegate.swift */; };
 		A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF832A18E71400231082 /* SceneDelegate.swift */; };
 		A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF852A18E71400231082 /* MainPageViewController.swift */; };
@@ -49,6 +51,8 @@
 		A275C9AD2A2B686F00B18420 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
 		A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageViewController.swift; sourceTree = "<group>"; };
+		A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
+		A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePagePresenter.swift; sourceTree = "<group>"; };
 		A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPagePresenter.swift; sourceTree = "<group>"; };
@@ -59,7 +63,7 @@
 		A29C7D8E2A6548C20065B255 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		A2ACA9462A3F26E30028F9FD /* EyeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButton.swift; sourceTree = "<group>"; };
+		A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButtonView.swift; sourceTree = "<group>"; };
 		A2C3FF7E2A18E71400231082 /* MyOwnWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyOwnWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C3FF812A18E71400231082 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2C3FF832A18E71400231082 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -297,7 +301,7 @@
 		A26E8F3E2A7666F50054D495 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A2ACA9462A3F26E30028F9FD /* EyeButton.swift */,
+				A28B7FB42A83C55B00B20B5F /* Buttons */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,6 +334,47 @@
 				A25F8A372A7B943700C45AFB /* Presenter */,
 			);
 			path = RegistrationPage;
+			sourceTree = "<group>";
+		};
+		A28B7FB42A83C55B00B20B5F /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		A28B7FB52A84F74800B20B5F /* SettingsPage */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FB82A84F76900B20B5F /* Model */,
+				A28B7FB72A84F76300B20B5F /* View */,
+				A28B7FB62A84F75900B20B5F /* Presenter */,
+			);
+			path = SettingsPage;
+			sourceTree = "<group>";
+		};
+		A28B7FB62A84F75900B20B5F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A28B7FB72A84F76300B20B5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A28B7FB82A84F76900B20B5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A29C7D8D2A6548AB0065B255 /* DataBase */ = {
@@ -423,6 +468,7 @@
 				A25F8A2C2A7B925D00C45AFB /* EntryPage */,
 				A25F8A2D2A7B927200C45AFB /* SMSCodeApprovePage */,
 				A275C9AF2A2B70BA00B18420 /* PersonPage */,
+				A28B7FB52A84F74800B20B5F /* SettingsPage */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -563,6 +609,7 @@
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2954F942A7E9A36003947CF /* PersonPagePresenter.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
+				A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
 				A26E8F422A766ABB0054D495 /* Keychain.swift in Sources */,
 				A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */,
@@ -574,7 +621,8 @@
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
 				A26E8F402A7667430054D495 /* AuthModel.swift in Sources */,
-				A2ACA9472A3F26E30028F9FD /* EyeButton.swift in Sources */,
+				A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */,
+				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,
 				A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 			);
@@ -733,7 +781,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -765,7 +813,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

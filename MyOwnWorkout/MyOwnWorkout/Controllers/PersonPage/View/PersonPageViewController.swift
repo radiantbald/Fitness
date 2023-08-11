@@ -11,6 +11,8 @@ class PersonPageViewController: GeneralViewController {
 
     private let presenter = PersonPagePresenter()
     
+    private var menu = UIMenu()
+    
     private lazy var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var personPageAvatar: UIImageView!
@@ -18,18 +20,15 @@ class PersonPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupAvatar()
+        setupMenu()
+        navigationItem.backButtonTitle = "Назад"
         navigationItem.title = "Личный кабинет"
+       
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(exitAction))
         print("Вы перешли в Личный кабинет")
-        
-        imagePicker.delegate = self
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapAction))
-        tapGesture.delegate = self
-        personPageAvatar.superview?.addGestureRecognizer(tapGesture)
-        
-        personPageAvatar.image = avatarImage
-        setupAvatarBounds(avatar: personPageAvatar)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,10 +39,32 @@ class PersonPageViewController: GeneralViewController {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
+}
+
+extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.saveUserAvatarImage(pickedImage)
+            dismiss(animated: true)
+        }
+    }
+}
+
+extension PersonPageViewController {
     
-    @objc private func exitAction() {
-        presenter.exit()
-        navigationController?.popToRootViewController(animated: true)
+    func saveUserAvatarImage(_ image: UIImage) {
+        personPageAvatar.image = image
+        avatarImage = image
+    }
+    
+    func setupAvatar() {
+        personPageAvatar.image = avatarImage
+        setupAvatarBounds(avatar: personPageAvatar)
+        
+        imagePicker.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapAction))
+        tapGesture.delegate = self
+        personPageAvatar.superview?.addGestureRecognizer(tapGesture)
     }
     
     @objc private func avatarTapAction() {
@@ -79,23 +100,35 @@ class PersonPageViewController: GeneralViewController {
         present(actionImage, animated: true)
     }
     
-    @IBAction func backButton(_ sender: UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+    func setupMenu() {
+        
+        let trainingPrograms = UIAction(title: "Программы тренировок", attributes: .disabled, handler: { _ in })
+        
+        let myWorkouts = UIAction(title: "Мои тренировки", attributes: .disabled, handler: { _ in })
+     
+        let myExercises = UIAction(title: "Мои упражнения", attributes: .disabled, handler: { _ in })
+        
+        let myAchievments = UIAction(title: "Мои достижения", image: UIImage(systemName: "star"), attributes: .disabled, handler: { _ in })
+        
+        let personalAccount = UIAction(title: "Лицевой счет",image: UIImage(systemName: "banknote"),  attributes: .disabled, handler: { _ in })
+        
+        let settings = UIAction(title: "Настройки", image: UIImage(systemName: "gear"), handler: { _ in self.openSettingsPage()})
+        
+        let aboutApp = UIAction(title: "О приложении",image: UIImage(systemName: "apple.logo"),  attributes: .disabled, handler: { _ in })
+        
+        let exit = UIAction(title: "Выход", image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), attributes: .destructive, handler: { _ in self.exitAction()})
+        
+        menu = UIMenu(title: "Меню", children: [trainingPrograms, myWorkouts, myExercises, myAchievments, personalAccount, settings, aboutApp, exit])
     }
     
-    func saveUserAvatarImage(_ image: UIImage) {
-        personPageAvatar.image = image
-        avatarImage = image
-        
+    @objc private func openSettingsPage() {
+        guard let viewController = SettingsPageViewController.storyboardInit else { return }
+        navigationController?.pushViewController(viewController, animated: true)
     }
-}
-
-extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.saveUserAvatarImage(pickedImage)
-            dismiss(animated: true)
-        }
+    
+    @objc private func exitAction() {
+        presenter.exit()
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 

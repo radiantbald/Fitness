@@ -11,26 +11,21 @@ class FeedPageViewController: GeneralViewController {
     
     private let presenter = FeedPagePresenter()
 
-    @IBOutlet weak var feedPageAvatar: UIImageView!
-    @IBOutlet weak var feedPageHeader: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        setupAvatarBounds(avatar: feedPageAvatar)
-        tapAvatarOnTheRootPages(avatar: feedPageAvatar)
+        navigationItem.title = "Лента"
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        feedPageAvatar.image = avatarImage
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        feedPageAvatar.image = avatarImage
     }
 }
 

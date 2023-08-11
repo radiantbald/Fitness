@@ -25,7 +25,6 @@ class EntryPageViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Вход"
-        
         guard let data = Keychain.standart.getData(KeychainKeys.AuthKeys.rawValue) else { return }
         guard let value = try?JSONDecoder().decode(AuthModel.self, from: data) else { return }
         

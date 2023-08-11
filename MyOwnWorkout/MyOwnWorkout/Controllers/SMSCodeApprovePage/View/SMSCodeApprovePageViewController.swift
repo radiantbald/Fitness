@@ -19,6 +19,16 @@ class SMSCodeApprovePageViewController: GeneralViewController {
     
     @IBOutlet weak var codeFromSMSTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "Код авторизации"
+        navigationItem.backButtonTitle = "На главную"
+        print("Вы перешли на страницу ввода СМС кода")
+        
+        codeFromSMSTextField.delegate = self
+        codeFromSMSTextField.textAlignment = .center
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -27,14 +37,7 @@ class SMSCodeApprovePageViewController: GeneralViewController {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.title = "Код авторизации"
-        print("Вы перешли на страницу ввода СМС кода")
-        
-        codeFromSMSTextField.delegate = self
-        codeFromSMSTextField.textAlignment = .center
-    }
+   
     
     @IBAction func registrationButtonAction(_ sender: UIButton) {
         
