@@ -19,6 +19,12 @@
 		A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */; };
 		A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */; };
 		A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */; };
+		A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */; };
+		A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FC32A87DC9200B20B5F /* AboutAppPagePresenter.swift */; };
+		A28B7FCA2A87DF9A00B20B5F /* PersonalAccountPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FC92A87DF9A00B20B5F /* PersonalAccountPageViewController.swift */; };
+		A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FCB2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift */; };
+		A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FD22A87E42100B20B5F /* MyAchievmentsPageViewController.swift */; };
+		A28B7FD52A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FD42A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift */; };
 		A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */; };
 		A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */; };
 		A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */; };
@@ -53,6 +59,12 @@
 		A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageViewController.swift; sourceTree = "<group>"; };
 		A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
 		A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPagePresenter.swift; sourceTree = "<group>"; };
+		A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppPageViewController.swift; sourceTree = "<group>"; };
+		A28B7FC32A87DC9200B20B5F /* AboutAppPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppPagePresenter.swift; sourceTree = "<group>"; };
+		A28B7FC92A87DF9A00B20B5F /* PersonalAccountPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAccountPageViewController.swift; sourceTree = "<group>"; };
+		A28B7FCB2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAccountPagePresenter.swift; sourceTree = "<group>"; };
+		A28B7FD22A87E42100B20B5F /* MyAchievmentsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAchievmentsPageViewController.swift; sourceTree = "<group>"; };
+		A28B7FD42A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAchievmentsPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePagePresenter.swift; sourceTree = "<group>"; };
 		A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPagePresenter.swift; sourceTree = "<group>"; };
@@ -377,6 +389,105 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A28B7FBD2A87DBE700B20B5F /* AboutAppPage */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FC02A87DC1C00B20B5F /* Model */,
+				A28B7FBF2A87DC1700B20B5F /* View */,
+				A28B7FBE2A87DC0300B20B5F /* Presenter */,
+			);
+			path = AboutAppPage;
+			sourceTree = "<group>";
+		};
+		A28B7FBE2A87DC0300B20B5F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FC32A87DC9200B20B5F /* AboutAppPagePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A28B7FBF2A87DC1700B20B5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A28B7FC02A87DC1C00B20B5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A28B7FC52A87DF5E00B20B5F /* PersonalAccountPage */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FC82A87DF8200B20B5F /* Model */,
+				A28B7FC72A87DF7B00B20B5F /* View */,
+				A28B7FC62A87DF7600B20B5F /* Presenter */,
+			);
+			path = PersonalAccountPage;
+			sourceTree = "<group>";
+		};
+		A28B7FC62A87DF7600B20B5F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FCB2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A28B7FC72A87DF7B00B20B5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FC92A87DF9A00B20B5F /* PersonalAccountPageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A28B7FC82A87DF8200B20B5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A28B7FCD2A87E3AE00B20B5F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FD02A87E3C100B20B5F /* Model */,
+				A28B7FCF2A87E3BD00B20B5F /* View */,
+				A28B7FCE2A87E3B500B20B5F /* Presenter */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		A28B7FCE2A87E3B500B20B5F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FD42A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A28B7FCF2A87E3BD00B20B5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A28B7FD22A87E42100B20B5F /* MyAchievmentsPageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A28B7FD02A87E3C100B20B5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A29C7D8D2A6548AB0065B255 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +580,9 @@
 				A25F8A2D2A7B927200C45AFB /* SMSCodeApprovePage */,
 				A275C9AF2A2B70BA00B18420 /* PersonPage */,
 				A28B7FB52A84F74800B20B5F /* SettingsPage */,
+				A28B7FBD2A87DBE700B20B5F /* AboutAppPage */,
+				A28B7FC52A87DF5E00B20B5F /* PersonalAccountPage */,
+				A28B7FCD2A87E3AE00B20B5F /* New Group */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -602,6 +716,7 @@
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
 				A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */,
+				A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */,
 				A2954F8E2A7E9127003947CF /* RegistrationPagePresenter.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */,
@@ -613,18 +728,23 @@
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
 				A26E8F422A766ABB0054D495 /* Keychain.swift in Sources */,
 				A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */,
+				A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */,
 				A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */,
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,
+				A28B7FCA2A87DF9A00B20B5F /* PersonalAccountPageViewController.swift in Sources */,
 				A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */,
+				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
 				A26E8F402A7667430054D495 /* AuthModel.swift in Sources */,
+				A28B7FD52A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift in Sources */,
 				A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */,
 				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,
 				A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
+				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

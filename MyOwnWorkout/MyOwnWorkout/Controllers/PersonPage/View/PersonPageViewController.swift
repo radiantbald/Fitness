@@ -20,11 +20,12 @@ class PersonPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.delegate = self
 
-        setupAvatar()
-        setupMenu()
+        setupAvatarAction()
+        setupMenuAction()
         navigationItem.backButtonTitle = "Назад"
-        navigationItem.title = "Личный кабинет"
+        navigationItem.title = "Мой кабинет"
        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
         
@@ -41,23 +42,62 @@ class PersonPageViewController: GeneralViewController {
     }
 }
 
+extension PersonPageViewController {
+    
+    func saveUserAvatarImageAction(_ image: UIImage) {
+        personPageAvatar.image = image
+        avatarImage = image
+    }
+    
+    private func setupAvatarAction() {
+        presenter.setupAvatar()
+    }
+    
+    @objc private func avatarTapAction() {
+        presenter.avatarTap()
+    }
+    
+    private func setupMenuAction() {
+        presenter.setupMenu()
+    }
+    
+    private func openMyAchievmentsPageAction() {
+        presenter.openMyAchievmentsPage()
+    }
+    
+    private func openPersonalAccountPageAction() {
+        presenter.openPersonalAccountPage()
+    }
+    
+    private func openSettingsPageAction() {
+        presenter.openSettingsPage()
+    }
+    
+    private func openAboutPagePageAction() {
+        presenter.openAboutAppPage()
+    }
+    
+    private func exitAction() {
+        presenter.exit()
+    }
+    
+}
+
 extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.saveUserAvatarImage(pickedImage)
+            self.saveUserAvatarImageAction(pickedImage)
             dismiss(animated: true)
         }
     }
 }
 
-extension PersonPageViewController {
-    
-    func saveUserAvatarImage(_ image: UIImage) {
-        personPageAvatar.image = image
-        avatarImage = image
-    }
+//MARK: - Делегаты презентера
+
+extension PersonPageViewController: PersonPagePresenterDelegate {
     
     func setupAvatar() {
+        
         personPageAvatar.image = avatarImage
         setupAvatarBounds(avatar: personPageAvatar)
         
@@ -65,9 +105,11 @@ extension PersonPageViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapAction))
         tapGesture.delegate = self
         personPageAvatar.superview?.addGestureRecognizer(tapGesture)
+        
     }
     
-    @objc private func avatarTapAction() {
+    func avatarTap() {
+        
         let actionImage = UIAlertController(title: "Сменить аватарку", message: nil, preferredStyle: .actionSheet)
         
         let camera = UIAlertAction(title: "Камера", style: .default) { _ in
@@ -108,32 +150,42 @@ extension PersonPageViewController {
      
         let myExercises = UIAction(title: "Мои упражнения", attributes: .disabled, handler: { _ in })
         
-        let myAchievments = UIAction(title: "Мои достижения", image: UIImage(systemName: "star"), attributes: .disabled, handler: { _ in })
+        let myAchievments = UIAction(title: "Мои достижения", image: UIImage(systemName: "star"), handler: { _ in self.openMyAchievmentsPageAction()})
         
-        let personalAccount = UIAction(title: "Лицевой счет",image: UIImage(systemName: "banknote"),  attributes: .disabled, handler: { _ in })
+        let personalAccount = UIAction(title: "Лицевой счет",image: UIImage(systemName: "banknote"), handler: { _ in self.openPersonalAccountPageAction()})
         
-        let settings = UIAction(title: "Настройки", image: UIImage(systemName: "gear"), handler: { _ in self.openSettingsPage()})
+        let settings = UIAction(title: "Настройки", image: UIImage(systemName: "gear"), handler: { _ in self.openSettingsPageAction()})
         
-        let aboutApp = UIAction(title: "О приложении",image: UIImage(systemName: "apple.logo"),  attributes: .disabled, handler: { _ in })
+        let aboutApp = UIAction(title: "О приложении",image: UIImage(systemName: "apple.logo"), handler: { _ in self.openAboutPagePageAction()})
         
         let exit = UIAction(title: "Выход", image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), attributes: .destructive, handler: { _ in self.exitAction()})
         
         menu = UIMenu(title: "Меню", children: [trainingPrograms, myWorkouts, myExercises, myAchievments, personalAccount, settings, aboutApp, exit])
     }
     
-    @objc private func openSettingsPage() {
+    func openMyAchievmentsPage() {
+        guard let viewController = MyAchievmentsPageViewController.storyboardInit else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func openPersonalAccountPage() {
+        guard let viewController = PersonalAccountPageViewController.storyboardInit else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func openSettingsPage() {
         guard let viewController = SettingsPageViewController.storyboardInit else { return }
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @objc private func exitAction() {
-        presenter.exit()
+    func openAboutAppPage() {
+        guard let viewController = AboutAppPageViewController.storyboardInit else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func exit() {
         navigationController?.popToRootViewController(animated: true)
     }
-}
-
-extension PersonPageViewController: PersonPagePresenterDelegate {
-
 }
 
 

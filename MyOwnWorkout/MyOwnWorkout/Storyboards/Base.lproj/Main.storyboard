@@ -249,6 +249,51 @@
             </objects>
             <point key="canvasLocation" x="-1932" y="49"/>
         </scene>
+        <!--About App Page View Controller-->
+        <scene sceneID="0ju-hy-eTI">
+            <objects>
+                <viewController storyboardIdentifier="AboutAppPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B25-KO-xsu" customClass="AboutAppPageViewController" customModule="MyOwnWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ju9-Zp-fnw">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WhL-Lg-AF3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CyV-qK-g16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1100" y="49"/>
+        </scene>
+        <!--Personal Account Page View Controller-->
+        <scene sceneID="IgA-CY-mIO">
+            <objects>
+                <viewController storyboardIdentifier="PersonalAccountPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6dU-w2-xfY" customClass="PersonalAccountPageViewController" customModule="MyOwnWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yav-7w-nuX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="4j7-1r-FMY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCO-LY-MsP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-274" y="49"/>
+        </scene>
+        <!--My Achievments Page View Controller-->
+        <scene sceneID="pjx-Cx-LTr">
+            <objects>
+                <viewController storyboardIdentifier="MyAchievmentsPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KUa-r3-ngc" customClass="MyAchievmentsPageViewController" customModule="MyOwnWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8lQ-TO-jQu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tRm-mE-Ps3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b3K-ks-gLi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="592" y="49"/>
+        </scene>
         <!--Registration Page View Controller-->
         <scene sceneID="qma-3I-BYl">
             <objects>
