@@ -24,6 +24,7 @@ class EntryPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.delegate = self
         navigationItem.title = "Вход"
         guard let data = Keychain.standart.getData(KeychainKeys.AuthKeys.rawValue) else { return }
         guard let value = try?JSONDecoder().decode(AuthModel.self, from: data) else { return }
@@ -46,7 +47,6 @@ class EntryPageViewController: GeneralViewController {
         let password = passwordTextField.text ?? ""
 
         if nickname == "0" && password == "0" {
-            isAuth = true
             navigationController?.popToRootViewController(animated: false)
             delegate?.getEntryData(nickname: nickname, password: password)
         } else {

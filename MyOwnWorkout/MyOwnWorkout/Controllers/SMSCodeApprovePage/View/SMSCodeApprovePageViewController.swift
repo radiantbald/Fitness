@@ -21,6 +21,7 @@ class SMSCodeApprovePageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.delegate = self
         navigationItem.title = "Код авторизации"
         navigationItem.backButtonTitle = "На главную"
         print("Вы перешли на страницу ввода СМС кода")
@@ -49,6 +50,7 @@ class SMSCodeApprovePageViewController: GeneralViewController {
             navigationController?.popToRootViewController(animated: false)
             delegate?.getCodeFromSMS(codeFromSMS: codeFromSMS)
         } else {
+            showAlert(title: "Неправильный код", message: "Попробуйте еще раз")
             print("Неправильный код")
         }
     }

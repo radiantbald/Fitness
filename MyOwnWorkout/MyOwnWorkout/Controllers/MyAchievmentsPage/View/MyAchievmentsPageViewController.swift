@@ -13,6 +13,7 @@ class MyAchievmentsPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.delegate = self
         navigationItem.title = "Мои достижения"
         
     }

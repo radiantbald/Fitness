@@ -13,6 +13,7 @@ class SettingsPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.delegate = self
         navigationItem.title = "Настройки"
         
     }

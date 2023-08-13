@@ -61,6 +61,18 @@ extension PersonPageViewController {
         presenter.setupMenu()
     }
     
+    private func openTrainingProgramsPageAction() {
+        presenter.openTrainingProgramsPage()
+    }
+    
+    private func openMyWorkoutsPageAction() {
+        presenter.openMyWorkoutsPage()
+    }
+    
+    private func openMyExercisesPageAction() {
+        presenter.openMyExercisesPage()
+    }
+    
     private func openMyAchievmentsPageAction() {
         presenter.openMyAchievmentsPage()
     }
@@ -84,7 +96,7 @@ extension PersonPageViewController {
 }
 
 extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.saveUserAvatarImageAction(pickedImage)
             dismiss(animated: true)
@@ -95,7 +107,7 @@ extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigatio
 //MARK: - Делегаты презентера
 
 extension PersonPageViewController: PersonPagePresenterDelegate {
-    
+
     func setupAvatar() {
         
         personPageAvatar.image = avatarImage
@@ -144,11 +156,11 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
     
     func setupMenu() {
         
-        let trainingPrograms = UIAction(title: "Программы тренировок", attributes: .disabled, handler: { _ in })
+        let trainingPrograms = UIAction(title: "Программы тренировок", handler: { _ in self.openTrainingProgramsPageAction()})
         
-        let myWorkouts = UIAction(title: "Мои тренировки", attributes: .disabled, handler: { _ in })
+        let myWorkouts = UIAction(title: "Мои тренировки", handler: { _ in self.openMyWorkoutsPageAction()})
      
-        let myExercises = UIAction(title: "Мои упражнения", attributes: .disabled, handler: { _ in })
+        let myExercises = UIAction(title: "Мои упражнения", handler: { _ in self.openMyExercisesPageAction()})
         
         let myAchievments = UIAction(title: "Мои достижения", image: UIImage(systemName: "star"), handler: { _ in self.openMyAchievmentsPageAction()})
         
@@ -161,6 +173,21 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
         let exit = UIAction(title: "Выход", image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), attributes: .destructive, handler: { _ in self.exitAction()})
         
         menu = UIMenu(title: "Меню", children: [trainingPrograms, myWorkouts, myExercises, myAchievments, personalAccount, settings, aboutApp, exit])
+    }
+    
+    func openTrainingProgramsPage() {
+        guard let viewController = TrainigProgramsPageViewController.storyboardInit else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func openMyWorkoutsPage() {
+        guard let viewController = MyWorkoutsPageViewController.storyboardInit else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func openMyExercisesPage() {
+        guard let viewController = MyExercisesPageViewController.storyboardInit else { return }
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func openMyAchievmentsPage() {

@@ -13,6 +13,7 @@ class FeedPageViewController: GeneralViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.delegate = self
         setupNavigationBar()
         navigationItem.title = "Лента"
 

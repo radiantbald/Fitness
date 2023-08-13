@@ -1,33 +1,29 @@
 //
-//  AboutAppPage.swift
+//  MyExersisesPageViewController.swift
 //  MyOwnWorkout
 //
-//  Created by Олег Попов on 12.08.2023.
+//  Created by Олег Попов on 13.08.2023.
 //
 
 import UIKit
 
-class AboutAppPageViewController: GeneralViewController {
+class MyExercisesPageViewController: GeneralViewController {
     
-    private let presenter = AboutAppPagePresenter()
+    private let presenter = MyExercisesPagePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.delegate = self
-        navigationItem.title = "О приложении"
-        
+        navigationItem.title = "Мои упражнения"
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 }
 
-extension AboutAppPageViewController: AboutAppPagePresenterDelegate {
+extension MyExercisesPageViewController: MyExercisesPagePresenterDelegate {
     
 }
-

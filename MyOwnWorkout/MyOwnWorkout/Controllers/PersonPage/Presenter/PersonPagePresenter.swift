@@ -11,6 +11,9 @@ protocol PersonPagePresenterDelegate: AnyObject {
     func setupAvatar()
     func avatarTap()
     func setupMenu()
+    func openTrainingProgramsPage()
+    func openMyWorkoutsPage()
+    func openMyExercisesPage()
     func openMyAchievmentsPage()
     func openPersonalAccountPage()
     func openSettingsPage()
@@ -30,6 +33,18 @@ final class PersonPagePresenter {
     }
     private func setupMenuAction() {
         delegateSetupMenu()
+    }
+    private func openTrainingProgramsPageAction() {
+        print("Вы переходите на страницу Тренировочных программ")
+        delegateOpenTrainingProgramsPage()
+    }
+    private func openMyWorkoutsPageAction() {
+        print("Вы переходите на страницу Своих тренировок")
+        delegateOpenMyWorkoutsPage()
+    }
+    private func openMyExercisesPageAction() {
+        print("Вы переходите на страницу Своих упражнений")
+        delegateOpenMyExercisesPage()
     }
     private func openMyAchievmentsPageAction() {
         print("Вы переходите на страницу Своих достижений")
@@ -67,6 +82,15 @@ extension PersonPagePresenter {
     func setupMenu() {
         setupMenuAction()
     }
+    func openTrainingProgramsPage() {
+        openTrainingProgramsPageAction()
+    }
+    func openMyWorkoutsPage() {
+        openMyWorkoutsPageAction()
+    }
+    func openMyExercisesPage() {
+        openMyExercisesPageAction()
+    }
     func openMyAchievmentsPage() {
         openMyAchievmentsPageAction()
     }
@@ -82,6 +106,7 @@ extension PersonPagePresenter {
     func exit() {
         exitAction()
     }
+    
 }
 
 //MARK: - Output
@@ -96,6 +121,15 @@ extension PersonPagePresenter {
     }
     private func delegateSetupMenu() {
         delegate?.setupMenu()
+    }
+    private func delegateOpenTrainingProgramsPage() {
+        delegate?.openTrainingProgramsPage()
+    }
+    private func delegateOpenMyWorkoutsPage() {
+        delegate?.openMyWorkoutsPage()
+    }
+    private func delegateOpenMyExercisesPage() {
+        delegate?.openMyExercisesPage()
     }
     private func delegateOpenMyAchievmentsPage() {
         delegate?.openMyAchievmentsPage()

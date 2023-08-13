@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Настроена архитектура mvp" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Добавлены страницы" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Task_9_MVP" />
+        <entry key="$PROJECT_DIR$" value="Task_9_MainPageIsTheMain" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,6 +70,7 @@
       <workItem from="1690988614446" duration="769000" />
       <workItem from="1691047649336" duration="95000" />
       <workItem from="1691585025783" duration="179000" />
+      <workItem from="1691856623475" duration="138000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -162,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691585079489</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="- Добавлены страницы">
+      <created>1691856678191</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1691856678191</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +187,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Task_9_Button" />
+                        <option value="Task_9_PersonPageSubPages" />
                       </list>
                     </value>
                   </entry>
@@ -206,6 +214,7 @@
     <MESSAGE value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки" />
     <MESSAGE value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки&#10;- Установлен CocoaPods&#10;- Установлен Keychain&#10;- Keychain настроен для авторизации" />
     <MESSAGE value="- Настроена архитектура mvp" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Настроена архитектура mvp" />
+    <MESSAGE value="- Добавлены страницы" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Добавлены страницы" />
   </component>
 </project>
