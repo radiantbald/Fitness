@@ -31,6 +31,7 @@
 		A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FE42A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift */; };
 		A28B7FEB2A88B76400B20B5F /* TrainingProgramsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FEA2A88B76400B20B5F /* TrainingProgramsViewController.swift */; };
 		A28B7FED2A88B7BE00B20B5F /* TrainingProgramsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FEC2A88B7BE00B20B5F /* TrainingProgramsPresenter.swift */; };
+		A28B7FF32A8A4CDE00B20B5F /* PhoneNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FF22A8A4CDE00B20B5F /* PhoneNumberModel.swift */; };
 		A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */; };
 		A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */; };
 		A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */; };
@@ -77,6 +78,7 @@
 		A28B7FE42A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWorkoutsPagePresenter.swift; sourceTree = "<group>"; };
 		A28B7FEA2A88B76400B20B5F /* TrainingProgramsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsViewController.swift; sourceTree = "<group>"; };
 		A28B7FEC2A88B7BE00B20B5F /* TrainingProgramsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsPresenter.swift; sourceTree = "<group>"; };
+		A28B7FF22A8A4CDE00B20B5F /* PhoneNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberModel.swift; sourceTree = "<group>"; };
 		A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePagePresenter.swift; sourceTree = "<group>"; };
 		A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPagePresenter.swift; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				A26E8F3F2A7667430054D495 /* AuthModel.swift */,
+				A28B7FF22A8A4CDE00B20B5F /* PhoneNumberModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -865,6 +868,7 @@
 				A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
+				A28B7FF32A8A4CDE00B20B5F /* PhoneNumberModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

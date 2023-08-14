@@ -8,29 +8,39 @@
 import UIKit
 
 protocol EntryPageViewControllerDelegate: AnyObject {
-    func getEntryData(nickname: String,
-                      password: String)
-    func toTheRegistrationPage()
+    func getSMSCodeAndOpenApprovePage(phoneNumber: String)
 }
 
 class EntryPageViewController: GeneralViewController {
     
     private let presenter = EntryPagePresenter()
-
-    weak var delegate: EntryPageViewControllerDelegate?
     
-    @IBOutlet weak var nicknameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    let phoneNumberTextField: UITextField = {
+        let phoneNumberInput = UITextField()
+        phoneNumberInput.translatesAutoresizingMaskIntoConstraints = false
+        return phoneNumberInput
+    }()
+    
+    let getSMSCodeButton: UIButton = {
+        let getSMSCodeButton = UIButton()
+        getSMSCodeButton.translatesAutoresizingMaskIntoConstraints = false
+        return getSMSCodeButton
+    }()
+    
+    weak var delegate: EntryPageViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.delegate = self
-        navigationItem.title = "Вход"
-        guard let data = Keychain.standart.getData(KeychainKeys.AuthKeys.rawValue) else { return }
-        guard let value = try?JSONDecoder().decode(AuthModel.self, from: data) else { return }
+        phoneNumberTextField.delegate = self
+        entryPageDesign()
+        setupGetSMSCodeButton()
         
-        nicknameTextField.text = value.login
-        passwordTextField.text = value.password
+        let tapToHideKeyboard = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
+        tapToHideKeyboard.delegate = self
+        tapToHideKeyboard.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapToHideKeyboard)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,26 +50,67 @@ class EntryPageViewController: GeneralViewController {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
-    
-    @IBAction func entryButton(_ sender: UIButton) {
-        
-        let nickname = nicknameTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-
-        if nickname == "0" && password == "0" {
-            navigationController?.popToRootViewController(animated: false)
-            delegate?.getEntryData(nickname: nickname, password: password)
-        } else {
-            showAlert(title: "Попробуйте еще раз", message: "Неверный никнейм или пароль")
-        }
+    func setupGetSMSCodeButton() {
+        getSMSCodeButton.addTarget(self, action: #selector(setupGetSMSCodeButtonAction), for: .touchUpInside)
     }
+    @objc func setupGetSMSCodeButtonAction() {
+        
+        if phoneNumberTextField.text?.count == "79775432123".phoneMaskRu().count {
+            let sentPhoneNumber = phoneNumberTextField.text ?? ""
+            navigationController?.popToRootViewController(animated: false)
+            delegate?.getSMSCodeAndOpenApprovePage(phoneNumber: sentPhoneNumber)
+        } else {
+            showAlert(title: "Номер неверный", message: "Попробуйте другой")
+        }
+        
+    }
+}
+
+extension EntryPageViewController {
     
-    @IBAction func toTheRegistrationPageButton(_ sender: UIButton) {
-        navigationController?.popToRootViewController(animated: false)
-        delegate?.toTheRegistrationPage()
+    private func entryPageDesign() {
+        navigationItem.title = "Вход"
+        
+        view.addSubview(phoneNumberTextField)
+        view.addSubview(getSMSCodeButton)
+        
+        phoneNumberTextField.placeholder = "Введите номер телефона"
+        phoneNumberTextField.keyboardType = .numberPad
+        phoneNumberTextField.textAlignment = .center
+        phoneNumberTextField.layer.cornerRadius = 12
+        
+        getSMSCodeButton.setTitle("Получить код по СМС", for: .normal)
+        getSMSCodeButton.backgroundColor = .systemRed
+        getSMSCodeButton.layer.cornerRadius = 12
+        
+        let margins = view.layoutMarginsGuide
+        
+        NSLayoutConstraint.activate([
+            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 50),
+            phoneNumberTextField.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+            phoneNumberTextField.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+            phoneNumberTextField.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            
+            getSMSCodeButton.heightAnchor.constraint(equalToConstant: 50),
+            getSMSCodeButton.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 10),
+            getSMSCodeButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+            getSMSCodeButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30)
+        ])
+    }
+}
+
+extension EntryPageViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+        guard let text = textField.text else { return }
+        
+        if textField == phoneNumberTextField {
+            textField.text = text.phoneMaskRu()
+        }
     }
 }
 
 extension EntryPageViewController: EntryPagePresenterDelegate {
-
+    
 }

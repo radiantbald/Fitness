@@ -8,7 +8,7 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
-    
+
     //MARK: - Списки ключей
     
     enum KeychainKeys: String {
@@ -78,7 +78,12 @@ extension GeneralViewController {
 //MARK: - Настройки жестов
 
 extension GeneralViewController: UIGestureRecognizerDelegate {
-    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+            return true
+        }
+    @objc func hideKeyboardOnTap() {
+            view.endEditing(true)
+        }
     
 }
 
@@ -101,17 +106,15 @@ extension GeneralViewController: RegistrationPageViewControllerDelegate {
 //MARK: - EntryPageViewControllerDelegate
 
 extension GeneralViewController: EntryPageViewControllerDelegate {
-    func getEntryData(nickname: String, password: String) {
-        setSensitiveData(nickname: nickname, password: password)
+    func getSMSCodeAndOpenApprovePage(phoneNumber: String) {
+        
+        let sentPhoneNumber = PhoneNumberModel(number: phoneNumber)
+        guard let data = try? JSONEncoder().encode(sentPhoneNumber) else { return }
+        Keychain.standart.set(data, forKey: KeychainKeys.AuthKeys.rawValue)
+        print(data)
         
         guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
         viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: false)
-    }
-    func toTheRegistrationPage() {
-        guard let viewController = RegistrationPageViewController.storyboardInit else { return }
-        viewController.delegate = self
-        
         navigationController?.pushViewController(viewController, animated: false)
     }
 }

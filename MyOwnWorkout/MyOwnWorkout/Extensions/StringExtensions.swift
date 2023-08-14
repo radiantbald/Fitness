@@ -82,7 +82,7 @@ extension String {
     }
     
     //MARK: - 
-    func codeFromSMSMask(to mask: String! = "#-#-#-#-#-#") -> String {
+    func codeFromSMSMask(to mask: String! = "######") -> String {
         
         let codeFromSMS = self
         

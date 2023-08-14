@@ -232,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uh6-ni-1pL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1932" y="-673"/>
+            <point key="canvasLocation" x="-1100" y="-680"/>
         </scene>
         <!--Settings Page View Controller-->
         <scene sceneID="VOU-x0-b0U">
@@ -415,46 +415,9 @@
                     <view key="view" contentMode="scaleToFill" id="hYk-jP-adD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OQ7-qf-Rxk">
-                                <rect key="frame" x="16" y="79" width="361" height="34"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите код из СМС" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tKR-Ak-3ky">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="a36-KB-Fdz" id="c2y-an-Bxc"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSJ-WE-5dX">
-                                <rect key="frame" x="40" y="133" width="313" height="34.333333333333343"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Войти">
-                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="registrationButtonAction:" destination="a36-KB-Fdz" eventType="touchUpInside" id="cfU-wx-0Ij"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ci6-1c-dpw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="QSJ-WE-5dX" firstAttribute="top" secondItem="OQ7-qf-Rxk" secondAttribute="bottom" constant="20" id="1jm-gk-xRa"/>
-                            <constraint firstItem="ci6-1c-dpw" firstAttribute="trailing" secondItem="OQ7-qf-Rxk" secondAttribute="trailing" constant="16" id="KHa-gn-HfT"/>
-                            <constraint firstItem="OQ7-qf-Rxk" firstAttribute="leading" secondItem="ci6-1c-dpw" secondAttribute="leading" constant="16" id="OTQ-QL-zgy"/>
-                            <constraint firstItem="QSJ-WE-5dX" firstAttribute="top" secondItem="OQ7-qf-Rxk" secondAttribute="bottom" constant="20" id="bvk-Hg-Zdy"/>
-                            <constraint firstItem="ci6-1c-dpw" firstAttribute="trailing" secondItem="QSJ-WE-5dX" secondAttribute="trailing" constant="40" id="d96-qL-Fjy"/>
-                            <constraint firstItem="QSJ-WE-5dX" firstAttribute="leading" secondItem="ci6-1c-dpw" secondAttribute="leading" constant="40" id="elM-si-W1T"/>
-                            <constraint firstItem="OQ7-qf-Rxk" firstAttribute="top" secondItem="ci6-1c-dpw" secondAttribute="top" constant="20" id="tbc-wW-BqH"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="codeFromSMSTextField" destination="tKR-Ak-3ky" id="vf4-RA-0ZP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPh-CC-DNM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -467,62 +430,9 @@
                     <view key="view" contentMode="scaleToFill" id="aS7-O7-g3c">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="G1R-dN-yaf">
-                                <rect key="frame" x="16" y="79" width="361" height="72"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите никнейм" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6JV-4a-8zr">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ly-nf-lbz">
-                                        <rect key="frame" x="0.0" y="38" width="361" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGH-OR-F1g">
-                                <rect key="frame" x="40" y="171" width="313" height="34.333333333333343"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Получить код по СМС">
-                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="entryButton:" destination="M7S-bY-OFM" eventType="touchUpInside" id="VQz-Xo-r7u"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDE-92-JI0">
-                                <rect key="frame" x="60" y="723.66666666666663" width="273" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Нужна регистрация">
-                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
-                                    <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="toTheRegistrationPageButton:" destination="M7S-bY-OFM" eventType="touchUpInside" id="Jym-AS-6Xg"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hqb-av-CJF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="G1R-dN-yaf" firstAttribute="top" secondItem="hqb-av-CJF" secondAttribute="top" constant="20" id="3UB-xP-AcS"/>
-                            <constraint firstItem="hqb-av-CJF" firstAttribute="bottom" secondItem="VDE-92-JI0" secondAttribute="bottom" constant="60" id="LYt-I3-Xub"/>
-                            <constraint firstItem="eGH-OR-F1g" firstAttribute="leading" secondItem="hqb-av-CJF" secondAttribute="leading" constant="40" id="Neg-oa-Wv9"/>
-                            <constraint firstItem="hqb-av-CJF" firstAttribute="trailing" secondItem="VDE-92-JI0" secondAttribute="trailing" constant="60" id="OYu-Q6-Kf8"/>
-                            <constraint firstItem="VDE-92-JI0" firstAttribute="leading" secondItem="hqb-av-CJF" secondAttribute="leading" constant="60" id="Pp0-3S-xwj"/>
-                            <constraint firstItem="G1R-dN-yaf" firstAttribute="leading" secondItem="hqb-av-CJF" secondAttribute="leading" constant="16" id="QXI-0z-aV5"/>
-                            <constraint firstItem="hqb-av-CJF" firstAttribute="trailing" secondItem="eGH-OR-F1g" secondAttribute="trailing" constant="40" id="dbs-uZ-ws8"/>
-                            <constraint firstItem="hqb-av-CJF" firstAttribute="trailing" secondItem="G1R-dN-yaf" secondAttribute="trailing" constant="16" id="wge-Vu-eIm"/>
-                            <constraint firstItem="eGH-OR-F1g" firstAttribute="top" secondItem="G1R-dN-yaf" secondAttribute="bottom" constant="20" id="ylI-Ie-dT4"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="nicknameTextField" destination="6JV-4a-8zr" id="pZ9-be-kpk"/>
-                        <outlet property="passwordTextField" destination="9Ly-nf-lbz" id="Eue-qd-JeF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vv1-wB-Brc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
