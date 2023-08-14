@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Добавлены страницы">
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/SMSCodeApprovePage/View/SMSCodeApprovePageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/SMSCodeApprovePage/View/SMSCodeApprovePageViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" afterDir="false" />
-    </list>
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- косяк со стэшем" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,6 +72,7 @@
       <workItem from="1691585025783" duration="179000" />
       <workItem from="1691856623475" duration="138000" />
       <workItem from="1692018126801" duration="59000" />
+      <workItem from="1692018864581" duration="95000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -174,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691856678191</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="- косяк со стэшем">
+      <created>1692018938291</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1692018938292</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +224,7 @@
     <MESSAGE value="- Настроено перемещение между существующими экранами&#10;- Настроены get/set аватарки&#10;- Добавлен UITapGestureRecognizer на аватарки, убраны прозрачные кнопки&#10;- Установлен CocoaPods&#10;- Установлен Keychain&#10;- Keychain настроен для авторизации" />
     <MESSAGE value="- Настроена архитектура mvp" />
     <MESSAGE value="- Добавлены страницы" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Добавлены страницы" />
+    <MESSAGE value="- косяк со стэшем" />
+    <option name="LAST_COMMIT_MESSAGE" value="- косяк со стэшем" />
   </component>
 </project>
