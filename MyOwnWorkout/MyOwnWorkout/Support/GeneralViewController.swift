@@ -13,6 +13,7 @@ class GeneralViewController: UIViewController {
     
     enum KeychainKeys: String {
         case AuthKeys = "AuthKeys"
+        case PhoneNumberKeys = "PhoneNumberKeys"
     }
     
     enum FilesNames: String {

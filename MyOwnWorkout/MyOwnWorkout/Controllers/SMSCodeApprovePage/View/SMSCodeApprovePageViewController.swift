@@ -28,6 +28,10 @@ class SMSCodeApprovePageViewController: GeneralViewController {
         
         codeFromSMSTextField.delegate = self
         codeFromSMSTextField.textAlignment = .center
+        
+        guard let data = Keychain.standart.getData(KeychainKeys.PhoneNumberKeys.rawValue) else { return }
+        guard let value = try?JSONDecoder().decode(AuthModel.self, from: data) else { return }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
