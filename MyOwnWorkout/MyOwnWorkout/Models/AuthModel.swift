@@ -11,3 +11,4 @@ struct AuthModel: Codable {
     let login: String
     let password: String
 }
+

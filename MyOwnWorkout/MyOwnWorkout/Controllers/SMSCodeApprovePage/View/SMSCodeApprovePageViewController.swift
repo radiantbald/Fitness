@@ -86,7 +86,6 @@ class SMSCodeApprovePageViewController: GeneralViewController {
         presenter.delegate = self
         SMSCodeApprovePageDesign()
         codeFromSMSTextField.delegate = self
-        codeFromSMSTextField.textAlignment = .center
         
         let tapToHideKeyboard = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
         tapToHideKeyboard.delegate = self
@@ -151,6 +150,7 @@ extension SMSCodeApprovePageViewController {
         SMSTextFieldMask6.layer.opacity = 0.4
         
         codeFromSMSTextField.keyboardType = .numberPad
+        codeFromSMSTextField.textAlignment = .left
         codeFromSMSTextField.textColor = .white
         codeFromSMSTextField.font = .monospacedDigitSystemFont(ofSize: 25, weight: .light)
         codeFromSMSTextField.defaultTextAttributes.updateValue(35.0, forKey: .kern)

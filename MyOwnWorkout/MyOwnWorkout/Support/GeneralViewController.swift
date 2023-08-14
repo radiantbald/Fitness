@@ -110,7 +110,7 @@ extension GeneralViewController: EntryPageViewControllerDelegate {
         
         let sentPhoneNumber = PhoneNumberModel(number: phoneNumber)
         guard let data = try? JSONEncoder().encode(sentPhoneNumber) else { return }
-        Keychain.standart.set(data, forKey: KeychainKeys.AuthKeys.rawValue)
+        Keychain.standart.set(data, forKey: KeychainKeys.PhoneNumberKeys.rawValue)
         print(data)
         
         guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
