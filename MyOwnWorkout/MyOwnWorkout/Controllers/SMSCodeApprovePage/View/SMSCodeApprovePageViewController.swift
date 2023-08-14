@@ -87,6 +87,10 @@ class SMSCodeApprovePageViewController: GeneralViewController {
         SMSCodeApprovePageDesign()
         codeFromSMSTextField.delegate = self
         
+//        guard let data = Keychain.standart.getData(KeychainKeys.PhoneNumberKeys.rawValue) else { return }
+//        guard let value = try?JSONDecoder().decode(PhoneNumberModel.self, from: data) else { return }
+//        sentPhoneNumberLabel.text = value.number
+        
         let tapToHideKeyboard = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
         tapToHideKeyboard.delegate = self
         tapToHideKeyboard.numberOfTapsRequired = 1
@@ -125,7 +129,9 @@ extension SMSCodeApprovePageViewController {
         inputLabel.text = "Введите код из СМС"
         inputLabel.textAlignment = .center
         
-        sentPhoneNumberLabel.text = "\(delegatedPhoneNumber)"
+        guard let data = Keychain.standart.getData(KeychainKeys.PhoneNumberKeys.rawValue) else { return }
+        guard let value = try?JSONDecoder().decode(PhoneNumberModel.self, from: data) else { return }
+        sentPhoneNumberLabel.text = value.number
         sentPhoneNumberLabel.textAlignment = .center
         
         SMSTextFieldMask1.layer.cornerRadius = 10
