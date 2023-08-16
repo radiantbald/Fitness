@@ -124,9 +124,12 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
         
         let actionImage = UIAlertController(title: "Сменить аватарку", message: nil, preferredStyle: .actionSheet)
         
-        let camera = UIAlertAction(title: "Камера", style: .default) { _ in
-            self.imagePicker.sourceType = .camera
-        }
+//        let camera = UIAlertAction(title: "Камера", style: .default) { _ in
+//            self.imagePicker.sourceType = .camera
+//            self.imagePicker.cameraDevice = .front
+//            self.imagePicker.allowsEditing = true
+//            self.navigationController?.present(self.imagePicker, animated: true)
+//        }
         
         let photoLibrary = UIAlertAction(title: "Фотоальбом", style: .default) { _ in
             self.imagePicker.sourceType = .photoLibrary
@@ -136,12 +139,13 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
         
 //        let buffer = UIAlertAction(title: "Вставить из буфера", style: .default) { _ in
 //            if let image = UIPasteboard.general.image {
-//                self.saveUserAvatarImage(image)
+//                self.saveUserAvatarImageAction(image)
 //            }
 //        }
         
         let cancel = UIAlertAction(title: "Отмена", style: .cancel)
-        actionImage.addAction(camera)
+        
+//        actionImage.addAction(camera)
         actionImage.addAction(photoLibrary)
 //        actionImage.addAction(buffer)
         actionImage.addAction(cancel)
@@ -151,7 +155,7 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
             let frame = view.frame
             popover.sourceRect = CGRect(x: frame.midX, y: frame.maxY, width: 1.0, height: 1.0)
         }
-        present(actionImage, animated: true)
+        self.present(actionImage, animated: true)
     }
     
     func setupMenu() {
