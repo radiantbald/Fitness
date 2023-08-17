@@ -8,14 +8,11 @@
 import UIKit
 
 class MainPageViewController: GeneralViewController {
+    @IBOutlet weak var mainPageAvatar: UIImageView!
     
     private let presenter = MainPagePresenter()
-
-    @IBOutlet weak var mainPageAvatar: UIImageView!
-    @IBOutlet weak var mainPageHeader: UILabel!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         presenter.delegate = self
         setupNavigationBar()
@@ -35,7 +32,6 @@ class MainPageViewController: GeneralViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
         mainPageAvatar.image = avatarImage
@@ -58,15 +54,12 @@ extension MainPageViewController {
     @objc func avatarButton() {
         
         if isAuth {
-            
             guard let viewController = PersonPageViewController.storyboardInit else { return }
-            viewController.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(viewController, animated: true)
             
         } else {
             
             guard let viewController = EntryPageViewController.storyboardInit else { return }
-            viewController.modalPresentationStyle = .overFullScreen
             viewController.delegate = self
             navigationController?.pushViewController(viewController, animated: true)
             
