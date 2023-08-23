@@ -17,69 +17,17 @@ class SMSCodeApprovePageViewController: GeneralViewController {
     
     weak var delegate: SMSCodeApprovePageViewControllerDelegate?
     
-    let delegatedPhoneNumber = "123"
-
-    let inputLabel: UILabel = {
-        let inputLabel = UILabel()
-        inputLabel.translatesAutoresizingMaskIntoConstraints = false
-        return inputLabel
+    var digitViews: [UIView] = []
+    var digitLabels: [UILabel] = []
+    
+    lazy var codeFromSMSTextField: UITextField = {
+        let textField = UITextField()
+        textField.alpha = 0
+        textField.keyboardType = .numberPad
+        return textField
     }()
     
-    let sentPhoneNumberLabel: UILabel = {
-        let sentNumberLabel = UILabel()
-        sentNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-        return sentNumberLabel
-    }()
-    
-    let SMSTextFieldBackgroundView: UIView = {
-        let SMSTextFieldBackgroundView = UIView()
-        SMSTextFieldBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        return SMSTextFieldBackgroundView
-    }()
-
-    let SMSTextFieldMask1: UIView = {
-        let SMSTextFieldMask1 = UIView()
-        SMSTextFieldMask1.translatesAutoresizingMaskIntoConstraints = false
-        return SMSTextFieldMask1
-    }()
-    
-    let SMSTextFieldMask2: UIView = {
-        let SMSTextFieldMask2 = UIView()
-        SMSTextFieldMask2.translatesAutoresizingMaskIntoConstraints = false
-        return SMSTextFieldMask2
-    }()
-    
-    let SMSTextFieldMask3: UIView = {
-        let SMSTextFieldMask3 = UIView()
-        SMSTextFieldMask3.translatesAutoresizingMaskIntoConstraints = false
-        return SMSTextFieldMask3
-    }()
-    
-    let SMSTextFieldMask4: UIView = {
-        let SMSTextFieldMask4 = UIView()
-        SMSTextFieldMask4.translatesAutoresizingMaskIntoConstraints = false
-        return SMSTextFieldMask4
-    }()
-    
-    let SMSTextFieldMask5: UIView = {
-        let SMSTextFieldMask5 = UIView()
-        SMSTextFieldMask5.translatesAutoresizingMaskIntoConstraints = false
-        return SMSTextFieldMask5
-    }()
-    
-    let SMSTextFieldMask6: UIView = {
-        let SMSTextFieldMask6 = UIView()
-        SMSTextFieldMask6.translatesAutoresizingMaskIntoConstraints = false
-        return SMSTextFieldMask6
-    }()
-    
-    let codeFromSMSTextField: UITextField = {
-        let codeFromSMSTextField = UITextField()
-        codeFromSMSTextField.translatesAutoresizingMaskIntoConstraints = false
-        return codeFromSMSTextField
-    }()
-    
-    
+//    let codeFromSMSTextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,109 +60,91 @@ class SMSCodeApprovePageViewController: GeneralViewController {
 extension SMSCodeApprovePageViewController {
     
     func SMSCodeApprovePageDesign() {
+        
+        
+        
+        let inputTextLabel = UILabel()
+        
+        let sentPhoneNumberLabel = UILabel()
+        
+        let stackViewOfDigitViews = UIStackView()
+    
+        digitViews = Array(0...5).map { _ in
+            return UIView()
+        }
+        
+        digitLabels = digitViews.map { view in
+            let label = UILabel()
+            view.addSubview(label)
+            return label
+        }
+        
+//        for _ in 0...5 {
+//            digitViews.append(UIView())
+//        }
+        
+//        digitViews[0].layer.opacity = 0.4
+        
+        
+        [inputTextLabel, sentPhoneNumberLabel, stackViewOfDigitViews, codeFromSMSTextField].forEach { subview in
+            subview.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        digitViews.forEach { digitView in
+            
+            stackViewOfDigitViews.addArrangedSubview(digitView)
+            digitView.backgroundColor = .systemRed
+            digitView.layer.cornerRadius = 12
+            digitView.widthAnchor.constraint(equalTo: digitView.heightAnchor, multiplier: 0.7).isActive = true
+        }
+        
+        view.addSubview(inputTextLabel)
+        view.addSubview(sentPhoneNumberLabel)
+        view.addSubview(stackViewOfDigitViews)
+        view.addSubview(codeFromSMSTextField)
+        
+        NSLayoutConstraint.activate([
+            
+            inputTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            inputTextLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            inputTextLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+            inputTextLabel.heightAnchor.constraint(equalToConstant: 25),
+            
+            sentPhoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            sentPhoneNumberLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            sentPhoneNumberLabel.topAnchor.constraint(equalTo: inputTextLabel.bottomAnchor, constant: 15),
+            sentPhoneNumberLabel.heightAnchor.constraint(equalToConstant: 25),
+            
+            stackViewOfDigitViews.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            stackViewOfDigitViews.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            stackViewOfDigitViews.topAnchor.constraint(equalTo: sentPhoneNumberLabel.bottomAnchor, constant: 30),
+            stackViewOfDigitViews.heightAnchor.constraint(equalToConstant: 60),
+            
+        ])
+        
         navigationItem.title = "Авторизация"
         navigationItem.backButtonTitle = "На главную"
         
-        view.addSubview(inputLabel)
-        view.addSubview(sentPhoneNumberLabel)
-        view.addSubview(SMSTextFieldBackgroundView)
-        view.addSubview(SMSTextFieldMask1)
-        view.addSubview(SMSTextFieldMask2)
-        view.addSubview(SMSTextFieldMask3)
-        view.addSubview(SMSTextFieldMask4)
-        view.addSubview(SMSTextFieldMask5)
-        view.addSubview(SMSTextFieldMask6)
-        view.addSubview(codeFromSMSTextField)
+        inputTextLabel.text = "Введите код из СМС"
+        inputTextLabel.textAlignment = .center
         
-        inputLabel.text = "Введите код из СМС"
-        inputLabel.textAlignment = .center
+        stackViewOfDigitViews.axis = .horizontal
+        stackViewOfDigitViews.distribution = .equalSpacing
+        stackViewOfDigitViews.alignment = .fill
+        stackViewOfDigitViews.spacing = 10
+        
         
         guard let data = Keychain.standart.getData(KeychainKeys.PhoneNumberKeys.rawValue) else { return }
         guard let value = try?JSONDecoder().decode(PhoneNumberModel.self, from: data) else { return }
         sentPhoneNumberLabel.text = value.number
         sentPhoneNumberLabel.textAlignment = .center
         
-        SMSTextFieldMask1.layer.cornerRadius = 10
-        SMSTextFieldMask2.layer.cornerRadius = 10
-        SMSTextFieldMask3.layer.cornerRadius = 10
-        SMSTextFieldMask4.layer.cornerRadius = 10
-        SMSTextFieldMask5.layer.cornerRadius = 10
-        SMSTextFieldMask6.layer.cornerRadius = 10
-
-        SMSTextFieldMask1.backgroundColor = .systemRed
-        SMSTextFieldMask2.backgroundColor = .systemRed
-        SMSTextFieldMask3.backgroundColor = .systemRed
-        SMSTextFieldMask4.backgroundColor = .systemRed
-        SMSTextFieldMask5.backgroundColor = .systemRed
-        SMSTextFieldMask6.backgroundColor = .systemRed
-        
-        SMSTextFieldMask1.layer.opacity = 0.4
-        SMSTextFieldMask2.layer.opacity = 0.4
-        SMSTextFieldMask3.layer.opacity = 0.4
-        SMSTextFieldMask4.layer.opacity = 0.4
-        SMSTextFieldMask5.layer.opacity = 0.4
-        SMSTextFieldMask6.layer.opacity = 0.4
-        
         codeFromSMSTextField.keyboardType = .numberPad
         codeFromSMSTextField.textAlignment = .left
         codeFromSMSTextField.textColor = .white
-        codeFromSMSTextField.font = .monospacedDigitSystemFont(ofSize: 25, weight: .light)
-        codeFromSMSTextField.defaultTextAttributes.updateValue(35.0, forKey: .kern)
+        codeFromSMSTextField.font = .monospacedDigitSystemFont(ofSize: 42, weight: .light)
+        codeFromSMSTextField.defaultTextAttributes.updateValue(38.0, forKey: .kern)
         
-        let margins = view.layoutMarginsGuide
-        
-        NSLayoutConstraint.activate([
-            
-            inputLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            inputLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            inputLabel.heightAnchor.constraint(equalToConstant: 25),
-            inputLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 15),
-            
-            sentPhoneNumberLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            sentPhoneNumberLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            sentPhoneNumberLabel.heightAnchor.constraint(equalToConstant: 25),
-            sentPhoneNumberLabel.topAnchor.constraint(equalTo: inputLabel.bottomAnchor, constant: 15),
-
-            SMSTextFieldBackgroundView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            SMSTextFieldBackgroundView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            SMSTextFieldBackgroundView.heightAnchor.constraint(equalToConstant: 50),
-            SMSTextFieldBackgroundView.topAnchor.constraint(equalTo: sentPhoneNumberLabel.bottomAnchor, constant: 20),
-            
-            SMSTextFieldMask1.heightAnchor.constraint(equalToConstant: 50),
-            SMSTextFieldMask1.widthAnchor.constraint(equalToConstant: 25),
-            SMSTextFieldMask1.topAnchor.constraint(equalTo: SMSTextFieldBackgroundView.topAnchor),
-            SMSTextFieldMask1.leadingAnchor.constraint(equalTo: codeFromSMSTextField.leadingAnchor, constant: -5),
-
-            SMSTextFieldMask2.heightAnchor.constraint(equalToConstant: 50),
-            SMSTextFieldMask2.widthAnchor.constraint(equalToConstant: 25),
-            SMSTextFieldMask2.topAnchor.constraint(equalTo: SMSTextFieldBackgroundView.topAnchor),
-            SMSTextFieldMask2.leadingAnchor.constraint(equalTo: SMSTextFieldMask1.trailingAnchor, constant: 25),
-
-            SMSTextFieldMask3.heightAnchor.constraint(equalToConstant: 50),
-            SMSTextFieldMask3.widthAnchor.constraint(equalToConstant: 25),
-            SMSTextFieldMask3.topAnchor.constraint(equalTo: SMSTextFieldBackgroundView.topAnchor),
-            SMSTextFieldMask3.leadingAnchor.constraint(equalTo: SMSTextFieldMask2.trailingAnchor, constant: 25),
-
-            SMSTextFieldMask4.heightAnchor.constraint(equalToConstant: 50),
-            SMSTextFieldMask4.widthAnchor.constraint(equalToConstant: 25),
-            SMSTextFieldMask4.topAnchor.constraint(equalTo: SMSTextFieldBackgroundView.topAnchor),
-            SMSTextFieldMask4.leadingAnchor.constraint(equalTo: SMSTextFieldMask3.trailingAnchor, constant: 25),
-
-            SMSTextFieldMask5.heightAnchor.constraint(equalToConstant: 50),
-            SMSTextFieldMask5.widthAnchor.constraint(equalToConstant: 25),
-            SMSTextFieldMask5.topAnchor.constraint(equalTo: SMSTextFieldBackgroundView.topAnchor),
-            SMSTextFieldMask5.leadingAnchor.constraint(equalTo: SMSTextFieldMask4.trailingAnchor, constant: 25),
-
-            SMSTextFieldMask6.heightAnchor.constraint(equalToConstant: 50),
-            SMSTextFieldMask6.widthAnchor.constraint(equalToConstant: 25),
-            SMSTextFieldMask6.topAnchor.constraint(equalTo: SMSTextFieldBackgroundView.topAnchor),
-            SMSTextFieldMask6.leadingAnchor.constraint(equalTo: SMSTextFieldMask5.trailingAnchor, constant: 25),
-            
-            codeFromSMSTextField.heightAnchor.constraint(equalToConstant: 50),
-            codeFromSMSTextField.topAnchor.constraint(equalTo: SMSTextFieldBackgroundView.topAnchor),
-            codeFromSMSTextField.leadingAnchor.constraint(equalTo: SMSTextFieldBackgroundView.centerXAnchor, constant: -132),
-            codeFromSMSTextField.trailingAnchor.constraint(equalTo: SMSTextFieldBackgroundView.centerXAnchor, constant: 228)
-        ])
     }
 }
 
@@ -226,43 +156,7 @@ extension SMSCodeApprovePageViewController: UITextFieldDelegate {
         
         if textField == codeFromSMSTextField {
             textField.text = text.codeFromSMSMask()
-            
-            if text.count > 5 {
-                SMSTextFieldMask6.layer.opacity = 1
-            }
-            if text.count > 4 {
-                SMSTextFieldMask5.layer.opacity = 1
-            }
-            if text.count > 3 {
-                SMSTextFieldMask4.layer.opacity = 1
-            }
-            if text.count > 2 {
-                SMSTextFieldMask3.layer.opacity = 1
-            }
-            if text.count > 1 {
-                SMSTextFieldMask2.layer.opacity = 1
-            }
-            if text.count > 0 {
-                SMSTextFieldMask1.layer.opacity = 1
-            }
-            if text.count < 6 {
-                SMSTextFieldMask6.layer.opacity = 0.4
-            }
-            if text.count < 5 {
-                SMSTextFieldMask5.layer.opacity = 0.4
-            }
-            if text.count < 4 {
-                SMSTextFieldMask4.layer.opacity = 0.4
-            }
-            if text.count < 3 {
-                SMSTextFieldMask3.layer.opacity = 0.4
-            }
-            if text.count < 2 {
-                SMSTextFieldMask2.layer.opacity = 0.4
-            }
-            if text.count < 1 {
-                SMSTextFieldMask1.layer.opacity = 0.4
-            }
+
             if text == "000000" {
                 isAuth = true
                 navigationController?.popToRootViewController(animated: false)
@@ -277,4 +171,29 @@ extension SMSCodeApprovePageViewController: UITextFieldDelegate {
 }
 
 extension SMSCodeApprovePageViewController: SMSCodeApprovePagePresenterDelegate {
+}
+
+import SwiftUI
+struct SMSCodeApprovePageViewController_Provider: PreviewProvider {
+    static var previews: some View {
+        ContainerView().edgesIgnoringSafeArea(.all)
+    }
+    
+    struct ContainerView: UIViewControllerRepresentable {
+        
+        func makeUIViewController(context: Context) -> UIViewController {
+            return SMSCodeApprovePageViewController()
+        }
+        
+        typealias UIViewControllerType = UIViewController
+        
+        let viewController = SMSCodeApprovePageViewController()
+        func makeUIViewController(context: UIViewControllerRepresentableContext<SMSCodeApprovePageViewController_Provider.ContainerView>) -> SMSCodeApprovePageViewController {
+            return viewController
+        }
+        
+        func updateUIViewController(_ uiViewController: SMSCodeApprovePageViewController_Provider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SMSCodeApprovePageViewController_Provider.ContainerView>) {
+            
+        }
+    }
 }
