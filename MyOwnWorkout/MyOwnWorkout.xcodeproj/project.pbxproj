@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CE1C46C2A966704005C7ABC /* FirebaseNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE1C46B2A966704005C7ABC /* FirebaseNotification.swift */; };
+		5CE1C46E2A966D84005C7ABC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CE1C46D2A966D84005C7ABC /* GoogleService-Info.plist */; };
 		8707CB86FED4D64C709AF8C7 /* Pods_MyOwnWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E964DBBA9B317BD7ED8F9 /* Pods_MyOwnWorkout.framework */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
-		A246379E2A96572C00EB70CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A246379D2A96572C00EB70CF /* GoogleService-Info.plist */; };
 		A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */; };
 		A26E8F402A7667430054D495 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3F2A7667430054D495 /* AuthModel.swift */; };
 		A26E8F422A766ABB0054D495 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F412A766ABB0054D495 /* Keychain.swift */; };
@@ -55,9 +56,10 @@
 
 /* Begin PBXFileReference section */
 		4715393BC1F23DBFC3610A29 /* Pods-MyOwnWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwnWorkout.debug.xcconfig"; path = "Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout.debug.xcconfig"; sourceTree = "<group>"; };
+		5CE1C46B2A966704005C7ABC /* FirebaseNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNotification.swift; sourceTree = "<group>"; };
+		5CE1C46D2A966D84005C7ABC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
-		A246379D2A96572C00EB70CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3F2A7667430054D495 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		A26E8F412A766ABB0054D495 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
@@ -665,11 +667,12 @@
 			isa = PBXGroup;
 			children = (
 				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
+				5CE1C46B2A966704005C7ABC /* FirebaseNotification.swift */,
 				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
 				A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */,
 				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
 				A2C3FF8F2A18E71500231082 /* Info.plist */,
-				A246379D2A96572C00EB70CF /* GoogleService-Info.plist */,
+				5CE1C46D2A966D84005C7ABC /* GoogleService-Info.plist */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -775,7 +778,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2C3FF8E2A18E71500231082 /* LaunchScreen.storyboard in Resources */,
-				A246379E2A96572C00EB70CF /* GoogleService-Info.plist in Resources */,
+				5CE1C46E2A966D84005C7ABC /* GoogleService-Info.plist in Resources */,
 				A2C3FF8B2A18E71500231082 /* Assets.xcassets in Resources */,
 				A2C3FF892A18E71400231082 /* Main.storyboard in Resources */,
 			);
@@ -859,6 +862,7 @@
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
+				5CE1C46C2A966704005C7ABC /* FirebaseNotification.swift in Sources */,
 				A26E8F402A7667430054D495 /* AuthModel.swift in Sources */,
 				A28B7FEB2A88B76400B20B5F /* TrainingProgramsViewController.swift in Sources */,
 				A28B7FD52A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift in Sources */,
@@ -1015,11 +1019,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6GN2TT83FY;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6GN2TT83FY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyOwnWorkout/Support/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Camera";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow Photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1031,9 +1039,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.radiantbald.MyOwnWorkout;
+				PRODUCT_BUNDLE_IDENTIFIER = GN2TT83FY.com.radiantbald.MyOwnWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Almaz Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1047,11 +1056,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6GN2TT83FY;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6GN2TT83FY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyOwnWorkout/Support/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Camera";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow Photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1063,9 +1076,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.radiantbald.MyOwnWorkout;
+				PRODUCT_BUNDLE_IDENTIFIER = GN2TT83FY.com.radiantbald.MyOwnWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Almaz Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
