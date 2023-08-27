@@ -17,28 +17,22 @@ class SMSCodeApprovePageViewController: GeneralViewController {
     
     weak var delegate: SMSCodeApprovePageViewControllerDelegate?
     
+    let inputTextLabel = UILabel()
+    
+    let sentPhoneNumberLabel = UILabel()
+    
+    let stackViewOfDigitViews = UIStackView()
     var digitViews: [UIView] = []
+    let stackViewOfDigitLabels = UIStackView()
     var digitLabels: [UILabel] = []
     
-    lazy var codeFromSMSTextField: UITextField = {
-        let textField = UITextField()
-        textField.alpha = 0
-        textField.keyboardType = .numberPad
-        return textField
-    }()
-    
-//    let codeFromSMSTextField = UITextField()
+    let codeFromSMSTextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.delegate = self
         SMSCodeApprovePageDesign()
         codeFromSMSTextField.delegate = self
-        
-//        guard let data = Keychain.standart.getData(KeychainKeys.PhoneNumberKeys.rawValue) else { return }
-//        guard let value = try?JSONDecoder().decode(PhoneNumberModel.self, from: data) else { return }
-//        sentPhoneNumberLabel.text = value.number
-        
         let tapToHideKeyboard = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
         tapToHideKeyboard.delegate = self
         tapToHideKeyboard.numberOfTapsRequired = 1
@@ -59,52 +53,62 @@ class SMSCodeApprovePageViewController: GeneralViewController {
 
 extension SMSCodeApprovePageViewController {
     
+    func makeOpaq40(view: UIView) {
+        view.layer.opacity = 0.4
+    }
+    func makeOpaq100(view: UIView) {
+        view.layer.opacity = 1
+    }
+    
+    
     func SMSCodeApprovePageDesign() {
         
+        //MARK: - создание 6 полей красного цвета
         
         
-        let inputTextLabel = UILabel()
-        
-        let sentPhoneNumberLabel = UILabel()
-        
-        let stackViewOfDigitViews = UIStackView()
-    
         digitViews = Array(0...5).map { _ in
             return UIView()
         }
-        
-        digitLabels = digitViews.map { view in
-            let label = UILabel()
-            view.addSubview(label)
-            return label
+        digitLabels = Array(0...5).map { _ in
+            return UILabel()
         }
         
-//        for _ in 0...5 {
-//            digitViews.append(UIView())
-//        }
         
-//        digitViews[0].layer.opacity = 0.4
-        
-        
-        [inputTextLabel, sentPhoneNumberLabel, stackViewOfDigitViews, codeFromSMSTextField].forEach { subview in
-            subview.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        digitViews.forEach { digitView in
+        for digitView in digitViews.enumerated() {
+            stackViewOfDigitViews.addArrangedSubview(digitView.element)
+            digitView.element.backgroundColor = .systemRed
+            digitView.element.layer.cornerRadius = 12
+            digitView.element.widthAnchor.constraint(equalTo: digitView.element.heightAnchor, multiplier: 0.7).isActive = true
+            makeOpaq40(view: digitView.element)
             
-            stackViewOfDigitViews.addArrangedSubview(digitView)
-            digitView.backgroundColor = .systemRed
-            digitView.layer.cornerRadius = 12
-            digitView.widthAnchor.constraint(equalTo: digitView.heightAnchor, multiplier: 0.7).isActive = true
         }
+        
+        for digitLabel in digitLabels.enumerated() {
+            stackViewOfDigitLabels.addArrangedSubview(digitLabel.element)
+            digitLabel.element.textColor = .white
+            digitLabel.element.font = .boldSystemFont(ofSize: 30)
+        }
+        
         
         view.addSubview(inputTextLabel)
         view.addSubview(sentPhoneNumberLabel)
         view.addSubview(stackViewOfDigitViews)
+        view.addSubview(stackViewOfDigitLabels)
         view.addSubview(codeFromSMSTextField)
         
+        [stackViewOfDigitViews, stackViewOfDigitLabels].forEach { subview in
+            subview.axis = .horizontal
+            subview.distribution = .equalSpacing
+            subview.alignment = .fill
+            subview.spacing = 10
+        }
+        
+        [inputTextLabel, sentPhoneNumberLabel, stackViewOfDigitViews, stackViewOfDigitLabels, codeFromSMSTextField].forEach { subview in
+            subview.translatesAutoresizingMaskIntoConstraints = false
+        }
+ 
         NSLayoutConstraint.activate([
-            
+                
             inputTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             inputTextLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             inputTextLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
@@ -120,6 +124,17 @@ extension SMSCodeApprovePageViewController {
             stackViewOfDigitViews.topAnchor.constraint(equalTo: sentPhoneNumberLabel.bottomAnchor, constant: 30),
             stackViewOfDigitViews.heightAnchor.constraint(equalToConstant: 60),
             
+            stackViewOfDigitLabels.centerXAnchor.constraint(equalTo: stackViewOfDigitViews.centerXAnchor),
+            stackViewOfDigitLabels.leadingAnchor.constraint(equalTo: stackViewOfDigitViews.leadingAnchor, constant: 12),
+//            stackViewOfDigitLabels.trailingAnchor.constraint(equalTo: stackViewOfDigitViews.trailingAnchor, constant:  -16),
+            stackViewOfDigitLabels.topAnchor.constraint(equalTo: sentPhoneNumberLabel.bottomAnchor, constant: 30),
+            stackViewOfDigitLabels.heightAnchor.constraint(equalToConstant: 60),
+            
+            codeFromSMSTextField.leadingAnchor.constraint(equalTo: stackViewOfDigitViews.leadingAnchor, constant: 0),
+            codeFromSMSTextField.trailingAnchor.constraint(equalTo: stackViewOfDigitViews.trailingAnchor, constant: 0),
+            codeFromSMSTextField.topAnchor.constraint(equalTo: sentPhoneNumberLabel.bottomAnchor, constant: 30),
+            codeFromSMSTextField.heightAnchor.constraint(equalToConstant: 60)
+            
         ])
         
         navigationItem.title = "Авторизация"
@@ -128,10 +143,7 @@ extension SMSCodeApprovePageViewController {
         inputTextLabel.text = "Введите код из СМС"
         inputTextLabel.textAlignment = .center
         
-        stackViewOfDigitViews.axis = .horizontal
-        stackViewOfDigitViews.distribution = .equalSpacing
-        stackViewOfDigitViews.alignment = .fill
-        stackViewOfDigitViews.spacing = 10
+        
         
         
         guard let data = Keychain.standart.getData(KeychainKeys.PhoneNumberKeys.rawValue) else { return }
@@ -142,8 +154,8 @@ extension SMSCodeApprovePageViewController {
         codeFromSMSTextField.keyboardType = .numberPad
         codeFromSMSTextField.textAlignment = .left
         codeFromSMSTextField.textColor = .white
-        codeFromSMSTextField.font = .monospacedDigitSystemFont(ofSize: 42, weight: .light)
-        codeFromSMSTextField.defaultTextAttributes.updateValue(38.0, forKey: .kern)
+        codeFromSMSTextField.font = .monospacedDigitSystemFont(ofSize: 40, weight: .light)
+        codeFromSMSTextField.defaultTextAttributes.updateValue(40.0, forKey: .kern)
         
     }
 }
@@ -156,7 +168,20 @@ extension SMSCodeApprovePageViewController: UITextFieldDelegate {
         
         if textField == codeFromSMSTextField {
             textField.text = text.codeFromSMSMask()
-
+            
+            //MARK: - форматирование непрозрачности элементов за текстом при вводе
+            
+            for digitView in digitViews.enumerated() {
+                if digitView.offset < text.count {
+                    makeOpaq100(view: digitView.element)
+                }
+                else {
+                    makeOpaq40(view: digitView.element)
+                }
+            }
+  
+            //MARK: - Валидация кода из СМС
+            
             if text == "000000" {
                 isAuth = true
                 navigationController?.popToRootViewController(animated: false)

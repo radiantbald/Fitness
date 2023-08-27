@@ -358,40 +358,13 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daH-7e-Tyh">
-                                <rect key="frame" x="40" y="323" width="313" height="34.333333333333314"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Получить код по СМС">
-                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="getSMSCodeButton:" destination="SSn-NT-fk6" eventType="touchUpInside" id="gE1-UC-sST"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amc-AH-RyR">
-                                <rect key="frame" x="60" y="723.66666666666663" width="273" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Уже есть аккаунт">
-                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
-                                    <color key="baseBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="toTheEntryPageButton:" destination="SSn-NT-fk6" eventType="touchUpInside" id="XzC-qR-slL"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2pd-XV-cc6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Amc-AH-RyR" firstAttribute="leading" secondItem="2pd-XV-cc6" secondAttribute="leading" constant="60" id="0eC-FP-tRo"/>
-                            <constraint firstItem="daH-7e-Tyh" firstAttribute="top" secondItem="3Mh-Vt-PQn" secondAttribute="bottom" constant="20" id="5Gm-Sl-Tzm"/>
                             <constraint firstItem="3Mh-Vt-PQn" firstAttribute="top" secondItem="2pd-XV-cc6" secondAttribute="top" constant="20" id="H2H-bU-78s"/>
-                            <constraint firstItem="2pd-XV-cc6" firstAttribute="trailing" secondItem="daH-7e-Tyh" secondAttribute="trailing" constant="40" id="JnF-Yx-ANE"/>
-                            <constraint firstItem="daH-7e-Tyh" firstAttribute="leading" secondItem="2pd-XV-cc6" secondAttribute="leading" constant="40" id="LCP-9B-o0F"/>
                             <constraint firstItem="2pd-XV-cc6" firstAttribute="trailing" secondItem="3Mh-Vt-PQn" secondAttribute="trailing" constant="16" id="NSW-An-P9D"/>
-                            <constraint firstItem="2pd-XV-cc6" firstAttribute="trailing" secondItem="Amc-AH-RyR" secondAttribute="trailing" constant="60" id="VzS-ha-d7L"/>
                             <constraint firstItem="3Mh-Vt-PQn" firstAttribute="leading" secondItem="2pd-XV-cc6" secondAttribute="leading" constant="16" id="Y63-Ly-YA6"/>
-                            <constraint firstItem="2pd-XV-cc6" firstAttribute="bottom" secondItem="Amc-AH-RyR" secondAttribute="bottom" constant="60" id="blP-jz-ckw"/>
                             <constraint firstItem="2pd-XV-cc6" firstAttribute="trailing" secondItem="3Mh-Vt-PQn" secondAttribute="trailing" constant="16" id="p3i-pQ-phI"/>
                         </constraints>
                     </view>
