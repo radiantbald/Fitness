@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
-    //MARK: - Показ пуша при скрытом приложении
+    //MARK: - Показ пуша при скрытом приложении (при наличии метода willPresent этот метод не сработает)
     
     func application(
         _ application: UIApplication,
@@ -66,12 +66,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         guard let data = notification.request.content.userInfo as? [String : AnyObject] else { return }
         setupData(data)
     }
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        if let userInfo = response.notification.request.content.userInfo as? [String : AnyObject] {
-//            setupData(userInfo)
-//        }
-//        completionHandler()
-//    }
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+        
+        if let userInfo = response.notification.request.content.userInfo as? [String : AnyObject] {
+            setupData(userInfo)
+            print("didReceive response")
+        }
+        completionHandler()
+    }
     private func setupData(_ userInfo: [String : AnyObject]) {
         userInfo.forEach { (key, value) in
             print(key, " - ", value)
