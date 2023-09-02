@@ -91,3 +91,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 MyOwnWorkout/Pods
+/MyOwnWorkout/MyOwnWorkout/MyOwnWorkout.entitlements
+/MyOwnWorkout/MyOwnWorkoutFirebaseData.json
