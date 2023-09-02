@@ -80,6 +80,7 @@
       <workItem from="1692859312592" duration="42000" />
       <workItem from="1693139159249" duration="54000" />
       <workItem from="1693655911630" duration="105000" />
+      <workItem from="1693656464702" duration="47000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -242,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693655988557</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="- Подключение Firebase">
+      <created>1693656468811</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1693656468811</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
