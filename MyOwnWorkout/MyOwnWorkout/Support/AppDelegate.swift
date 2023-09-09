@@ -13,9 +13,7 @@ import UserNotificationsUI
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
         configureFirebase(for: application)
         return true
@@ -26,26 +24,32 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     //MARK: - Показ пуша при скрытом приложении (при наличии метода willPresent этот метод не сработает)
     
-    func application(
-        _ application: UIApplication,
-        didReceiveRemoteNotification userInfo: [AnyHashable : Any],
-        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
     ) {
+        
+        if Auth.auth().canHandleNotification(userInfo) {
+          completionHandler(.noData)
+          return
+        }
         print("Пришел пуш при развернутом приложении") // работает только если показ пушей для развернутого приложения выключен
     }
+    
+  
     
     
     //MARK: - получение токена устройства
     
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
+    func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)
         }
+        
         let token = tokenParts.joined()
         print("Device token - ", token)
+        
+        Auth.auth().setAPNSToken(deviceToken, type: .prod)
+        
         Messaging.messaging().apnsToken = deviceToken
     }
     func application(
@@ -92,10 +96,7 @@ extension AppDelegate: MessagingDelegate {
     
     //MARK: - Получение токена приложения на устройстве
     
-    func messaging(
-        _ messaging: Messaging,
-        didReceiveRegistrationToken fcmToken: String?
-    ) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FCMToken"), object: fcmToken)
         print("FCM token - ", fcmToken!)
     }
@@ -138,9 +139,18 @@ extension AppDelegate: MessagingDelegate {
 //            }
 //        }
 //    }
-//
-//    @objc func updatingFCMToken(_ notification: Notification) {
-//        guard let fcmToken = notification.object as? String else { return }
-//        print("FCMToken:", fcmToken)
-//    }
+
+}
+
+extension AppDelegate {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      
+        print("url ->", url)
+        
+        if Auth.auth().canHandle(url) {
+        return true
+      }
+      
+        return true
+    }
 }

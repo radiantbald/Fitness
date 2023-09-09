@@ -8,12 +8,15 @@
 import UIKit
 
 protocol SMSCodeApprovePageViewControllerDelegate: AnyObject {
-    func getCodeFromSMS(codeFromSMS: String)
+    func getCodeFromSMS()
 }
 
 class SMSCodeApprovePageViewController: GeneralViewController {
+    var number: String!
     
     private let presenter = SMSCodeApprovePagePresenter()
+    
+    
     
     weak var delegate: SMSCodeApprovePageViewControllerDelegate?
     
@@ -143,12 +146,7 @@ extension SMSCodeApprovePageViewController {
         inputTextLabel.text = "Введите код из СМС"
         inputTextLabel.textAlignment = .center
         
-        
-        
-        
-        guard let data = Keychain.standart.getData(KeychainKeys.PhoneNumberKeys.rawValue) else { return }
-        guard let value = try?JSONDecoder().decode(PhoneNumberModel.self, from: data) else { return }
-        sentPhoneNumberLabel.text = value.number
+        sentPhoneNumberLabel.text = number
         sentPhoneNumberLabel.textAlignment = .center
         
         codeFromSMSTextField.keyboardType = .numberPad
@@ -180,45 +178,22 @@ extension SMSCodeApprovePageViewController: UITextFieldDelegate {
                 }
             }
   
+            if text.count < 6 { return }
             //MARK: - Валидация кода из СМС
-            
-            if text == "000000" {
-                isAuth = true
-                navigationController?.popToRootViewController(animated: false)
-                delegate?.getCodeFromSMS(codeFromSMS: text)
-                
-            } else if text.count == "000000".count && text != "000000" {
-                textField.text = ""
-                showAlert(title: "\(text) - неверный код", message: "Попробуйте еще раз")
-            }
+            presenter.codeFirebase(code: text)
         }
     }
 }
 
 extension SMSCodeApprovePageViewController: SMSCodeApprovePagePresenterDelegate {
-}
-
-import SwiftUI
-struct SMSCodeApprovePageViewController_Provider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
+    func successAuth() {
+        isAuth = true
+        navigationController?.popToRootViewController(animated: false)
+        delegate?.getCodeFromSMS()
     }
     
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        func makeUIViewController(context: Context) -> UIViewController {
-            return SMSCodeApprovePageViewController()
-        }
-        
-        typealias UIViewControllerType = UIViewController
-        
-        let viewController = SMSCodeApprovePageViewController()
-        func makeUIViewController(context: UIViewControllerRepresentableContext<SMSCodeApprovePageViewController_Provider.ContainerView>) -> SMSCodeApprovePageViewController {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: SMSCodeApprovePageViewController_Provider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SMSCodeApprovePageViewController_Provider.ContainerView>) {
-            
-        }
+    func errorAlert(error: Error) {
+        showAlert(title: "Ошибка", message: error.localizedDescription)
     }
+    
 }

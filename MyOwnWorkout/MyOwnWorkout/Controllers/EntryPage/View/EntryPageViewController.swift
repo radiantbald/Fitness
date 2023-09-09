@@ -53,15 +53,27 @@ class EntryPageViewController: GeneralViewController {
     func setupGetSMSCodeButton() {
         getSMSCodeButton.addTarget(self, action: #selector(setupGetSMSCodeButtonAction), for: .touchUpInside)
     }
+    
+    
     @objc func setupGetSMSCodeButtonAction() {
-        
-        if phoneNumberTextField.text?.count == "79775432123".phoneMaskRu().count {
-            let sentPhoneNumber = phoneNumberTextField.text ?? ""
-            navigationController?.popToRootViewController(animated: false)
-            delegate?.getSMSCodeAndOpenApprovePage(phoneNumber: sentPhoneNumber)
-        } else {
-            showAlert(title: "Номер неверный", message: "Попробуйте другой")
+        //извлекаем текст
+        guard let sentPhoneNumber = phoneNumberTextField.text else {
+            showAlert(title: "Номер неверный", message: "Попробуйте другой");
+            return
         }
+        
+        //достаем только номера
+        let separated = sentPhoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        
+        
+        //проверка на корректность
+        if separated.count != 11 {
+            showAlert(title: "Номер неверный", message: "Попробуйте другой")
+            return
+        }
+        
+        navigationController?.popToRootViewController(animated: false)
+        delegate?.getSMSCodeAndOpenApprovePage(phoneNumber: sentPhoneNumber)
         
     }
 }

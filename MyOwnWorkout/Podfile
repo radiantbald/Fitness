@@ -7,6 +7,4 @@ target 'MyOwnWorkout' do
 
   # Pods for MyOwnWorkout
   pod 'KeychainSwift', '~> 20.0'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Analytics'
 end

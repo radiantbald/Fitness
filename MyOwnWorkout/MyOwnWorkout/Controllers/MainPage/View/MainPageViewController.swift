@@ -27,7 +27,6 @@ class MainPageViewController: GeneralViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         mainPageAvatar.image = avatarImage
@@ -35,11 +34,9 @@ class MainPageViewController: GeneralViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
         mainPageAvatar.image = avatarImage
-        
     }
 }
 
@@ -75,7 +72,40 @@ extension MainPageViewController {
 }
 
 //MARK: - Делегат презентера
-
 extension MainPageViewController: MainPagePresenterDelegate {
+    func pushForCodeVC(_ number: String) {
+        guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
+        viewController.delegate = self
+        viewController.number = number
+        navigationController?.pushViewController(viewController, animated: false)
+    }
     
+    func showAlertError(error: Error) {
+        showAlert(title: "Ошибка", message: error.localizedDescription)
+    }
+}
+
+
+//MARK: - EntryPageViewControllerDelegate
+extension MainPageViewController: EntryPageViewControllerDelegate {
+    func getSMSCodeAndOpenApprovePage(phoneNumber: String) {
+        presenter.pushForSMSCode(phoneNumber)
+    }
+}
+
+
+//MARK: - RegistrationPageViewControllerDelegate
+
+extension MainPageViewController: RegistrationPageViewControllerDelegate {
+    func getRegistrationData(name: String, surname: String, phoneNumber: String, password: String, nickname: String) {
+        print(name, surname, phoneNumber, password, nickname)
+        guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: false)
+    }
+    func toTheEntryPage() {
+        guard let viewController = EntryPageViewController.storyboardInit else { return }
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: false)
+    }
 }

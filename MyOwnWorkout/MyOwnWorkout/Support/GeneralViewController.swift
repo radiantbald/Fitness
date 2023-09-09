@@ -87,43 +87,10 @@ extension GeneralViewController: UIGestureRecognizerDelegate {
     
 }
 
-//MARK: - RegistrationPageViewControllerDelegate
-
-extension GeneralViewController: RegistrationPageViewControllerDelegate {
-    func getRegistrationData(name: String, surname: String, phoneNumber: String, password: String, nickname: String) {
-        print(name, surname, phoneNumber, password, nickname)
-        guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: false)
-    }
-    func toTheEntryPage() {
-        guard let viewController = EntryPageViewController.storyboardInit else { return }
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: false)
-    }
-}
-
-//MARK: - EntryPageViewControllerDelegate
-
-extension GeneralViewController: EntryPageViewControllerDelegate {
-    func getSMSCodeAndOpenApprovePage(phoneNumber: String) {
-        
-        let sentPhoneNumber = PhoneNumberModel(number: phoneNumber)
-        guard let data = try? JSONEncoder().encode(sentPhoneNumber) else { return }
-        Keychain.standart.set(data, forKey: KeychainKeys.PhoneNumberKeys.rawValue)
-        print(data)
-        
-        guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: false)
-    }
-}
-
 //MARK: - SMSCodeApprovePageViewControllerDelegate
 
 extension GeneralViewController: SMSCodeApprovePageViewControllerDelegate {
-    func getCodeFromSMS(codeFromSMS: String) {
-        print(codeFromSMS)
+    func getCodeFromSMS() {
         guard let viewController = PersonPageViewController.storyboardInit else { return }
         navigationController?.pushViewController(viewController, animated: false)
     }
