@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CA23CDB2AACA9C800E47A9F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDA2AACA9C800E47A9F /* FirebaseAnalytics */; };
+		5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDC2AACA9C800E47A9F /* FirebaseAuth */; };
+		5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */; };
+		5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */; };
 		A22911BF2A9B7B1000C978F4 /* Pods_MyOwnWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E964DBBA9B317BD7ED8F9 /* Pods_MyOwnWorkout.framework */; };
@@ -109,6 +113,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CA23CDB2AACA9C800E47A9F /* FirebaseAnalytics in Frameworks */,
+				5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */,
+				5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */,
+				5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */,
 				A22911BF2A9B7B1000C978F4 /* Pods_MyOwnWorkout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -732,6 +740,12 @@
 			dependencies = (
 			);
 			name = MyOwnWorkout;
+			packageProductDependencies = (
+				5CA23CDA2AACA9C800E47A9F /* FirebaseAnalytics */,
+				5CA23CDC2AACA9C800E47A9F /* FirebaseAuth */,
+				5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */,
+				5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */,
+			);
 			productName = MyOwnWorkout;
 			productReference = A2C3FF7E2A18E71400231082 /* MyOwnWorkout.app */;
 			productType = "com.apple.product-type.application";
@@ -760,6 +774,9 @@
 				Base,
 			);
 			mainGroup = A2C3FF752A18E71400231082;
+			packageReferences = (
+				5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A2C3FF7F2A18E71400231082 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1100,6 +1117,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CA23CDA2AACA9C800E47A9F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5CA23CDC2AACA9C800E47A9F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A2C3FF762A18E71400231082 /* Project object */;
 }

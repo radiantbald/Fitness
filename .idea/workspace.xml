@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Убрал файл из гитигнора" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Убрал файл из гитигнора">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +45,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -86,6 +91,7 @@
       <workItem from="1693656464702" duration="47000" />
       <workItem from="1693657115637" duration="79000" />
       <workItem from="1693734698968" duration="8000" />
+      <workItem from="1694265986947" duration="49000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
