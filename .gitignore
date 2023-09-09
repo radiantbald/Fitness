@@ -1,8 +1,7 @@
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-/.idea
-/.idea/workspace.xml
+.idea/
 ## User settings
 xcuserdata/
 
@@ -90,5 +89,5 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
-MyOwnWorkout/Pods
+MyOwnWorkout/Pods/
 /MyOwnWorkout/MyOwnWorkoutFirebaseData.json
