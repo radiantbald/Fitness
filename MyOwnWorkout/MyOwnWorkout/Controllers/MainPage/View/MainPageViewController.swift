@@ -8,8 +8,7 @@
 import UIKit
 
 class MainPageViewController: GeneralViewController {
-    
-    private let presenter = MainPagePresenter()
+    var presenter: MainPagePresenter?
 
     @IBOutlet weak var mainPageAvatar: UIImageView!
     @IBOutlet weak var mainPageHeader: UILabel!
@@ -17,7 +16,7 @@ class MainPageViewController: GeneralViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        presenter.delegate = self
+//        presenter.delegate = self
         setupNavigationBar()
         navigationItem.title = "Главная"
         navigationItem.backButtonTitle = "На главную"
@@ -91,7 +90,7 @@ extension MainPageViewController: RegistrationPageViewControllerDelegate {
 
 extension MainPageViewController: EntryPageViewControllerDelegate {
     func getSMSCodeAndOpenApprovePage(phoneNumber: String) {
-        presenter.sendPhoneNumberAction(phoneNumber)
+        presenter?.sendPhoneNumberAction(phoneNumber)
     }
 }
 

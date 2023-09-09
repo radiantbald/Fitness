@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Убрал файл из гитигнора">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout.xcodeproj/project.pbxproj" afterDir="false" />
-    </list>
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Убрал файл из гитигнора" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +42,7 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -92,6 +89,7 @@
       <workItem from="1693657115637" duration="79000" />
       <workItem from="1693734698968" duration="8000" />
       <workItem from="1694265986947" duration="49000" />
+      <workItem from="1694266048070" duration="45000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -275,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693657163682</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="editing project">
+      <created>1694266083892</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1694266083893</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,6 +330,7 @@
     <MESSAGE value="- Пляски со стэквью" />
     <MESSAGE value="- Подключение Firebase" />
     <MESSAGE value="- Убрал файл из гитигнора" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Убрал файл из гитигнора" />
+    <MESSAGE value="editing project" />
+    <option name="LAST_COMMIT_MESSAGE" value="editing project" />
   </component>
 </project>

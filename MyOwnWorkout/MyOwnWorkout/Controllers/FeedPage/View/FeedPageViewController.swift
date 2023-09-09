@@ -9,11 +9,10 @@ import UIKit
 
 class FeedPageViewController: GeneralViewController {
     
-    private let presenter = FeedPagePresenter()
+    var presenter: FeedPagePresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         setupNavigationBar()
         navigationItem.title = "Лента"
 

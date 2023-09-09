@@ -11,6 +11,11 @@
 		5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDC2AACA9C800E47A9F /* FirebaseAuth */; };
 		5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */; };
 		5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */; };
+		5CA23CE32AACAAD300E47A9F /* NotificationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA23CE22AACAAD300E47A9F /* NotificationSetting.swift */; };
+		5CA23CE52AACAC5F00E47A9F /* KeychainKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA23CE42AACAC5F00E47A9F /* KeychainKeys.swift */; };
+		5CA23CE82AACACF100E47A9F /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA23CE72AACACF100E47A9F /* Assembler.swift */; };
+		5CA23CEA2AACB15000E47A9F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA23CE92AACB15000E47A9F /* TabBarViewController.swift */; };
+		5CA23CEC2AACC14C00E47A9F /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA23CEB2AACC14C00E47A9F /* MenuModel.swift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */; };
 		A22911BF2A9B7B1000C978F4 /* Pods_MyOwnWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E964DBBA9B317BD7ED8F9 /* Pods_MyOwnWorkout.framework */; };
@@ -59,6 +64,11 @@
 
 /* Begin PBXFileReference section */
 		4715393BC1F23DBFC3610A29 /* Pods-MyOwnWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwnWorkout.debug.xcconfig"; path = "Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout.debug.xcconfig"; sourceTree = "<group>"; };
+		5CA23CE22AACAAD300E47A9F /* NotificationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetting.swift; sourceTree = "<group>"; };
+		5CA23CE42AACAC5F00E47A9F /* KeychainKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainKeys.swift; sourceTree = "<group>"; };
+		5CA23CE72AACACF100E47A9F /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		5CA23CE92AACB15000E47A9F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		5CA23CEB2AACC14C00E47A9F /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +149,14 @@
 				DADEABA13E3CA734CCE146E4 /* Pods-MyOwnWorkout.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5CA23CE62AACACC900E47A9F /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				5CA23CE72AACACF100E47A9F /* Assembler.swift */,
+			);
+			path = Assembler;
 			sourceTree = "<group>";
 		};
 		A201C87F2A2B590D006B1781 /* SchedulePage */ = {
@@ -633,6 +651,8 @@
 			children = (
 				A26E8F3F2A7667430054D495 /* AuthModel.swift */,
 				A28B7FF22A8A4CDE00B20B5F /* VerificationIDModel.swift */,
+				5CA23CE42AACAC5F00E47A9F /* KeychainKeys.swift */,
+				5CA23CEB2AACC14C00E47A9F /* MenuModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -673,11 +693,13 @@
 			isa = PBXGroup;
 			children = (
 				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
+				5CA23CE22AACAAD300E47A9F /* NotificationSetting.swift */,
 				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
 				A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */,
 				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
 				A2C3FF8F2A18E71500231082 /* Info.plist */,
 				A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */,
+				5CA23CE92AACB15000E47A9F /* TabBarViewController.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -694,6 +716,7 @@
 		A2D2E4512A6DB2AE002E5467 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5CA23CE62AACACC900E47A9F /* Assembler */,
 				A2D601B62A1E29B4001E7EE3 /* MainPage */,
 				A201C87F2A2B590D006B1781 /* SchedulePage */,
 				A275C9AA2A2B5C6900B18420 /* FeedPage */,
@@ -848,8 +871,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
+				5CA23CE32AACAAD300E47A9F /* NotificationSetting.swift in Sources */,
 				A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */,
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,
+				5CA23CEA2AACB15000E47A9F /* TabBarViewController.swift in Sources */,
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
 				A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */,
 				A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */,
@@ -862,6 +887,7 @@
 				A2954F942A7E9A36003947CF /* PersonPagePresenter.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */,
+				5CA23CE82AACACF100E47A9F /* Assembler.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
 				A26E8F422A766ABB0054D495 /* Keychain.swift in Sources */,
 				A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */,
@@ -874,6 +900,7 @@
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
+				5CA23CE52AACAC5F00E47A9F /* KeychainKeys.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
 				A26E8F402A7667430054D495 /* AuthModel.swift in Sources */,
@@ -883,6 +910,7 @@
 				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,
 				A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */,
 				A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */,
+				5CA23CEC2AACC14C00E47A9F /* MenuModel.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
 				A28B7FF32A8A4CDE00B20B5F /* VerificationIDModel.swift in Sources */,

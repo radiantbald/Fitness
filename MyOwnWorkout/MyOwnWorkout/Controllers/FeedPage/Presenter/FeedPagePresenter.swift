@@ -13,6 +13,10 @@ protocol FeedPagePresenterDelegate: AnyObject {
 
 final class FeedPagePresenter {
     weak var delegate: FeedPagePresenterDelegate?
+    
+    init(delegate: FeedPagePresenterDelegate? = nil) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

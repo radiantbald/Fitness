@@ -8,13 +8,6 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
-
-    //MARK: - Списки ключей
-    
-    enum KeychainKeys: String {
-        case AuthKeys = "AuthKeys"
-        case VerificationID = "VerificationID"
-    }
     
     enum FilesNames: String {
         case UserAvatar = "UserAvatar"
