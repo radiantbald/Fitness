@@ -74,8 +74,50 @@ extension MainPageViewController {
     }
 }
 
+//MARK: - RegistrationPageViewControllerDelegate
+
+extension MainPageViewController: RegistrationPageViewControllerDelegate {
+    func getRegistrationData(name: String, surname: String, phoneNumber: String, password: String, nickname: String) {
+        
+    }
+    func toTheEntryPage() {
+        guard let viewController = EntryPageViewController.storyboardInit else { return }
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: false)
+    }
+}
+
+//MARK: - EntryPageViewControllerDelegate
+
+extension MainPageViewController: EntryPageViewControllerDelegate {
+    func getSMSCodeAndOpenApprovePage(phoneNumber: String) {
+        presenter.sendPhoneNumberAction(phoneNumber)
+    }
+}
+
+//MARK: - SMSCodeApprovePageViewControllerDelegate
+
+extension MainPageViewController: SMSCodeApprovePageViewControllerDelegate {
+    func authApprove() {
+        guard let viewController = PersonPageViewController.storyboardInit else { return }
+        navigationController?.pushViewController(viewController, animated: false)
+    }
+}
+
 //MARK: - Делегат презентера
 
 extension MainPageViewController: MainPagePresenterDelegate {
     
+    //MARK: - пересыл номера телефона с EntryPage на SMSCodeApprovePage
+    
+    func sendPhoneNumber(_ phoneNumber: String) {
+        guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
+        viewController.delegate = self
+        viewController.sentPhoneNumber = phoneNumber
+        navigationController?.pushViewController(viewController, animated: false)
+    }
+    
+    func showAuthAlert(error: Error) {
+        showAlert(title: "Ошибка", message: error.localizedDescription)
+    }
 }

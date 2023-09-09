@@ -13,7 +13,7 @@ class GeneralViewController: UIViewController {
     
     enum KeychainKeys: String {
         case AuthKeys = "AuthKeys"
-        case PhoneNumberKeys = "PhoneNumberKeys"
+        case VerificationID = "VerificationID"
     }
     
     enum FilesNames: String {
@@ -56,6 +56,7 @@ class GeneralViewController: UIViewController {
 //MARK: - Расширения
 
 //MARK: - Общие настройки
+
 extension GeneralViewController {
     
     //MARK: - Настройки NavigationBar
@@ -78,62 +79,35 @@ extension GeneralViewController {
 //MARK: - Настройки жестов
 
 extension GeneralViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-            return true
-        }
-    @objc func hideKeyboardOnTap() {
+    
+    //MARK: - Прятать клавиатуру при тапе на экран
+    
+    func hideKeyboardOnTap() {
+        let tapToHideKeyboard = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTapSelector))
+        tapToHideKeyboard.delegate = self
+        tapToHideKeyboard.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapToHideKeyboard)
+    }
+    @objc func hideKeyboardOnTapSelector() {
             view.endEditing(true)
         }
-    
-}
-
-//MARK: - RegistrationPageViewControllerDelegate
-
-extension GeneralViewController: RegistrationPageViewControllerDelegate {
-    func getRegistrationData(name: String, surname: String, phoneNumber: String, password: String, nickname: String) {
-        print(name, surname, phoneNumber, password, nickname)
-        guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: false)
-    }
-    func toTheEntryPage() {
-        guard let viewController = EntryPageViewController.storyboardInit else { return }
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: false)
-    }
-}
-
-//MARK: - EntryPageViewControllerDelegate
-
-extension GeneralViewController: EntryPageViewControllerDelegate {
-    func getSMSCodeAndOpenApprovePage(phoneNumber: String) {
-        
-        let sentPhoneNumber = PhoneNumberModel(number: phoneNumber)
-        guard let data = try? JSONEncoder().encode(sentPhoneNumber) else { return }
-        Keychain.standart.set(data, forKey: KeychainKeys.PhoneNumberKeys.rawValue)
-        print(data)
-        
-        guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: false)
-    }
-}
-
-//MARK: - SMSCodeApprovePageViewControllerDelegate
-
-extension GeneralViewController: SMSCodeApprovePageViewControllerDelegate {
-    func getCodeFromSMS(codeFromSMS: String) {
-        print(codeFromSMS)
-        guard let viewController = PersonPageViewController.storyboardInit else { return }
-        navigationController?.pushViewController(viewController, animated: false)
-    }
 }
 
 extension GeneralViewController {
     private func setSensitiveData(nickname: String, password: String) {
-        
         let auth = AuthModel(login: nickname, password: password)
         guard let data = try? JSONEncoder().encode(auth) else { return }
         Keychain.standart.set(data, forKey: KeychainKeys.AuthKeys.rawValue)
+    }
+}
+
+//MARK: - Настройки непрозрачности
+
+extension GeneralViewController {
+    func makeOpaq40(view: UIView) {
+        view.layer.opacity = 0.4
+    }
+    func makeOpaq100(view: UIView) {
+        view.layer.opacity = 1
     }
 }

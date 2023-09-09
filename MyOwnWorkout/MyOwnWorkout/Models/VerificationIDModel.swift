@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PhoneNumberModel: Codable {
-    let number: String
+struct VerificationIDModel: Codable {
+    let verificationID: String
 }

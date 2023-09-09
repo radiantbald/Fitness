@@ -35,12 +35,7 @@ class EntryPageViewController: GeneralViewController {
         phoneNumberTextField.delegate = self
         entryPageDesign()
         setupGetSMSCodeButton()
-        
-        let tapToHideKeyboard = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
-        tapToHideKeyboard.delegate = self
-        tapToHideKeyboard.numberOfTapsRequired = 1
-        self.view.addGestureRecognizer(tapToHideKeyboard)
-        
+        hideKeyboardOnTap()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,13 +50,23 @@ class EntryPageViewController: GeneralViewController {
     }
     @objc func setupGetSMSCodeButtonAction() {
         
-        if phoneNumberTextField.text?.count == "79775432123".phoneMaskRu().count {
-            let sentPhoneNumber = phoneNumberTextField.text ?? ""
-            navigationController?.popToRootViewController(animated: false)
-            delegate?.getSMSCodeAndOpenApprovePage(phoneNumber: sentPhoneNumber)
-        } else {
-            showAlert(title: "Номер неверный", message: "Попробуйте другой")
+        //извлечение текста с номером (маска)
+        guard let sentPhoneNumber = phoneNumberTextField.text else { return }
+        
+        //извлечение "чистого" номера из-под маски
+        let unmaskedPhoneNumber = sentPhoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        
+        //проверка на корректность
+        if unmaskedPhoneNumber.count == 0 {
+            showAlert(title: "Введите номер", message: "")
+            return
+        } else if unmaskedPhoneNumber.count != 11 {
+            showAlert(title: "Формат номера неверный", message: "Попробуйте другой")
+            return
         }
+        
+        navigationController?.popToRootViewController(animated: false)
+        delegate?.getSMSCodeAndOpenApprovePage(phoneNumber: sentPhoneNumber)
         
     }
 }

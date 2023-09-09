@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Подключение Firebase" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Убрал файл из гитигнора">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/MainPage/View/MainPageViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Controllers/MainPage/View/MainPageViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MyOwnWorkout/MyOwnWorkout/Support/GeneralViewController.swift" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,6 +85,8 @@
       <workItem from="1693139159249" duration="54000" />
       <workItem from="1693655911630" duration="105000" />
       <workItem from="1693656464702" duration="47000" />
+      <workItem from="1693657115637" duration="79000" />
+      <workItem from="1693734698968" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -250,7 +256,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693656468811</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="- Убрал файл из гитигнора">
+      <created>1693657154101</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1693657154101</updated>
+    </task>
+    <task id="LOCAL-00026" summary="- Убрал файл из гитигнора">
+      <created>1693657163680</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1693657163682</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +319,7 @@
     <MESSAGE value="- косяк со стэшем решен" />
     <MESSAGE value="- Пляски со стэквью" />
     <MESSAGE value="- Подключение Firebase" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Подключение Firebase" />
+    <MESSAGE value="- Убрал файл из гитигнора" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Убрал файл из гитигнора" />
   </component>
 </project>
