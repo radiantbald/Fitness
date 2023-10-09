@@ -9,21 +9,6 @@ import UIKit
 
 class GeneralViewController: UIViewController {
 
-    //MARK: - Списки ключей
-    
-    enum KeychainKeys: String {
-        case AuthKeys = "AuthKeys"
-        case VerificationID = "VerificationID"
-    }
-    
-    enum FilesNames: String {
-        case UserAvatar = "UserAvatar"
-    }
-    
-    enum FilesTypes: String {
-        case jpeg = "jpeg"
-    }
-    
     //MARK: - get/set статуса авторизациии
     
     var isAuth: Bool {

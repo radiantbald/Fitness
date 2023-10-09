@@ -15,6 +15,10 @@ protocol MainPagePresenterDelegate: AnyObject {
 
 final class MainPagePresenter {
     weak var delegate: MainPagePresenterDelegate?
+    
+    init(delegate: MainPagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input
@@ -31,7 +35,7 @@ extension MainPagePresenter {
                   
                   let verificationID = VerificationIDModel(verificationID: verificationID)
                   guard let data = try? JSONEncoder().encode(verificationID) else { return }
-                  Keychain.standart.set(data, forKey: "verificationID")
+                  Keychain.standart.set(data, forKey: KeychainKeys.VerificationID.rawValue)
               }
               self?.reloadData(phoneNumber, error: error)
           }

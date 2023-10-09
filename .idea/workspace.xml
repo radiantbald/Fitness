@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Убрал файл из гитигнора">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- add packages" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Task_11_Firebase" />
+        <entry key="$PROJECT_DIR$" value="Task_11_Firebase_2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,6 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -88,6 +87,7 @@
       <workItem from="1694260855291" duration="94000" />
       <workItem from="1694265728302" duration="810000" />
       <workItem from="1694677293369" duration="18000" />
+      <workItem from="1694677370410" duration="322000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -278,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694260916770</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="- add packages">
+      <created>1694677430077</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1694677430077</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +302,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Task_11_Firebase_2" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -328,6 +335,7 @@
     <MESSAGE value="- Пляски со стэквью" />
     <MESSAGE value="- Подключение Firebase" />
     <MESSAGE value="- Убрал файл из гитигнора" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Убрал файл из гитигнора" />
+    <MESSAGE value="- add packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add packages" />
   </component>
 </project>
