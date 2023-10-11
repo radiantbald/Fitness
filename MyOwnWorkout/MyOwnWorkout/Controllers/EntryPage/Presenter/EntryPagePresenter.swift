@@ -12,9 +12,10 @@ protocol EntryPagePresenterDelegate: AnyObject {
 }
 
 final class EntryPagePresenter {
-    
     weak var delegate: EntryPagePresenterDelegate?
-    
+    init(delegate: EntryPagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

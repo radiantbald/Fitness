@@ -9,59 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Page View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="MainPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainPageViewController" customModule="MyOwnWorkout" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1kI-nI-P2q">
-                                <rect key="frame" x="30" y="59" width="75" height="75"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bX1-PH-0Db">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mjL-NR-sRH" userLabel="Main Page Avatar">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="UF2-Tf-NBp"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="qB7-OU-RiJ"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="mjL-NR-sRH" secondAttribute="trailing" id="Fzi-Ug-hG1"/>
-                                            <constraint firstAttribute="bottom" secondItem="mjL-NR-sRH" secondAttribute="bottom" id="aVZ-Bi-DLd"/>
-                                            <constraint firstItem="mjL-NR-sRH" firstAttribute="top" secondItem="bX1-PH-0Db" secondAttribute="top" id="e3u-7x-0Lk"/>
-                                            <constraint firstItem="mjL-NR-sRH" firstAttribute="leading" secondItem="bX1-PH-0Db" secondAttribute="leading" id="sGg-Tx-vfX"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="40O-H9-IN2"/>
-                                    <constraint firstAttribute="height" constant="75" id="OlB-QZ-ocA"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="1kI-nI-P2q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UQp-TW-TZl"/>
-                            <constraint firstItem="1kI-nI-P2q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="yGz-OV-DyQ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="jFe-jS-5vj"/>
-                    <connections>
-                        <outlet property="mainPageAvatar" destination="mjL-NR-sRH" id="CIQ-gc-ru7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1207" y="-1395"/>
-        </scene>
         <!--Schedule Page View Controller-->
         <scene sceneID="9XA-ef-Ajb">
             <objects>
@@ -309,21 +256,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fuc-t3-4Im" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1932" y="-1395"/>
-        </scene>
-        <!--Code Approve Page View Controller-->
-        <scene sceneID="uEJ-LQ-4yP">
-            <objects>
-                <viewController restorationIdentifier="SMSCodeApprovePageViewController" storyboardIdentifier="SMSCodeApprovePageViewController" id="a36-KB-Fdz" customClass="SMSCodeApprovePageViewController" customModule="MyOwnWorkout" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hYk-jP-adD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ci6-1c-dpw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FPh-CC-DNM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-274" y="-1395"/>
         </scene>
         <!--Entry Page View Controller-->
         <scene sceneID="99z-Vf-UD0">

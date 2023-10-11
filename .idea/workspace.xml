@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- add packages" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Рефакторинг на ликвидацию storyboard, pt 1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Task_11_Firebase_2" />
+        <entry key="$PROJECT_DIR$" value="Task_13_Refactoring" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -88,6 +88,7 @@
       <workItem from="1694265728302" duration="810000" />
       <workItem from="1694677293369" duration="18000" />
       <workItem from="1694677370410" duration="322000" />
+      <workItem from="1696869219611" duration="100000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -285,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694677430077</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="- Рефакторинг на ликвидацию storyboard, pt 1">
+      <created>1696869269483</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1696869269483</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +344,7 @@
     <MESSAGE value="- Подключение Firebase" />
     <MESSAGE value="- Убрал файл из гитигнора" />
     <MESSAGE value="- add packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add packages" />
+    <MESSAGE value="- Рефакторинг на ликвидацию storyboard, pt 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Рефакторинг на ликвидацию storyboard, pt 1" />
   </component>
 </project>

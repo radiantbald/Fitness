@@ -10,16 +10,22 @@ import UIKit
 class MainPageViewController: GeneralViewController {
     
     var presenter: MainPagePresenter!
-
-    @IBOutlet weak var mainPageAvatar: UIImageView!
-    @IBOutlet weak var mainPageHeader: UILabel!
+    
+    var mainPageAvatar: UIImageView = {
+        let mainPageAvatar = UIImageView()
+        mainPageAvatar.translatesAutoresizingMaskIntoConstraints = false
+        return mainPageAvatar
+    }()
+    var mainPageHeader: UILabel = {
+        let mainPageHeader = UILabel()
+        mainPageHeader.translatesAutoresizingMaskIntoConstraints = false
+        return mainPageHeader
+    }()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         setupNavigationBar()
-        navigationItem.title = "Главная"
-        navigationItem.backButtonTitle = "На главную"
+        mainPageDesign()
         setupAvatarBounds(avatar: mainPageAvatar)
         tapAvatarOnTheMainPage(avatar: mainPageAvatar)
         
@@ -42,6 +48,38 @@ class MainPageViewController: GeneralViewController {
     }
 }
 
+extension MainPageViewController {
+    
+    private func mainPageDesign() {
+        
+        navigationItem.title = "Главная"
+        navigationItem.backButtonTitle = "На главную"
+        
+        view.addSubview(mainPageAvatar)
+        view.addSubview(mainPageHeader)
+        
+        mainPageAvatar.frame.size.width = 75
+        mainPageAvatar.frame.size.height = mainPageAvatar.frame.size.width
+        
+        mainPageHeader.text = "Личный кабинет"
+        mainPageHeader.baselineAdjustment = .alignCenters
+        
+        let margins = view.layoutMarginsGuide
+        
+        NSLayoutConstraint.activate([
+            mainPageAvatar.heightAnchor.constraint(equalToConstant: mainPageAvatar.frame.size.width),
+            mainPageAvatar.widthAnchor.constraint(equalToConstant: mainPageAvatar.frame.size.height),
+            mainPageAvatar.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+            mainPageAvatar.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 10),
+            
+            mainPageHeader.heightAnchor.constraint(equalToConstant: mainPageAvatar.frame.size.height),
+            mainPageHeader.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+            mainPageHeader.leadingAnchor.constraint(equalTo: mainPageAvatar.trailingAnchor, constant: 10),
+            mainPageHeader.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10)
+        ])
+    }
+}
+
 //MARK: - Настройка кнопки-аватарки
 
 extension MainPageViewController {
@@ -50,25 +88,21 @@ extension MainPageViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarButton))
         tapGesture.delegate = self
-        avatar.superview?.addGestureRecognizer(tapGesture)
-        
+        avatar.isUserInteractionEnabled = true
+        avatar.addGestureRecognizer(tapGesture)
     }
     
     @objc func avatarButton() {
         
         if isAuth {
-            
             guard let viewController = PersonPageViewController.storyboardInit else { return }
             viewController.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(viewController, animated: true)
-            
         } else {
-            
             guard let viewController = EntryPageViewController.storyboardInit else { return }
             viewController.modalPresentationStyle = .overFullScreen
             viewController.delegate = self
             navigationController?.pushViewController(viewController, animated: true)
-            
         }
     }
 }
@@ -80,7 +114,7 @@ extension MainPageViewController: RegistrationPageViewControllerDelegate {
         
     }
     func toTheEntryPage() {
-        guard let viewController = EntryPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.entryPageViewController
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: false)
     }
@@ -110,7 +144,7 @@ extension MainPageViewController: MainPagePresenterDelegate {
     //MARK: - пересыл номера телефона с EntryPage на SMSCodeApprovePage
     
     func sendPhoneNumber(_ phoneNumber: String) {
-        guard let viewController = SMSCodeApprovePageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.smsCodeApprovePageViewController
         viewController.delegate = self
         viewController.sentPhoneNumber = phoneNumber
         navigationController?.pushViewController(viewController, animated: false)

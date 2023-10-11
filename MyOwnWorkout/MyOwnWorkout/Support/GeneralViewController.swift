@@ -28,7 +28,7 @@ class GeneralViewController: UIViewController {
                isAuth {
                 return image
             }
-            return UIImage(named: "AppIcon")
+            return UIImage(named: "CabinetLogo")
         }
         set {
             guard let imageData = newValue?.jpegData(compressionQuality: 1) else { return }

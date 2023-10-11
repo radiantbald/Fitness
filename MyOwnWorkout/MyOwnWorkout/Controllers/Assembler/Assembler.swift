@@ -20,10 +20,10 @@ class Controllers {
     }
     
     class var mainPageViewController: MainPageViewController {
-        let viewController = MainPageViewController.storyboardInit
+        let viewController = MainPageViewController()
         let presenter = MainPagePresenter(delegate: viewController)
-        viewController?.presenter = presenter
-        return viewController ?? MainPageViewController()
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var schedulePageViewController: SchedulePageViewController {
@@ -45,11 +45,17 @@ class Controllers {
     }
     
     class var entryPageViewController: EntryPageViewController {
-        return EntryPageViewController.storyboardInit ?? EntryPageViewController()
+        let viewController = EntryPageViewController()
+        let presenter = EntryPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var smsCodeApprovePageViewController: SMSCodeApprovePageViewController {
-        return SMSCodeApprovePageViewController.storyboardInit ?? SMSCodeApprovePageViewController()
+        let viewController = SMSCodeApprovePageViewController()
+        let presenter = SMSCodeApprovePagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController 
     }
     
     class var personPageViewController: PersonPageViewController {

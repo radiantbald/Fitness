@@ -14,9 +14,11 @@ protocol SMSCodeApprovePagePresenterDelegate: AnyObject {
 }
 
 final class SMSCodeApprovePagePresenter {
-    
     weak var delegate: SMSCodeApprovePagePresenterDelegate?
     
+    init(delegate: SMSCodeApprovePagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

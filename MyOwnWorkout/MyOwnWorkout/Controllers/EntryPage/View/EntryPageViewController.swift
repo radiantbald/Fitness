@@ -13,12 +13,12 @@ protocol EntryPageViewControllerDelegate: AnyObject {
 
 class EntryPageViewController: GeneralViewController {
     
-    private let presenter = EntryPagePresenter()
+    var presenter: EntryPagePresenter!
     
     let phoneNumberTextField: UITextField = {
-        let phoneNumberInput = UITextField()
-        phoneNumberInput.translatesAutoresizingMaskIntoConstraints = false
-        return phoneNumberInput
+        let phoneNumberTextField = UITextField()
+        phoneNumberTextField.translatesAutoresizingMaskIntoConstraints = false
+        return phoneNumberTextField
     }()
     
     let getSMSCodeButton: UIButton = {
@@ -31,7 +31,6 @@ class EntryPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         phoneNumberTextField.delegate = self
         entryPageDesign()
         setupGetSMSCodeButton()

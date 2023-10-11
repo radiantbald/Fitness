@@ -14,6 +14,7 @@ protocol MainPagePresenterDelegate: AnyObject {
 }
 
 final class MainPagePresenter {
+    
     weak var delegate: MainPagePresenterDelegate?
     
     init(delegate: MainPagePresenterDelegate?) {
