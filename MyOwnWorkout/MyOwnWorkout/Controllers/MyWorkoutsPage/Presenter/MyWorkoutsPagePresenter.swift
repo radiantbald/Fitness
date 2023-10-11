@@ -13,7 +13,9 @@ protocol MyWorkoutsPagePresenterDelegate: AnyObject {
 final class MyWorkoutsPagePresenter {
     
     weak var delegate: MyWorkoutsPagePresenterDelegate?
-    
+    init(delegate: MyWorkoutsPagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

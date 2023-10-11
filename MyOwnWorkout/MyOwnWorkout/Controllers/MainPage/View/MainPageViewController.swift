@@ -95,28 +95,15 @@ extension MainPageViewController {
     @objc func avatarButton() {
         
         if isAuth {
-            guard let viewController = PersonPageViewController.storyboardInit else { return }
+            let viewController = Assembler.controllers.personPageViewController
             viewController.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(viewController, animated: true)
         } else {
-            guard let viewController = EntryPageViewController.storyboardInit else { return }
+            let viewController = Assembler.controllers.entryPageViewController
             viewController.modalPresentationStyle = .overFullScreen
             viewController.delegate = self
             navigationController?.pushViewController(viewController, animated: true)
         }
-    }
-}
-
-//MARK: - RegistrationPageViewControllerDelegate
-
-extension MainPageViewController: RegistrationPageViewControllerDelegate {
-    func getRegistrationData(name: String, surname: String, phoneNumber: String, password: String, nickname: String) {
-        
-    }
-    func toTheEntryPage() {
-        let viewController = Assembler.controllers.entryPageViewController
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: false)
     }
 }
 
@@ -132,7 +119,7 @@ extension MainPageViewController: EntryPageViewControllerDelegate {
 
 extension MainPageViewController: SMSCodeApprovePageViewControllerDelegate {
     func authApprove() {
-        guard let viewController = PersonPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.personPageViewController
         navigationController?.pushViewController(viewController, animated: false)
     }
 }

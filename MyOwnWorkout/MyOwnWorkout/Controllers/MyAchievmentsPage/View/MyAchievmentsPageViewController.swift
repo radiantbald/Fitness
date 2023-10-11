@@ -9,13 +9,12 @@ import UIKit
 
 class MyAchievmentsPageViewController: GeneralViewController {
     
-    private let presenter = MyAchievmentsPagePresenter()
+    var presenter: MyAchievmentsPagePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         navigationItem.title = "Мои достижения"
-        
+        view.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {

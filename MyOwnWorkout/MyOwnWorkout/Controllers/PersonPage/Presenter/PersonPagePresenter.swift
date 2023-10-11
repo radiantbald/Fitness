@@ -22,8 +22,10 @@ protocol PersonPagePresenterDelegate: AnyObject {
 }
 
 final class PersonPagePresenter {
-
     weak var delegate: PersonPagePresenterDelegate?
+    init(delegate: PersonPagePresenterDelegate?) {
+        self.delegate = delegate
+    }
     
     private func setupAvatarAction() {
         delegateSetupAvatar()

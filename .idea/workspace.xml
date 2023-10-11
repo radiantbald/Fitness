@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Рефакторинг на ликвидацию storyboard, pt 1" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Рефакторинг на ликвидацию storyboard, pt 2&#10;- Убраны mainPage, smsApprovePage, EntryPage" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Task_13_Refactoring" />
+        <entry key="$PROJECT_DIR$" value="Task_13_Refactoring_2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,6 +89,7 @@
       <workItem from="1694677293369" duration="18000" />
       <workItem from="1694677370410" duration="322000" />
       <workItem from="1696869219611" duration="100000" />
+      <workItem from="1697017029755" duration="118000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -293,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696869269483</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="- Рефакторинг на ликвидацию storyboard, pt 2&#10;- Убраны mainPage, smsApprovePage, EntryPage">
+      <created>1697017092404</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1697017092406</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +353,7 @@
     <MESSAGE value="- Убрал файл из гитигнора" />
     <MESSAGE value="- add packages" />
     <MESSAGE value="- Рефакторинг на ликвидацию storyboard, pt 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Рефакторинг на ликвидацию storyboard, pt 1" />
+    <MESSAGE value="- Рефакторинг на ликвидацию storyboard, pt 2&#10;- Убраны mainPage, smsApprovePage, EntryPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Рефакторинг на ликвидацию storyboard, pt 2&#10;- Убраны mainPage, smsApprovePage, EntryPage" />
   </component>
 </project>

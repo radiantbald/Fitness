@@ -27,21 +27,17 @@ class Controllers {
     }
     
     class var schedulePageViewController: SchedulePageViewController {
-        let viewController = SchedulePageViewController.storyboardInit
+        let viewController = SchedulePageViewController()
         let presenter = SchedulePagePresenter(delegate: viewController)
-        viewController?.presenter = presenter
-        return viewController ?? SchedulePageViewController()
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var feedPageViewController: FeedPageViewController {
-        let viewController = FeedPageViewController.storyboardInit
+        let viewController = FeedPageViewController()
         let presenter = FeedPagePresenter(delegate: viewController)
-        viewController?.presenter = presenter
-        return FeedPageViewController.storyboardInit ?? FeedPageViewController()
-    }
-    
-    class var registrationPageViewController: RegistrationPageViewController {
-        return RegistrationPageViewController.storyboardInit ?? RegistrationPageViewController()
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var entryPageViewController: EntryPageViewController {
@@ -59,35 +55,59 @@ class Controllers {
     }
     
     class var personPageViewController: PersonPageViewController {
-        return PersonPageViewController.storyboardInit ?? PersonPageViewController()
+        let viewController = PersonPageViewController()
+        let presenter = PersonPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
     
-    class var trainigProgramsPageViewController: TrainigProgramsPageViewController {
-        return TrainigProgramsPageViewController.storyboardInit ?? TrainigProgramsPageViewController()
+    class var trainingProgramsPageViewController: TrainingProgramsPageViewController {
+        let viewController = TrainingProgramsPageViewController()
+        let presenter = TrainingProgramsPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var myWorkoutsPageViewController: MyWorkoutsPageViewController {
-        return MyWorkoutsPageViewController.storyboardInit ?? MyWorkoutsPageViewController()
+        let viewController = MyWorkoutsPageViewController()
+        let presenter = MyWorkoutsPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var myExercisesPageViewController: MyExercisesPageViewController {
-        return MyExercisesPageViewController.storyboardInit ?? MyExercisesPageViewController()
+        let viewController = MyExercisesPageViewController()
+        let presenter = MyExercisesPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var myAchievmentsPageViewController: MyAchievmentsPageViewController {
-        return MyAchievmentsPageViewController.storyboardInit ?? MyAchievmentsPageViewController()
+        let viewController = MyAchievmentsPageViewController()
+        let presenter = MyAchievmentsPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var personalAccountPageViewController: PersonalAccountPageViewController {
-        return PersonalAccountPageViewController.storyboardInit ?? PersonalAccountPageViewController()
+        let viewController = PersonalAccountPageViewController()
+        let presenter = PersonalAccountPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var aboutAppPageViewController: AboutAppPageViewController {
-        return AboutAppPageViewController.storyboardInit ?? AboutAppPageViewController()
+        let viewController = AboutAppPageViewController()
+        let presenter = AboutAppPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
     
     class var settingsPageViewController: SettingsPageViewController {
-        return SettingsPageViewController.storyboardInit ?? SettingsPageViewController()
+        let viewController = SettingsPageViewController()
+        let presenter = SettingsPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
     }
 }
 

@@ -9,13 +9,12 @@ import UIKit
 
 class SettingsPageViewController: GeneralViewController {
     
-    private let presenter = SettingsPagePresenter()
+    var presenter: SettingsPagePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         navigationItem.title = "Настройки"
-        
+        view.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {

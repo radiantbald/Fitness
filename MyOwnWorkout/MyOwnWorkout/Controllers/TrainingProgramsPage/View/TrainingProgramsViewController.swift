@@ -7,14 +7,14 @@
 
 import UIKit
 
-class TrainigProgramsPageViewController: GeneralViewController {
+class TrainingProgramsPageViewController: GeneralViewController {
     
-    private let presenter = TrainingProgramsPresenter()
+    var presenter: TrainingProgramsPagePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         navigationItem.title = "Программы тренировок"
+        view.backgroundColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,6 +24,6 @@ class TrainigProgramsPageViewController: GeneralViewController {
     }
 }
 
-extension TrainigProgramsPageViewController: TrainingProgramsPresenterDelegate {
+extension TrainingProgramsPageViewController: TrainingProgramsPagePresenterDelegate {
     
 }

@@ -9,13 +9,12 @@ import UIKit
 
 class PersonalAccountPageViewController: GeneralViewController {
     
-    private let presenter = PersonalAccountPagePresenter()
+    var presenter: PersonalAccountPagePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         navigationItem.title = "Лицевой счет"
-        
+        view.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {

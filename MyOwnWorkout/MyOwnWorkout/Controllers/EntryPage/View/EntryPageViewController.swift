@@ -74,6 +74,7 @@ extension EntryPageViewController {
     
     private func entryPageDesign() {
         navigationItem.title = "Вход"
+        view.backgroundColor = .white
         
         view.addSubview(phoneNumberTextField)
         view.addSubview(getSMSCodeButton)
