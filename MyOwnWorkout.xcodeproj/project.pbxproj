@@ -12,6 +12,8 @@
 		5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */; };
 		5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */; };
 		5CAF07B32ADA82A00009BED6 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CAF07B22ADA82A00009BED6 /* KeychainSwift */; };
+		5CAF07B52ADA8BB50009BED6 /* UIView-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF07B42ADA8BB50009BED6 /* UIView-Ext.swift */; };
+		5CAF07B72ADA921C0009BED6 /* UIStackView-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF07B62ADA921C0009BED6 /* UIStackView-Ext.swift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */; };
 		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
@@ -61,6 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5CAF07B42ADA8BB50009BED6 /* UIView-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Ext.swift"; sourceTree = "<group>"; };
+		5CAF07B62ADA921C0009BED6 /* UIStackView-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView-Ext.swift"; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
@@ -127,13 +131,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		57F67014B90C190501219E9C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		A201C87F2A2B590D006B1781 /* SchedulePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +589,8 @@
 				A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
 				A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */,
+				5CAF07B42ADA8BB50009BED6 /* UIView-Ext.swift */,
+				5CAF07B62ADA921C0009BED6 /* UIStackView-Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -612,7 +611,6 @@
 			children = (
 				A2C3FF802A18E71400231082 /* MyOwnWorkout */,
 				A2C3FF7F2A18E71400231082 /* Products */,
-				57F67014B90C190501219E9C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -781,6 +779,7 @@
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
 				A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */,
+				5CAF07B72ADA921C0009BED6 /* UIStackView-Ext.swift in Sources */,
 				A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */,
@@ -799,6 +798,7 @@
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,
 				A28B7FCA2A87DF9A00B20B5F /* PersonalAccountPageViewController.swift in Sources */,
 				A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */,
+				5CAF07B52ADA8BB50009BED6 /* UIView-Ext.swift in Sources */,
 				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,

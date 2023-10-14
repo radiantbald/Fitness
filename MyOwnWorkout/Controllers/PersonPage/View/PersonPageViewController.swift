@@ -7,33 +7,17 @@
 
 import UIKit
 
-class PersonPageViewController: GeneralViewController {
 
+
+final class PersonPageViewController: GeneralViewController {
     var presenter: PersonPagePresenter!
-    
-    private var menu = UIMenu()
-    
     private lazy var imagePicker = UIImagePickerController()
-    
-    var personPageAvatar: UIImageView = {
-        let personPageAvatar = UIImageView()
-        personPageAvatar.translatesAutoresizingMaskIntoConstraints = false
-        return personPageAvatar
-    }()
-    var personPageName: UILabel = {
-        let personPageName = UILabel()
-        personPageName.translatesAutoresizingMaskIntoConstraints = false
-        return personPageName
-    }()
-    var personPageNickname: UILabel = {
-        let personPageNickname = UILabel()
-        personPageNickname.translatesAutoresizingMaskIntoConstraints = false
-        return personPageNickname
-    }()
+    private let personPageAvatar: UIImageView = .init()
+    private let personPageName = UILabel()
+    private let personPageNickname = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupMenuAction()
         personPageDesign()
         setupAvatarAction()
@@ -46,6 +30,7 @@ class PersonPageViewController: GeneralViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        
     }
 }
 
@@ -114,25 +99,24 @@ extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigatio
 extension PersonPageViewController {
     
     func personPageDesign() {
-        view.backgroundColor = .white
         
         navigationItem.backButtonTitle = "Назад"
         navigationItem.title = "Мой кабинет"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
         
-        view.addSubview(personPageAvatar)
-        view.addSubview(personPageName)
-        view.addSubview(personPageNickname)
+        let labelStackView = UIStackView.init([personPageName, personPageNickname], .vertical, 0, .fill, .equalCentering)
+        
+        view.addSubviews(personPageAvatar, labelStackView)
         
         personPageAvatar.frame.size.width = 75
         personPageAvatar.frame.size.height = personPageAvatar.frame.size.width
         
         personPageName.text = "Имя пользователя"
         personPageName.baselineAdjustment = .alignCenters
+        personPageName.numberOfLines = 0
         
         personPageNickname.text = "Никнейм пользователя"
         
-        let margins = view.layoutMarginsGuide
+        let margins = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
             personPageAvatar.heightAnchor.constraint(equalToConstant: personPageAvatar.frame.size.width),
@@ -140,15 +124,15 @@ extension PersonPageViewController {
             personPageAvatar.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
             personPageAvatar.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 10),
             
-            personPageName.heightAnchor.constraint(equalToConstant: 30),
-            personPageName.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-            personPageName.leadingAnchor.constraint(equalTo: personPageAvatar.trailingAnchor, constant: 10),
-            personPageName.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10),
+            labelStackView.topAnchor.constraint(greaterThanOrEqualTo: margins.topAnchor, constant: 10),
+            labelStackView.leadingAnchor.constraint(equalTo: personPageAvatar.trailingAnchor, constant: 10),
+            labelStackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10),
+            labelStackView.bottomAnchor.constraint(lessThanOrEqualTo: personPageAvatar.bottomAnchor),
+            labelStackView.centerYAnchor.constraint(equalTo: personPageAvatar.centerYAnchor),
             
-            personPageNickname.heightAnchor.constraint(equalToConstant: 30),
-            personPageNickname.topAnchor.constraint(equalTo: personPageName.bottomAnchor, constant: 10),
-            personPageNickname.leadingAnchor.constraint(equalTo: personPageAvatar.trailingAnchor, constant: 10),
-            personPageNickname.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10)
+            personPageName.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            personPageNickname.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            
         ])
     }
 }
@@ -224,7 +208,9 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
         
         let exit = UIAction(title: "Выход", image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), attributes: .destructive, handler: { _ in self.exitAction()})
         
-        menu = UIMenu(title: "Меню", children: [trainingPrograms, myWorkouts, myExercises, myAchievments, personalAccount, settings, aboutApp, exit])
+        let menu = UIMenu(title: "Меню", children: [trainingPrograms, myWorkouts, myExercises, myAchievments, personalAccount, settings, aboutApp, exit])
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
     }
     
     func openTrainingProgramsPage() {

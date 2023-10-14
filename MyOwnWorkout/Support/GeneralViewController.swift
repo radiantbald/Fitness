@@ -36,6 +36,11 @@ class GeneralViewController: UIViewController {
             print("Картинка ", result ? "Сохранилась" : "Не сохранилась")
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
 }
 
 //MARK: - Расширения
