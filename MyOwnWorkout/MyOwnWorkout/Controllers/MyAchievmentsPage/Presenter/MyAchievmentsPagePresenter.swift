@@ -14,7 +14,9 @@ protocol MyAchievmentsPagePresenterDelegate: AnyObject {
 final class MyAchievmentsPagePresenter {
     
     weak var delegate: MyAchievmentsPagePresenterDelegate?
-    
+    init(delegate: MyAchievmentsPagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

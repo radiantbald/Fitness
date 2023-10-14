@@ -9,11 +9,10 @@ import UIKit
 
 class SchedulePageViewController: GeneralViewController {
     
-    private let presenter = SchedulePagePresenter()
+    var presenter: SchedulePagePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         setupNavigationBar()
         navigationItem.title = "Расписание"
 

@@ -9,27 +9,34 @@ import UIKit
 
 class PersonPageViewController: GeneralViewController {
 
-    private let presenter = PersonPagePresenter()
+    var presenter: PersonPagePresenter!
     
     private var menu = UIMenu()
     
     private lazy var imagePicker = UIImagePickerController()
     
-    @IBOutlet weak var personPageAvatar: UIImageView!
-    @IBOutlet weak var personPageName: UILabel!
+    var personPageAvatar: UIImageView = {
+        let personPageAvatar = UIImageView()
+        personPageAvatar.translatesAutoresizingMaskIntoConstraints = false
+        return personPageAvatar
+    }()
+    var personPageName: UILabel = {
+        let personPageName = UILabel()
+        personPageName.translatesAutoresizingMaskIntoConstraints = false
+        return personPageName
+    }()
+    var personPageNickname: UILabel = {
+        let personPageNickname = UILabel()
+        personPageNickname.translatesAutoresizingMaskIntoConstraints = false
+        return personPageNickname
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
-
-        setupAvatarAction()
-        setupMenuAction()
-        navigationItem.backButtonTitle = "Назад"
-        navigationItem.title = "Мой кабинет"
-       
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
         
-        print("Вы перешли в Личный кабинет")
+        setupMenuAction()
+        personPageDesign()
+        setupAvatarAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +111,47 @@ extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigatio
     }
 }
 
+extension PersonPageViewController {
+    
+    func personPageDesign() {
+        view.backgroundColor = .white
+        
+        navigationItem.backButtonTitle = "Назад"
+        navigationItem.title = "Мой кабинет"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
+        
+        view.addSubview(personPageAvatar)
+        view.addSubview(personPageName)
+        view.addSubview(personPageNickname)
+        
+        personPageAvatar.frame.size.width = 75
+        personPageAvatar.frame.size.height = personPageAvatar.frame.size.width
+        
+        personPageName.text = "Имя пользователя"
+        personPageName.baselineAdjustment = .alignCenters
+        
+        personPageNickname.text = "Никнейм пользователя"
+        
+        let margins = view.layoutMarginsGuide
+        
+        NSLayoutConstraint.activate([
+            personPageAvatar.heightAnchor.constraint(equalToConstant: personPageAvatar.frame.size.width),
+            personPageAvatar.widthAnchor.constraint(equalToConstant: personPageAvatar.frame.size.height),
+            personPageAvatar.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+            personPageAvatar.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 10),
+            
+            personPageName.heightAnchor.constraint(equalToConstant: 30),
+            personPageName.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+            personPageName.leadingAnchor.constraint(equalTo: personPageAvatar.trailingAnchor, constant: 10),
+            personPageName.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10),
+            
+            personPageNickname.heightAnchor.constraint(equalToConstant: 30),
+            personPageNickname.topAnchor.constraint(equalTo: personPageName.bottomAnchor, constant: 10),
+            personPageNickname.leadingAnchor.constraint(equalTo: personPageAvatar.trailingAnchor, constant: 10),
+            personPageNickname.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10)
+        ])
+    }
+}
 //MARK: - Делегаты презентера
 
 extension PersonPageViewController: PersonPagePresenterDelegate {
@@ -116,8 +164,8 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
         imagePicker.delegate = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapAction))
         tapGesture.delegate = self
-        personPageAvatar.superview?.addGestureRecognizer(tapGesture)
-        
+        personPageAvatar.isUserInteractionEnabled = true
+        personPageAvatar.addGestureRecognizer(tapGesture)        
     }
     
     func avatarTap() {
@@ -180,37 +228,37 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
     }
     
     func openTrainingProgramsPage() {
-        guard let viewController = TrainigProgramsPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.trainingProgramsPageViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     func openMyWorkoutsPage() {
-        guard let viewController = MyWorkoutsPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.myWorkoutsPageViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     func openMyExercisesPage() {
-        guard let viewController = MyExercisesPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.myExercisesPageViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     func openMyAchievmentsPage() {
-        guard let viewController = MyAchievmentsPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.myAchievmentsPageViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     func openPersonalAccountPage() {
-        guard let viewController = PersonalAccountPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.personalAccountPageViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     func openSettingsPage() {
-        guard let viewController = SettingsPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.settingsPageViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     func openAboutAppPage() {
-        guard let viewController = AboutAppPageViewController.storyboardInit else { return }
+        let viewController = Assembler.controllers.aboutAppPageViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     

@@ -14,7 +14,9 @@ protocol AboutAppPagePresenterDelegate: AnyObject {
 final class AboutAppPagePresenter {
     
     weak var delegate: AboutAppPagePresenterDelegate?
-    
+    init(delegate: AboutAppPagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

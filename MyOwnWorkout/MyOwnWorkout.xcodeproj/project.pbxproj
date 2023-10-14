@@ -15,12 +15,16 @@
 		A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */; };
 		A22911BF2A9B7B1000C978F4 /* Pods_MyOwnWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E964DBBA9B317BD7ED8F9 /* Pods_MyOwnWorkout.framework */; };
 		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
+		A26635B12AB2F37300040DCF /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B02AB2F37300040DCF /* NotificationSettings.swift */; };
+		A26635B32AB2FCE000040DCF /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B22AB2FCE000040DCF /* Keys.swift */; };
+		A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B52AB2FDE800040DCF /* Assembler.swift */; };
+		A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B72AB30B6B00040DCF /* TabBarController.swift */; };
+		A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */; };
 		A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */; };
 		A26E8F402A7667430054D495 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3F2A7667430054D495 /* AuthModel.swift */; };
 		A26E8F422A766ABB0054D495 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F412A766ABB0054D495 /* Keychain.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
-		A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */; };
 		A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */; };
 		A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */; };
 		A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */; };
@@ -34,12 +38,11 @@
 		A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FE22A88B27800B20B5F /* MyWorkoutsPageViewController.swift */; };
 		A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FE42A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift */; };
 		A28B7FEB2A88B76400B20B5F /* TrainingProgramsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FEA2A88B76400B20B5F /* TrainingProgramsViewController.swift */; };
-		A28B7FED2A88B7BE00B20B5F /* TrainingProgramsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FEC2A88B7BE00B20B5F /* TrainingProgramsPresenter.swift */; };
+		A28B7FED2A88B7BE00B20B5F /* TrainingProgramsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FEC2A88B7BE00B20B5F /* TrainingProgramsPagePresenter.swift */; };
 		A28B7FF32A8A4CDE00B20B5F /* VerificationIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FF22A8A4CDE00B20B5F /* VerificationIDModel.swift */; };
 		A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */; };
 		A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */; };
 		A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */; };
-		A2954F8E2A7E9127003947CF /* RegistrationPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F8D2A7E9127003947CF /* RegistrationPagePresenter.swift */; };
 		A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F8F2A7E994B003947CF /* EntryPagePresenter.swift */; };
 		A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F912A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift */; };
 		A2954F942A7E9A36003947CF /* PersonPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F932A7E9A36003947CF /* PersonPagePresenter.swift */; };
@@ -62,12 +65,16 @@
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
+		A26635B02AB2F37300040DCF /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		A26635B22AB2FCE000040DCF /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		A26635B52AB2FDE800040DCF /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		A26635B72AB30B6B00040DCF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuModel.swift; sourceTree = "<group>"; };
 		A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3F2A7667430054D495 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		A26E8F412A766ABB0054D495 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
-		A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageViewController.swift; sourceTree = "<group>"; };
 		A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
 		A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPagePresenter.swift; sourceTree = "<group>"; };
 		A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppPageViewController.swift; sourceTree = "<group>"; };
@@ -81,12 +88,11 @@
 		A28B7FE22A88B27800B20B5F /* MyWorkoutsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWorkoutsPageViewController.swift; sourceTree = "<group>"; };
 		A28B7FE42A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWorkoutsPagePresenter.swift; sourceTree = "<group>"; };
 		A28B7FEA2A88B76400B20B5F /* TrainingProgramsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsViewController.swift; sourceTree = "<group>"; };
-		A28B7FEC2A88B7BE00B20B5F /* TrainingProgramsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsPresenter.swift; sourceTree = "<group>"; };
+		A28B7FEC2A88B7BE00B20B5F /* TrainingProgramsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramsPagePresenter.swift; sourceTree = "<group>"; };
 		A28B7FF22A8A4CDE00B20B5F /* VerificationIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationIDModel.swift; sourceTree = "<group>"; };
 		A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePagePresenter.swift; sourceTree = "<group>"; };
 		A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPagePresenter.swift; sourceTree = "<group>"; };
-		A2954F8D2A7E9127003947CF /* RegistrationPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F8F2A7E994B003947CF /* EntryPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F912A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePagePresenter.swift; sourceTree = "<group>"; };
 		A2954F932A7E9A36003947CF /* PersonPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPagePresenter.swift; sourceTree = "<group>"; };
@@ -240,29 +246,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A25F8A372A7B943700C45AFB /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				A2954F8D2A7E9127003947CF /* RegistrationPagePresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		A25F8A382A7B943D00C45AFB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A275C9B32A2B70FE00B18420 /* RegistrationPageViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A25F8A392A7B944300C45AFB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		A25F8A3A2A7B944B00C45AFB /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +315,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A26635B42AB2FDD800040DCF /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				A26635B52AB2FDE800040DCF /* Assembler.swift */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
 		A26E8F3E2A7666F50054D495 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,16 +349,6 @@
 				A25F8A402A7B947000C45AFB /* Presenter */,
 			);
 			path = PersonPage;
-			sourceTree = "<group>";
-		};
-		A275C9B02A2B70C800B18420 /* RegistrationPage */ = {
-			isa = PBXGroup;
-			children = (
-				A25F8A392A7B944300C45AFB /* Model */,
-				A25F8A382A7B943D00C45AFB /* View */,
-				A25F8A372A7B943700C45AFB /* Presenter */,
-			);
-			path = RegistrationPage;
 			sourceTree = "<group>";
 		};
 		A28B7FB42A83C55B00B20B5F /* Buttons */ = {
@@ -589,7 +570,7 @@
 		A28B7FE72A88B71B00B20B5F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				A28B7FEC2A88B7BE00B20B5F /* TrainingProgramsPresenter.swift */,
+				A28B7FEC2A88B7BE00B20B5F /* TrainingProgramsPagePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -631,8 +612,10 @@
 		A2ACA9452A3F26C30028F9FD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A26635B22AB2FCE000040DCF /* Keys.swift */,
 				A26E8F3F2A7667430054D495 /* AuthModel.swift */,
 				A28B7FF22A8A4CDE00B20B5F /* VerificationIDModel.swift */,
+				A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -673,7 +656,9 @@
 			isa = PBXGroup;
 			children = (
 				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
+				A26635B02AB2F37300040DCF /* NotificationSettings.swift */,
 				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
+				A26635B72AB30B6B00040DCF /* TabBarController.swift */,
 				A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */,
 				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
 				A2C3FF8F2A18E71500231082 /* Info.plist */,
@@ -694,10 +679,10 @@
 		A2D2E4512A6DB2AE002E5467 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A26635B42AB2FDD800040DCF /* Assembler */,
 				A2D601B62A1E29B4001E7EE3 /* MainPage */,
 				A201C87F2A2B590D006B1781 /* SchedulePage */,
 				A275C9AA2A2B5C6900B18420 /* FeedPage */,
-				A275C9B02A2B70C800B18420 /* RegistrationPage */,
 				A25F8A2C2A7B925D00C45AFB /* EntryPage */,
 				A25F8A2D2A7B927200C45AFB /* SMSCodeApprovePage */,
 				A275C9AF2A2B70BA00B18420 /* PersonPage */,
@@ -853,29 +838,31 @@
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
 				A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */,
 				A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */,
-				A2954F8E2A7E9127003947CF /* RegistrationPagePresenter.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */,
-				A28B7FED2A88B7BE00B20B5F /* TrainingProgramsPresenter.swift in Sources */,
+				A28B7FED2A88B7BE00B20B5F /* TrainingProgramsPagePresenter.swift in Sources */,
 				A29C7D8F2A6548C20065B255 /* DataBase.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2954F942A7E9A36003947CF /* PersonPagePresenter.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
+				A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */,
 				A26E8F422A766ABB0054D495 /* Keychain.swift in Sources */,
-				A275C9B42A2B70FE00B18420 /* RegistrationPageViewController.swift in Sources */,
 				A28B7FDB2A88ABA800B20B5F /* MyExersisesPageViewController.swift in Sources */,
 				A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */,
 				A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */,
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,
 				A28B7FCA2A87DF9A00B20B5F /* PersonalAccountPageViewController.swift in Sources */,
 				A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */,
+				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
+				A26635B32AB2FCE000040DCF /* Keys.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
+				A26635B12AB2F37300040DCF /* NotificationSettings.swift in Sources */,
 				A26E8F402A7667430054D495 /* AuthModel.swift in Sources */,
 				A28B7FEB2A88B76400B20B5F /* TrainingProgramsViewController.swift in Sources */,
 				A28B7FD52A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift in Sources */,
@@ -885,6 +872,7 @@
 				A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
+				A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */,
 				A28B7FF32A8A4CDE00B20B5F /* VerificationIDModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

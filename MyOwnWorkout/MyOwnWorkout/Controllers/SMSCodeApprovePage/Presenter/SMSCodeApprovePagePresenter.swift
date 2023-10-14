@@ -14,9 +14,11 @@ protocol SMSCodeApprovePagePresenterDelegate: AnyObject {
 }
 
 final class SMSCodeApprovePagePresenter {
-    
     weak var delegate: SMSCodeApprovePagePresenterDelegate?
     
+    init(delegate: SMSCodeApprovePagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input
@@ -25,10 +27,8 @@ extension SMSCodeApprovePagePresenter {
     
     func codeFromSMSRecieveAction(codeFromSMS: String) {
         
-        guard let data = Keychain.standart.getData("verificationID") else { return }
-        guard let value = try?JSONDecoder().decode(VerificationIDModel.self, from: data) else { return }
-        
-        let verificationID = value
+        guard let data = Keychain.standart.getData(KeychainKeys.VerificationID.rawValue) else { return }
+        guard let verificationID = try? JSONDecoder().decode(VerificationIDModel.self, from: data) else { return }
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID.verificationID, verificationCode: codeFromSMS)
         

@@ -9,13 +9,12 @@ import UIKit
 
 class AboutAppPageViewController: GeneralViewController {
     
-    private let presenter = AboutAppPagePresenter()
+    var presenter: AboutAppPagePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         navigationItem.title = "О приложении"
-        
+        view.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {

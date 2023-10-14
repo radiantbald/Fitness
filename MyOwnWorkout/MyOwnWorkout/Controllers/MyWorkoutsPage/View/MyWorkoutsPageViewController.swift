@@ -9,12 +9,12 @@ import UIKit
 
 class MyWorkoutsPageViewController: GeneralViewController {
     
-    private let presenter = MyWorkoutsPagePresenter()
+    var presenter: MyWorkoutsPagePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         navigationItem.title = "Мои тренировки"
+        view.backgroundColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

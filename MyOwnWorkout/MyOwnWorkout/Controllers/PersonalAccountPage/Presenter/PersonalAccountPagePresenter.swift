@@ -14,7 +14,9 @@ protocol PersonalAccountPagePresenterDelegate: AnyObject {
 final class PersonalAccountPagePresenter {
     
     weak var delegate: PersonalAccountPagePresenterDelegate?
-    
+    init(delegate: PersonalAccountPagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

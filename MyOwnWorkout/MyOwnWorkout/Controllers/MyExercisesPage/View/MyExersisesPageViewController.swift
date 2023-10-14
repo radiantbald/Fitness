@@ -9,12 +9,12 @@ import UIKit
 
 class MyExercisesPageViewController: GeneralViewController {
     
-    private let presenter = MyExercisesPagePresenter()
+    var presenter: MyExercisesPagePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         navigationItem.title = "Мои упражнения"
+        view.backgroundColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

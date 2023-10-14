@@ -14,7 +14,9 @@ protocol SettingsPagePresenterDelegate: AnyObject {
 final class SettingsPagePresenter {
     
     weak var delegate: SettingsPagePresenterDelegate?
-    
+    init(delegate: SettingsPagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

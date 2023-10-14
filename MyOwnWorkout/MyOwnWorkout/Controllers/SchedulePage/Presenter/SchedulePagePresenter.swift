@@ -13,6 +13,10 @@ protocol SchedulePagePresenterDelegate: AnyObject {
 
 final class SchedulePagePresenter {
     weak var delegate: SchedulePagePresenterDelegate?
+    
+    init(delegate: SchedulePagePresenterDelegate?) {
+        self.delegate = delegate
+    }
 }
 
 //MARK: - Input

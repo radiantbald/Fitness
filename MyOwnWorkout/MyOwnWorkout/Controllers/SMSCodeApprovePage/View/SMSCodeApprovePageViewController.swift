@@ -13,7 +13,7 @@ protocol SMSCodeApprovePageViewControllerDelegate: AnyObject {
 
 class SMSCodeApprovePageViewController: GeneralViewController {
     
-    private let presenter = SMSCodeApprovePagePresenter()
+    var presenter: SMSCodeApprovePagePresenter!
     
     weak var delegate: SMSCodeApprovePageViewControllerDelegate?
     
@@ -31,11 +31,8 @@ class SMSCodeApprovePageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         codeFromSMSTextField.delegate = self
-        
         SMSCodeApprovePageDesign()
-        
         hideKeyboardOnTap()
     }
     
@@ -204,27 +201,27 @@ extension SMSCodeApprovePageViewController: SMSCodeApprovePagePresenterDelegate 
 
 //MARK: - Предпросмотр UI
 
-import SwiftUI
-struct SMSCodeApprovePageViewController_Provider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        func makeUIViewController(context: Context) -> UIViewController {
-            return SMSCodeApprovePageViewController()
-        }
-        
-        typealias UIViewControllerType = UIViewController
-        
-        let viewController = SMSCodeApprovePageViewController()
-        func makeUIViewController(context: UIViewControllerRepresentableContext<SMSCodeApprovePageViewController_Provider.ContainerView>) -> SMSCodeApprovePageViewController {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: SMSCodeApprovePageViewController_Provider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SMSCodeApprovePageViewController_Provider.ContainerView>) {
-            
-        }
-    }
-}
+//import SwiftUI
+//struct SMSCodeApprovePageViewController_Provider: PreviewProvider {
+//    static var previews: some View {
+//        ContainerView().edgesIgnoringSafeArea(.all)
+//    }
+//
+//    struct ContainerView: UIViewControllerRepresentable {
+//
+//        func makeUIViewController(context: Context) -> UIViewController {
+//            return SMSCodeApprovePageViewController()
+//        }
+//
+//        typealias UIViewControllerType = UIViewController
+//
+//        let viewController = SMSCodeApprovePageViewController()
+//        func makeUIViewController(context: UIViewControllerRepresentableContext<SMSCodeApprovePageViewController_Provider.ContainerView>) -> SMSCodeApprovePageViewController {
+//            return viewController
+//        }
+//
+//        func updateUIViewController(_ uiViewController: SMSCodeApprovePageViewController_Provider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SMSCodeApprovePageViewController_Provider.ContainerView>) {
+//
+//        }
+//    }
+//}
