@@ -11,9 +11,9 @@
 		5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDC2AACA9C800E47A9F /* FirebaseAuth */; };
 		5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */; };
 		5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */; };
+		5CAF07B32ADA82A00009BED6 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CAF07B22ADA82A00009BED6 /* KeychainSwift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */; };
-		A22911BF2A9B7B1000C978F4 /* Pods_MyOwnWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E964DBBA9B317BD7ED8F9 /* Pods_MyOwnWorkout.framework */; };
 		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
 		A26635B12AB2F37300040DCF /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B02AB2F37300040DCF /* NotificationSettings.swift */; };
 		A26635B32AB2FCE000040DCF /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B22AB2FCE000040DCF /* Keys.swift */; };
@@ -61,7 +61,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4715393BC1F23DBFC3610A29 /* Pods-MyOwnWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwnWorkout.debug.xcconfig"; path = "Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout.debug.xcconfig"; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
@@ -110,8 +109,6 @@
 		A2C3FF8F2A18E71500231082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
-		D02E964DBBA9B317BD7ED8F9 /* Pods_MyOwnWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyOwnWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DADEABA13E3CA734CCE146E4 /* Pods-MyOwnWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwnWorkout.release.xcconfig"; path = "Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,28 +118,18 @@
 			files = (
 				5CA23CDB2AACA9C800E47A9F /* FirebaseAnalytics in Frameworks */,
 				5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */,
+				5CAF07B32ADA82A00009BED6 /* KeychainSwift in Frameworks */,
 				5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */,
 				5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */,
-				A22911BF2A9B7B1000C978F4 /* Pods_MyOwnWorkout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		411D87DF5451910C0EBF94B8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D02E964DBBA9B317BD7ED8F9 /* Pods_MyOwnWorkout.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		57F67014B90C190501219E9C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4715393BC1F23DBFC3610A29 /* Pods-MyOwnWorkout.debug.xcconfig */,
-				DADEABA13E3CA734CCE146E4 /* Pods-MyOwnWorkout.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -626,7 +613,6 @@
 				A2C3FF802A18E71400231082 /* MyOwnWorkout */,
 				A2C3FF7F2A18E71400231082 /* Products */,
 				57F67014B90C190501219E9C /* Pods */,
-				411D87DF5451910C0EBF94B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -714,11 +700,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A2C3FF922A18E71500231082 /* Build configuration list for PBXNativeTarget "MyOwnWorkout" */;
 			buildPhases = (
-				F619EAC0F35E98C42ED162B2 /* [CP] Check Pods Manifest.lock */,
 				A2C3FF7A2A18E71400231082 /* Sources */,
 				A2C3FF7B2A18E71400231082 /* Frameworks */,
 				A2C3FF7C2A18E71400231082 /* Resources */,
-				1110B454CB3EE8DC2FB7E0B7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -730,6 +714,7 @@
 				5CA23CDC2AACA9C800E47A9F /* FirebaseAuth */,
 				5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */,
 				5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */,
+				5CAF07B22ADA82A00009BED6 /* KeychainSwift */,
 			);
 			productName = MyOwnWorkout;
 			productReference = A2C3FF7E2A18E71400231082 /* MyOwnWorkout.app */;
@@ -761,6 +746,7 @@
 			mainGroup = A2C3FF752A18E71400231082;
 			packageReferences = (
 				5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5CAF07B12ADA82A00009BED6 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = A2C3FF7F2A18E71400231082 /* Products */;
 			projectDirPath = "";
@@ -784,48 +770,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1110B454CB3EE8DC2FB7E0B7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyOwnWorkout/Pods-MyOwnWorkout-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F619EAC0F35E98C42ED162B2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyOwnWorkout-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A2C3FF7A2A18E71400231082 /* Sources */ = {
@@ -1015,7 +959,6 @@
 		};
 		A2C3FF932A18E71500231082 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4715393BC1F23DBFC3610A29 /* Pods-MyOwnWorkout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1050,7 +993,6 @@
 		};
 		A2C3FF942A18E71500231082 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DADEABA13E3CA734CCE146E4 /* Pods-MyOwnWorkout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1115,6 +1057,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		5CAF07B12ADA82A00009BED6 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1137,6 +1087,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		5CAF07B22ADA82A00009BED6 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CAF07B12ADA82A00009BED6 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
