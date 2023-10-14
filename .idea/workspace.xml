@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Рефакторинг на ликвидацию storyboard, pt 2&#10;- Убраны mainPage, smsApprovePage, EntryPage" />
+    <list default="true" id="60596a7a-3410-4993-8a37-93d74896deb2" name="Changes" comment="- Рефакторинг на ликвидацию storyboard, pt 3&#10;- Убраны все контроллеры со сториборда" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,6 +90,7 @@
       <workItem from="1694677370410" duration="322000" />
       <workItem from="1696869219611" duration="100000" />
       <workItem from="1697017029755" duration="118000" />
+      <workItem from="1697037729614" duration="75000" />
     </task>
     <task id="LOCAL-00001" summary="-таб бар">
       <created>1685288201441</created>
@@ -301,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697017092406</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="- Рефакторинг на ликвидацию storyboard, pt 3&#10;- Убраны все контроллеры со сториборда">
+      <created>1697037780329</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1697037780330</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,6 +362,7 @@
     <MESSAGE value="- add packages" />
     <MESSAGE value="- Рефакторинг на ликвидацию storyboard, pt 1" />
     <MESSAGE value="- Рефакторинг на ликвидацию storyboard, pt 2&#10;- Убраны mainPage, smsApprovePage, EntryPage" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Рефакторинг на ликвидацию storyboard, pt 2&#10;- Убраны mainPage, smsApprovePage, EntryPage" />
+    <MESSAGE value="- Рефакторинг на ликвидацию storyboard, pt 3&#10;- Убраны все контроллеры со сториборда" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Рефакторинг на ликвидацию storyboard, pt 3&#10;- Убраны все контроллеры со сториборда" />
   </component>
 </project>
