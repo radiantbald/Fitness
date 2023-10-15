@@ -11,22 +11,13 @@ class MyExercisesPageViewController: GeneralViewController {
     
     var presenter: MyExercisesPagePresenter!
     
-    private var exercisesList: [UIView] = []
+    private let myExercisesTableView = MyExercisesTableView()
     
-    private let exercisesTableView: UITableView = {
-        let exercisesTableView = UITableView()
-        exercisesTableView.backgroundColor = .systemBackground
-        exercisesTableView.allowsSelection = true
-        exercisesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        return exercisesTableView
-    }()
+    private var exercises: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         MyExercisesPageDesign()
-        
-        exercisesTableView.delegate = self
-        exercisesTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,33 +28,31 @@ class MyExercisesPageViewController: GeneralViewController {
 }
 
 extension MyExercisesPageViewController {
+    
     func MyExercisesPageDesign() {
-        navigationItem.title = "Мои упражнения"
+        title = "Мои упражнения"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddExerciseButton))
         
-        view.addSubviews(exercisesTableView)
+        view.addSubviews(myExercisesTableView)
         
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            exercisesTableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            exercisesTableView.topAnchor.constraint(equalTo: margins.topAnchor),
-            exercisesTableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            exercisesTableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+            myExercisesTableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            myExercisesTableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+            myExercisesTableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            myExercisesTableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
     }
-}
-
-extension MyExercisesPageViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exercisesList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        cell.textLabel?.text = indexPath.row.description
-        
-        return cell
+    @objc func setupAddExerciseButton() {
+        AddExerciseAlert.showAddExerciseAlert(viewController: self,
+                                              title: "Новое упражнение") { [weak self] exercise in
+            guard let self else { return }
+            
+            self.exercises.append(exercise)
+            self.myExercisesTableView.addExercise(exercises)
+            self.myExercisesTableView.reloadData()
+        }
     }
 }
 
