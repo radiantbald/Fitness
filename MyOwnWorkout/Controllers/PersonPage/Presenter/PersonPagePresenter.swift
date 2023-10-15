@@ -8,9 +8,6 @@
 import Foundation
 
 protocol PersonPagePresenterDelegate: AnyObject {
-    func setupAvatar()
-    func avatarTap()
-    func setupMenu()
     func openTrainingProgramsPage()
     func openMyWorkoutsPage()
     func openMyExercisesPage()
@@ -25,16 +22,6 @@ final class PersonPagePresenter {
     weak var delegate: PersonPagePresenterDelegate?
     init(delegate: PersonPagePresenterDelegate?) {
         self.delegate = delegate
-    }
-    
-    private func setupAvatarAction() {
-        delegateSetupAvatar()
-    }
-    private func avatarTapAction() {
-        delegateAvatarTap()
-    }
-    private func setupMenuAction() {
-        delegateSetupMenu()
     }
     private func openTrainingProgramsPageAction() {
         print("Вы переходите на страницу Тренировочных программ")
@@ -74,16 +61,6 @@ final class PersonPagePresenter {
 //MARK: - Input
 
 extension PersonPagePresenter {
-
-    func setupAvatar() {
-        setupAvatarAction()
-    }
-    func avatarTap() {
-        avatarTapAction()
-    }
-    func setupMenu() {
-        setupMenuAction()
-    }
     func openTrainingProgramsPage() {
         openTrainingProgramsPageAction()
     }
@@ -115,15 +92,6 @@ extension PersonPagePresenter {
 
 extension PersonPagePresenter {
 
-    private func delegateSetupAvatar() {
-        delegate?.setupAvatar()
-    }
-    private func delegateAvatarTap() {
-        delegate?.avatarTap()
-    }
-    private func delegateSetupMenu() {
-        delegate?.setupMenu()
-    }
     private func delegateOpenTrainingProgramsPage() {
         delegate?.openTrainingProgramsPage()
     }

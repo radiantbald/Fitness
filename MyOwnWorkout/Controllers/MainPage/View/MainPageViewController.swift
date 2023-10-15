@@ -11,28 +11,17 @@ class MainPageViewController: GeneralViewController {
     
     var presenter: MainPagePresenter!
     
-    var mainPageAvatar: UIImageView = {
-        let mainPageAvatar = UIImageView()
-        mainPageAvatar.translatesAutoresizingMaskIntoConstraints = false
-        return mainPageAvatar
-    }()
-    var mainPageHeader: UILabel = {
-        let mainPageHeader = UILabel()
-        mainPageHeader.translatesAutoresizingMaskIntoConstraints = false
-        return mainPageHeader
-    }()
+    let mainPageAvatar = UIImageView(75, 75)
+    let mainPageHeader =  UILabel("Личный кабинет", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         mainPageDesign()
-        setupAvatarBounds(avatar: mainPageAvatar)
-        tapAvatarOnTheMainPage(avatar: mainPageAvatar)
-        
+        mainPageActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         mainPageAvatar.image = avatarImage
@@ -40,7 +29,6 @@ class MainPageViewController: GeneralViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
         mainPageAvatar.image = avatarImage
@@ -55,28 +43,28 @@ extension MainPageViewController {
         navigationItem.title = "Главная"
         navigationItem.backButtonTitle = "На главную"
         
-        view.addSubview(mainPageAvatar)
-        view.addSubview(mainPageHeader)
-        
-        mainPageAvatar.frame.size.width = 75
-        mainPageAvatar.frame.size.height = mainPageAvatar.frame.size.width
-        
-        mainPageHeader.text = "Личный кабинет"
-        mainPageHeader.baselineAdjustment = .alignCenters
-        
-        let margins = view.layoutMarginsGuide
+        let allHeaderItemsHStackView = UIStackView.init([mainPageAvatar, mainPageHeader], .horizontal, 0, .center, .equalCentering)
+        view.addSubviews(allHeaderItemsHStackView)
+
+        let margins = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            mainPageAvatar.heightAnchor.constraint(equalToConstant: mainPageAvatar.frame.size.width),
-            mainPageAvatar.widthAnchor.constraint(equalToConstant: mainPageAvatar.frame.size.height),
-            mainPageAvatar.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-            mainPageAvatar.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 10),
+            allHeaderItemsHStackView.topAnchor.constraint(greaterThanOrEqualTo: margins.topAnchor, constant: 10),
+            allHeaderItemsHStackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+            allHeaderItemsHStackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            allHeaderItemsHStackView.heightAnchor.constraint(lessThanOrEqualToConstant: mainPageAvatar.frame.size.height),
             
-            mainPageHeader.heightAnchor.constraint(equalToConstant: mainPageAvatar.frame.size.height),
-            mainPageHeader.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-            mainPageHeader.leadingAnchor.constraint(equalTo: mainPageAvatar.trailingAnchor, constant: 10),
-            mainPageHeader.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10)
+            mainPageAvatar.widthAnchor.constraint(equalToConstant: mainPageAvatar.frame.size.height),
+            
+            mainPageHeader.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            mainPageHeader.leadingAnchor.constraint(equalTo: mainPageAvatar.trailingAnchor, constant: 10)
         ])
+    }
+    
+    private func mainPageActions() {
+        setupAvatarBounds(mainPageAvatar)
+        tapAndGoToPersonPage(mainPageAvatar)
+        tapAndGoToPersonPage(mainPageHeader)
     }
 }
 
@@ -84,15 +72,17 @@ extension MainPageViewController {
 
 extension MainPageViewController {
     
-    func tapAvatarOnTheMainPage(avatar: UIImageView) {
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarButton))
+    func tapAndGoToPersonPage(_ tapAreas: UIView...) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goToPersonPageButton))
         tapGesture.delegate = self
-        avatar.isUserInteractionEnabled = true
-        avatar.addGestureRecognizer(tapGesture)
+        tapAreas.forEach({ tapArea in
+            tapArea.isUserInteractionEnabled = true
+            tapArea.addGestureRecognizer(tapGesture)
+        })
+        // ??? как сделать массив, чтоб в параметрах работали все UIView, а не только последний в очереди
     }
     
-    @objc func avatarButton() {
+    @objc func goToPersonPageButton() {
         
         if isAuth {
             let viewController = Assembler.controllers.personPageViewController

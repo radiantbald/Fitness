@@ -11,32 +11,16 @@ class PersonPageViewController: GeneralViewController {
 
     var presenter: PersonPagePresenter!
     
-    private var menu = UIMenu()
-    
     private lazy var imagePicker = UIImagePickerController()
     
-    var personPageAvatar: UIImageView = {
-        let personPageAvatar = UIImageView()
-        personPageAvatar.translatesAutoresizingMaskIntoConstraints = false
-        return personPageAvatar
-    }()
-    var personPageName: UILabel = {
-        let personPageName = UILabel()
-        personPageName.translatesAutoresizingMaskIntoConstraints = false
-        return personPageName
-    }()
-    var personPageNickname: UILabel = {
-        let personPageNickname = UILabel()
-        personPageNickname.translatesAutoresizingMaskIntoConstraints = false
-        return personPageNickname
-    }()
+    private let personPageAvatar = UIImageView(75, 75)
+    private let personPageName = UILabel("Олег Попов", UIFont(name: Fonts.mainBold.rawValue, size: 20.0)!, .black)
+    private let personPageNickname = UILabel("@nickname", UIFont(name: Fonts.main.rawValue, size: 15.0)!, .gray)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupMenuAction()
         personPageDesign()
-        setupAvatarAction()
+        personPageActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,124 +35,55 @@ class PersonPageViewController: GeneralViewController {
 
 extension PersonPageViewController {
     
-    func saveUserAvatarImageAction(_ image: UIImage) {
-        personPageAvatar.image = image
-        avatarImage = image
+    func personPageDesign() {
+        
+        navigationItem.title = "Мой кабинет"
+        navigationItem.backButtonTitle = "Назад"
+        
+        let headerLabelsVStackView = UIStackView.init([personPageName, personPageNickname], .vertical, 0, .fill, .equalCentering)
+        let allHeaderItemsHStackView = UIStackView.init([personPageAvatar, headerLabelsVStackView], .horizontal, 0, .center, .equalCentering)
+        
+        view.addSubviews(allHeaderItemsHStackView)
+        
+        let margins = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            allHeaderItemsHStackView.topAnchor.constraint(greaterThanOrEqualTo: margins.topAnchor, constant: 10),
+            allHeaderItemsHStackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+            allHeaderItemsHStackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10),
+            allHeaderItemsHStackView.heightAnchor.constraint(lessThanOrEqualToConstant: personPageAvatar.frame.size.height),
+            
+            headerLabelsVStackView.leadingAnchor.constraint(equalTo: personPageAvatar.trailingAnchor, constant: 10),
+            
+            personPageAvatar.widthAnchor.constraint(equalToConstant: personPageAvatar.frame.size.height),
+            
+            personPageName.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            
+            personPageNickname.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+        ])
     }
     
-    private func setupAvatarAction() {
-        presenter.setupAvatar()
-    }
-    
-    @objc private func avatarTapAction() {
-        presenter.avatarTap()
-    }
-    
-    private func setupMenuAction() {
-        presenter.setupMenu()
-    }
-    
-    private func openTrainingProgramsPageAction() {
-        presenter.openTrainingProgramsPage()
-    }
-    
-    private func openMyWorkoutsPageAction() {
-        presenter.openMyWorkoutsPage()
-    }
-    
-    private func openMyExercisesPageAction() {
-        presenter.openMyExercisesPage()
-    }
-    
-    private func openMyAchievmentsPageAction() {
-        presenter.openMyAchievmentsPage()
-    }
-    
-    private func openPersonalAccountPageAction() {
-        presenter.openPersonalAccountPage()
-    }
-    
-    private func openSettingsPageAction() {
-        presenter.openSettingsPage()
-    }
-    
-    private func openAboutPagePageAction() {
-        presenter.openAboutAppPage()
-    }
-    
-    private func exitAction() {
-        presenter.exit()
-    }
-    
-}
-
-extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.saveUserAvatarImageAction(pickedImage)
-            dismiss(animated: true)
-        }
+    func personPageActions() {
+        setupAvatar()
+        setupMenu()
     }
 }
 
 extension PersonPageViewController {
     
-    func personPageDesign() {
-        view.backgroundColor = .white
-        
-        navigationItem.backButtonTitle = "Назад"
-        navigationItem.title = "Мой кабинет"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
-        
-        view.addSubview(personPageAvatar)
-        view.addSubview(personPageName)
-        view.addSubview(personPageNickname)
-        
-        personPageAvatar.frame.size.width = 75
-        personPageAvatar.frame.size.height = personPageAvatar.frame.size.width
-        
-        personPageName.text = "Имя пользователя"
-        personPageName.baselineAdjustment = .alignCenters
-        
-        personPageNickname.text = "Никнейм пользователя"
-        
-        let margins = view.layoutMarginsGuide
-        
-        NSLayoutConstraint.activate([
-            personPageAvatar.heightAnchor.constraint(equalToConstant: personPageAvatar.frame.size.width),
-            personPageAvatar.widthAnchor.constraint(equalToConstant: personPageAvatar.frame.size.height),
-            personPageAvatar.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-            personPageAvatar.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 10),
-            
-            personPageName.heightAnchor.constraint(equalToConstant: 30),
-            personPageName.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-            personPageName.leadingAnchor.constraint(equalTo: personPageAvatar.trailingAnchor, constant: 10),
-            personPageName.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10),
-            
-            personPageNickname.heightAnchor.constraint(equalToConstant: 30),
-            personPageNickname.topAnchor.constraint(equalTo: personPageName.bottomAnchor, constant: 10),
-            personPageNickname.leadingAnchor.constraint(equalTo: personPageAvatar.trailingAnchor, constant: 10),
-            personPageNickname.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10)
-        ])
-    }
-}
-//MARK: - Делегаты презентера
-
-extension PersonPageViewController: PersonPagePresenterDelegate {
-
     func setupAvatar() {
         
         personPageAvatar.image = avatarImage
-        setupAvatarBounds(avatar: personPageAvatar)
+        setupAvatarBounds(personPageAvatar)
         
         imagePicker.delegate = self
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapAction))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTap))
         tapGesture.delegate = self
         personPageAvatar.isUserInteractionEnabled = true
-        personPageAvatar.addGestureRecognizer(tapGesture)        
+        personPageAvatar.addGestureRecognizer(tapGesture)
     }
     
-    func avatarTap() {
+    @objc func avatarTap() {
         
         let actionImage = UIAlertController(title: "Сменить аватарку", message: nil, preferredStyle: .actionSheet)
         
@@ -209,24 +124,68 @@ extension PersonPageViewController: PersonPagePresenterDelegate {
     func setupMenu() {
         
         let trainingPrograms = UIAction(title: "Программы тренировок", handler: { _ in self.openTrainingProgramsPageAction()})
-        
         let myWorkouts = UIAction(title: "Мои тренировки", handler: { _ in self.openMyWorkoutsPageAction()})
-     
         let myExercises = UIAction(title: "Мои упражнения", handler: { _ in self.openMyExercisesPageAction()})
-        
         let myAchievments = UIAction(title: "Мои достижения", image: UIImage(systemName: "star"), handler: { _ in self.openMyAchievmentsPageAction()})
-        
         let personalAccount = UIAction(title: "Лицевой счет",image: UIImage(systemName: "banknote"), handler: { _ in self.openPersonalAccountPageAction()})
-        
         let settings = UIAction(title: "Настройки", image: UIImage(systemName: "gear"), handler: { _ in self.openSettingsPageAction()})
-        
         let aboutApp = UIAction(title: "О приложении",image: UIImage(systemName: "apple.logo"), handler: { _ in self.openAboutPagePageAction()})
-        
         let exit = UIAction(title: "Выход", image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), attributes: .destructive, handler: { _ in self.exitAction()})
         
-        menu = UIMenu(title: "Меню", children: [trainingPrograms, myWorkouts, myExercises, myAchievments, personalAccount, settings, aboutApp, exit])
+        let menu = UIMenu(title: "Меню", children: [trainingPrograms, myWorkouts, myExercises, myAchievments, personalAccount, settings, aboutApp, exit])
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
     }
     
+    private func openTrainingProgramsPageAction() {
+        presenter.openTrainingProgramsPage()
+    }
+    
+    private func openMyWorkoutsPageAction() {
+        presenter.openMyWorkoutsPage()
+    }
+    
+    private func openMyExercisesPageAction() {
+        presenter.openMyExercisesPage()
+    }
+    
+    private func openMyAchievmentsPageAction() {
+        presenter.openMyAchievmentsPage()
+    }
+    
+    private func openPersonalAccountPageAction() {
+        presenter.openPersonalAccountPage()
+    }
+    
+    private func openSettingsPageAction() {
+        presenter.openSettingsPage()
+    }
+    
+    private func openAboutPagePageAction() {
+        presenter.openAboutAppPage()
+    }
+    
+    private func exitAction() {
+        presenter.exit()
+    }
+    
+    func saveUserAvatarImageAction(_ image: UIImage) {
+        personPageAvatar.image = image
+        avatarImage = image
+    }
+}
+
+extension PersonPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.saveUserAvatarImageAction(pickedImage)
+            dismiss(animated: true)
+        }
+    }
+}
+//MARK: - Делегаты презентера
+
+extension PersonPageViewController: PersonPagePresenterDelegate {
+
     func openTrainingProgramsPage() {
         let viewController = Assembler.controllers.trainingProgramsPageViewController
         navigationController?.pushViewController(viewController, animated: true)

@@ -36,6 +36,11 @@ class GeneralViewController: UIViewController {
             print("Картинка ", result ? "Сохранилась" : "Не сохранилась")
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
 }
 
 //MARK: - Расширения
@@ -54,10 +59,10 @@ extension GeneralViewController {
     
     //MARK: - Закругление изображения
     
-    func setupAvatarBounds(avatar: UIImageView) {
+    func setupAvatarBounds(_ avatar: UIImageView) {
         avatar.contentMode = .scaleAspectFill
         avatar.clipsToBounds = true
-        avatar.layer.cornerRadius = avatar.frame.size.width/2
+        avatar.layer.cornerRadius = avatar.frame.size.height/2
     }
 }
 

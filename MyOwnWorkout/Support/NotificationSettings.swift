@@ -26,7 +26,7 @@ extension AppDelegate {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _, _ in})
         
-        UIApplication.shared.applicationIconBadgeNumber = 21
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
         application.registerForRemoteNotifications()
     }
