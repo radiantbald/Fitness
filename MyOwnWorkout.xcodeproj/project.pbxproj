@@ -66,6 +66,7 @@
 		A2C3FF8E2A18E71500231082 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */; };
 		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
+		A2E4C9D62ADEB9F6004E4BD8 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C9D52ADEB9F6004E4BD8 /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +126,7 @@
 		A2C3FF8F2A18E71500231082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
+		A2E4C9D52ADEB9F6004E4BD8 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -660,6 +662,7 @@
 				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
 				A26635B02AB2F37300040DCF /* NotificationSettings.swift */,
 				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
+				A2E4C9D52ADEB9F6004E4BD8 /* StorageManager.swift */,
 				A26635B72AB30B6B00040DCF /* TabBarController.swift */,
 				A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */,
 				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
@@ -792,6 +795,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E4C9D62ADEB9F6004E4BD8 /* StorageManager.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
 				A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */,
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,

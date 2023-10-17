@@ -18,6 +18,8 @@ class MyExercisesPageViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MyExercisesPageDesign()
+
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,6 +56,7 @@ extension MyExercisesPageViewController {
             self.myExercisesTableView.reloadData()
         }
     }
+    
 }
 
 extension MyExercisesPageViewController: MyExercisesPagePresenterDelegate {

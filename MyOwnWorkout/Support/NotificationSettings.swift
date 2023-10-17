@@ -76,7 +76,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     //MARK: - Показ пуша при развернутом приложении
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,willPresent notification: UNNotification,withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .badge, .sound])
+        completionHandler([.badge, .sound])
         guard let data = notification.request.content.userInfo as? [String : AnyObject] else { return }
         setupData(data)
     }

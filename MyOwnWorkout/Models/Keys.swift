@@ -12,10 +12,12 @@ enum KeychainKeys: String {
     case VerificationID = "VerificationID"
 }
 
-enum FilesNames: String {
+enum FilesNamesKeys: String {
     case UserAvatar = "UserAvatar"
+    case Exercise = "Exercise"
 }
 
-enum FilesTypes: String {
+enum FilesTypesKeys: String {
     case jpeg = "jpeg"
+    case txt = "txt"
 }

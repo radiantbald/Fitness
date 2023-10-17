@@ -23,7 +23,7 @@ class GeneralViewController: UIViewController {
     //MARK: - Установка Аватарки
     var avatarImage: UIImage? {
         get {
-            if let data = FileManager.getObject(name: FilesNames.UserAvatar.rawValue, type: FilesTypes.jpeg.rawValue),
+            if let data = FileManager.getObject(name: FilesNamesKeys.UserAvatar.rawValue, type: FilesTypesKeys.jpeg.rawValue),
                let image = UIImage(data: data),
                isAuth {
                 return image
@@ -32,7 +32,7 @@ class GeneralViewController: UIViewController {
         }
         set {
             guard let imageData = newValue?.jpegData(compressionQuality: 1) else { return }
-            let result = FileManager.setObject(data: imageData, name: FilesNames.UserAvatar.rawValue, type: FilesTypes.jpeg.rawValue)
+            let result = FileManager.setObject(data: imageData, name: FilesNamesKeys.UserAvatar.rawValue, type: FilesTypesKeys.jpeg.rawValue)
             print("Картинка ", result ? "Сохранилась" : "Не сохранилась")
         }
     }
@@ -41,6 +41,8 @@ class GeneralViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
+    
+    let userDefaultsStorage: StorageManagerProtocol = StorageManager()
 }
 
 //MARK: - Расширения
