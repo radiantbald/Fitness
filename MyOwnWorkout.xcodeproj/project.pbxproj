@@ -67,6 +67,7 @@
 		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
 		A2E4C9D62ADEB9F6004E4BD8 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C9D52ADEB9F6004E4BD8 /* StorageManager.swift */; };
+		A2E4C9D82ADED4C5004E4BD8 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C9D72ADED4C5004E4BD8 /* ExerciseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +128,7 @@
 		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
 		A2E4C9D52ADEB9F6004E4BD8 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		A2E4C9D72ADED4C5004E4BD8 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExerciseModel.swift; path = MyOwnWorkout/Support/ExerciseModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +520,7 @@
 		A28B7FD92A88AB8400B20B5F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A2E4C9D72ADED4C5004E4BD8 /* ExerciseModel.swift */,
 				A290CEBE2ADC42E800FE145B /* ExerciseTableViewCell.swift */,
 				A290CEC02ADC469200FE145B /* MyExercisesTableView.swift */,
 				A290CEC22ADC500700FE145B /* AddExerciseAlert.swift */,
@@ -826,6 +829,7 @@
 				A290CEB12ADAAE0000FE145B /* UIViewExtensions.swift in Sources */,
 				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
+				A2E4C9D82ADED4C5004E4BD8 /* ExerciseModel.swift in Sources */,
 				A290CEC32ADC500700FE145B /* AddExerciseAlert.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,

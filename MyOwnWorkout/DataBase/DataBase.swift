@@ -16,10 +16,6 @@ class DataBase {
         case AuthKey = "AuthKey"
     }
     
-    private enum ExerciseKeys: String {
-        case ExerciseName = "ExerciseName"
-    }
-    
     //MARK: - Статус авторизации (логин/разлогин)
     
     class var isAuth: Bool {
@@ -29,16 +25,6 @@ class DataBase {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: AuthKeys.AuthKey.rawValue)
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
-    class var exerciseGetSet: String? {
-        get {
-            return UserDefaults.standard.string(forKey: ExerciseKeys.ExerciseName.rawValue)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: ExerciseKeys.ExerciseName.rawValue)
             UserDefaults.standard.synchronize()
         }
     }

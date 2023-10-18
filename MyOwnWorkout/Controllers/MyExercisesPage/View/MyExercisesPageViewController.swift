@@ -53,6 +53,7 @@ extension MyExercisesPageViewController {
             
             self.exercises.append(exercise)
             self.myExercisesTableView.addExercise(exercises)
+
             self.myExercisesTableView.reloadData()
         }
     }

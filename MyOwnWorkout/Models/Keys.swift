@@ -14,7 +14,7 @@ enum KeychainKeys: String {
 
 enum FilesNamesKeys: String {
     case UserAvatar = "UserAvatar"
-    case Exercise = "Exercise"
+    case Exercises = "Exercises"
 }
 
 enum FilesTypesKeys: String {
