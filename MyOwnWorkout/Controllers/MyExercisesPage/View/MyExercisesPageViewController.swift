@@ -11,15 +11,13 @@ class MyExercisesPageViewController: GeneralViewController {
     
     var presenter: MyExercisesPagePresenter!
     
-    private let myExercisesTableView = MyExercisesTableView()
-    
+    private let tableView = MyExercisesTableView()
     private var exercises: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         MyExercisesPageDesign()
-
-        
+        tableView.myExercisesDataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,14 +33,14 @@ extension MyExercisesPageViewController {
         title = "Мои упражнения"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddExerciseButton))
         
-        view.addSubviews(myExercisesTableView)
+        view.addSubviews(tableView)
         
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            myExercisesTableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            myExercisesTableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-            myExercisesTableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            myExercisesTableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+            tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
     }
     
@@ -50,14 +48,21 @@ extension MyExercisesPageViewController {
         AddExerciseAlert.showAddExerciseAlert(viewController: self,
                                               title: "Новое упражнение") { [weak self] exercise in
             guard let self else { return }
-            
             self.exercises.append(exercise)
-            self.myExercisesTableView.addExercise(exercises)
-
-            self.myExercisesTableView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
+}
+
+extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
+    func tableView(_ tableView: MyExercisesTableView, numberOfRowsInSection section: Int) -> Int {
+        return exercises.count
+    }
+    
+    func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> String {
+        return exercises[indexPath.row]
+    }
 }
 
 extension MyExercisesPageViewController: MyExercisesPagePresenterDelegate {

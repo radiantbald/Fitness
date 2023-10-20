@@ -12,7 +12,7 @@ class ExerciseTableViewCell: UITableViewCell {
     static let cellID = "cellID"
     
     let exerciseName = UILabel()
-    let muscleGroupName = UILabel()
+    let muscleGroup = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,7 +25,7 @@ class ExerciseTableViewCell: UITableViewCell {
     
     func ExerciseTableViewCellDesign() {
         
-        let exerciseCellHStackView = UIStackView.init([exerciseName, muscleGroupName], .horizontal, 0, .fill, .equalCentering)
+        let exerciseCellHStackView = UIStackView.init([exerciseName, muscleGroup], .horizontal, 0, .fill, .equalCentering)
         
         self.addSubviews(exerciseCellHStackView)
         
