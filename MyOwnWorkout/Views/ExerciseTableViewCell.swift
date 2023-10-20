@@ -11,7 +11,7 @@ class ExerciseTableViewCell: UITableViewCell {
     
     static let cellID = "cellID"
     
-    let exerciseName = UILabel()
+    let exerciseTitle = UILabel()
     let muscleGroup = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -25,22 +25,21 @@ class ExerciseTableViewCell: UITableViewCell {
     
     func ExerciseTableViewCellDesign() {
         
-        let exerciseCellHStackView = UIStackView.init([exerciseName, muscleGroup], .horizontal, 0, .fill, .equalCentering)
+        let exerciseCellHStackView = UIStackView.init([exerciseTitle, muscleGroup], .horizontal, 0, .fill, .equalCentering)
         
         self.addSubviews(exerciseCellHStackView)
         
-        let margins = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            exerciseCellHStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            exerciseCellHStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            exerciseCellHStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            exerciseCellHStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+//            exerciseCellHStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+//            exerciseCellHStackView.topAnchor.constraint(equalTo: self.topAnchor),
+//            exerciseCellHStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+//            exerciseCellHStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            exerciseName.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30)
+//            exerciseTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
     }
     
-    func configureName(nameOfExercise: String) {
-        exerciseName.text = nameOfExercise
+    func configure(titleOfExercise: String) {
+        exerciseTitle.text = titleOfExercise
     }
 }

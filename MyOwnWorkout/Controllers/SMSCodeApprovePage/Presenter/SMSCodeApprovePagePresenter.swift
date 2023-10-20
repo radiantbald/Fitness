@@ -27,7 +27,7 @@ extension SMSCodeApprovePagePresenter {
     
     func codeFromSMSRecieveAction(codeFromSMS: String) {
         
-        guard let data = Keychain.standart.getData(KeychainKeys.VerificationID.rawValue) else { return }
+        guard let data = KeychainDataBase.standart.getData(KeychainKeys.VerificationID.rawValue) else { return }
         guard let verificationID = try? JSONDecoder().decode(VerificationIDModel.self, from: data) else { return }
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID.verificationID, verificationCode: codeFromSMS)

@@ -22,7 +22,7 @@
 		A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */; };
 		A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */; };
 		A26E8F402A7667430054D495 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3F2A7667430054D495 /* AuthModel.swift */; };
-		A26E8F422A766ABB0054D495 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F412A766ABB0054D495 /* Keychain.swift */; };
+		A26E8F422A766ABB0054D495 /* KeychainDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
 		A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */; };
@@ -54,7 +54,11 @@
 		A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F8F2A7E994B003947CF /* EntryPagePresenter.swift */; };
 		A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F912A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift */; };
 		A2954F942A7E9A36003947CF /* PersonPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F932A7E9A36003947CF /* PersonPagePresenter.swift */; };
-		A29C7D8F2A6548C20065B255 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C7D8E2A6548C20065B255 /* DataBase.swift */; };
+		A29B4BC02AE2B9DB00C5D886 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A29B4BBF2AE2B9DB00C5D886 /* Realm */; };
+		A29B4BC22AE2B9DB00C5D886 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A29B4BC12AE2B9DB00C5D886 /* RealmSwift */; };
+		A29B4BC42AE2DC5000C5D886 /* RealmDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BC32AE2DC5000C5D886 /* RealmDataBase.swift */; };
+		A29B4BC62AE2DD8500C5D886 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BC52AE2DD8500C5D886 /* ExerciseModel.swift */; };
+		A29C7D8F2A6548C20065B255 /* UserDefaultsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C7D8E2A6548C20065B255 /* UserDefaultsDataBase.swift */; };
 		A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */; };
 		A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */; };
 		A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */; };
@@ -66,8 +70,6 @@
 		A2C3FF8E2A18E71500231082 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */; };
 		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
-		A2E4C9D62ADEB9F6004E4BD8 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C9D52ADEB9F6004E4BD8 /* StorageManager.swift */; };
-		A2E4C9D82ADED4C5004E4BD8 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C9D72ADED4C5004E4BD8 /* ExerciseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,7 +83,7 @@
 		A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuModel.swift; sourceTree = "<group>"; };
 		A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3F2A7667430054D495 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
-		A26E8F412A766ABB0054D495 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDataBase.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
 		A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +115,9 @@
 		A2954F8F2A7E994B003947CF /* EntryPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F912A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePagePresenter.swift; sourceTree = "<group>"; };
 		A2954F932A7E9A36003947CF /* PersonPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPagePresenter.swift; sourceTree = "<group>"; };
-		A29C7D8E2A6548C20065B255 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		A29B4BC32AE2DC5000C5D886 /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
+		A29B4BC52AE2DD8500C5D886 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		A29C7D8E2A6548C20065B255 /* UserDefaultsDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataBase.swift; sourceTree = "<group>"; };
 		A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButtonView.swift; sourceTree = "<group>"; };
@@ -127,8 +131,6 @@
 		A2C3FF8F2A18E71500231082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
-		A2E4C9D52ADEB9F6004E4BD8 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		A2E4C9D72ADED4C5004E4BD8 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExerciseModel.swift; path = MyOwnWorkout/Support/ExerciseModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +138,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A29B4BC02AE2B9DB00C5D886 /* Realm in Frameworks */,
 				5CA23CDB2AACA9C800E47A9F /* FirebaseAnalytics in Frameworks */,
+				A29B4BC22AE2B9DB00C5D886 /* RealmSwift in Frameworks */,
 				5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */,
 				5CAF07B32ADA82A00009BED6 /* KeychainSwift in Frameworks */,
 				5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */,
@@ -520,7 +524,6 @@
 		A28B7FD92A88AB8400B20B5F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A2E4C9D72ADED4C5004E4BD8 /* ExerciseModel.swift */,
 				A290CEBE2ADC42E800FE145B /* ExerciseTableViewCell.swift */,
 				A290CEC02ADC469200FE145B /* MyExercisesTableView.swift */,
 				A290CEC22ADC500700FE145B /* AddExerciseAlert.swift */,
@@ -594,13 +597,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A29C7D8D2A6548AB0065B255 /* DataBase */ = {
+		A29C7D8D2A6548AB0065B255 /* DataBases */ = {
 			isa = PBXGroup;
 			children = (
-				A29C7D8E2A6548C20065B255 /* DataBase.swift */,
-				A26E8F412A766ABB0054D495 /* Keychain.swift */,
+				A29C7D8E2A6548C20065B255 /* UserDefaultsDataBase.swift */,
+				A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */,
+				A29B4BC32AE2DC5000C5D886 /* RealmDataBase.swift */,
 			);
-			path = DataBase;
+			path = DataBases;
 			sourceTree = "<group>";
 		};
 		A2ACA9362A3C6DBC0028F9FD /* Extensions */ = {
@@ -625,6 +629,7 @@
 				A26E8F3F2A7667430054D495 /* AuthModel.swift */,
 				A28B7FF22A8A4CDE00B20B5F /* VerificationIDModel.swift */,
 				A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */,
+				A29B4BC52AE2DD8500C5D886 /* ExerciseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -648,7 +653,7 @@
 		A2C3FF802A18E71400231082 /* MyOwnWorkout */ = {
 			isa = PBXGroup;
 			children = (
-				A29C7D8D2A6548AB0065B255 /* DataBase */,
+				A29C7D8D2A6548AB0065B255 /* DataBases */,
 				A2ACA9452A3F26C30028F9FD /* Models */,
 				A26E8F3E2A7666F50054D495 /* Views */,
 				A2D2E4512A6DB2AE002E5467 /* Controllers */,
@@ -665,7 +670,6 @@
 				A2C3FF812A18E71400231082 /* AppDelegate.swift */,
 				A26635B02AB2F37300040DCF /* NotificationSettings.swift */,
 				A2C3FF832A18E71400231082 /* SceneDelegate.swift */,
-				A2E4C9D52ADEB9F6004E4BD8 /* StorageManager.swift */,
 				A26635B72AB30B6B00040DCF /* TabBarController.swift */,
 				A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */,
 				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
@@ -737,6 +741,8 @@
 				5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */,
 				5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */,
 				5CAF07B22ADA82A00009BED6 /* KeychainSwift */,
+				A29B4BBF2AE2B9DB00C5D886 /* Realm */,
+				A29B4BC12AE2B9DB00C5D886 /* RealmSwift */,
 			);
 			productName = MyOwnWorkout;
 			productReference = A2C3FF7E2A18E71400231082 /* MyOwnWorkout.app */;
@@ -769,6 +775,7 @@
 			packageReferences = (
 				5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5CAF07B12ADA82A00009BED6 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				A29B4BBE2AE2B9DB00C5D886 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = A2C3FF7F2A18E71400231082 /* Products */;
 			projectDirPath = "";
@@ -798,7 +805,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2E4C9D62ADEB9F6004E4BD8 /* StorageManager.swift in Sources */,
+				A29B4BC42AE2DC5000C5D886 /* RealmDataBase.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
 				A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */,
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,
@@ -809,17 +816,18 @@
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */,
 				A28B7FED2A88B7BE00B20B5F /* TrainingProgramsPagePresenter.swift in Sources */,
-				A29C7D8F2A6548C20065B255 /* DataBase.swift in Sources */,
+				A29C7D8F2A6548C20065B255 /* UserDefaultsDataBase.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2954F942A7E9A36003947CF /* PersonPagePresenter.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */,
+				A29B4BC62AE2DD8500C5D886 /* ExerciseModel.swift in Sources */,
 				A290CEB72ADABAFF00FE145B /* UImageViewExtensions.swift in Sources */,
 				A290CEB92ADABD8F00FE145B /* UIStackViewExtensions.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
 				A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */,
 				A290CEB52ADAB7FB00FE145B /* Fonts.swift in Sources */,
-				A26E8F422A766ABB0054D495 /* Keychain.swift in Sources */,
+				A26E8F422A766ABB0054D495 /* KeychainDataBase.swift in Sources */,
 				A28B7FDB2A88ABA800B20B5F /* MyExercisesPageViewController.swift in Sources */,
 				A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */,
 				A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */,
@@ -829,7 +837,6 @@
 				A290CEB12ADAAE0000FE145B /* UIViewExtensions.swift in Sources */,
 				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
-				A2E4C9D82ADED4C5004E4BD8 /* ExerciseModel.swift in Sources */,
 				A290CEC32ADC500700FE145B /* AddExerciseAlert.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
@@ -1097,6 +1104,14 @@
 				minimumVersion = 20.0.0;
 			};
 		};
+		A29B4BBE2AE2B9DB00C5D886 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.43.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1124,6 +1139,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5CAF07B12ADA82A00009BED6 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		A29B4BBF2AE2B9DB00C5D886 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A29B4BBE2AE2B9DB00C5D886 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		A29B4BC12AE2B9DB00C5D886 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A29B4BBE2AE2B9DB00C5D886 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

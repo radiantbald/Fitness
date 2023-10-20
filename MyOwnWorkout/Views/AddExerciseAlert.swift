@@ -14,7 +14,7 @@ class AddExerciseAlert {
                                      completionHandler: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         
-        alertController.addTextField{ textField in
+        alertController.addTextField { textField in
             textField.placeholder = "Название"
         }
         

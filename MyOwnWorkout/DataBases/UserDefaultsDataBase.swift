@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataBase {
+class UserDefaultsDataBase {
     
     //MARK: - Список Ключей
     

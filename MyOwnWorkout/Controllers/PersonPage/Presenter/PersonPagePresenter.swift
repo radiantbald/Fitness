@@ -52,7 +52,7 @@ final class PersonPagePresenter {
         delegateOpenAboutAppPage()
     }
     private func exitAction() {
-        DataBase.isAuth = false
+        UserDefaultsDataBase.isAuth = false
         print("Вы вышли из аккаунта")
         delegateExit()
     }

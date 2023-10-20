@@ -36,7 +36,7 @@ extension MainPagePresenter {
                   
                   let verificationID = VerificationIDModel(verificationID: verificationID)
                   guard let data = try? JSONEncoder().encode(verificationID) else { return }
-                  Keychain.standart.set(data, forKey: KeychainKeys.VerificationID.rawValue)
+                  KeychainDataBase.standart.set(data, forKey: KeychainKeys.VerificationID.rawValue)
               }
               self?.reloadData(phoneNumber, error: error)
           }

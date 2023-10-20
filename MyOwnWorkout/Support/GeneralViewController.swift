@@ -13,10 +13,10 @@ class GeneralViewController: UIViewController {
     
     var isAuth: Bool {
         get {
-            return DataBase.isAuth
+            return UserDefaultsDataBase.isAuth
         }
         set {
-            DataBase.isAuth = newValue
+            UserDefaultsDataBase.isAuth = newValue
         }
     }
     
@@ -42,7 +42,6 @@ class GeneralViewController: UIViewController {
         view.backgroundColor = .white
     }
     
-    let userDefaultsStorage: StorageManagerProtocol = StorageManager()
 }
 
 //MARK: - Расширения
@@ -89,7 +88,7 @@ extension GeneralViewController {
     private func setSensitiveData(nickname: String, password: String) {
         let auth = AuthModel(login: nickname, password: password)
         guard let data = try? JSONEncoder().encode(auth) else { return }
-        Keychain.standart.set(data, forKey: KeychainKeys.AuthKeys.rawValue)
+        KeychainDataBase.standart.set(data, forKey: KeychainKeys.AuthKeys.rawValue)
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 import KeychainSwift
 
-class Keychain {
+class KeychainDataBase {
     static var standart: KeychainSwift = KeychainSwift()
     private init() {}
 }

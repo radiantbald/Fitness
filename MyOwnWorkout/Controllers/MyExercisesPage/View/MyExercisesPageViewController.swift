@@ -6,16 +6,21 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MyExercisesPageViewController: GeneralViewController {
+    
+    
     
     var presenter: MyExercisesPagePresenter!
     
     private let tableView = MyExercisesTableView()
-    private var exercises: [String] = []
+    private var exercises: Results<ExerciseModel>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        exercises = RealmDataBase.shared.getExercisesData()
+        
         MyExercisesPageDesign()
         tableView.myExercisesDataSource = self
     }
@@ -48,9 +53,12 @@ extension MyExercisesPageViewController {
         AddExerciseAlert.showAddExerciseAlert(viewController: self,
                                               title: "Новое упражнение") { [weak self] exercise in
             guard let self else { return }
-            self.exercises.append(exercise)
-            self.tableView.reloadData()
+            self.addExercise(exercise)
         }
+    }
+    func addExercise(_ title: String) {
+        RealmDataBase.shared.setExercisesData(title)
+        self.tableView.reloadData()
     }
     
 }
@@ -61,7 +69,8 @@ extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
     }
     
     func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> String {
-        return exercises[indexPath.row]
+        let exercise = exercises[indexPath.row]
+        return exercise.title
     }
 }
 

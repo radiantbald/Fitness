@@ -48,7 +48,7 @@ extension MyExercisesTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.cellID, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
         let text = myExercisesDataSource?.tableView(self, cellForRowAt: indexPath)
-        cell.configureName(nameOfExercise: text ?? "-")
+        cell.configure(titleOfExercise: text ?? "-")
         return cell
     }
 }
