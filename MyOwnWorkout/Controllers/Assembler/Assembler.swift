@@ -109,6 +109,13 @@ class Controllers {
         viewController.presenter = presenter
         return viewController
     }
+    
+    class var exerciseSetupPageViewController: ExerciseSetupPageViewController {
+        let viewController = ExerciseSetupPageViewController()
+        let presenter = ExerciseSetupPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
+    }
 }
 
 

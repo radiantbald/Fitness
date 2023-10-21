@@ -36,6 +36,7 @@ extension MyExercisesPageViewController {
     
     func MyExercisesPageDesign() {
         title = "Мои упражнения"
+        navigationItem.backButtonTitle = "Отменить"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddExerciseButton))
         
         view.addSubviews(tableView)
@@ -50,16 +51,21 @@ extension MyExercisesPageViewController {
     }
     
     @objc func setupAddExerciseButton() {
-        AddExerciseAlert.showAddExerciseAlert(viewController: self,
-                                              title: "Новое упражнение") { [weak self] exercise in
-            guard let self else { return }
-            self.addExercise(exercise)
-        }
+        let viewController = Assembler.controllers.exerciseSetupPageViewController
+        viewController.delegate = self
+        navigationController?.present(viewController, animated: true)
+        
+//        AddExerciseAlert.showAddExerciseAlert(viewController: self,
+//                                              title: "Новое упражнение") { [weak self] exercise in
+//            guard let self else { return }
+//            self.addExercise(exercise)
+//        }
     }
-    func addExercise(_ title: String) {
-        RealmDataBase.shared.setExercisesData(title)
-        self.tableView.reloadData()
-    }
+    
+//    func addExercise(_ title: String) {
+//        RealmDataBase.shared.setExercisesData(title)
+//        self.tableView.reloadData()
+//    }
     
 }
 
@@ -73,7 +79,12 @@ extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
         return exercise.title
     }
 }
-
+extension MyExercisesPageViewController: ExerciseSetupPageViewControllerDelegate {
+    func reloadTableView() {
+        self.tableView.reloadData()
+        print("делегат сработал")
+    }
+}
 extension MyExercisesPageViewController: MyExercisesPagePresenterDelegate {
     
 }

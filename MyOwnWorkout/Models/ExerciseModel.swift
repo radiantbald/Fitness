@@ -10,10 +10,22 @@ import RealmSwift
 
 class ExerciseModel: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var title: String = ""
+    @Persisted var title: String
+    @Persisted var author: String
+    @Persisted var muscleGroup: String
+    @Persisted var neededEquipment: String
+    @Persisted var about: String
     
-    convenience init(title: String) {
+    convenience init(title: String,
+                     author: String = "",
+                     muscleGroup: String = "",
+                     neededEquipment: String = "",
+                     about: String = "") {
         self.init()
         self.title = title
+        self.author = author
+        self.muscleGroup = muscleGroup
+        self.neededEquipment = neededEquipment
+        self.about = about
     }
 }

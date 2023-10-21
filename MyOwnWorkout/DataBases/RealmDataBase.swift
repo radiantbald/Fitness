@@ -17,9 +17,9 @@ class RealmDataBase {
         return realm.objects(ExerciseModel.self)
     }
     
-    func setExercisesData(_ title: String) {
+    func setExercisesData(_ title: String, _ about: String) {
         let realm = try! Realm()
-        let exercises = ExerciseModel(title: title)
+        let exercises = ExerciseModel(title: title, about: about)
         try! realm.write{
             realm.add(exercises)
             print(realm.configuration.fileURL ?? "")
