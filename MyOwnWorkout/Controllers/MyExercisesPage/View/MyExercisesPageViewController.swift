@@ -10,8 +10,6 @@ import RealmSwift
 
 class MyExercisesPageViewController: GeneralViewController {
     
-    
-    
     var presenter: MyExercisesPagePresenter!
     
     private let tableView = MyExercisesTableView()
@@ -19,10 +17,13 @@ class MyExercisesPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.myExercisesDataSource = self
+        tableView.myExercisesDelegate = self
+        
         exercises = RealmDataBase.shared.getExercisesData()
         
         MyExercisesPageDesign()
-        tableView.myExercisesDataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,7 +37,7 @@ extension MyExercisesPageViewController {
     
     func MyExercisesPageDesign() {
         title = "Мои упражнения"
-        navigationItem.backButtonTitle = "Отменить"
+        navigationItem.backButtonTitle = "Назад"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddExerciseButton))
         
         view.addSubviews(tableView)
@@ -54,19 +55,17 @@ extension MyExercisesPageViewController {
         let viewController = Assembler.controllers.exerciseSetupPageViewController
         viewController.delegate = self
         navigationController?.present(viewController, animated: true)
-        
-//        AddExerciseAlert.showAddExerciseAlert(viewController: self,
-//                                              title: "Новое упражнение") { [weak self] exercise in
-//            guard let self else { return }
-//            self.addExercise(exercise)
-//        }
     }
     
-//    func addExercise(_ title: String) {
-//        RealmDataBase.shared.setExercisesData(title)
-//        self.tableView.reloadData()
-//    }
-    
+}
+
+extension MyExercisesPageViewController: MyExercisesTableViewDelegate {
+    func tableView(_ tableView: MyExercisesTableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let viewController = Assembler.controllers.exerciseSetupPageViewController
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
@@ -79,12 +78,13 @@ extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
         return exercise.title
     }
 }
+
 extension MyExercisesPageViewController: ExerciseSetupPageViewControllerDelegate {
     func reloadTableView() {
         self.tableView.reloadData()
-        print("делегат сработал")
     }
 }
+
 extension MyExercisesPageViewController: MyExercisesPagePresenterDelegate {
     
 }

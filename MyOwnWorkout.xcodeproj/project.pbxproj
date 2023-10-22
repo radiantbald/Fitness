@@ -60,6 +60,8 @@
 		A29B4BC62AE2DD8500C5D886 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BC52AE2DD8500C5D886 /* ExerciseModel.swift */; };
 		A29B4BCD2AE3F2B700C5D886 /* ExerciseSetupPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BCC2AE3F2B700C5D886 /* ExerciseSetupPageViewController.swift */; };
 		A29B4BCF2AE3F2F900C5D886 /* ExerciseSetupPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BCE2AE3F2F900C5D886 /* ExerciseSetupPagePresenter.swift */; };
+		A29B4BD52AE5508500C5D886 /* ExercisePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BD42AE5508500C5D886 /* ExercisePageViewController.swift */; };
+		A29B4BD72AE550EA00C5D886 /* ExercisePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BD62AE550EA00C5D886 /* ExercisePagePresenter.swift */; };
 		A29C7D8F2A6548C20065B255 /* UserDefaultsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C7D8E2A6548C20065B255 /* UserDefaultsDataBase.swift */; };
 		A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */; };
 		A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */; };
@@ -121,6 +123,8 @@
 		A29B4BC52AE2DD8500C5D886 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		A29B4BCC2AE3F2B700C5D886 /* ExerciseSetupPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetupPageViewController.swift; sourceTree = "<group>"; };
 		A29B4BCE2AE3F2F900C5D886 /* ExerciseSetupPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetupPagePresenter.swift; sourceTree = "<group>"; };
+		A29B4BD42AE5508500C5D886 /* ExercisePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExercisePageViewController.swift; path = MyOwnWorkout/Controllers/ExerciseSetupPageViewController/View/ExercisePageViewController.swift; sourceTree = SOURCE_ROOT; };
+		A29B4BD62AE550EA00C5D886 /* ExercisePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePagePresenter.swift; sourceTree = "<group>"; };
 		A29C7D8E2A6548C20065B255 /* UserDefaultsDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataBase.swift; sourceTree = "<group>"; };
 		A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -601,14 +605,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A29B4BC82AE3F22C00C5D886 /* ExercisePageViewController */ = {
+		A29B4BC82AE3F22C00C5D886 /* ExerciseSetupPageViewController */ = {
 			isa = PBXGroup;
 			children = (
 				A29B4BC92AE3F24D00C5D886 /* Model */,
 				A29B4BCA2AE3F25F00C5D886 /* View */,
 				A29B4BCB2AE3F29400C5D886 /* Presenter */,
 			);
-			path = ExercisePageViewController;
+			path = ExerciseSetupPageViewController;
 			sourceTree = "<group>";
 		};
 		A29B4BC92AE3F24D00C5D886 /* Model */ = {
@@ -632,6 +636,39 @@
 				A29B4BCE2AE3F2F900C5D886 /* ExerciseSetupPagePresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A29B4BD02AE5501400C5D886 /* ExercisePageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A29B4BD32AE5505900C5D886 /* Model */,
+				A29B4BD22AE5505300C5D886 /* View */,
+				A29B4BD12AE5504500C5D886 /* Presenter */,
+			);
+			path = ExercisePageViewController;
+			sourceTree = "<group>";
+		};
+		A29B4BD12AE5504500C5D886 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A29B4BD62AE550EA00C5D886 /* ExercisePagePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A29B4BD22AE5505300C5D886 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A29B4BD42AE5508500C5D886 /* ExercisePageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A29B4BD32AE5505900C5D886 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A29C7D8D2A6548AB0065B255 /* DataBases */ = {
@@ -738,11 +775,12 @@
 				A28B7FE62A88B6A100B20B5F /* TrainingProgramsPage */,
 				A28B7FDE2A88B23A00B20B5F /* MyWorkoutsPage */,
 				A28B7FD62A88AB1D00B20B5F /* MyExercisesPage */,
+				A29B4BC82AE3F22C00C5D886 /* ExerciseSetupPageViewController */,
+				A29B4BD02AE5501400C5D886 /* ExercisePageViewController */,
 				A28B7FCD2A87E3AE00B20B5F /* MyAchievmentsPage */,
 				A28B7FC52A87DF5E00B20B5F /* PersonalAccountPage */,
 				A28B7FBD2A87DBE700B20B5F /* AboutAppPage */,
 				A28B7FB52A84F74800B20B5F /* SettingsPage */,
-				A29B4BC82AE3F22C00C5D886 /* ExercisePageViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -867,6 +905,7 @@
 				A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */,
 				A290CEB52ADAB7FB00FE145B /* Fonts.swift in Sources */,
 				A26E8F422A766ABB0054D495 /* KeychainDataBase.swift in Sources */,
+				A29B4BD52AE5508500C5D886 /* ExercisePageViewController.swift in Sources */,
 				A28B7FDB2A88ABA800B20B5F /* MyExercisesPageViewController.swift in Sources */,
 				A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */,
 				A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */,
@@ -885,6 +924,7 @@
 				A26635B12AB2F37300040DCF /* NotificationSettings.swift in Sources */,
 				A26E8F402A7667430054D495 /* AuthModel.swift in Sources */,
 				A28B7FEB2A88B76400B20B5F /* TrainingProgramsViewController.swift in Sources */,
+				A29B4BD72AE550EA00C5D886 /* ExercisePagePresenter.swift in Sources */,
 				A28B7FD52A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift in Sources */,
 				A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */,
 				A290CEB32ADAB46000FE145B /* UILabelExtensions.swift in Sources */,

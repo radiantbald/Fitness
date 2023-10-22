@@ -10,11 +10,16 @@ import UIKit
 protocol MyExercisesTableViewDataSource: AnyObject {
     func tableView(_ tableView: MyExercisesTableView, numberOfRowsInSection section: Int) -> Int
     func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> String
+    
+}
+protocol MyExercisesTableViewDelegate: AnyObject {
+    func tableView(_ tableView: MyExercisesTableView, didSelectRowAt indexPath: IndexPath)
 }
 
 class MyExercisesTableView: UITableView {
     
     weak var myExercisesDataSource: MyExercisesTableViewDataSource?
+    weak var myExercisesDelegate: MyExercisesTableViewDelegate?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -37,7 +42,9 @@ class MyExercisesTableView: UITableView {
 }
 
 extension MyExercisesTableView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myExercisesDelegate?.tableView(self, didSelectRowAt: indexPath)
+    }
 }
 
 extension MyExercisesTableView: UITableViewDataSource {

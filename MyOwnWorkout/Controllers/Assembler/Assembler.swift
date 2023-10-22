@@ -116,6 +116,13 @@ class Controllers {
         viewController.presenter = presenter
         return viewController
     }
+    
+    class var exercisePageViewController: ExercisePageViewController {
+        let viewController = ExercisePageViewController()
+        let presenter = ExercisePagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
+    }
 }
 
 

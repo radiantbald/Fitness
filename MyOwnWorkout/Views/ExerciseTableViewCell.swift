@@ -28,15 +28,7 @@ class ExerciseTableViewCell: UITableViewCell {
         let exerciseCellHStackView = UIStackView.init([exerciseTitle, muscleGroup], .horizontal, 0, .fill, .equalCentering)
         
         self.addSubviews(exerciseCellHStackView)
-        
-        NSLayoutConstraint.activate([
-//            exerciseCellHStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            exerciseCellHStackView.topAnchor.constraint(equalTo: self.topAnchor),
-//            exerciseCellHStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            exerciseCellHStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-//            exerciseTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
-        ])
+    
     }
     
     func configure(titleOfExercise: String) {
