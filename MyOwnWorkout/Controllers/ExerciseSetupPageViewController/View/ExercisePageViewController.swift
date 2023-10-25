@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol ExercisePageViewControllerDelegate: AnyObject {
     func reloadTableView()
@@ -15,17 +16,20 @@ class ExercisePageViewController: GeneralViewController {
     
     var presenter: ExercisePagePresenter!
     
+    private let tableView = MyExercisesTableView()
+    
     weak var delegate: ExercisePageViewControllerDelegate?
     
+    var exercises: Results<ExerciseModel>!
+    
     var exerciseTitle = UILabel()
-//    let exerciseMuscleGroup = UISwitch()
-//    let exerciseNeededEquipment = UISwitch()
     var exerciseAbout = UILabel()
-//    let saveExerciseButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         exercisePageDesign()
+//        tableView.myExercisesDataSource = self
+//        tableView.myExercisesDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,13 +42,8 @@ class ExercisePageViewController: GeneralViewController {
 }
 extension ExercisePageViewController {
     
-    func addExercise(_ title: String, _ about: String) {
-        RealmDataBase.shared.setExercisesData(title, about)
-        delegate?.reloadTableView()
-        }
-    
     func exercisePageDesign() {
-  
+        title = "Упражнение"
         
         view.addSubviews(exerciseTitle, exerciseAbout)
         let margins = view.safeAreaLayoutGuide
@@ -61,7 +60,9 @@ extension ExercisePageViewController {
         ])
         
     }
+    
 }
+
 
 extension ExercisePageViewController: ExercisePagePresenterDelegate {
     

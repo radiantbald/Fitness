@@ -18,8 +18,6 @@ class ExerciseSetupPageViewController: GeneralViewController {
     weak var delegate: ExerciseSetupPageViewControllerDelegate?
     
     let exerciseTitle = UITextField()
-//    let exerciseMuscleGroup = UISwitch()
-//    let exerciseNeededEquipment = UISwitch()
     let exerciseAbout = UITextField()
     let saveExerciseButton = UIButton()
     
@@ -42,15 +40,16 @@ extension ExerciseSetupPageViewController {
     func setupSaveExerciseButton() {
         saveExerciseButton.addTarget(self, action: #selector(setupSaveExerciseButtonAction), for: .touchUpInside)
     }
+    
     @objc func setupSaveExerciseButtonAction() {
         addExercise(exerciseTitle.text ?? "Без названия", exerciseAbout.text ?? "Порядок выполнения")
         self.dismiss(animated: true)
-        
     }
+    
     func addExercise(_ title: String, _ about: String) {
         RealmDataBase.shared.setExercisesData(title, about)
         delegate?.reloadTableView()
-        }
+    }
     
     func exerciseSetupPageDesign() {
         

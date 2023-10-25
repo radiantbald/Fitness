@@ -9,7 +9,7 @@ import UIKit
 
 protocol MyExercisesTableViewDataSource: AnyObject {
     func tableView(_ tableView: MyExercisesTableView, numberOfRowsInSection section: Int) -> Int
-    func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> String
+    func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> [Any?]
     
 }
 protocol MyExercisesTableViewDelegate: AnyObject {
@@ -54,8 +54,16 @@ extension MyExercisesTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.cellID, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
-        let text = myExercisesDataSource?.tableView(self, cellForRowAt: indexPath)
-        cell.configure(titleOfExercise: text ?? "-")
+        
+        let exerciseModel = myExercisesDataSource?.tableView(self, cellForRowAt: indexPath)
+        let id = exerciseModel?[0]
+        let title = exerciseModel?[1]
+        let about = exerciseModel?[2]
+        
+        cell.configure(exerciseIDSet: id as! String,
+                       exerciseTitleSet: title as! String,
+                       exerciseAboutSet: about as! String)
+        
         return cell
     }
 }

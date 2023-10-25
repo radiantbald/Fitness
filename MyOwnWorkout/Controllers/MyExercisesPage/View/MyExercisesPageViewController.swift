@@ -59,25 +59,41 @@ extension MyExercisesPageViewController {
     
 }
 
-extension MyExercisesPageViewController: MyExercisesTableViewDelegate {
-    func tableView(_ tableView: MyExercisesTableView, didSelectRowAt indexPath: IndexPath) {
+//MARK: - Делегаты протокола MyExercisesTableViewDelegate
+
+extension MyExercisesPageViewController: MyExercisesTableViewDelegate, ExercisePageViewControllerDelegate {
+    func tableView(_ tableView: MyExercisesTableView,didSelectRowAt indexPath: IndexPath) {
         
-        let viewController = Assembler.controllers.exerciseSetupPageViewController
+        var exerciseModel = self.tableView(self.tableView, cellForRowAt: indexPath)
+        let id = exerciseModel[0]
+        let title = exerciseModel[1]
+        let about = exerciseModel[2]
+        
+        let viewController = Assembler.controllers.exercisePageViewController
         viewController.delegate = self
+        viewController.exerciseTitle.text = title as? String
+        viewController.exerciseAbout.text = about as? String
+        
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
+//MARK: - Делегаты протокола MyExercisesTableViewDataSource
 
 extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
     func tableView(_ tableView: MyExercisesTableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
     
-    func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> String {
+    func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> [Any?] {
         let exercise = exercises[indexPath.row]
-        return exercise.title
+        return [exercise.exerciseID.stringValue,
+                exercise.title,
+                exercise.about]
     }
 }
+
+//MARK: - Делегаты ExerciseSetupPageViewControllerDelegate
 
 extension MyExercisesPageViewController: ExerciseSetupPageViewControllerDelegate {
     func reloadTableView() {
@@ -85,6 +101,7 @@ extension MyExercisesPageViewController: ExerciseSetupPageViewControllerDelegate
     }
 }
 
+//MARK: - Делегаты Презентера
 extension MyExercisesPageViewController: MyExercisesPagePresenterDelegate {
     
 }
