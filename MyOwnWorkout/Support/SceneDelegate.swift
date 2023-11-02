@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.bounds = windowScene.screen.bounds
         
         let rootViewController = Assembler.controllers.tabBarController
-        
+//        let rootViewController = Assembler.controllers.smsCodeApprovePageViewController
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
 

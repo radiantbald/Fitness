@@ -13,6 +13,8 @@
 		5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */; };
 		5CAF07B32ADA82A00009BED6 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CAF07B22ADA82A00009BED6 /* KeychainSwift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
+		A20A117D2AEF87AE00E86B95 /* VerifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A117C2AEF87AE00E86B95 /* VerifyTextField.swift */; };
+		A20A117F2AEF891C00E86B95 /* VerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A117E2AEF891C00E86B95 /* VerifyView.swift */; };
 		A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */; };
 		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
 		A26635B12AB2F37300040DCF /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B02AB2F37300040DCF /* NotificationSettings.swift */; };
@@ -78,6 +80,8 @@
 
 /* Begin PBXFileReference section */
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
+		A20A117C2AEF87AE00E86B95 /* VerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextField.swift; sourceTree = "<group>"; };
+		A20A117E2AEF891C00E86B95 /* VerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyView.swift; sourceTree = "<group>"; };
 		A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
 		A26635B02AB2F37300040DCF /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
@@ -167,6 +171,15 @@
 				A25F8A332A7B940800C45AFB /* Presenter */,
 			);
 			path = SchedulePage;
+			sourceTree = "<group>";
+		};
+		A20A117B2AEF879400E86B95 /* VerifyViews */ = {
+			isa = PBXGroup;
+			children = (
+				A20A117C2AEF87AE00E86B95 /* VerifyTextField.swift */,
+				A20A117E2AEF891C00E86B95 /* VerifyView.swift */,
+			);
+			path = VerifyViews;
 			sourceTree = "<group>";
 		};
 		A25F8A2C2A7B925D00C45AFB /* EntryPage */ = {
@@ -338,6 +351,7 @@
 		A26E8F3E2A7666F50054D495 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A20A117B2AEF879400E86B95 /* VerifyViews */,
 				A28B7FB42A83C55B00B20B5F /* Buttons */,
 			);
 			path = Views;
@@ -916,6 +930,7 @@
 				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
 				A290CEC32ADC500700FE145B /* AddExerciseAlert.swift in Sources */,
+				A20A117F2AEF891C00E86B95 /* VerifyView.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
@@ -932,6 +947,7 @@
 				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,
 				A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */,
 				A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */,
+				A20A117D2AEF87AE00E86B95 /* VerifyTextField.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 				A290CEC12ADC469200FE145B /* MyExercisesTableView.swift in Sources */,
 				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
