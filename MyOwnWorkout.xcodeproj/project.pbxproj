@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C5FBA002AE0339F00138E74 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5C5FB9FF2AE0339F00138E74 /* Realm */; };
+		5C5FBA022AE0339F00138E74 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5C5FBA012AE0339F00138E74 /* RealmSwift */; };
+		5C5FBA042AE0385200138E74 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FBA032AE0385200138E74 /* DBManager.swift */; };
+		5C5FBA062AE038AE00138E74 /* OlegModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FBA052AE038AE00138E74 /* OlegModel.swift */; };
 		5CA23CDB2AACA9C800E47A9F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDA2AACA9C800E47A9F /* FirebaseAnalytics */; };
 		5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDC2AACA9C800E47A9F /* FirebaseAuth */; };
 		5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */; };
@@ -71,6 +75,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C5FBA032AE0385200138E74 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		5C5FBA052AE038AE00138E74 /* OlegModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlegModel.swift; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
@@ -136,7 +142,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C5FBA002AE0339F00138E74 /* Realm in Frameworks */,
 				5CA23CDB2AACA9C800E47A9F /* FirebaseAnalytics in Frameworks */,
+				5C5FBA022AE0339F00138E74 /* RealmSwift in Frameworks */,
 				5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */,
 				5CAF07B32ADA82A00009BED6 /* KeychainSwift in Frameworks */,
 				5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */,
@@ -599,6 +607,7 @@
 			children = (
 				A29C7D8E2A6548C20065B255 /* DataBase.swift */,
 				A26E8F412A766ABB0054D495 /* Keychain.swift */,
+				5C5FBA032AE0385200138E74 /* DBManager.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -625,6 +634,7 @@
 				A26E8F3F2A7667430054D495 /* AuthModel.swift */,
 				A28B7FF22A8A4CDE00B20B5F /* VerificationIDModel.swift */,
 				A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */,
+				5C5FBA052AE038AE00138E74 /* OlegModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -737,6 +747,8 @@
 				5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */,
 				5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */,
 				5CAF07B22ADA82A00009BED6 /* KeychainSwift */,
+				5C5FB9FF2AE0339F00138E74 /* Realm */,
+				5C5FBA012AE0339F00138E74 /* RealmSwift */,
 			);
 			productName = MyOwnWorkout;
 			productReference = A2C3FF7E2A18E71400231082 /* MyOwnWorkout.app */;
@@ -769,6 +781,7 @@
 			packageReferences = (
 				5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5CAF07B12ADA82A00009BED6 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				5C5FB9FE2AE0339F00138E74 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = A2C3FF7F2A18E71400231082 /* Products */;
 			projectDirPath = "";
@@ -804,6 +817,7 @@
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
 				A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */,
+				5C5FBA042AE0385200138E74 /* DBManager.swift in Sources */,
 				A290CEBF2ADC42E800FE145B /* ExerciseTableViewCell.swift in Sources */,
 				A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
@@ -823,6 +837,7 @@
 				A28B7FDB2A88ABA800B20B5F /* MyExercisesPageViewController.swift in Sources */,
 				A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */,
 				A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */,
+				5C5FBA062AE038AE00138E74 /* OlegModel.swift in Sources */,
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,
 				A28B7FCA2A87DF9A00B20B5F /* PersonalAccountPageViewController.swift in Sources */,
 				A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */,
@@ -1081,6 +1096,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5C5FB9FE2AE0339F00138E74 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.43.1;
+			};
+		};
 		5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1100,6 +1123,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5C5FB9FF2AE0339F00138E74 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C5FB9FE2AE0339F00138E74 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		5C5FBA012AE0339F00138E74 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C5FB9FE2AE0339F00138E74 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		5CA23CDA2AACA9C800E47A9F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5CA23CD92AACA9C800E47A9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

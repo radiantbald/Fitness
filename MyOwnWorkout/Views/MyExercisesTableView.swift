@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol MyExercisesTableViewDataSource: AnyObject {
+    func tableView(_ tableView: MyExercisesTableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> String
+}
+
 class MyExercisesTableView: UITableView {
-    
-    private var exercisesList: [String] = []
+    weak var myDataSource: MyExercisesTableViewDataSource?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -21,7 +25,7 @@ class MyExercisesTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func registerCell() {
+    func registerCell() {
         register(ExerciseTableViewCell.self, forCellReuseIdentifier: ExerciseTableViewCell.cellID)
     }
     
@@ -29,28 +33,23 @@ class MyExercisesTableView: UITableView {
         delegate = self
         dataSource = self
     }
-    
-    func addExercise(_ exercisesList: [String]) {
-        self.exercisesList = exercisesList
-    }
 }
 
 extension MyExercisesTableView: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        60
-    }
 }
 
 extension MyExercisesTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exercisesList.count
+        return myDataSource?.tableView(self, numberOfRowsInSection: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.cellID, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
-        let exercise = exercisesList[indexPath.row]
-        cell.configureName(nameOfExercise: exercise)
+        let text = myDataSource?.tableView(self, cellForRowAt: indexPath)
+        cell.configureName(nameOfExercise: text ?? "-")
         return cell
     }
 }
+
+

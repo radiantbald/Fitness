@@ -6,24 +6,26 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class MyExercisesPageViewController: GeneralViewController {
-    
     var presenter: MyExercisesPagePresenter!
     
-    private let myExercisesTableView = MyExercisesTableView()
-    
-    private var exercises: [String] = []
+    private let tableView = MyExercisesTableView()
+    private var exercises: Results<Exercises>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MyExercisesPageDesign()
-
-        
+        exercises = DBManager.shared.getExercises()
+        myExercisesPageDesign()
+        tableView.myDataSource = self
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -31,18 +33,18 @@ class MyExercisesPageViewController: GeneralViewController {
 
 extension MyExercisesPageViewController {
     
-    func MyExercisesPageDesign() {
+    func myExercisesPageDesign() {
         title = "Мои упражнения"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddExerciseButton))
         
-        view.addSubviews(myExercisesTableView)
+        view.addSubviews(tableView)
         
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            myExercisesTableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            myExercisesTableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-            myExercisesTableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            myExercisesTableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+            tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
     }
     
@@ -50,16 +52,28 @@ extension MyExercisesPageViewController {
         AddExerciseAlert.showAddExerciseAlert(viewController: self,
                                               title: "Новое упражнение") { [weak self] exercise in
             guard let self else { return }
-            
-            self.exercises.append(exercise)
-            self.myExercisesTableView.addExercise(exercises)
-
-            self.myExercisesTableView.reloadData()
+            self.add(exercise)
         }
     }
     
+    
+    func add(_ text: String) {
+        DBManager.shared.add(text)
+        self.tableView.reloadData()
+    }
 }
 
 extension MyExercisesPageViewController: MyExercisesPagePresenterDelegate {
     
+}
+
+extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
+    func tableView(_ tableView: MyExercisesTableView, numberOfRowsInSection section: Int) -> Int {
+        return exercises.count
+    }
+    
+    func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> String {
+        let value = exercises[indexPath.row]
+        return value.name
+    }
 }

@@ -11,8 +11,8 @@ protocol MyExercisesPagePresenterDelegate: AnyObject {
 }
 
 final class MyExercisesPagePresenter {
-    
     weak var delegate: MyExercisesPagePresenterDelegate?
+    
     init(delegate: MyExercisesPagePresenterDelegate?) {
         self.delegate = delegate
     }

@@ -10,11 +10,15 @@ import UIKit
 extension UILabel {
     
     convenience init(_ text: String,
-                     _ font: UIFont,
+                     _ font: UIFont! = nil,
                      _ textColor: UIColor) {
         self.init()
         self.text = text
-        self.font = font
+        
+        if let font = font {
+            self.font = font
+        }
+        
         self.textColor = textColor
     }
 }

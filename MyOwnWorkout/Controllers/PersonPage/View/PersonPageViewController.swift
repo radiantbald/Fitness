@@ -14,8 +14,8 @@ class PersonPageViewController: GeneralViewController {
     private lazy var imagePicker = UIImagePickerController()
     
     private let personPageAvatar = UIImageView(75, 75)
-    private let personPageName = UILabel("Олег Попов", UIFont(name: Fonts.mainBold.rawValue, size: 20.0)!, .black)
-    private let personPageNickname = UILabel("@nickname", UIFont(name: Fonts.main.rawValue, size: 15.0)!, .gray)
+    private let personPageName = UILabel("Олег Попов", UIFont(name: Fonts.mainBold.rawValue, size: 20.0), .black)
+    private let personPageNickname = UILabel("@nickname", UIFont(name: Fonts.main.rawValue, size: 15.0), .gray)
     
     override func viewDidLoad() {
         super.viewDidLoad()
