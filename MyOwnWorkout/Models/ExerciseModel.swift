@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class ExerciseModel: Object {
-    @Persisted(primaryKey: true) var exerciseID: ObjectId
+    @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var title: String
     @Persisted var author: String
     @Persisted var muscleGroup: String

@@ -11,10 +11,10 @@ class ExerciseTableViewCell: UITableViewCell {
     
     static let cellID = "cellID"
     
-    let exerciseID = UILabel()
-    let exerciseTitle = UILabel()
-    let exerciseAbout = UILabel()
-    let muscleGroup = UILabel()
+    private let exerciseID = UILabel()
+    private let exerciseTitle = UILabel()
+    private let exerciseAbout = UILabel()
+    private let exerciseMuscleGroup = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,13 +26,13 @@ class ExerciseTableViewCell: UITableViewCell {
     }
     
     func ExerciseTableViewCellDesign() {
-        let exerciseCellHStackView = UIStackView.init([exerciseTitle, muscleGroup], .horizontal, 0, .fill, .equalCentering)
+        let exerciseCellHStackView = UIStackView.init([exerciseTitle, exerciseMuscleGroup], .horizontal, 0, .fill, .equalCentering)
         self.addSubviews(exerciseCellHStackView)
     }
     
-    func configure(exerciseIDSet: String, exerciseTitleSet: String, exerciseAboutSet: String) {
-        exerciseID.text = exerciseIDSet
-        exerciseTitle.text = exerciseTitleSet
-        exerciseAbout.text = exerciseAboutSet
+    func configure(exercise: ExerciseModel) {
+        exerciseID.text = exercise.id
+        exerciseTitle.text = exercise.title
+        exerciseAbout.text = exercise.about
     }
 }

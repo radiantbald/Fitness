@@ -6,23 +6,20 @@
 //
 
 import UIKit
-import RealmSwift
 
 class MyExercisesPageViewController: GeneralViewController {
     
     var presenter: MyExercisesPagePresenter!
     
-    private let tableView = MyExercisesTableView()
-    private var exercises: Results<ExerciseModel>!
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private var exercises: [ExerciseModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.myExercisesDataSource = self
-        tableView.myExercisesDelegate = self
-        
+        registerCell()
+        tableView.delegate = self
+        tableView.dataSource = self
         exercises = RealmDataBase.shared.getExercisesData()
-        
         MyExercisesPageDesign()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +27,9 @@ class MyExercisesPageViewController: GeneralViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    private func registerCell() {
+        tableView.register(ExerciseTableViewCell.self, forCellReuseIdentifier: ExerciseTableViewCell.cellID)
     }
 }
 
@@ -61,18 +61,12 @@ extension MyExercisesPageViewController {
 
 //MARK: - Делегаты протокола MyExercisesTableViewDelegate
 
-extension MyExercisesPageViewController: MyExercisesTableViewDelegate, ExercisePageViewControllerDelegate {
-    func tableView(_ tableView: MyExercisesTableView,didSelectRowAt indexPath: IndexPath) {
-        
-        var exerciseModel = self.tableView(self.tableView, cellForRowAt: indexPath)
-        let id = exerciseModel[0]
-        let title = exerciseModel[1]
-        let about = exerciseModel[2]
-        
+extension MyExercisesPageViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let exercise = exercises[indexPath.row]
         let viewController = Assembler.controllers.exercisePageViewController
-        viewController.delegate = self
-        viewController.exerciseTitle.text = title as? String
-        viewController.exerciseAbout.text = about as? String
+        viewController.exercise = exercise
         
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -80,16 +74,17 @@ extension MyExercisesPageViewController: MyExercisesTableViewDelegate, ExerciseP
 
 //MARK: - Делегаты протокола MyExercisesTableViewDataSource
 
-extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
-    func tableView(_ tableView: MyExercisesTableView, numberOfRowsInSection section: Int) -> Int {
+extension MyExercisesPageViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
     
-    func tableView(_ tableView: MyExercisesTableView, cellForRowAt indexPath: IndexPath) -> [Any?] {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.cellID, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
         let exercise = exercises[indexPath.row]
-        return [exercise.exerciseID.stringValue,
-                exercise.title,
-                exercise.about]
+        cell.configure(exercise: exercise)
+        return cell
     }
 }
 
@@ -97,7 +92,8 @@ extension MyExercisesPageViewController: MyExercisesTableViewDataSource {
 
 extension MyExercisesPageViewController: ExerciseSetupPageViewControllerDelegate {
     func reloadTableView() {
-        self.tableView.reloadData()
+        exercises = RealmDataBase.shared.getExercisesData()
+        tableView.reloadData()
     }
 }
 

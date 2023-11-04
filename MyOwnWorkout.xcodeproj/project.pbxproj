@@ -48,8 +48,6 @@
 		A290CEB72ADABAFF00FE145B /* UImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A290CEB62ADABAFF00FE145B /* UImageViewExtensions.swift */; };
 		A290CEB92ADABD8F00FE145B /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A290CEB82ADABD8F00FE145B /* UIStackViewExtensions.swift */; };
 		A290CEBF2ADC42E800FE145B /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A290CEBE2ADC42E800FE145B /* ExerciseTableViewCell.swift */; };
-		A290CEC12ADC469200FE145B /* MyExercisesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A290CEC02ADC469200FE145B /* MyExercisesTableView.swift */; };
-		A290CEC32ADC500700FE145B /* AddExerciseAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A290CEC22ADC500700FE145B /* AddExerciseAlert.swift */; };
 		A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */; };
 		A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */; };
 		A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */; };
@@ -115,8 +113,6 @@
 		A290CEB62ADABAFF00FE145B /* UImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageViewExtensions.swift; sourceTree = "<group>"; };
 		A290CEB82ADABD8F00FE145B /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
 		A290CEBE2ADC42E800FE145B /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExerciseTableViewCell.swift; path = MyOwnWorkout/Views/ExerciseTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		A290CEC02ADC469200FE145B /* MyExercisesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyExercisesTableView.swift; path = MyOwnWorkout/Views/MyExercisesTableView.swift; sourceTree = SOURCE_ROOT; };
-		A290CEC22ADC500700FE145B /* AddExerciseAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddExerciseAlert.swift; path = MyOwnWorkout/Views/AddExerciseAlert.swift; sourceTree = SOURCE_ROOT; };
 		A2954F872A7E8B9C003947CF /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
 		A2954F892A7E9035003947CF /* SchedulePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePagePresenter.swift; sourceTree = "<group>"; };
 		A2954F8B2A7E90AB003947CF /* FeedPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPagePresenter.swift; sourceTree = "<group>"; };
@@ -547,8 +543,6 @@
 			isa = PBXGroup;
 			children = (
 				A290CEBE2ADC42E800FE145B /* ExerciseTableViewCell.swift */,
-				A290CEC02ADC469200FE145B /* MyExercisesTableView.swift */,
-				A290CEC22ADC500700FE145B /* AddExerciseAlert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -929,7 +923,6 @@
 				A290CEB12ADAAE0000FE145B /* UIViewExtensions.swift in Sources */,
 				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
-				A290CEC32ADC500700FE145B /* AddExerciseAlert.swift in Sources */,
 				A20A117F2AEF891C00E86B95 /* VerifyView.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
@@ -949,7 +942,6 @@
 				A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */,
 				A20A117D2AEF87AE00E86B95 /* VerifyTextField.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
-				A290CEC12ADC469200FE145B /* MyExercisesTableView.swift in Sources */,
 				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
 				A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */,
 				A28B7FF32A8A4CDE00B20B5F /* VerificationIDModel.swift in Sources */,

@@ -8,7 +8,7 @@
 import UIKit
 
 class MainPageViewController: GeneralViewController {
-    
+
     var presenter: MainPagePresenter!
     
     let mainPageAvatar = UIImageView(75, 75)
