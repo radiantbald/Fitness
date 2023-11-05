@@ -110,9 +110,9 @@ class Controllers {
         return viewController
     }
     
-    class var exerciseSetupPageViewController: ExerciseSetupPageViewController {
-        let viewController = ExerciseSetupPageViewController()
-        let presenter = ExerciseSetupPagePresenter(delegate: viewController)
+    class var addExercisePageViewController: AddExercisePageViewController {
+        let viewController = AddExercisePageViewController()
+        let presenter = AddExercisePagePresenter(delegate: viewController)
         viewController.presenter = presenter
         return viewController
     }
@@ -121,6 +121,13 @@ class Controllers {
         let viewController = ExercisePageViewController()
         let presenter = ExercisePagePresenter(delegate: viewController)
         viewController.presenter = presenter
+        return viewController
+    }
+    
+    class var exerciseSetupPageViewController: ExerciseSetupPageViewController {
+        let viewController = ExerciseSetupPageViewController()
+//        let presenter = ExerciseSetupPagePresenter(delegate: viewController)
+//        viewController.presenter = presenter
         return viewController
     }
 }

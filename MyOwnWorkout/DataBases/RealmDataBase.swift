@@ -26,4 +26,11 @@ class RealmDataBase {
             print(realm.configuration.fileURL ?? "")
         }
     }
+    
+    func deleteExercisesData(exercise: ExerciseModel) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(exercise)
+        }
+    }
 }

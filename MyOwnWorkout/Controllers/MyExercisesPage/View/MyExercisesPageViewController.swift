@@ -21,6 +21,9 @@ class MyExercisesPageViewController: GeneralViewController {
         tableView.dataSource = self
         exercises = RealmDataBase.shared.getExercisesData()
         MyExercisesPageDesign()
+        
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,7 +55,7 @@ extension MyExercisesPageViewController {
     }
     
     @objc func setupAddExerciseButton() {
-        let viewController = Assembler.controllers.exerciseSetupPageViewController
+        let viewController = Assembler.controllers.addExercisePageViewController
         viewController.delegate = self
         navigationController?.present(viewController, animated: true)
     }
@@ -67,8 +70,27 @@ extension MyExercisesPageViewController: UITableViewDelegate {
         let exercise = exercises[indexPath.row]
         let viewController = Assembler.controllers.exercisePageViewController
         viewController.exercise = exercise
-        
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let exercise = exercises[indexPath.row]
+        
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            exercises.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
+        RealmDataBase.shared.deleteExercisesData(exercise: exercise)
+        exercises = RealmDataBase.shared.getExercisesData()
+        tableView.reloadData()
+            
     }
 }
 
@@ -88,9 +110,9 @@ extension MyExercisesPageViewController: UITableViewDataSource {
     }
 }
 
-//MARK: - Делегаты ExerciseSetupPageViewControllerDelegate
+//MARK: - Делегаты ExerciseSetupPageViewControllerDelegate, ExerciseSetupPageViewControllerDelegate
 
-extension MyExercisesPageViewController: ExerciseSetupPageViewControllerDelegate {
+extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
     func reloadTableView() {
         exercises = RealmDataBase.shared.getExercisesData()
         tableView.reloadData()

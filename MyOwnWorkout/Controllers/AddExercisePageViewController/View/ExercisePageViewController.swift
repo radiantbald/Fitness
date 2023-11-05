@@ -13,6 +13,8 @@ protocol ExercisePageViewControllerDelegate: AnyObject {
 }
 
 class ExercisePageViewController: GeneralViewController {
+  
+    private var exercises: [ExerciseModel] = []
     
     var presenter: ExercisePagePresenter!
 
@@ -45,6 +47,8 @@ extension ExercisePageViewController {
     func exercisePageDesign() {
         title = "Упражнение"
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(setupSetupExerciseButton))
+        
         view.addSubviews(exerciseTitle, exerciseAbout)
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -61,8 +65,19 @@ extension ExercisePageViewController {
         
     }
     
+    @objc func setupSetupExerciseButton() {
+        let viewController = Assembler.controllers.exerciseSetupPageViewController
+        viewController.delegate = self
+        navigationController?.present(viewController, animated: true)
+    }
+    
 }
 
+extension ExercisePageViewController: AddExercisePageViewControllerDelegate {
+    func reloadTableView() {
+        exercises = RealmDataBase.shared.getExercisesData()
+    }
+}
 
 extension ExercisePageViewController: ExercisePagePresenterDelegate {
     

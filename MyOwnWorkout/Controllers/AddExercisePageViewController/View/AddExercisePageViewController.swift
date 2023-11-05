@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol ExerciseSetupPageViewControllerDelegate: AnyObject {
+protocol AddExercisePageViewControllerDelegate: AnyObject {
     func reloadTableView()
 }
 
-class ExerciseSetupPageViewController: GeneralViewController {
+class AddExercisePageViewController: GeneralViewController {
     
-    var presenter: ExerciseSetupPagePresenter!
+    var presenter: AddExercisePagePresenter!
     
-    weak var delegate: ExerciseSetupPageViewControllerDelegate?
+    weak var delegate: AddExercisePageViewControllerDelegate?
     
     let exerciseTitle = UITextField()
     let exerciseAbout = UITextField()
@@ -23,7 +23,7 @@ class ExerciseSetupPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        exerciseSetupPageDesign()
+        addExercisePageDesign()
         setupSaveExerciseButton()
     }
     
@@ -35,23 +35,23 @@ class ExerciseSetupPageViewController: GeneralViewController {
         super.viewDidAppear(animated)
     }
 }
-extension ExerciseSetupPageViewController {
+extension AddExercisePageViewController {
     
     func setupSaveExerciseButton() {
         saveExerciseButton.addTarget(self, action: #selector(setupSaveExerciseButtonAction), for: .touchUpInside)
     }
     
     @objc func setupSaveExerciseButtonAction() {
-        addExercise(exerciseTitle.text ?? "Без названия", exerciseAbout.text ?? "Порядок выполнения")
+        saveExercise(exerciseTitle.text ?? "Без названия", exerciseAbout.text ?? "Порядок выполнения")
         self.dismiss(animated: true)
     }
     
-    func addExercise(_ title: String, _ about: String) {
+    func saveExercise(_ title: String, _ about: String) {
         RealmDataBase.shared.setExercisesData(title, about)
         delegate?.reloadTableView()
     }
     
-    func exerciseSetupPageDesign() {
+    func addExercisePageDesign() {
         
         exerciseTitle.placeholder = "Название упражнения"
         exerciseAbout.placeholder = "Порядок выполнения"
@@ -81,6 +81,6 @@ extension ExerciseSetupPageViewController {
     }
 }
 
-extension ExerciseSetupPageViewController: ExerciseSetupPagePresenterDelegate {
+extension AddExercisePageViewController: AddExercisePagePresenterDelegate {
     
 }
