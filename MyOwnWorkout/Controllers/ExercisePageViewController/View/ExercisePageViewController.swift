@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol ExercisePageViewControllerDelegate: AnyObject {
+    func changeExerciseInTableView(_ title: String, _ about: String)
+}
+
 class ExercisePageViewController: GeneralViewController {
     
     var presenter: ExercisePagePresenter!
+    
+    weak var delegate: ExercisePageViewControllerDelegate?
     
     var exercise: ExerciseModel!
     
@@ -19,9 +25,8 @@ class ExercisePageViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         exercisePageDesign()
-        
-        exerciseTitle.text = exercise?.title
-        exerciseAbout.text = exercise?.about
+//        exerciseTitle.text = exercise?.title
+//        exerciseAbout.text = exercise?.about
 
     }
     
@@ -37,7 +42,8 @@ extension ExercisePageViewController {
     
     func exercisePageDesign() {
         title = "Упражнение"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(setupExerciseSetupButton))
+        navigationItem.backButtonTitle = "Назад"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(setupSetupExerciseButton))
         
         view.addSubviews(exerciseTitle, exerciseAbout)
         let margins = view.safeAreaLayoutGuide
@@ -53,14 +59,27 @@ extension ExercisePageViewController {
             exerciseAbout.heightAnchor.constraint(equalToConstant: 50)
         ])
         
+        exerciseTitle.text = exercise?.title
+        exerciseAbout.text = exercise?.about
+        
     }
     
-    @objc func setupExerciseSetupButton() {
-        let viewController = Assembler.controllers.exerciseSetupPageViewController
-//        viewController.delegate = self
+    @objc func setupSetupExerciseButton() {
+        let viewController = Assembler.controllers.setupExercisePageViewController
+        viewController.delegate = self
+        viewController.exerciseTitle.placeholder = exercise?.title
+        viewController.exerciseAbout.placeholder = exercise?.about
         navigationController?.present(viewController, animated: true)
     }
     
+}
+
+extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
+    func changeExerciseOnExercisePage(_ title: String, _ about: String) {
+        exerciseTitle.text = title
+        exerciseAbout.text = about
+        delegate?.changeExerciseInTableView(title, about)
+    }
 }
 
 extension ExercisePageViewController: ExercisePagePresenterDelegate {

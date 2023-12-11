@@ -21,9 +21,6 @@ class MyExercisesPageViewController: GeneralViewController {
         tableView.dataSource = self
         exercises = RealmDataBase.shared.getExercisesData()
         MyExercisesPageDesign()
-        
-        
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -70,6 +67,7 @@ extension MyExercisesPageViewController: UITableViewDelegate {
         let exercise = exercises[indexPath.row]
         let viewController = Assembler.controllers.exercisePageViewController
         viewController.exercise = exercise
+        viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -110,10 +108,19 @@ extension MyExercisesPageViewController: UITableViewDataSource {
     }
 }
 
-//MARK: - Делегаты ExerciseSetupPageViewControllerDelegate, ExerciseSetupPageViewControllerDelegate
+//MARK: - Добавление данных в таблицу
 
 extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
-    func reloadTableView() {
+    func addExerciseToTableView() {
+        exercises = RealmDataBase.shared.getExercisesData()
+        tableView.reloadData()
+    }
+}
+
+//MARK: - Редактирование данных в таблице
+
+extension MyExercisesPageViewController: ExercisePageViewControllerDelegate {
+    func changeExerciseInTableView(_ title: String, _ about: String) {
         exercises = RealmDataBase.shared.getExercisesData()
         tableView.reloadData()
     }

@@ -117,17 +117,17 @@ class Controllers {
         return viewController
     }
     
-    class var exercisePageViewController: ExercisePageViewController {
-        let viewController = ExercisePageViewController()
-        let presenter = ExercisePagePresenter(delegate: viewController)
+    class var setupExercisePageViewController: SetupExercisePageViewController {
+        let viewController = SetupExercisePageViewController()
+        let presenter = SetupExercisePagePresenter(delegate: viewController)
         viewController.presenter = presenter
         return viewController
     }
     
-    class var exerciseSetupPageViewController: ExerciseSetupPageViewController {
-        let viewController = ExerciseSetupPageViewController()
-//        let presenter = ExerciseSetupPagePresenter(delegate: viewController)
-//        viewController.presenter = presenter
+    class var exercisePageViewController: ExercisePageViewController {
+        let viewController = ExercisePageViewController()
+        let presenter = ExercisePagePresenter(delegate: viewController)
+        viewController.presenter = presenter
         return viewController
     }
 }

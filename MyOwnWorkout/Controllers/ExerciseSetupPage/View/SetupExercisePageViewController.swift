@@ -7,7 +7,15 @@
 
 import UIKit
 
-class ExerciseSetupPageViewController: GeneralViewController {
+protocol SetupExercisePageViewControllerDelegate: AnyObject {
+    func changeExerciseOnExercisePage(_ title: String, _ about: String)
+}
+
+class SetupExercisePageViewController: GeneralViewController {
+    
+    var presenter: SetupExercisePagePresenter!
+    
+    weak var delegate: SetupExercisePageViewControllerDelegate?
     
     let exerciseTitle = UITextField()
     let exerciseAbout = UITextField()
@@ -28,7 +36,7 @@ class ExerciseSetupPageViewController: GeneralViewController {
     }
 }
 
-extension ExerciseSetupPageViewController {
+extension SetupExercisePageViewController {
     
     func setupSaveExerciseButton() {
         saveExerciseButton.addTarget(self, action: #selector(setupSaveExerciseButtonAction), for: .touchUpInside)
@@ -40,11 +48,12 @@ extension ExerciseSetupPageViewController {
     }
     
     func saveExercise(_ title: String, _ about: String) {
-        RealmDataBase.shared.setExercisesData(title, about)
+        RealmDataBase.shared.updateExercisesData(title, about)
+        delegate?.changeExerciseOnExercisePage(title, about)
     }
     
     func exerciseSetupPageDesign() {
-        
+        title = "Правка"
         
         saveExerciseButton.setTitle("Сохранить", for: .normal)
         saveExerciseButton.backgroundColor = .systemRed
@@ -70,5 +79,9 @@ extension ExerciseSetupPageViewController {
         ])
         
     }
+}
+
+extension SetupExercisePageViewController: SetupExercisePagePresenterDelegate {
+    
 }
     

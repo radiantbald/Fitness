@@ -18,7 +18,7 @@
 		A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */; };
 		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
 		A23A750B2AF803BC00C4B178 /* ExercisePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A750A2AF803BB00C4B178 /* ExercisePageViewController.swift */; };
-		A23A75132AF804F900C4B178 /* ExerciseSetupPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A75122AF804F900C4B178 /* ExerciseSetupPageViewController.swift */; };
+		A23A75132AF804F900C4B178 /* SetupExercisePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A75122AF804F900C4B178 /* SetupExercisePageViewController.swift */; };
 		A26635B12AB2F37300040DCF /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B02AB2F37300040DCF /* NotificationSettings.swift */; };
 		A26635B32AB2FCE000040DCF /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B22AB2FCE000040DCF /* Keys.swift */; };
 		A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B52AB2FDE800040DCF /* Assembler.swift */; };
@@ -75,6 +75,7 @@
 		A2C3FF8E2A18E71500231082 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */; };
 		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
+		A2F78D6F2B272D2E00AF35AD /* SetupExercisePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,7 +85,7 @@
 		A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
 		A23A750A2AF803BB00C4B178 /* ExercisePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePageViewController.swift; sourceTree = "<group>"; };
-		A23A75122AF804F900C4B178 /* ExerciseSetupPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetupPageViewController.swift; sourceTree = "<group>"; };
+		A23A75122AF804F900C4B178 /* SetupExercisePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupExercisePageViewController.swift; sourceTree = "<group>"; };
 		A26635B02AB2F37300040DCF /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		A26635B22AB2FCE000040DCF /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		A26635B52AB2FDE800040DCF /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		A2C3FF8F2A18E71500231082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
+		A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupExercisePagePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 		A23A750D2AF804BD00C4B178 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -200,7 +203,7 @@
 		A23A750E2AF804C400C4B178 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A23A75122AF804F900C4B178 /* ExerciseSetupPageViewController.swift */,
+				A23A75122AF804F900C4B178 /* SetupExercisePageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,
 				A28B7FCA2A87DF9A00B20B5F /* PersonalAccountPageViewController.swift in Sources */,
 				A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */,
+				A2F78D6F2B272D2E00AF35AD /* SetupExercisePagePresenter.swift in Sources */,
 				A290CEB12ADAAE0000FE145B /* UIViewExtensions.swift in Sources */,
 				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
@@ -970,7 +974,7 @@
 				A29B4BD72AE550EA00C5D886 /* ExercisePagePresenter.swift in Sources */,
 				A28B7FD52A87E49D00B20B5F /* MyAchievmentsPagePresenter.swift in Sources */,
 				A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */,
-				A23A75132AF804F900C4B178 /* ExerciseSetupPageViewController.swift in Sources */,
+				A23A75132AF804F900C4B178 /* SetupExercisePageViewController.swift in Sources */,
 				A290CEB32ADAB46000FE145B /* UILabelExtensions.swift in Sources */,
 				A29B4BCF2AE3F2F900C5D886 /* AddExercisePagePresenter.swift in Sources */,
 				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,

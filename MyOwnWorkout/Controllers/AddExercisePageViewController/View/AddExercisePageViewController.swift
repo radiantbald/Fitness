@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddExercisePageViewControllerDelegate: AnyObject {
-    func reloadTableView()
+    func addExerciseToTableView()
 }
 
 class AddExercisePageViewController: GeneralViewController {
@@ -48,7 +48,7 @@ extension AddExercisePageViewController {
     
     func saveExercise(_ title: String, _ about: String) {
         RealmDataBase.shared.setExercisesData(title, about)
-        delegate?.reloadTableView()
+        delegate?.addExerciseToTableView()
     }
     
     func addExercisePageDesign() {
