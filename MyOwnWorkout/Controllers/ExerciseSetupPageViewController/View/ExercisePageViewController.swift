@@ -6,30 +6,26 @@
 //
 
 import UIKit
-import RealmSwift
 
 protocol ExercisePageViewControllerDelegate: AnyObject {
+    var speak: Bool { get set }
     func reloadTableView()
 }
 
 class ExercisePageViewController: GeneralViewController {
     
     var presenter: ExercisePagePresenter!
-    
-    private let tableView = MyExercisesTableView()
-    
     weak var delegate: ExercisePageViewControllerDelegate?
+    var exercises: ExerciseModel!
     
-    var exercises: Results<ExerciseModel>!
-    
-    var exerciseTitle = UILabel()
-    var exerciseAbout = UILabel()
+    private var exerciseTitle = UILabel()
+    private var exerciseAbout = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         exercisePageDesign()
-//        tableView.myExercisesDataSource = self
-//        tableView.myExercisesDelegate = self
+        exerciseTitle.text = exercises?.title
+        exerciseAbout.text = exercises?.about
     }
     
     override func viewWillAppear(_ animated: Bool) {

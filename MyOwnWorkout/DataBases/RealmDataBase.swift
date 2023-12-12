@@ -12,9 +12,10 @@ class RealmDataBase {
     static var shared: RealmDataBase = .init()
     private init() {}
     
-    func getExercisesData() -> Results<ExerciseModel> {
+    func getExercisesData() -> [ExerciseModel] {
         let realm = try! Realm()
-        return realm.objects(ExerciseModel.self)
+        let set = realm.objects(ExerciseModel.self)
+        return Array(set)
     }
     
     func setExercisesData(_ title: String, _ about: String) {
