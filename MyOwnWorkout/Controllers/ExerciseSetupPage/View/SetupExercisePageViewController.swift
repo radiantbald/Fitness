@@ -8,14 +8,22 @@
 import UIKit
 
 protocol SetupExercisePageViewControllerDelegate: AnyObject {
-    func changeExerciseOnExercisePage(_ title: String, _ about: String)
+    func changeExerciseOnExercisePage(_ exercise: ExerciseModel)
 }
 
 class SetupExercisePageViewController: GeneralViewController {
     
+    private let exercise: ExerciseModel
     var presenter: SetupExercisePagePresenter!
+    private weak var delegate: SetupExercisePageViewControllerDelegate?
     
-    weak var delegate: SetupExercisePageViewControllerDelegate?
+    init(parent: SetupExercisePageViewControllerDelegate? = nil, exercise: ExerciseModel) {
+        self.exercise = exercise
+        self.delegate = parent
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     let exerciseTitle = UITextField()
     let exerciseAbout = UITextField()
@@ -48,8 +56,15 @@ extension SetupExercisePageViewController {
     }
     
     func saveExercise(_ title: String, _ about: String) {
-        RealmDataBase.shared.updateExercisesData(title, about)
-        delegate?.changeExerciseOnExercisePage(title, about)
+        
+        if exercise.title == title && exercise.about == about { return }
+        
+        let model = ExerciseModel()
+        model.id = exercise.id
+        model.title = title
+        model.about = about
+        
+        delegate?.changeExerciseOnExercisePage(model)
     }
     
     func exerciseSetupPageDesign() {
@@ -78,6 +93,8 @@ extension SetupExercisePageViewController {
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
         ])
         
+        exerciseTitle.placeholder = exercise.title
+        exerciseAbout.placeholder = exercise.about
     }
 }
 

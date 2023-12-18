@@ -12,14 +12,20 @@ class MyExercisesPageViewController: GeneralViewController {
     var presenter: MyExercisesPagePresenter!
     
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private var exercises: [ExerciseModel] = []
+    private var exercises: [ExerciseModel] = RealmDataBase.shared.get()
+    
+    let addExerciseButton: UIButton = {
+        let addExerciseButton = UIButton()
+        addExerciseButton.translatesAutoresizingMaskIntoConstraints = false
+        return addExerciseButton
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
         tableView.delegate = self
         tableView.dataSource = self
-        exercises = RealmDataBase.shared.getExercisesData()
+        exercises = RealmDataBase.shared.get()
         MyExercisesPageDesign()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -43,12 +49,27 @@ extension MyExercisesPageViewController {
         view.addSubviews(tableView)
         
         let margins = view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-            tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
-        ])
+        
+        if exercises.isEmpty {
+            NSLayoutConstraint.activate([
+                addExerciseButton.heightAnchor.constraint(equalToConstant: 50),
+                addExerciseButton.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: 10),
+                addExerciseButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+                addExerciseButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+                tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+                
+                
+            ])
+        }
+        addExerciseButton.setTitle("Добавить", for: .normal)
+        addExerciseButton.backgroundColor = .systemRed
+        addExerciseButton.layer.cornerRadius = 12
     }
     
     @objc func setupAddExerciseButton() {
@@ -85,8 +106,8 @@ extension MyExercisesPageViewController: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
-        RealmDataBase.shared.deleteExercisesData(exercise: exercise)
-        exercises = RealmDataBase.shared.getExercisesData()
+        RealmDataBase.shared.delete(exercise)
+        exercises = RealmDataBase.shared.get()
         tableView.reloadData()
             
     }
@@ -112,7 +133,7 @@ extension MyExercisesPageViewController: UITableViewDataSource {
 
 extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
     func addExerciseToTableView() {
-        exercises = RealmDataBase.shared.getExercisesData()
+        exercises = RealmDataBase.shared.get()
         tableView.reloadData()
     }
 }
@@ -120,8 +141,7 @@ extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
 //MARK: - Редактирование данных в таблице
 
 extension MyExercisesPageViewController: ExercisePageViewControllerDelegate {
-    func changeExerciseInTableView(_ title: String, _ about: String) {
-        exercises = RealmDataBase.shared.getExercisesData()
+    func reloadTableViewData() {
         tableView.reloadData()
     }
 }

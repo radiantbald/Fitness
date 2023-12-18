@@ -9,6 +9,9 @@ import UIKit
 
 class GeneralViewController: UIViewController {
 
+    var doNotUseAuth: Bool {
+        return true
+    }
     //MARK: - get/set статуса авторизациии
     
     var isAuth: Bool {
@@ -40,6 +43,7 @@ class GeneralViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
     }
     
 }

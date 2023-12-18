@@ -12,34 +12,24 @@ class RealmDataBase {
     static var shared: RealmDataBase = .init()
     private init() {}
     
-    func getExercisesData() -> [ExerciseModel] {
+    func get<T: Object>() -> [T] {
         let realm = try! Realm()
-        let checkRealm = realm.objects(ExerciseModel.self)
+        let checkRealm = realm.objects(T.self)
         return Array(checkRealm)
     }
     
-    func setExercisesData(_ title: String, _ about: String) {
+    func set(_ value: Object) {
         let realm = try! Realm()
-        let exercises = ExerciseModel(title: title, about: about)
         try! realm.write {
-            realm.add(exercises)
+            realm.add(value, update: .modified)
             print(realm.configuration.fileURL ?? "")
         }
     }
     
-    func updateExercisesData(_ title: String, _ about: String) {
-        let realm = try! Realm()
-        let exercises = realm.objects(ExerciseModel.self).first!
-        try! realm.write {
-            exercises.title = title
-            exercises.about = about
-        }
-    }
-    
-    func deleteExercisesData(exercise: ExerciseModel) {
+    func delete(_ value: Object) {
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(exercise)
+            realm.delete(value)
         }
     }
 }

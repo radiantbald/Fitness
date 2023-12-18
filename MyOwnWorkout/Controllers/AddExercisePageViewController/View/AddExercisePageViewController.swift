@@ -46,8 +46,9 @@ extension AddExercisePageViewController {
         self.dismiss(animated: true)
     }
     
-    func saveExercise(_ title: String, _ about: String) {
-        RealmDataBase.shared.setExercisesData(title, about)
+    func saveExercise( _ title: String, _ about: String) {
+        let exercise = ExerciseModel(title: title, about: about)
+        RealmDataBase.shared.set(exercise)
         delegate?.addExerciseToTableView()
     }
     

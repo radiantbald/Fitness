@@ -84,7 +84,7 @@ extension MainPageViewController {
     
     @objc func goToPersonPageButton() {
         
-        if isAuth {
+        if isAuth || doNotUseAuth {
             let viewController = Assembler.controllers.personPageViewController
             viewController.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(viewController, animated: true)
