@@ -14,11 +14,8 @@ class MyExercisesPageViewController: GeneralViewController {
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private var exercises: [ExerciseModel] = RealmDataBase.shared.get()
     
-    let addExerciseButton: UIButton = {
-        let addExerciseButton = UIButton()
-        addExerciseButton.translatesAutoresizingMaskIntoConstraints = false
-        return addExerciseButton
-    }()
+    let dismissedExercisesLabel = UILabel()
+    let addExerciseButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +23,8 @@ class MyExercisesPageViewController: GeneralViewController {
         tableView.delegate = self
         tableView.dataSource = self
         exercises = RealmDataBase.shared.get()
-        MyExercisesPageDesign()
+        myExercisesPageDesign()
+        setupAddExerciseButton()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,38 +39,80 @@ class MyExercisesPageViewController: GeneralViewController {
 
 extension MyExercisesPageViewController {
     
-    func MyExercisesPageDesign() {
+    func myExercisesPageDesign() {
         title = "Мои упражнения"
         navigationItem.backButtonTitle = "Назад"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddExerciseButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddExerciseButtons))
         
-        view.addSubviews(tableView)
+        setSubviews()
         
-        let margins = view.safeAreaLayoutGuide
+        dismissedExercisesLabel.text = "Пока нет упражнений"
+        dismissedExercisesLabel.textAlignment = .center
         
-        if exercises.isEmpty {
-            NSLayoutConstraint.activate([
-                addExerciseButton.heightAnchor.constraint(equalToConstant: 50),
-                addExerciseButton.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: 10),
-                addExerciseButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-                addExerciseButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30)
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-                tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
-                tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-                tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
-                
-                
-            ])
-        }
         addExerciseButton.setTitle("Добавить", for: .normal)
         addExerciseButton.backgroundColor = .systemRed
         addExerciseButton.layer.cornerRadius = 12
     }
     
-    @objc func setupAddExerciseButton() {
+    func setSubviews() {
+        
+        let margins = view.safeAreaLayoutGuide
+        
+        if exercises.isEmpty {
+            
+            view.addSubviews(dismissedExercisesLabel, addExerciseButton)
+
+            NSLayoutConstraint.activate([
+                dismissedExercisesLabel.heightAnchor.constraint(equalToConstant: 50),
+                dismissedExercisesLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100),
+                dismissedExercisesLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+                dismissedExercisesLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+
+                addExerciseButton.heightAnchor.constraint(equalToConstant: 50),
+                addExerciseButton.topAnchor.constraint(equalTo: dismissedExercisesLabel.bottomAnchor, constant: 10),
+                addExerciseButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+                addExerciseButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30)
+            ])
+            
+            tableView.removeFromSuperview()
+            
+        } else {
+            
+            view.addSubviews(tableView)
+            
+            NSLayoutConstraint.activate([
+                tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+                tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+            ])
+            
+            dismissedExercisesLabel.removeFromSuperview()
+            addExerciseButton.removeFromSuperview()
+        }
+    }
+    
+    func activateDismissExercisesConstraints() {
+        
+    }
+
+    func activateTableViewConstraints() {
+        
+    }
+
+    func deactivateDismissExercisesConstraints() {
+        NSLayoutConstraint.deactivate(dismissedExercisesLabel.constraints)
+        NSLayoutConstraint.deactivate(addExerciseButton.constraints)
+    }
+
+    func deactivateTableViewConstraints() {
+        NSLayoutConstraint.deactivate(tableView.constraints)
+    }
+    
+    func setupAddExerciseButton() {
+        addExerciseButton.addTarget(self, action: #selector(setupAddExerciseButtons), for: .touchUpInside)
+    }
+    @objc func setupAddExerciseButtons() {
         let viewController = Assembler.controllers.addExercisePageViewController
         viewController.delegate = self
         navigationController?.present(viewController, animated: true)
@@ -105,11 +145,12 @@ extension MyExercisesPageViewController: UITableViewDelegate {
             exercises.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
+            
         }
         RealmDataBase.shared.delete(exercise)
         exercises = RealmDataBase.shared.get()
         tableView.reloadData()
-            
+        setSubviews()
     }
 }
 
@@ -135,6 +176,7 @@ extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
     func addExerciseToTableView() {
         exercises = RealmDataBase.shared.get()
         tableView.reloadData()
+        setSubviews()
     }
 }
 
@@ -143,6 +185,7 @@ extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
 extension MyExercisesPageViewController: ExercisePageViewControllerDelegate {
     func reloadTableViewData() {
         tableView.reloadData()
+        
     }
 }
 
