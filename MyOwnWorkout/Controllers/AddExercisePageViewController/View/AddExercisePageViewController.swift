@@ -17,9 +17,12 @@ class AddExercisePageViewController: GeneralViewController {
     
     weak var delegate: AddExercisePageViewControllerDelegate?
     
-    let exerciseTitle = UITextField()
-    let exerciseAbout = UITextField()
-    let saveExerciseButton = UIButton()
+    private let pageTitleLabel = UILabel("Создание", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
+    private let exerciseTitleLabel = UILabel("Название упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
+    private let exerciseTitle = UITextField()
+    private let exerciseAboutLabel = UILabel("Порядок выполнения упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
+    private let exerciseAbout = UITextField()
+    private let saveExerciseButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,35 +46,45 @@ extension AddExercisePageViewController {
     
     @objc func setupSaveExerciseButtonAction() {
         saveExercise(exerciseTitle.text ?? "Без названия", exerciseAbout.text ?? "Порядок выполнения")
-        self.dismiss(animated: true)
+        
     }
     
     func saveExercise( _ title: String, _ about: String) {
-        let exercise = ExerciseModel(title: title, about: about)
-        RealmDataBase.shared.set(exercise)
-        delegate?.addExerciseToTableView()
+        if exerciseTitle.text?.count == 0 {
+            showAlert(title: "Нет названия", message: "Назовите упражнение")
+        } else {
+            let exercise = ExerciseModel(title: title, about: about)
+            RealmDataBase.shared.set(exercise)
+            delegate?.addExerciseToTableView()
+            self.dismiss(animated: true)
+        }
     }
     
     func addExercisePageDesign() {
         
-        exerciseTitle.placeholder = "Название упражнения"
-        exerciseAbout.placeholder = "Порядок выполнения"
-        saveExerciseButton.setTitle("Сохранить", for: .normal)
-        saveExerciseButton.backgroundColor = .systemRed
-        saveExerciseButton.layer.cornerRadius = 12
+        view.addSubviews(pageTitleLabel, exerciseTitleLabel, exerciseAboutLabel, exerciseTitle, exerciseAbout, saveExerciseButton)
         
-        view.addSubviews(exerciseTitle, exerciseAbout, saveExerciseButton)
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
+            pageTitleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+            pageTitleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20),
+            pageTitleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            
+            exerciseTitleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
+            exerciseTitleLabel.topAnchor.constraint(equalTo: pageTitleLabel.bottomAnchor, constant: 20),
+            exerciseTitleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            
             exerciseTitle.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            exerciseTitle.topAnchor.constraint(equalTo: margins.topAnchor, constant: 50),
+            exerciseTitle.topAnchor.constraint(equalTo: exerciseTitleLabel.bottomAnchor, constant: 5),
             exerciseTitle.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            exerciseTitle.heightAnchor.constraint(equalToConstant: 50),
+            
+            exerciseAboutLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
+            exerciseAboutLabel.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
+            exerciseAboutLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             
             exerciseAbout.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            exerciseAbout.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 10),
+            exerciseAbout.topAnchor.constraint(equalTo: exerciseAboutLabel.bottomAnchor, constant: 5),
             exerciseAbout.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            exerciseAbout.heightAnchor.constraint(equalToConstant: 50),
             
             saveExerciseButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
             saveExerciseButton.topAnchor.constraint(equalTo: exerciseAbout.bottomAnchor, constant: 30),
@@ -79,6 +92,15 @@ extension AddExercisePageViewController {
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
         ])
         
+        pageTitleLabel.textAlignment = .center
+        
+        exerciseTitle.placeholder = "Название упражнения"
+        
+        exerciseAbout.placeholder = "Порядок выполнения упражнения"
+        
+        saveExerciseButton.setTitle("Сохранить", for: .normal)
+        saveExerciseButton.backgroundColor = .systemRed
+        saveExerciseButton.layer.cornerRadius = 12
     }
 }
 

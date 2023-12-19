@@ -82,7 +82,7 @@ extension MyExercisesPageViewController {
             
             NSLayoutConstraint.activate([
                 tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-                tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
+                tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0),
                 tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
                 tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
             ])
@@ -90,23 +90,6 @@ extension MyExercisesPageViewController {
             dismissedExercisesLabel.removeFromSuperview()
             addExerciseButton.removeFromSuperview()
         }
-    }
-    
-    func activateDismissExercisesConstraints() {
-        
-    }
-
-    func activateTableViewConstraints() {
-        
-    }
-
-    func deactivateDismissExercisesConstraints() {
-        NSLayoutConstraint.deactivate(dismissedExercisesLabel.constraints)
-        NSLayoutConstraint.deactivate(addExerciseButton.constraints)
-    }
-
-    func deactivateTableViewConstraints() {
-        NSLayoutConstraint.deactivate(tableView.constraints)
     }
     
     func setupAddExerciseButton() {
@@ -143,13 +126,13 @@ extension MyExercisesPageViewController: UITableViewDelegate {
         if editingStyle == .delete {
             tableView.beginUpdates()
             exercises.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
-            
         }
         RealmDataBase.shared.delete(exercise)
         exercises = RealmDataBase.shared.get()
         tableView.reloadData()
+        
         setSubviews()
     }
 }

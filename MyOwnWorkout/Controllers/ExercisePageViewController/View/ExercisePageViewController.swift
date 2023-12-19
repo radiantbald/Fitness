@@ -19,8 +19,8 @@ class ExercisePageViewController: GeneralViewController {
     
     var exercise: ExerciseModel!
     
-    private var exerciseTitle = UILabel()
-    private var exerciseAbout = UILabel()
+    private var exerciseTitle = UILabel("", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
+    private var exerciseAbout = UILabel("", UIFont(name: Fonts.main.rawValue, size: 16.0)!, .black)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,19 +49,34 @@ extension ExercisePageViewController {
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             exerciseTitle.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            exerciseTitle.topAnchor.constraint(equalTo: margins.topAnchor, constant: 50),
+            exerciseTitle.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
             exerciseTitle.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            exerciseTitle.heightAnchor.constraint(equalToConstant: 50),
+            exerciseTitle.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
             
             exerciseAbout.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
             exerciseAbout.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 10),
             exerciseAbout.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            exerciseAbout.heightAnchor.constraint(equalToConstant: 50)
+            exerciseAbout.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
-        
         exerciseTitle.text = exercise?.title
-        exerciseAbout.text = exercise?.about
+        exerciseTitle.textAlignment = .center
         
+        exerciseAboutFormatter()
+        
+    }
+    
+    func exerciseAboutFormatter() {
+        if exercise?.about.count == 0 {
+            exerciseAbout.text = "Нет описания выполнения упражнения"
+            exerciseAbout.textColor = .gray
+            exerciseAbout.numberOfLines = .max
+            exerciseAbout.textAlignment = .justified
+        } else {
+            exerciseAbout.text = exercise?.about
+            exerciseAbout.textColor = .black
+            exerciseAbout.numberOfLines = .max
+            exerciseAbout.textAlignment = .justified
+        }
     }
     
     @objc func setupSetupExerciseButton() {
@@ -76,6 +91,7 @@ extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
         RealmDataBase.shared.set(exercise)
         exerciseTitle.text = exercise.title
         exerciseAbout.text = exercise.about
+        exerciseAboutFormatter()
         delegate?.reloadTableViewData()
     }
 }
