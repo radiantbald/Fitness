@@ -19,9 +19,9 @@ class AddExercisePageViewController: GeneralViewController {
     
     private let pageTitleLabel = UILabel("Создание", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
     private let exerciseTitleLabel = UILabel("Название упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
-    private let exerciseTitle = UITextField()
+    private let exerciseTitle = UITextView()
     private let exerciseAboutLabel = UILabel("Порядок выполнения упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
-    private let exerciseAbout = UITextField()
+    private let exerciseAbout = UITextView()
     private let saveExerciseButton = UIButton()
     
     override func viewDidLoad() {
@@ -77,6 +77,7 @@ extension AddExercisePageViewController {
             exerciseTitle.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
             exerciseTitle.topAnchor.constraint(equalTo: exerciseTitleLabel.bottomAnchor, constant: 5),
             exerciseTitle.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            exerciseTitle.heightAnchor.constraint(greaterThanOrEqualToConstant: 36),
             
             exerciseAboutLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
             exerciseAboutLabel.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
@@ -85,6 +86,7 @@ extension AddExercisePageViewController {
             exerciseAbout.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
             exerciseAbout.topAnchor.constraint(equalTo: exerciseAboutLabel.bottomAnchor, constant: 5),
             exerciseAbout.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            exerciseAbout.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
             
             saveExerciseButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
             saveExerciseButton.topAnchor.constraint(equalTo: exerciseAbout.bottomAnchor, constant: 30),
@@ -94,13 +96,28 @@ extension AddExercisePageViewController {
         
         pageTitleLabel.textAlignment = .center
         
-        exerciseTitle.placeholder = "Название упражнения"
-        
-        exerciseAbout.placeholder = "Порядок выполнения упражнения"
+        setupExerciseTitleTextView()
+        setupExerciseAboutTextView()
         
         saveExerciseButton.setTitle("Сохранить", for: .normal)
         saveExerciseButton.backgroundColor = .systemRed
         saveExerciseButton.layer.cornerRadius = 12
+    }
+    func setupExerciseTitleTextView() {
+        exerciseTitle.isSelectable = true
+        exerciseTitle.isEditable = true
+        exerciseTitle.font = UIFont(name: Fonts.main.rawValue, size: 16.0)!
+        exerciseTitle.layer.borderWidth = 0.5
+        exerciseTitle.layer.borderColor = UIColor.lightGray.cgColor
+        exerciseTitle.layer.cornerRadius = 12
+    }
+    func setupExerciseAboutTextView() {
+        exerciseAbout.isSelectable = true
+        exerciseAbout.isEditable = true
+        exerciseAbout.font = UIFont(name: Fonts.main.rawValue, size: 16.0)!
+        exerciseAbout.layer.borderWidth = 0.5
+        exerciseAbout.layer.borderColor = UIColor.lightGray.cgColor
+        exerciseAbout.layer.cornerRadius = 12
     }
 }
 
