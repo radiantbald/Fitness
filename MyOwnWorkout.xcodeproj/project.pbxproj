@@ -75,6 +75,9 @@
 		A2C3FF8E2A18E71500231082 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C3FF8C2A18E71500231082 /* LaunchScreen.storyboard */; };
 		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
+		A2E4C88F2B35F0F000AC89E4 /* ExercisePhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C88E2B35F0F000AC89E4 /* ExercisePhotosCollectionView.swift */; };
+		A2E4C8912B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8902B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift */; };
+		A2E4C8932B36074800AC89E4 /* ExercisePhotosCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8922B36074800AC89E4 /* ExercisePhotosCollectionModel.swift */; };
 		A2F78D6F2B272D2E00AF35AD /* SetupExercisePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +145,9 @@
 		A2C3FF8F2A18E71500231082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
+		A2E4C88E2B35F0F000AC89E4 /* ExercisePhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotosCollectionView.swift; sourceTree = "<group>"; };
+		A2E4C8902B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotosCollectionsViewCell.swift; sourceTree = "<group>"; };
+		A2E4C8922B36074800AC89E4 /* ExercisePhotosCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotosCollectionModel.swift; sourceTree = "<group>"; };
 		A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupExercisePagePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -704,6 +710,7 @@
 		A29B4BD22AE5505300C5D886 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A2E4C88E2B35F0F000AC89E4 /* ExercisePhotosCollectionView.swift */,
 				A23A750A2AF803BB00C4B178 /* ExercisePageViewController.swift */,
 			);
 			path = View;
@@ -712,6 +719,7 @@
 		A29B4BD32AE5505900C5D886 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A2E4C8902B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -749,6 +757,7 @@
 				A28B7FF22A8A4CDE00B20B5F /* VerificationIDModel.swift */,
 				A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */,
 				A29B4BC52AE2DD8500C5D886 /* ExerciseModel.swift */,
+				A2E4C8922B36074800AC89E4 /* ExercisePhotosCollectionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -952,6 +961,7 @@
 				A290CEB52ADAB7FB00FE145B /* Fonts.swift in Sources */,
 				A26E8F422A766ABB0054D495 /* KeychainDataBase.swift in Sources */,
 				A28B7FDB2A88ABA800B20B5F /* MyExercisesPageViewController.swift in Sources */,
+				A2E4C88F2B35F0F000AC89E4 /* ExercisePhotosCollectionView.swift in Sources */,
 				A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */,
 				A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */,
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,
@@ -977,12 +987,14 @@
 				A23A75132AF804F900C4B178 /* SetupExercisePageViewController.swift in Sources */,
 				A290CEB32ADAB46000FE145B /* UILabelExtensions.swift in Sources */,
 				A29B4BCF2AE3F2F900C5D886 /* AddExercisePagePresenter.swift in Sources */,
+				A2E4C8932B36074800AC89E4 /* ExercisePhotosCollectionModel.swift in Sources */,
 				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,
 				A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */,
 				A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */,
 				A20A117D2AEF87AE00E86B95 /* VerifyTextField.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
+				A2E4C8912B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift in Sources */,
 				A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */,
 				A28B7FF32A8A4CDE00B20B5F /* VerificationIDModel.swift in Sources */,
 			);

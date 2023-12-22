@@ -45,15 +45,18 @@ extension AddExercisePageViewController {
     }
     
     @objc func setupSaveExerciseButtonAction() {
-        saveExercise(exerciseTitle.text ?? "Без названия", exerciseAbout.text ?? "Порядок выполнения")
+        saveExercise(exerciseTitle.text!,
+                     exerciseAbout.text!,
+                     "333") // сюда сохранять стрингу зашифрованного массива фоток
         
     }
     
-    func saveExercise( _ title: String, _ about: String) {
+    func saveExercise( _ title: String, _ about: String, _ photosArray: String) {
+        
         if exerciseTitle.text?.count == 0 {
             showAlert(title: "Нет названия", message: "Назовите упражнение")
         } else {
-            let exercise = ExerciseModel(title: title, about: about)
+            let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
             RealmDataBase.shared.set(exercise)
             delegate?.addExerciseToTableView()
             self.dismiss(animated: true)
