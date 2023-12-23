@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ExercisePageViewControllerDelegate: AnyObject {
-    func changeExerciseInTableView(_ title: String, _ about: String)
+    func reloadTableViewData()
 }
 
 class ExercisePageViewController: GeneralViewController {
@@ -19,14 +19,23 @@ class ExercisePageViewController: GeneralViewController {
     
     var exercise: ExerciseModel!
     
-    private var exerciseTitle = UILabel()
-    private var exerciseAbout = UILabel()
+    private var exercisePhotosCollectionView = ExercisePhotosCollectionView()
+    
+    private var exerciseTitle = UILabel("", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
+    private var exerciseAbout = UILabel("", UIFont(name: Fonts.main.rawValue, size: 16.0)!, .black)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         exercisePageDesign()
-//        exerciseTitle.text = exercise?.title
-//        exerciseAbout.text = exercise?.about
+        
+//        let imageURL = URL(string: "https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg")!
+//        let data = try! Data(contentsOf: imageURL)
+//        let image = UIImage(data: data)!
+//        
+//        let logo = UIImage(named: "CabinetLogo")
+//        
+//        var array = [image, logo]
+        exercisePhotosCollectionView.set(cells: ExercisePhotosCollectionModel.fetchPhoto())
 
     }
     
@@ -45,40 +54,59 @@ extension ExercisePageViewController {
         navigationItem.backButtonTitle = "Назад"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(setupSetupExerciseButton))
         
-        view.addSubviews(exerciseTitle, exerciseAbout)
+        view.addSubviews(exerciseTitle, exercisePhotosCollectionView, exerciseAbout)
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             exerciseTitle.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            exerciseTitle.topAnchor.constraint(equalTo: margins.topAnchor, constant: 50),
+            exerciseTitle.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10),
             exerciseTitle.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            exerciseTitle.heightAnchor.constraint(equalToConstant: 50),
+            exerciseTitle.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
+            
+            exercisePhotosCollectionView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            exercisePhotosCollectionView.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor),
+            exercisePhotosCollectionView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            exercisePhotosCollectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 275),
             
             exerciseAbout.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            exerciseAbout.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 10),
+            exerciseAbout.topAnchor.constraint(equalTo: exercisePhotosCollectionView.bottomAnchor),
             exerciseAbout.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            exerciseAbout.heightAnchor.constraint(equalToConstant: 50)
+            exerciseAbout.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
-        
         exerciseTitle.text = exercise?.title
-        exerciseAbout.text = exercise?.about
+        exerciseTitle.textAlignment = .center
+        
+        exerciseAboutFormatter()
         
     }
     
+    func exerciseAboutFormatter() {
+        if exercise?.about.count == 0 {
+            exerciseAbout.text = "Нет описания выполнения упражнения"
+            exerciseAbout.textColor = .gray
+            exerciseAbout.numberOfLines = .max
+            exerciseAbout.textAlignment = .justified
+        } else {
+            exerciseAbout.text = exercise?.about
+            exerciseAbout.textColor = .black
+            exerciseAbout.numberOfLines = .max
+            exerciseAbout.textAlignment = .justified
+        }
+    }
+    
     @objc func setupSetupExerciseButton() {
-        let viewController = Assembler.controllers.setupExercisePageViewController
-        viewController.delegate = self
-        viewController.exerciseTitle.placeholder = exercise?.title
-        viewController.exerciseAbout.placeholder = exercise?.about
+        let viewController = Assembler.controllers.setupExercisePageViewController(parent: self, exercise: exercise)
         navigationController?.present(viewController, animated: true)
     }
     
 }
 
 extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
-    func changeExerciseOnExercisePage(_ title: String, _ about: String) {
-        exerciseTitle.text = title
-        exerciseAbout.text = about
-        delegate?.changeExerciseInTableView(title, about)
+    func changeExerciseOnExercisePage(_ exercise: ExerciseModel) {
+        RealmDataBase.shared.set(exercise)
+        exerciseTitle.text = exercise.title
+        exerciseAbout.text = exercise.about
+        exerciseAboutFormatter()
+        delegate?.reloadTableViewData()
     }
 }
 

@@ -117,8 +117,8 @@ class Controllers {
         return viewController
     }
     
-    class var setupExercisePageViewController: SetupExercisePageViewController {
-        let viewController = SetupExercisePageViewController()
+    class func setupExercisePageViewController(parent: SetupExercisePageViewControllerDelegate?, exercise: ExerciseModel) -> SetupExercisePageViewController {
+        let viewController = SetupExercisePageViewController(parent: parent, exercise: exercise)
         let presenter = SetupExercisePagePresenter(delegate: viewController)
         viewController.presenter = presenter
         return viewController

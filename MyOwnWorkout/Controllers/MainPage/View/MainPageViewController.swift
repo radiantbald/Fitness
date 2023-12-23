@@ -79,12 +79,12 @@ extension MainPageViewController {
             tapArea.isUserInteractionEnabled = true
             tapArea.addGestureRecognizer(tapGesture)
         })
-        // ??? как сделать массив, чтоб в параметрах работали все UIView, а не только последний в очереди
     }
     
     @objc func goToPersonPageButton() {
         
-        if isAuth {
+        if isAuth || doNotUseAuth {
+            isAuth = true
             let viewController = Assembler.controllers.personPageViewController
             viewController.modalPresentationStyle = .overFullScreen
             navigationController?.pushViewController(viewController, animated: true)

@@ -26,8 +26,19 @@ class ExerciseTableViewCell: UITableViewCell {
     }
     
     func ExerciseTableViewCellDesign() {
-        let exerciseCellHStackView = UIStackView.init([exerciseTitle, exerciseMuscleGroup], .horizontal, 0, .fill, .equalCentering)
-        self.addSubviews(exerciseCellHStackView)
+//        let exerciseCellVStackView = UIStackView.init([exerciseTitle], .vertical, 0, .leading, .fillEqually)
+//        self.addSubviews(exerciseCellVStackView)
+        self.addSubviews(exerciseTitle)
+        let margins = self.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            exerciseTitle.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
+            exerciseTitle.topAnchor.constraint(equalTo: margins.topAnchor, constant: 15),
+            exerciseTitle.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10),
+            exerciseTitle.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -15)
+        ])
+    
+        exerciseTitle.numberOfLines = .max
+        exerciseTitle.textAlignment = .justified
     }
     
     func configure(exercise: ExerciseModel) {
