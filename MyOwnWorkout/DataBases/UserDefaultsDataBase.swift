@@ -12,7 +12,6 @@ class UserDefaultsDataBase {
     //MARK: - Список Ключей
     
     private enum AuthKeys: String {
-        //MARK: Bool
         case AuthKey = "AuthKey"
     }
     

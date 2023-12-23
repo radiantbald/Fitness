@@ -7,16 +7,20 @@
 
 import UIKit
 
-struct ExercisePhotosCollectionModel {
+struct ExercisePhotosCollectionModel {    
+    
     var photo: UIImage
     
-    
     static func fetchPhoto() -> [ExercisePhotosCollectionModel] {
+        
+        let addPhotoButton = ExercisePhotosCollectionModel(photo: UIImage(named: "gachi1")!)
+        
         let first = ExercisePhotosCollectionModel(photo: UIImage.gifImageWithName("Gachigif")!)
         let second = ExercisePhotosCollectionModel(photo: UIImage(named: "gachi2")!)
         let third = ExercisePhotosCollectionModel(photo: UIImage(named: "gachi3")!)
         let forth = ExercisePhotosCollectionModel(photo: UIImage(named: "gachi4")!)
-        return [first, second, third, forth]
+        
+        return [addPhotoButton, first, second, third, forth]
     }
 }
 

@@ -8,7 +8,7 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
-
+    
     var doNotUseAuth: Bool {
         return true
     }
@@ -84,15 +84,7 @@ extension GeneralViewController: UIGestureRecognizerDelegate {
         self.view.addGestureRecognizer(tapToHideKeyboard)
     }
     @objc func hideKeyboardOnTapSelector() {
-            view.endEditing(true)
-        }
-}
-
-extension GeneralViewController {
-    private func setSensitiveData(nickname: String, password: String) {
-        let auth = AuthModel(login: nickname, password: password)
-        guard let data = try? JSONEncoder().encode(auth) else { return }
-        KeychainDataBase.standart.set(data, forKey: KeychainKeys.AuthKeys.rawValue)
+        view.endEditing(true)
     }
 }
 
