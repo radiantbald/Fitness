@@ -86,7 +86,7 @@ extension ExercisePageViewController {
     
     @objc func setupSetupExerciseButton() {
         let viewController = Assembler.controllers.setupExercisePageViewController(parent: self, exercise: exercise)
-        navigationController?.present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
@@ -116,16 +116,12 @@ extension ExercisePageViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
         
-        setExercisePhotos(cells: ExercisePhotosCollectionModel.fetchPhoto())
+        setExercisePhotos(photos: ExercisePhotosCollectionModel.fetchPhoto())
     }
     
-    func setExercisePhotos(cells: [ExercisePhotosCollectionModel]) {
-        self.exercisePhotos = cells
+    func setExercisePhotos(photos: [ExercisePhotosCollectionModel]) {
+        self.exercisePhotos = photos
     }
-}
-
-extension ExercisePageViewController: UICollectionViewDelegate {
-    
 }
 
 extension ExercisePageViewController: UICollectionViewDataSource {
