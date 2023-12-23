@@ -78,6 +78,8 @@
 		A2E4C88F2B35F0F000AC89E4 /* ExercisePhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C88E2B35F0F000AC89E4 /* ExercisePhotosCollectionView.swift */; };
 		A2E4C8912B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8902B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift */; };
 		A2E4C8932B36074800AC89E4 /* ExercisePhotosCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8922B36074800AC89E4 /* ExercisePhotosCollectionModel.swift */; };
+		A2E4C8952B362B8200AC89E4 /* GifLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8942B362B8200AC89E4 /* GifLoader.swift */; };
+		A2E4C8982B362C0900AC89E4 /* Gachigif.gif in Resources */ = {isa = PBXBuildFile; fileRef = A2E4C8972B362C0900AC89E4 /* Gachigif.gif */; };
 		A2F78D6F2B272D2E00AF35AD /* SetupExercisePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +150,8 @@
 		A2E4C88E2B35F0F000AC89E4 /* ExercisePhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotosCollectionView.swift; sourceTree = "<group>"; };
 		A2E4C8902B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotosCollectionsViewCell.swift; sourceTree = "<group>"; };
 		A2E4C8922B36074800AC89E4 /* ExercisePhotosCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotosCollectionModel.swift; sourceTree = "<group>"; };
+		A2E4C8942B362B8200AC89E4 /* GifLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifLoader.swift; sourceTree = "<group>"; };
+		A2E4C8972B362C0900AC89E4 /* Gachigif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gachigif.gif; sourceTree = "<group>"; };
 		A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupExercisePagePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -744,6 +748,7 @@
 				A290CEB62ADABAFF00FE145B /* UImageViewExtensions.swift */,
 				A290CEB82ADABD8F00FE145B /* UIStackViewExtensions.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
+				A2E4C8942B362B8200AC89E4 /* GifLoader.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 		A2C3FF802A18E71400231082 /* MyOwnWorkout */ = {
 			isa = PBXGroup;
 			children = (
+				A2E4C8962B362BED00AC89E4 /* Gifs */,
 				A29C7D8D2A6548AB0065B255 /* DataBases */,
 				A2ACA9452A3F26C30028F9FD /* Models */,
 				A26E8F3E2A7666F50054D495 /* Views */,
@@ -848,6 +854,14 @@
 				A25F8A302A7B92CC00C45AFB /* Presenter */,
 			);
 			path = MainPage;
+			sourceTree = "<group>";
+		};
+		A2E4C8962B362BED00AC89E4 /* Gifs */ = {
+			isa = PBXGroup;
+			children = (
+				A2E4C8972B362C0900AC89E4 /* Gachigif.gif */,
+			);
+			path = Gifs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -923,6 +937,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2C3FF8E2A18E71500231082 /* LaunchScreen.storyboard in Resources */,
+				A2E4C8982B362C0900AC89E4 /* Gachigif.gif in Resources */,
 				A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */,
 				A2C3FF8B2A18E71500231082 /* Assets.xcassets in Resources */,
 				A2C3FF892A18E71400231082 /* Main.storyboard in Resources */,
@@ -975,6 +990,7 @@
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
+				A2E4C8952B362B8200AC89E4 /* GifLoader.swift in Sources */,
 				A23A750B2AF803BC00C4B178 /* ExercisePageViewController.swift in Sources */,
 				A26635B32AB2FCE000040DCF /* Keys.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,

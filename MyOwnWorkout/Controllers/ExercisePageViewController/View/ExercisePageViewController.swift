@@ -68,7 +68,7 @@ extension ExercisePageViewController {
             exercisePhotosCollectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 275),
             
             exerciseAbout.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            exerciseAbout.topAnchor.constraint(equalTo: exercisePhotosCollectionView.bottomAnchor, constant: 10),
+            exerciseAbout.topAnchor.constraint(equalTo: exercisePhotosCollectionView.bottomAnchor),
             exerciseAbout.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             exerciseAbout.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])

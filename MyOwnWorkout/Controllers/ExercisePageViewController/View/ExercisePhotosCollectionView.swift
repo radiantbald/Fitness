@@ -36,6 +36,7 @@ class ExercisePhotosCollectionView: UICollectionView, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID, for: indexPath) as! ExercisePhotosCollectionsViewCell
         cell.exercisePhotoImageView.image = cells[indexPath.row].photo
+        cell.layer.shadowRadius = 9
         return cell
     }
     
