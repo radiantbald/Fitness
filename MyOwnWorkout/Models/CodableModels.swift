@@ -1,8 +1,8 @@
 //
-//  PhoneNumberModel.swift
+//  AuthModel.swift
 //  MyOwnWorkout
 //
-//  Created by Олег Попов on 14.08.2023.
+//  Created by Олег Попов on 30.07.2023.
 //
 
 import Foundation

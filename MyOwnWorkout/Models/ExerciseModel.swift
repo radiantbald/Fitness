@@ -22,7 +22,7 @@ class ExerciseModel: Object {
                      muscleGroup: String = "",
                      neededEquipment: String = "",
                      about: String = "",
-                     photosArray: String = "" ) {
+                     photosArray: String) {
         self.init()
         self.title = title
         self.author = author
@@ -32,3 +32,14 @@ class ExerciseModel: Object {
         self.photosArray = photosArray
     }
 }
+
+class ExercisePhotosData: Object {
+    @Persisted(primaryKey: true) var id: String = UUID().uuidString
+    @Persisted var photo: Data
+    
+    convenience init(photo: Data) {
+        self.init()
+        self.photo = photo
+    }
+}
+

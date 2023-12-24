@@ -36,11 +36,8 @@ class ExercisePhotosCollectionsViewCell: UICollectionViewCell {
         exercisePhotoImageView.clipsToBounds = true
         exercisePhotoImageView.layer.cornerRadius = 12
         
-        liningImageView.clipsToBounds = false
-        liningImageView.layer.shadowRadius = 15
-        
+        liningImageView.clipsToBounds = false        
         layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 5, height: 8)
     }
     
     required init?(coder: NSCoder) {

@@ -8,7 +8,7 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
-
+    
     var doNotUseAuth: Bool {
         return true
     }
@@ -38,6 +38,13 @@ class GeneralViewController: UIViewController {
             let result = FileManager.setObject(data: imageData, name: FilesNamesKeys.UserAvatar.rawValue, type: FilesTypesKeys.jpeg.rawValue)
             print("Картинка ", result ? "Сохранилась" : "Не сохранилась")
         }
+    }
+    
+    func json(from object:Any) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
+            return nil
+        }
+        return String(data: data, encoding: String.Encoding.utf8)
     }
     
     override func viewDidLoad() {
@@ -84,15 +91,7 @@ extension GeneralViewController: UIGestureRecognizerDelegate {
         self.view.addGestureRecognizer(tapToHideKeyboard)
     }
     @objc func hideKeyboardOnTapSelector() {
-            view.endEditing(true)
-        }
-}
-
-extension GeneralViewController {
-    private func setSensitiveData(nickname: String, password: String) {
-        let auth = AuthModel(login: nickname, password: password)
-        guard let data = try? JSONEncoder().encode(auth) else { return }
-        KeychainDataBase.standart.set(data, forKey: KeychainKeys.AuthKeys.rawValue)
+        view.endEditing(true)
     }
 }
 

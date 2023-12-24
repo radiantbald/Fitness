@@ -32,4 +32,12 @@ class RealmDataBase {
             realm.delete(value)
         }
     }
+    
+    func deleteTable(_ value: Object.Type) {
+        let realm = try! Realm()
+        try! realm.write {
+            let table = realm.objects(value)
+            realm.delete(table)
+        }
+    }
 }

@@ -22,7 +22,6 @@ class MyExercisesPageViewController: GeneralViewController {
         registerCell()
         tableView.delegate = self
         tableView.dataSource = self
-        exercises = RealmDataBase.shared.get()
         myExercisesPageDesign()
         setupAddExerciseButton()
     }
@@ -98,7 +97,7 @@ extension MyExercisesPageViewController {
     @objc func setupAddExerciseButtons() {
         let viewController = Assembler.controllers.addExercisePageViewController
         viewController.delegate = self
-        navigationController?.present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
