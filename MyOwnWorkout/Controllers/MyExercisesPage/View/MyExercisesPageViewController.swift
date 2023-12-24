@@ -22,7 +22,6 @@ class MyExercisesPageViewController: GeneralViewController {
         registerCell()
         tableView.delegate = self
         tableView.dataSource = self
-        exercises = RealmDataBase.shared.get()
         myExercisesPageDesign()
         setupAddExerciseButton()
     }

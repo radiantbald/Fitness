@@ -29,6 +29,7 @@ class AddExercisePageViewController: GeneralViewController {
     
     //Фотографии упражнения
     var exercisePhotos = [ExercisePhotosCollectionModel]()
+    var exercisePhotosData = [Data]()
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -39,82 +40,27 @@ class AddExercisePageViewController: GeneralViewController {
     //Кнопка "Сохранить упражнение"
     private let saveExerciseButton = UIButton()
     
+    //MARK: - Жизненный цикл контроллера
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
-        setupAddExercisePhotoButton()
-        addExercisePageDesign()
-        setupSaveExerciseButton()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        pageSettings()
     }
 }
+
 extension AddExercisePageViewController {
     
-    func setupAddExercisePhotoButton() {
-        imagePicker.delegate = self
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(setupAddExercisePhotoButtonAction))
-        tapGesture.delegate = self
-        addExercisePhotoButton.isUserInteractionEnabled = true
-        addExercisePhotoButton.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func setupAddExercisePhotoButtonAction() {
-        let actionImage = UIAlertController(title: "Добавить фото", message: nil, preferredStyle: .actionSheet)
-        
-        let photoLibrary = UIAlertAction(title: "Фотоальбом", style: .default) { _ in
-            self.imagePicker.sourceType = .savedPhotosAlbum
-            self.imagePicker.allowsEditing = true
-            self.navigationController?.present(self.imagePicker, animated:true)
-        }
-        
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
-        
-        actionImage.addAction(photoLibrary)
-        actionImage.addAction(cancel)
-        
-        if let popover = actionImage.popoverPresentationController {
-            popover.sourceView = self.view
-            let frame = view.frame
-            popover.sourceRect = CGRect(x: frame.midX, y: frame.maxY, width: 1.0, height: 1.0)
-        }
-        self.present(actionImage, animated: true)
-    }
-    
-    func saveExercisePhoto(_ image: UIImage) {
-        print(exercisePhotos.count)
-    }
-    
-    func setupSaveExerciseButton() {
-        saveExerciseButton.addTarget(self, action: #selector(setupSaveExerciseButtonAction), for: .touchUpInside)
-    }
-    
-    @objc func setupSaveExerciseButtonAction() {
-        saveExercise(exerciseTitle.text!,
-                     exerciseAbout.text!,
-                     "333") // сюда сохранять стрингу зашифрованного массива фоток
-    }
-    
-    func saveExercise( _ title: String, _ about: String, _ photosArray: String) {
-        
-        if exerciseTitle.text?.count == 0 {
-            showAlert(title: "Нет названия", message: "Назовите упражнение")
-        } else {
-            let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
-            RealmDataBase.shared.set(exercise)
-            delegate?.addExerciseToTableView()
-            navigationController?.popViewController(animated: true)
-        }
-    }
-    
-    func addExercisePageDesign() {
+    private func pageSettings() {
         title = "Новое упражнение"
+        setupSubviews()
+        setupMargins()
+    }
+    
+    private func setupSubviews() {
+        setupExerciseTitleTextView()
+        setupAddExercisePhotoButton()
+        setupCollectionView()
+        setupExerciseAboutTextView()
+        setupSaveExerciseButton()
         
         view.addSubviews(pageTitleLabel,
                          exerciseTitleLabel,
@@ -124,13 +70,11 @@ extension AddExercisePageViewController {
                          exerciseAboutLabel,
                          exerciseAbout,
                          saveExerciseButton)
-        
+    }
+    
+    private func setupMargins() {
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-//            pageTitleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-//            pageTitleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20),
-//            pageTitleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-            
             exerciseTitleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
             exerciseTitleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20),
             exerciseTitleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
@@ -164,22 +108,13 @@ extension AddExercisePageViewController {
             saveExerciseButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
         ])
-        
-        pageTitleLabel.textAlignment = .center
-        
-        setupExerciseTitleTextView()
-        
-        addExercisePhotoButton.setTitle("+", for: .normal)
-        addExercisePhotoButton.backgroundColor = .systemRed
-        addExercisePhotoButton.layer.cornerRadius = 12
-        
-        setupExerciseAboutTextView()
-        
-        saveExerciseButton.setTitle("Сохранить", for: .normal)
-        saveExerciseButton.backgroundColor = .systemRed
-        saveExerciseButton.layer.cornerRadius = 12
     }
-    func setupExerciseTitleTextView() {
+}
+
+extension AddExercisePageViewController {
+    
+    //MARK: - Поле ввода для названия упражнения
+    private func setupExerciseTitleTextView() {
         exerciseTitle.isSelectable = true
         exerciseTitle.isEditable = true
         exerciseTitle.font = UIFont(name: Fonts.main.rawValue, size: 16.0)!
@@ -187,18 +122,44 @@ extension AddExercisePageViewController {
         exerciseTitle.layer.borderColor = UIColor.lightGray.cgColor
         exerciseTitle.layer.cornerRadius = 12
     }
-    func setupExerciseAboutTextView() {
-        exerciseAbout.isSelectable = true
-        exerciseAbout.isEditable = true
-        exerciseAbout.font = UIFont(name: Fonts.main.rawValue, size: 16.0)!
-        exerciseAbout.layer.borderWidth = 0.5
-        exerciseAbout.layer.borderColor = UIColor.lightGray.cgColor
-        exerciseAbout.layer.cornerRadius = 12
+    
+    //MARK: - Кнопка добавления картинок упражнений
+    private func setupAddExercisePhotoButton() {
+        addExercisePhotoButton.setTitle("+", for: .normal)
+        addExercisePhotoButton.backgroundColor = .systemRed
+        addExercisePhotoButton.layer.cornerRadius = 12
+        
+        imagePicker.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(setupAddExercisePhotoButtonAction))
+        tapGesture.delegate = self
+        addExercisePhotoButton.isUserInteractionEnabled = true
+        addExercisePhotoButton.addGestureRecognizer(tapGesture)
     }
-}
-
-extension AddExercisePageViewController {
-    func setupCollectionView() {
+    
+    @objc private func setupAddExercisePhotoButtonAction() {
+        let actionImage = UIAlertController(title: "Добавить фото", message: nil, preferredStyle: .actionSheet)
+        
+        let photoLibrary = UIAlertAction(title: "Фотоальбом", style: .default) { _ in
+            self.imagePicker.sourceType = .savedPhotosAlbum
+            self.imagePicker.allowsEditing = true
+            self.navigationController?.present(self.imagePicker, animated:true)
+        }
+        
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        
+        actionImage.addAction(photoLibrary)
+        actionImage.addAction(cancel)
+        
+        if let popover = actionImage.popoverPresentationController {
+            popover.sourceView = self.view
+            let frame = view.frame
+            popover.sourceRect = CGRect(x: frame.midX, y: frame.maxY, width: 1.0, height: 1.0)
+        }
+        self.present(actionImage, animated: true)
+    }
+    
+    //MARK: - Картинки упражнения
+    private func setupCollectionView() {
         collectionView = .init(frame: .zero, collectionViewLayout: layout)
         
         collectionView.delegate = self
@@ -211,12 +172,54 @@ extension AddExercisePageViewController {
         
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
-        
-        setExercisePhotos(photos: ExercisePhotosCollectionModel.fetchPhoto())
     }
     
-    func setExercisePhotos(photos: [ExercisePhotosCollectionModel]) {
-        self.exercisePhotos = photos
+    //MARK: - Сохранение картинок упражнения
+    private func saveExercisePhoto(_ image: UIImage) {
+        exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+        pageSettings()
+        
+        let photoData = image.pngData()!
+        exercisePhotosData.append(photoData)
+//        let imageData = image.pngData()! as NSData
+//        let base64 = imageData.base64EncodedData(options: .lineLength64Characters)
+        print(exercisePhotosData)
+        print(exercisePhotos.count)
+    }
+    
+    //MARK: - Поле ввода порядка выполнения упражнения
+    private func setupExerciseAboutTextView() {
+        exerciseAbout.isSelectable = true
+        exerciseAbout.isEditable = true
+        exerciseAbout.font = UIFont(name: Fonts.main.rawValue, size: 16.0)!
+        exerciseAbout.layer.borderWidth = 0.5
+        exerciseAbout.layer.borderColor = UIColor.lightGray.cgColor
+        exerciseAbout.layer.cornerRadius = 12
+    }
+    
+    //MARK: - Кнопка сохранения упражнения
+    func setupSaveExerciseButton() {
+        saveExerciseButton.setTitle("Сохранить", for: .normal)
+        saveExerciseButton.backgroundColor = .systemRed
+        saveExerciseButton.layer.cornerRadius = 12
+        saveExerciseButton.addTarget(self, action: #selector(setupSaveExerciseButtonAction), for: .touchUpInside)
+    }
+    
+    @objc func setupSaveExerciseButtonAction() {
+        saveExercise(exerciseTitle.text!,
+                     exerciseAbout.text!,
+                     "333") // сюда сохранять стрингу зашифрованного массива фоток
+    }
+    
+    func saveExercise( _ title: String, _ about: String, _ photosArray: String) {
+        if exerciseTitle.text?.count == 0 {
+            showAlert(title: "Нет названия", message: "Назовите упражнение")
+        } else {
+            let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
+            RealmDataBase.shared.set(exercise)
+            delegate?.addExerciseToTableView()
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 

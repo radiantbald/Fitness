@@ -17,7 +17,7 @@ class ExercisePageViewController: GeneralViewController {
     weak var delegate: ExercisePageViewControllerDelegate?
     
     var exercise: ExerciseModel!
-    var exercisePhotos = [ExercisePhotosCollectionModel]()
+    var exercisePhotos: [ExercisePhotosCollectionModel] = []
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
@@ -116,12 +116,12 @@ extension ExercisePageViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
         
-        setExercisePhotos(photos: ExercisePhotosCollectionModel.fetchPhoto())
+//        setExercisePhotos(photos: ExercisePhotosCollectionModel.fetchPhoto())
     }
     
-    func setExercisePhotos(photos: [ExercisePhotosCollectionModel]) {
-        self.exercisePhotos = photos
-    }
+//    func setExercisePhotos(photos: [ExercisePhotosCollectionModel]) {
+//        self.exercisePhotos = photos
+//    }
 }
 
 extension ExercisePageViewController: UICollectionViewDataSource {

@@ -22,7 +22,7 @@ class ExerciseModel: Object {
                      muscleGroup: String = "",
                      neededEquipment: String = "",
                      about: String = "",
-                     photosArray: String = "" ) {
+                     photosArray: String) {
         self.init()
         self.title = title
         self.author = author
