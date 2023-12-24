@@ -32,3 +32,14 @@ class ExerciseModel: Object {
         self.photosArray = photosArray
     }
 }
+
+class ExercisePhotosData: Object {
+    @Persisted(primaryKey: true) var id: String = UUID().uuidString
+    @Persisted var photo: Data
+    
+    convenience init(photo: Data) {
+        self.init()
+        self.photo = photo
+    }
+}
+

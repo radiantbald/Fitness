@@ -29,7 +29,7 @@ class AddExercisePageViewController: GeneralViewController {
     
     //Фотографии упражнения
     var exercisePhotos = [ExercisePhotosCollectionModel]()
-    var exercisePhotosData = [Data]()
+    var exercisePhotosData: [ExercisePhotosData] = RealmDataBase.shared.get()
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -178,13 +178,9 @@ extension AddExercisePageViewController {
     private func saveExercisePhoto(_ image: UIImage) {
         exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
         pageSettings()
-        
         let photoData = image.pngData()!
-        exercisePhotosData.append(photoData)
-//        let imageData = image.pngData()! as NSData
-//        let base64 = imageData.base64EncodedData(options: .lineLength64Characters)
-        print(exercisePhotosData)
-        print(exercisePhotos.count)
+        let photosData = ExercisePhotosData(photo: photoData)
+        RealmDataBase.shared.set(photosData)
     }
     
     //MARK: - Поле ввода порядка выполнения упражнения
@@ -217,6 +213,8 @@ extension AddExercisePageViewController {
         } else {
             let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
             RealmDataBase.shared.set(exercise)
+            let photosData = ExercisePhotosData.self
+            RealmDataBase.shared.deleteTable(photosData)
             delegate?.addExerciseToTableView()
             navigationController?.popViewController(animated: true)
         }

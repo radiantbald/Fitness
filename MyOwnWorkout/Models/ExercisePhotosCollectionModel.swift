@@ -14,7 +14,7 @@ class ExercisePhotosCollectionModel {
     init(photo: UIImage) {
         self.photo = photo
     }
-    
+
 
 //    class func fetchPhoto() -> [ExercisePhotosCollectionModel] {
 //
