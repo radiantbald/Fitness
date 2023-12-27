@@ -25,5 +25,6 @@ enum FilesNamesKeys: String {
 enum FilesTypesKeys: String {
     case jpeg = "jpeg"
     case txt = "txt"
+    case png = "png"
 }
 

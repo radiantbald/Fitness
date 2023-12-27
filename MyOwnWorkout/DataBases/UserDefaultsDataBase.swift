@@ -15,6 +15,10 @@ class UserDefaultsDataBase {
         case AuthKey = "AuthKey"
     }
     
+    private enum ExerciseKeys: String {
+        case ExercisePhotoKey = "ExercisePhotoKey"
+    }
+    
     //MARK: - Статус авторизации (логин/разлогин)
     
     class var isAuth: Bool {

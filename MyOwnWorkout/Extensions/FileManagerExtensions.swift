@@ -15,7 +15,7 @@ extension FileManager {
         guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return false }
         let fileName = directory.appendingPathComponent(name)
         let filePath = fileName.appendingPathExtension(of)
-//        print(filePath.absoluteString)
+        print(filePath.absoluteString)
         
         do {
             try? FileManager.default.removeItem(at: filePath)
@@ -34,7 +34,7 @@ extension FileManager {
         guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         let fileName = directory.appendingPathComponent(name)
         let filePath = fileName.appendingPathExtension(of)
-//        print(filePath.absoluteString)
+        print(filePath.absoluteString)
         
         do {
             return try Data.init(contentsOf: filePath)

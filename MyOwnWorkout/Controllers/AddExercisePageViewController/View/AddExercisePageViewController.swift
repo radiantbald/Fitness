@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol AddExercisePageViewControllerDelegate: AnyObject {
     func addExerciseToTableView()
@@ -29,7 +30,7 @@ class AddExercisePageViewController: GeneralViewController {
     
     //Фотографии упражнения
     var exercisePhotos = [ExercisePhotosCollectionModel]()
-    var exercisePhotosData: [ExercisePhotosData] = RealmDataBase.shared.get()
+    var exercisePhotosData = List<Data>()
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -181,6 +182,7 @@ extension AddExercisePageViewController {
         let photoData = image.pngData()!
         let photosData = ExercisePhotosData(photo: photoData)
         RealmDataBase.shared.set(photosData)
+        exercisePhotosData.append(photoData)
     }
     
     //MARK: - Поле ввода порядка выполнения упражнения
@@ -204,10 +206,10 @@ extension AddExercisePageViewController {
     @objc func setupSaveExerciseButtonAction() {
         saveExercise(exerciseTitle.text!,
                      exerciseAbout.text!,
-                     "333") // сюда сохранять стрингу зашифрованного массива фоток
+                     exercisePhotosData) // сюда сохранять стрингу зашифрованного массива фоток
     }
     
-    func saveExercise( _ title: String, _ about: String, _ photosArray: String) {
+    func saveExercise( _ title: String, _ about: String, _ photosArray: List<Data>) {
         if exerciseTitle.text?.count == 0 {
             showAlert(title: "Нет названия", message: "Назовите упражнение")
         } else {

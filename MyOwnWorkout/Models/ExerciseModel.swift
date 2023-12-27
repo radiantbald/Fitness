@@ -15,14 +15,14 @@ class ExerciseModel: Object {
     @Persisted var muscleGroup: String
     @Persisted var neededEquipment: String
     @Persisted var about: String
-    @Persisted var photosArray: String
+    @Persisted var photosArray: List<Data>
     
     convenience init(title: String,
                      author: String = "",
                      muscleGroup: String = "",
                      neededEquipment: String = "",
                      about: String = "",
-                     photosArray: String) {
+                     photosArray: List<Data>) {
         self.init()
         self.title = title
         self.author = author
