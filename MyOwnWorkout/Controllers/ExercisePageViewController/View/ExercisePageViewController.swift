@@ -67,6 +67,12 @@ extension ExercisePageViewController {
         exerciseTitle.text = exercise?.title
         exerciseTitle.textAlignment = .center
         
+        let photosList = exercise.photosArray.compactMap{Data($0)}
+        print(photosList)
+        for photo in photosList {
+            guard let image = UIImage(data: photo) else { continue }
+            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+        }
         exerciseAboutFormatter()
     }
     

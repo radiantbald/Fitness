@@ -15,6 +15,7 @@
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A20A117D2AEF87AE00E86B95 /* VerifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A117C2AEF87AE00E86B95 /* VerifyTextField.swift */; };
 		A20A117F2AEF891C00E86B95 /* VerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A117E2AEF891C00E86B95 /* VerifyView.swift */; };
+		A22101DB2B3E11C0001563EA /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22101DA2B3E11C0001563EA /* UIImageExtensions.swift */; };
 		A22911BE2A9B679F00C978F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */; };
 		A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */; };
 		A23A750B2AF803BC00C4B178 /* ExercisePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A750A2AF803BB00C4B178 /* ExercisePageViewController.swift */; };
@@ -84,6 +85,7 @@
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A20A117C2AEF87AE00E86B95 /* VerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextField.swift; sourceTree = "<group>"; };
 		A20A117E2AEF891C00E86B95 /* VerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyView.swift; sourceTree = "<group>"; };
+		A22101DA2B3E11C0001563EA /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		A22911BD2A9B679F00C978F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A22BCDCC2A3713ED001071BE /* SMSCodeApprovePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeApprovePageViewController.swift; sourceTree = "<group>"; };
 		A23A750A2AF803BB00C4B178 /* ExercisePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePageViewController.swift; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 				A290CEB02ADAAE0000FE145B /* UIViewExtensions.swift */,
 				A290CEB22ADAB46000FE145B /* UILabelExtensions.swift */,
 				A290CEB62ADABAFF00FE145B /* UImageViewExtensions.swift */,
+				A22101DA2B3E11C0001563EA /* UIImageExtensions.swift */,
 				A290CEB82ADABD8F00FE145B /* UIStackViewExtensions.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
 				A2E4C8942B362B8200AC89E4 /* GifLoader.swift */,
@@ -954,6 +957,7 @@
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */,
 				A28B7FED2A88B7BE00B20B5F /* TrainingProgramsPagePresenter.swift in Sources */,
+				A22101DB2B3E11C0001563EA /* UIImageExtensions.swift in Sources */,
 				A29C7D8F2A6548C20065B255 /* UserDefaultsDataBase.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2954F942A7E9A36003947CF /* PersonPagePresenter.swift in Sources */,
