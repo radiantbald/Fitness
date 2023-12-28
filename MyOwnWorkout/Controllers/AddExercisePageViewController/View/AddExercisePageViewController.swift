@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 protocol AddExercisePageViewControllerDelegate: AnyObject {
     func addExerciseToTableView()
@@ -30,7 +29,7 @@ class AddExercisePageViewController: GeneralViewController {
     
     //Фотографии упражнения
     var exercisePhotos = [ExercisePhotosCollectionModel]()
-    var exercisePhotosData = List<Data>()
+    var exercisePhotosData = ExerciseModel().exercisePhotosData
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -180,8 +179,8 @@ extension AddExercisePageViewController {
         exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
         pageSettings()
         let photoData = image.pngData()!
-        let photosData = ExercisePhotosData(photo: photoData)
-        RealmDataBase.shared.set(photosData)
+        let photoDataModel = ExercisePhotoDataModel(photo: photoData)
+        RealmDataBase.shared.set(photoDataModel)
         exercisePhotosData.append(photoData)
     }
     
@@ -204,19 +203,12 @@ extension AddExercisePageViewController {
     }
     
     @objc func setupSaveExerciseButtonAction() {
-        saveExercise(exerciseTitle.text!,
-                     exerciseAbout.text!,
-                     exercisePhotosData) // сюда сохранять стрингу зашифрованного массива фоток
-    }
-    
-    func saveExercise( _ title: String, _ about: String, _ photosArray: List<Data>) {
         if exerciseTitle.text?.count == 0 {
             showAlert(title: "Нет названия", message: "Назовите упражнение")
         } else {
-            let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
-            RealmDataBase.shared.set(exercise)
-            let photosData = ExercisePhotosData.self
-            RealmDataBase.shared.deleteTable(photosData)
+            ExerciseModel().saveExercise(exerciseTitle.text!,
+                                         exerciseAbout.text!,
+                                         exercisePhotosData)
             delegate?.addExerciseToTableView()
             navigationController?.popViewController(animated: true)
         }
