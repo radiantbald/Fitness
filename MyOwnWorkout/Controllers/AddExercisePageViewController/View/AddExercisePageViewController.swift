@@ -109,9 +109,6 @@ extension AddExercisePageViewController {
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
-}
-
-extension AddExercisePageViewController {
     
     //MARK: - Поле ввода для названия упражнения
     private func setupExerciseTitleTextView() {
