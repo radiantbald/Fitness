@@ -22,10 +22,8 @@ class SetupExercisePageViewController: GeneralViewController {
         self.delegate = parent
         super.init(nibName: nil, bundle: nil)
     }
-    
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    private let pageTitleLabel = UILabel("Редактирование", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
     private let exerciseTitleLabel = UILabel("Название упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
     private let exerciseTitle = UITextView()
     
@@ -36,6 +34,7 @@ class SetupExercisePageViewController: GeneralViewController {
     
     var exercisePhotos: [ExercisePhotosCollectionModel] = []
     var exercisePhotosData = ExerciseModel().exercisePhotosData
+    var exercisePhotosDataModel = ExercisePhotoDataModel().photo
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -45,7 +44,21 @@ class SetupExercisePageViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageSettings()
-        setupSaveExerciseButton()
+        
+        let photosList = exercise.photosArray.compactMap{Data($0)}
+        print(photosList)
+        for photoData in photosList {
+            let photoDataModel = ExercisePhotoDataModel(photo: photoData)
+            RealmDataBase.shared.set(photoDataModel)
+            exercisePhotosDataModel.append(photoData)
+            guard let image = UIImage(data: photoData) else { continue }
+            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
     }
 }
 
@@ -64,8 +77,7 @@ extension SetupExercisePageViewController {
         setupExerciseAboutTextView()
         setupSaveExerciseButton()
         
-        view.addSubviews(pageTitleLabel,
-                         exerciseTitleLabel,
+        view.addSubviews(exerciseTitleLabel,
                          exerciseTitle,
                          addExercisePhotoButton,
                          collectionView,
@@ -110,25 +122,6 @@ extension SetupExercisePageViewController {
             saveExerciseButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
         ])
-        
-        pageTitleLabel.textAlignment = .center
-        
-        setupExerciseTitleTextView()
-        setupExerciseAboutTextView()
-        
-        setupAddExercisePhotoButton()
-        setupCollectionView()
-        
-        let photosList = exercise.photosArray.compactMap{Data($0)}
-        print(photosList)
-        for photo in photosList {
-            guard let image = UIImage(data: photo) else { continue }
-            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
-        }
-        
-        saveExerciseButton.setTitle("Сохранить", for: .normal)
-        saveExerciseButton.backgroundColor = .systemRed
-        saveExerciseButton.layer.cornerRadius = 12
     }
     
     //MARK: - Поле ввода для названия упражнения
@@ -221,29 +214,27 @@ extension SetupExercisePageViewController {
     }
     
     @objc func setupSaveExerciseButtonAction() {
-        saveExercise(exerciseTitle.text ?? "Без названия", exerciseAbout.text ?? "Порядок выполнения")
-        
-    }
-    
-    func saveExercise(_ title: String, _ about: String) {
         if exerciseTitle.text?.count == 0 {
             showAlert(title: "Нет названия", message: "Назовите упражнение")
         } else {
-            if exercise.title == title && exercise.about == about {
-                self.dismiss(animated: true)
-            } else {
-                let model = ExerciseModel()
-                model.id = exercise.id
-                model.title = title
-                model.about = about
-                
-                delegate?.changeExerciseOnExercisePage(model)
-                
-                self.dismiss(animated: true)
-            }
             
+            saveExercise(exerciseTitle.text, exerciseAbout.text)
+            
+            self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    func saveExercise(_ title: String, _ about: String) {
+        exercisePhotosData.insert(contentsOf: exercise.photosArray, at: 0)
+        let model = ExerciseModel()
+        model.id = exercise.id
+        model.title = title
+        model.about = about
+        model.photosArray = exercisePhotosData
+        
+        delegate?.changeExerciseOnExercisePage(model)
+    }
+    
 }
 
 extension SetupExercisePageViewController: UICollectionViewDataSource {

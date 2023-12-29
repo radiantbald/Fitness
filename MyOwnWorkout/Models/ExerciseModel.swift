@@ -34,7 +34,7 @@ class ExerciseModel: Object {
     
     let exercisePhotosData = List<Data>()
     
-    func saveExercise( _ title: String, _ about: String, _ photosArray: List<Data>) {
+    func saveExercise(_ title: String, _ about: String, _ photosArray: List<Data>) {
             let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
             RealmDataBase.shared.set(exercise)
             let photosData = ExercisePhotoDataModel.self

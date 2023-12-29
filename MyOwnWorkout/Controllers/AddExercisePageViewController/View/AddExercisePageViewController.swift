@@ -16,9 +16,6 @@ class AddExercisePageViewController: GeneralViewController {
     var presenter: AddExercisePagePresenter!
     weak var delegate: AddExercisePageViewControllerDelegate?
     
-    //Заголовок страницы
-    private let pageTitleLabel = UILabel("Создание", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
-    
     //Название упражнения
     private let exerciseTitleLabel = UILabel("Название упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 16.0)!, .black)
     private let exerciseTitle = UITextView()
@@ -45,6 +42,11 @@ class AddExercisePageViewController: GeneralViewController {
         super.viewDidLoad()
         pageSettings()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
+    }
 }
 
 extension AddExercisePageViewController {
@@ -62,8 +64,7 @@ extension AddExercisePageViewController {
         setupExerciseAboutTextView()
         setupSaveExerciseButton()
         
-        view.addSubviews(pageTitleLabel,
-                         exerciseTitleLabel,
+        view.addSubviews(exerciseTitleLabel,
                          exerciseTitle,
                          addExercisePhotoButton,
                          collectionView,

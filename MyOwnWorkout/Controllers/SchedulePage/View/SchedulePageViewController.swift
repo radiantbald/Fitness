@@ -15,7 +15,7 @@ class SchedulePageViewController: GeneralViewController {
         super.viewDidLoad()
         setupNavigationBar()
         navigationItem.title = "Расписание"
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,6 +26,12 @@ class SchedulePageViewController: GeneralViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .black
     }
 }
 

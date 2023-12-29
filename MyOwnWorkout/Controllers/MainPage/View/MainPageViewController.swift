@@ -34,6 +34,11 @@ class MainPageViewController: GeneralViewController {
         mainPageAvatar.image = avatarImage
         
     }
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .black
+    }
 }
 
 extension MainPageViewController {

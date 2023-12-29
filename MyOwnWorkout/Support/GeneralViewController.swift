@@ -54,14 +54,6 @@ class GeneralViewController: UIViewController {
 
 extension GeneralViewController {
     
-    //MARK: - Настройки NavigationBar
-    
-    func setupNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = .black
-    }
-    
     //MARK: - Закругление изображения
     
     func setupAvatarBounds(_ avatar: UIImageView) {
