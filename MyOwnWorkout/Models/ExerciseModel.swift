@@ -15,14 +15,14 @@ class ExerciseModel: Object {
     @Persisted var muscleGroup: String
     @Persisted var neededEquipment: String
     @Persisted var about: String
-    @Persisted var photosArray: String
+    @Persisted var photosArray: List<Data>
     
     convenience init(title: String,
                      author: String = "",
                      muscleGroup: String = "",
                      neededEquipment: String = "",
                      about: String = "",
-                     photosArray: String) {
+                     photosArray: List<Data>) {
         self.init()
         self.title = title
         self.author = author
@@ -31,9 +31,18 @@ class ExerciseModel: Object {
         self.about = about
         self.photosArray = photosArray
     }
+    
+    let exercisePhotosData = List<Data>()
+    
+    func saveExercise(_ title: String, _ about: String, _ photosArray: List<Data>) {
+            let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
+            RealmDataBase.shared.set(exercise)
+            let photosData = ExercisePhotoDataModel.self
+            RealmDataBase.shared.deleteTable(photosData)
+    }
 }
 
-class ExercisePhotosData: Object {
+class ExercisePhotoDataModel: Object {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var photo: Data
     

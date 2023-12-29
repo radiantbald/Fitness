@@ -40,13 +40,6 @@ class GeneralViewController: UIViewController {
         }
     }
     
-    func json(from object:Any) -> String? {
-        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
-            return nil
-        }
-        return String(data: data, encoding: String.Encoding.utf8)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -60,14 +53,6 @@ class GeneralViewController: UIViewController {
 //MARK: - Общие настройки
 
 extension GeneralViewController {
-    
-    //MARK: - Настройки NavigationBar
-    
-    func setupNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = .black
-    }
     
     //MARK: - Закругление изображения
     

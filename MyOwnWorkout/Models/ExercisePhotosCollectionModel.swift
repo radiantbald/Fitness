@@ -14,17 +14,6 @@ class ExercisePhotosCollectionModel {
     init(photo: UIImage) {
         self.photo = photo
     }
-
-
-//    class func fetchPhoto() -> [ExercisePhotosCollectionModel] {
-//
-//        let first = ExercisePhotosCollectionModel(photo: UIImage.gifImageWithName("Gachigif")!)
-//        let second = ExercisePhotosCollectionModel(photo: UIImage(named: "gachi2")!)
-//        let third = ExercisePhotosCollectionModel(photo: UIImage(named: "gachi3")!)
-//        let forth = ExercisePhotosCollectionModel(photo: UIImage(named: "gachi4")!)
-//
-//        return [first, second]
-//    }
 }
 
 struct Constants {

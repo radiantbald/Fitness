@@ -27,6 +27,12 @@ class FeedPageViewController: GeneralViewController {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
     }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .black
+    }
 }
 
 extension FeedPageViewController: FeedPagePresenterDelegate {

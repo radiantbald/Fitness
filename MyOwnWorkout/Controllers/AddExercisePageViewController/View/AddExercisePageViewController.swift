@@ -16,9 +16,6 @@ class AddExercisePageViewController: GeneralViewController {
     var presenter: AddExercisePagePresenter!
     weak var delegate: AddExercisePageViewControllerDelegate?
     
-    //Заголовок страницы
-    private let pageTitleLabel = UILabel("Создание", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
-    
     //Название упражнения
     private let exerciseTitleLabel = UILabel("Название упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 16.0)!, .black)
     private let exerciseTitle = UITextView()
@@ -29,7 +26,7 @@ class AddExercisePageViewController: GeneralViewController {
     
     //Фотографии упражнения
     var exercisePhotos = [ExercisePhotosCollectionModel]()
-    var exercisePhotosData: [ExercisePhotosData] = RealmDataBase.shared.get()
+    var exercisePhotosData = ExerciseModel().exercisePhotosData
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -44,6 +41,11 @@ class AddExercisePageViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageSettings()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
     }
 }
 
@@ -62,8 +64,7 @@ extension AddExercisePageViewController {
         setupExerciseAboutTextView()
         setupSaveExerciseButton()
         
-        view.addSubviews(pageTitleLabel,
-                         exerciseTitleLabel,
+        view.addSubviews(exerciseTitleLabel,
                          exerciseTitle,
                          addExercisePhotoButton,
                          collectionView,
@@ -109,9 +110,6 @@ extension AddExercisePageViewController {
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
-}
-
-extension AddExercisePageViewController {
     
     //MARK: - Поле ввода для названия упражнения
     private func setupExerciseTitleTextView() {
@@ -179,8 +177,9 @@ extension AddExercisePageViewController {
         exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
         pageSettings()
         let photoData = image.pngData()!
-        let photosData = ExercisePhotosData(photo: photoData)
-        RealmDataBase.shared.set(photosData)
+        let photoDataModel = ExercisePhotoDataModel(photo: photoData)
+        RealmDataBase.shared.set(photoDataModel)
+        exercisePhotosData.append(photoData)
     }
     
     //MARK: - Поле ввода порядка выполнения упражнения
@@ -202,19 +201,12 @@ extension AddExercisePageViewController {
     }
     
     @objc func setupSaveExerciseButtonAction() {
-        saveExercise(exerciseTitle.text!,
-                     exerciseAbout.text!,
-                     "333") // сюда сохранять стрингу зашифрованного массива фоток
-    }
-    
-    func saveExercise( _ title: String, _ about: String, _ photosArray: String) {
         if exerciseTitle.text?.count == 0 {
             showAlert(title: "Нет названия", message: "Назовите упражнение")
         } else {
-            let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
-            RealmDataBase.shared.set(exercise)
-            let photosData = ExercisePhotosData.self
-            RealmDataBase.shared.deleteTable(photosData)
+            ExerciseModel().saveExercise(exerciseTitle.text!,
+                                         exerciseAbout.text!,
+                                         exercisePhotosData)
             delegate?.addExerciseToTableView()
             navigationController?.popViewController(animated: true)
         }

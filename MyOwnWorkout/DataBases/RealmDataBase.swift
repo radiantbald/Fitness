@@ -12,6 +12,8 @@ class RealmDataBase {
     static var shared: RealmDataBase = .init()
     private init() {}
     
+    static let listOfData = List<Data>()
+    
     func get<T: Object>() -> [T] {
         let realm = try! Realm()
         let checkRealm = realm.objects(T.self)

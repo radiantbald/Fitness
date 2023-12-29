@@ -27,8 +27,8 @@ class ExercisePageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()        
-        exercisePageDesign()
+        pageSettings()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,12 +41,34 @@ class ExercisePageViewController: GeneralViewController {
 }
 extension ExercisePageViewController {
     
-    func exercisePageDesign() {
+    func pageSettings() {
+        setupNavigationBar()
+        setupSubviews()
+        setupMargins()
+        getExercisePhotosFromData()
+    }
+    
+    func setupNavigationBar() {
         title = "Упражнение"
         navigationItem.backButtonTitle = "Назад"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(setupSetupExerciseButton))
+    }
+    
+    @objc func setupSetupExerciseButton() {
+        let viewController = Assembler.controllers.setupExercisePageViewController(parent: self, exercise: exercise)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func setupSubviews() {
+        setupExerciseTitleLabel()
+        setupCollectionView()
+        setupExerciseAboutLabel()
         
-        view.addSubviews(exerciseTitle, collectionView, exerciseAbout)
+        view.addSubviews(exerciseTitle,
+                         collectionView,
+                         exerciseAbout)
+    }
+    func setupMargins() {
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             exerciseTitle.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
@@ -64,13 +86,23 @@ extension ExercisePageViewController {
             exerciseAbout.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             exerciseAbout.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
-        exerciseTitle.text = exercise?.title
-        exerciseTitle.textAlignment = .center
-        
-        exerciseAboutFormatter()
     }
     
-    func exerciseAboutFormatter() {
+    private func setupExerciseTitleLabel() {
+        exerciseTitle.text = exercise?.title
+        exerciseTitle.textAlignment = .center
+    }
+    
+    private func getExercisePhotosFromData() {
+        let photosList = exercise.photosArray.compactMap{Data($0)}
+        print(photosList)
+        for photo in photosList {
+            guard let image = UIImage(data: photo) else { continue }
+            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+        }
+    }
+    
+    func setupExerciseAboutLabel() {
         if exercise?.about.count == 0 {
             exerciseAbout.text = "Нет описания выполнения упражнения"
             exerciseAbout.textColor = .gray
@@ -84,19 +116,15 @@ extension ExercisePageViewController {
         }
     }
     
-    @objc func setupSetupExerciseButton() {
-        let viewController = Assembler.controllers.setupExercisePageViewController(parent: self, exercise: exercise)
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
 }
 
 extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
     func changeExerciseOnExercisePage(_ exercise: ExerciseModel) {
+        exercisePhotos.removeAll()
         RealmDataBase.shared.set(exercise)
         exerciseTitle.text = exercise.title
         exerciseAbout.text = exercise.about
-        exerciseAboutFormatter()
+        pageSettings()
         delegate?.reloadTableViewData()
     }
 }
@@ -116,12 +144,8 @@ extension ExercisePageViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
         
-//        setExercisePhotos(photos: ExercisePhotosCollectionModel.fetchPhoto())
     }
     
-//    func setExercisePhotos(photos: [ExercisePhotosCollectionModel]) {
-//        self.exercisePhotos = photos
-//    }
 }
 
 extension ExercisePageViewController: UICollectionViewDataSource {
