@@ -44,16 +44,7 @@ class SetupExercisePageViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageSettings()
-        
-        let photosList = exercise.photosArray.compactMap{Data($0)}
-        print(photosList)
-        for photoData in photosList {
-            let photoDataModel = ExercisePhotoDataModel(photo: photoData)
-            RealmDataBase.shared.set(photoDataModel)
-            exercisePhotosDataModel.append(photoData)
-            guard let image = UIImage(data: photoData) else { continue }
-            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
-        }
+        getExercisePhotosFromData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,6 +125,17 @@ extension SetupExercisePageViewController {
         exerciseTitle.layer.cornerRadius = 12
     }
     
+    private func getExercisePhotosFromData() {
+        let photosList = exercise.photosArray.compactMap{Data($0)}
+        print(photosList)
+        for photoData in photosList {
+            let photoDataModel = ExercisePhotoDataModel(photo: photoData)
+            RealmDataBase.shared.set(photoDataModel)
+            exercisePhotosDataModel.append(photoData)
+            guard let image = UIImage(data: photoData) else { continue }
+            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+        }
+    }
     //MARK: - Кнопка добавления картинок упражнений
     private func setupAddExercisePhotoButton() {
         addExercisePhotoButton.setTitle("+", for: .normal)

@@ -28,12 +28,7 @@ class ExercisePageViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageSettings()
-        let photosList = exercise.photosArray.compactMap{Data($0)}
-        print(photosList)
-        for photo in photosList {
-            guard let image = UIImage(data: photo) else { continue }
-            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +45,7 @@ extension ExercisePageViewController {
         setupNavigationBar()
         setupSubviews()
         setupMargins()
+        getExercisePhotosFromData()
     }
     
     func setupNavigationBar() {
@@ -97,6 +93,15 @@ extension ExercisePageViewController {
         exerciseTitle.textAlignment = .center
     }
     
+    private func getExercisePhotosFromData() {
+        let photosList = exercise.photosArray.compactMap{Data($0)}
+        print(photosList)
+        for photo in photosList {
+            guard let image = UIImage(data: photo) else { continue }
+            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+        }
+    }
+    
     func setupExerciseAboutLabel() {
         if exercise?.about.count == 0 {
             exerciseAbout.text = "Нет описания выполнения упражнения"
@@ -116,20 +121,10 @@ extension ExercisePageViewController {
 extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
     func changeExerciseOnExercisePage(_ exercise: ExerciseModel) {
         exercisePhotos.removeAll()
-        let photosList = exercise.photosArray.compactMap{Data($0)}
-        print(photosList)
-        for photo in photosList {
-            guard let image = UIImage(data: photo) else { continue }
-            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
-        }
         RealmDataBase.shared.set(exercise)
         exerciseTitle.text = exercise.title
         exerciseAbout.text = exercise.about
-        
-        setupExerciseAboutLabel()
-        
         pageSettings()
-
         delegate?.reloadTableViewData()
     }
 }
