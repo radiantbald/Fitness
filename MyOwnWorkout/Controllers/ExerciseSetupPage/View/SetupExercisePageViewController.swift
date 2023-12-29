@@ -117,6 +117,7 @@ extension SetupExercisePageViewController {
     
     //MARK: - Поле ввода для названия упражнения
     private func setupExerciseTitleTextView() {
+        exerciseTitle.text = exercise.title
         exerciseTitle.isSelectable = true
         exerciseTitle.isEditable = true
         exerciseTitle.font = UIFont(name: Fonts.main.rawValue, size: 16.0)!
@@ -199,6 +200,7 @@ extension SetupExercisePageViewController {
     
     //MARK: - Поле ввода порядка выполнения упражнения
     private func setupExerciseAboutTextView() {
+        exerciseAbout.text = exercise.about
         exerciseAbout.isSelectable = true
         exerciseAbout.isEditable = true
         exerciseAbout.font = UIFont(name: Fonts.main.rawValue, size: 16.0)!
@@ -219,10 +221,12 @@ extension SetupExercisePageViewController {
         if exerciseTitle.text?.count == 0 {
             showAlert(title: "Нет названия", message: "Назовите упражнение")
         } else {
-            
-            saveExercise(exerciseTitle.text, exerciseAbout.text)
-            
-            self.navigationController?.popViewController(animated: true)
+            if exerciseTitle.text == exercise.title && exerciseAbout.text == exercise.about {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                saveExercise(exerciseTitle.text, exerciseAbout.text)
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
