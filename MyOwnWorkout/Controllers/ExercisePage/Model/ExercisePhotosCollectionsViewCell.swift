@@ -35,6 +35,7 @@ class ExercisePhotosCollectionsViewCell: UICollectionViewCell {
         super.layoutSubviews()
         exercisePhotoImageView.clipsToBounds = true
         exercisePhotoImageView.layer.cornerRadius = 12
+        exercisePhotoImageView.contentMode = .scaleAspectFill
         
         liningImageView.clipsToBounds = false        
         layer.shadowOpacity = 0.3

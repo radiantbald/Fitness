@@ -30,6 +30,8 @@
 		A26E8F422A766ABB0054D495 /* KeychainDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */; };
 		A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */; };
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
+		A28614E02B40957B0099A88F /* ExerciseImagesTileVeiwController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28614DF2B40957B0099A88F /* ExerciseImagesTileVeiwController.swift */; };
+		A28614E22B40959D0099A88F /* ExerciseImagesTilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28614E12B40959D0099A88F /* ExerciseImagesTilePresenter.swift */; };
 		A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */; };
 		A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */; };
 		A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */; };
@@ -100,6 +102,8 @@
 		A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDataBase.swift; sourceTree = "<group>"; };
 		A275C9AB2A2B5CAF00B18420 /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
+		A28614DF2B40957B0099A88F /* ExerciseImagesTileVeiwController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImagesTileVeiwController.swift; sourceTree = "<group>"; };
+		A28614E12B40959D0099A88F /* ExerciseImagesTilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImagesTilePresenter.swift; sourceTree = "<group>"; };
 		A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
 		A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPagePresenter.swift; sourceTree = "<group>"; };
 		A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppPageViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +420,39 @@
 			path = PersonPage;
 			sourceTree = "<group>";
 		};
+		A28614DB2B4095340099A88F /* ExerciseImagesTile */ = {
+			isa = PBXGroup;
+			children = (
+				A28614DE2B4095680099A88F /* Model */,
+				A28614DD2B4095630099A88F /* View */,
+				A28614DC2B40955C0099A88F /* Presenter */,
+			);
+			path = ExerciseImagesTile;
+			sourceTree = "<group>";
+		};
+		A28614DC2B40955C0099A88F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A28614E12B40959D0099A88F /* ExerciseImagesTilePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A28614DD2B4095630099A88F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A28614DF2B40957B0099A88F /* ExerciseImagesTileVeiwController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A28614DE2B4095680099A88F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A28B7FB42A83C55B00B20B5F /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,14 +693,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A29B4BC82AE3F22C00C5D886 /* AddExercisePageViewController */ = {
+		A29B4BC82AE3F22C00C5D886 /* AddExercisePage */ = {
 			isa = PBXGroup;
 			children = (
 				A29B4BC92AE3F24D00C5D886 /* Model */,
 				A29B4BCA2AE3F25F00C5D886 /* View */,
 				A29B4BCB2AE3F29400C5D886 /* Presenter */,
 			);
-			path = AddExercisePageViewController;
+			path = AddExercisePage;
 			sourceTree = "<group>";
 		};
 		A29B4BC92AE3F24D00C5D886 /* Model */ = {
@@ -689,14 +726,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		A29B4BD02AE5501400C5D886 /* ExercisePageViewController */ = {
+		A29B4BD02AE5501400C5D886 /* ExercisePage */ = {
 			isa = PBXGroup;
 			children = (
 				A29B4BD32AE5505900C5D886 /* Model */,
 				A29B4BD22AE5505300C5D886 /* View */,
 				A29B4BD12AE5504500C5D886 /* Presenter */,
 			);
-			path = ExercisePageViewController;
+			path = ExercisePage;
 			sourceTree = "<group>";
 		};
 		A29B4BD12AE5504500C5D886 /* Presenter */ = {
@@ -829,9 +866,10 @@
 				A28B7FE62A88B6A100B20B5F /* TrainingProgramsPage */,
 				A28B7FDE2A88B23A00B20B5F /* MyWorkoutsPage */,
 				A28B7FD62A88AB1D00B20B5F /* MyExercisesPage */,
-				A29B4BC82AE3F22C00C5D886 /* AddExercisePageViewController */,
-				A29B4BD02AE5501400C5D886 /* ExercisePageViewController */,
+				A29B4BC82AE3F22C00C5D886 /* AddExercisePage */,
+				A29B4BD02AE5501400C5D886 /* ExercisePage */,
 				A23A750C2AF804A200C4B178 /* ExerciseSetupPage */,
+				A28614DB2B4095340099A88F /* ExerciseImagesTile */,
 				A28B7FCD2A87E3AE00B20B5F /* MyAchievmentsPage */,
 				A28B7FC52A87DF5E00B20B5F /* PersonalAccountPage */,
 				A28B7FBD2A87DBE700B20B5F /* AboutAppPage */,
@@ -981,6 +1019,7 @@
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
 				A20A117F2AEF891C00E86B95 /* VerifyView.swift in Sources */,
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
+				A28614E22B40959D0099A88F /* ExerciseImagesTilePresenter.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A2E4C8952B362B8200AC89E4 /* GifLoader.swift in Sources */,
@@ -1000,6 +1039,7 @@
 				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,
 				A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */,
 				A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */,
+				A28614E02B40957B0099A88F /* ExerciseImagesTileVeiwController.swift in Sources */,
 				A20A117D2AEF87AE00E86B95 /* VerifyTextField.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
