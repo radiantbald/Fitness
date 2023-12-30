@@ -13,8 +13,8 @@ protocol SetupExercisePageViewControllerDelegate: AnyObject {
 
 class SetupExercisePageViewController: GeneralViewController {
     
-    private let exercise: ExerciseModel
     var presenter: SetupExercisePagePresenter!
+    private let exercise: ExerciseModel
     private weak var delegate: SetupExercisePageViewControllerDelegate?
     
     init(parent: SetupExercisePageViewControllerDelegate? = nil, exercise: ExerciseModel) {
@@ -186,6 +186,8 @@ extension SetupExercisePageViewController {
         
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
+        
+        openExerciseImagesTile(collectionView)
     }
     
     //MARK: - Сохранение картинок упражнения
@@ -196,6 +198,21 @@ extension SetupExercisePageViewController {
         let photoDataModel = ExercisePhotoDataModel(photo: photoData)
         RealmDataBase.shared.set(photoDataModel)
         exercisePhotosData.append(photoData)
+    }
+    
+    func openExerciseImagesTile(_ tapAreas: UIView...) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openExerciseImagesTileAction))
+        tapGesture.delegate = self
+        tapAreas.forEach({ tapArea in
+            tapArea.isUserInteractionEnabled = true
+            tapArea.addGestureRecognizer(tapGesture)
+        })
+    }
+    
+    @objc func openExerciseImagesTileAction() {
+        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercise: exercise)
+        viewController.modalPresentationStyle = .overFullScreen
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     //MARK: - Поле ввода порядка выполнения упражнения
@@ -221,12 +238,8 @@ extension SetupExercisePageViewController {
         if exerciseTitle.text?.count == 0 {
             showAlert(title: "Нет названия", message: "Назовите упражнение")
         } else {
-            if exerciseTitle.text == exercise.title && exerciseAbout.text == exercise.about {
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                saveExercise(exerciseTitle.text, exerciseAbout.text)
-                self.navigationController?.popViewController(animated: true)
-            }
+            saveExercise(exerciseTitle.text, exerciseAbout.text)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -269,6 +282,12 @@ extension SetupExercisePageViewController: UIImagePickerControllerDelegate, UINa
             self.saveExercisePhoto(pickedImage)
             dismiss(animated: true)
         }
+    }
+}
+
+extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDelegate {
+    func updateExerciseImages(_ exercise: ExerciseModel) {
+        return
     }
 }
 

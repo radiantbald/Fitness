@@ -182,6 +182,23 @@ extension AddExercisePageViewController {
         exercisePhotosData.append(photoData)
     }
     
+    // Изменить инициализацию контроллера!!!
+    
+//    func openExerciseImagesTile(_ tapAreas: UIView...) {
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openExerciseImagesTileAction))
+//        tapGesture.delegate = self
+//        tapAreas.forEach({ tapArea in
+//            tapArea.isUserInteractionEnabled = true
+//            tapArea.addGestureRecognizer(tapGesture)
+//        })
+//    }
+//    
+//    @objc func openExerciseImagesTileAction() {
+//        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercise: exercise)
+//        viewController.modalPresentationStyle = .overFullScreen
+//        navigationController?.pushViewController(viewController, animated: true)
+//    }
+    
     //MARK: - Поле ввода порядка выполнения упражнения
     private func setupExerciseAboutTextView() {
         exerciseAbout.isSelectable = true
@@ -239,6 +256,12 @@ extension AddExercisePageViewController: UIImagePickerControllerDelegate, UINavi
             self.saveExercisePhoto(pickedImage)
             dismiss(animated: true)
         }
+    }
+}
+
+extension AddExercisePageViewController: ExerciseImagesTileVeiwControllerDelegate {
+    func updateExerciseImages(_ exercise: ExerciseModel) {
+        return
     }
 }
 
