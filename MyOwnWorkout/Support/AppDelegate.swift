@@ -14,4 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureFirebase(for: application)
         return true
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
+    }
 }
