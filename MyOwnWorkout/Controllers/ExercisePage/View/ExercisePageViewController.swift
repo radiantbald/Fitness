@@ -17,7 +17,7 @@ class ExercisePageViewController: GeneralViewController {
     weak var delegate: ExercisePageViewControllerDelegate?
     
     var exercise: ExerciseModel!
-    var exercisePhotos: [ExercisePhotosCollectionModel] = []
+    var exerciseImagesArray: [ExerciseImagesCollectionModel] = []
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
@@ -98,7 +98,7 @@ extension ExercisePageViewController {
         print(photosList)
         for photo in photosList {
             guard let image = UIImage(data: photo) else { continue }
-            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+            exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         }
     }
     
@@ -120,7 +120,7 @@ extension ExercisePageViewController {
 
 extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
     func changeExerciseOnExercisePage(_ exercise: ExerciseModel) {
-        exercisePhotos.removeAll()
+        exerciseImagesArray.removeAll()
         RealmDataBase.shared.set(exercise)
         exerciseTitle.text = exercise.title
         exerciseAbout.text = exercise.about
@@ -150,12 +150,12 @@ extension ExercisePageViewController {
 
 extension ExercisePageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return exercisePhotos.count
+        return exerciseImagesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID, for: indexPath) as! ExercisePhotosCollectionsViewCell
-        cell.exercisePhotoImageView.image = exercisePhotos[indexPath.row].photo
+        cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
         cell.layer.shadowRadius = 9
         return cell
     }

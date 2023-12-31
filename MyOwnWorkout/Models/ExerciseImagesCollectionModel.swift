@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ExercisePhotosCollectionModel {
+class ExerciseImagesCollectionModel {
     
-    var photo: UIImage
+    var image: UIImage
     
-    init(photo: UIImage) {
-        self.photo = photo
+    init(image: UIImage) {
+        self.image = image
     }
 }
 

@@ -22,35 +22,35 @@ class ExerciseModel: Object {
                      muscleGroup: String = "",
                      neededEquipment: String = "",
                      about: String = "",
-                     photosArray: List<Data>) {
+                     imagesDataList: List<Data>) {
         self.init()
         self.title = title
         self.author = author
         self.muscleGroup = muscleGroup
         self.neededEquipment = neededEquipment
         self.about = about
-        self.imagesDataList = photosArray
+        self.imagesDataList = imagesDataList
     }
     
-    let exercisePhotosData = List<Data>()
+    let exerciseImagesData = List<Data>()
     
-    func saveExercise(_ title: String, _ about: String, _ photosArray: List<Data>) {
-            let exercise = ExerciseModel(title: title, about: about, photosArray: photosArray)
+    func saveExercise(_ title: String, _ about: String, _ imagesDataList: List<Data>) {
+            let exercise = ExerciseModel(title: title, about: about, imagesDataList: imagesDataList)
             RealmDataBase.shared.set(exercise)
-            let photosData = ExercisePhotoDataModel.self
-            RealmDataBase.shared.deleteTable(photosData)
+            let imageData = ExerciseImageDataModel.self
+            RealmDataBase.shared.deleteTable(imageData)
     }
 }
 
 //MARK: - Временная БД для хранения данных изображений упражнения
 
-class ExercisePhotoDataModel: Object {
+class ExerciseImageDataModel: Object {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
-    @Persisted var photo: Data
+    @Persisted var image: Data
     
-    convenience init(photo: Data) {
+    convenience init(image: Data) {
         self.init()
-        self.photo = photo
+        self.image = image
     }
 }
 

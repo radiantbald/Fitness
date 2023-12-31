@@ -14,12 +14,12 @@ protocol ExerciseImagesTileVeiwControllerDelegate: AnyObject {
 class ExerciseImagesTileVeiwController: GeneralViewController {
     
     var presenter: ExerciseImagesTilePresenter!
-    private var exercisePhotoDataArray: [ExercisePhotoDataModel]
+    private var exerciseImageDataArray: [ExerciseImageDataModel]
     private weak var delegate: ExerciseImagesTileVeiwControllerDelegate?
     
-    init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exercisePhotoDataArray: [ExercisePhotoDataModel]) {
+    init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exercisePhotoDataArray: [ExerciseImageDataModel]) {
         self.delegate = parent
-        self.exercisePhotoDataArray = exercisePhotoDataArray
+        self.exerciseImageDataArray = exercisePhotoDataArray
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,8 +30,8 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     private var collectionView: UICollectionView?
     private let layout = UICollectionViewFlowLayout()
     
-    var exercisePhotos: [ExercisePhotosCollectionModel] = []
-    var exercisePhotosDataModel = ExercisePhotoDataModel().photo
+    var exerciseImagesArray: [ExerciseImagesCollectionModel] = []
+    var exerciseImageData = ExerciseImageDataModel().image
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +53,11 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     
     
     private func getExercisePhotosFromData() {
-        exercisePhotoDataArray = RealmDataBase.shared.get()
-        for exercisePhotoData in exercisePhotoDataArray {
-            let photoData = exercisePhotoData.photo
-            guard let photo = UIImage(data:photoData) else { continue }
-            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: photo))
+        exerciseImageDataArray = RealmDataBase.shared.get()
+        for exerciseImageData in exerciseImageDataArray {
+            let imageData = exerciseImageData.image
+            guard let image = UIImage(data:imageData) else { continue }
+            exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         }
         
     }
@@ -89,12 +89,12 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
 
 extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return exercisePhotos.count
+        return exerciseImagesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID, for: indexPath) as! ExercisePhotosCollectionsViewCell
-        cell.exercisePhotoImageView.image = exercisePhotos[indexPath.row].photo
+        cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
         cell.layer.shadowRadius = 3
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
         return cell
