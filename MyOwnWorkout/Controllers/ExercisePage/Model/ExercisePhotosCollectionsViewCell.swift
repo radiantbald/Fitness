@@ -11,18 +11,18 @@ class ExercisePhotosCollectionsViewCell: UICollectionViewCell {
     
     static let cellID = "cellID"
     
-    let exercisePhotoImageView = UIImageView()
+    let exerciseImageView = UIImageView()
     let liningImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubviews(exercisePhotoImageView, liningImageView)
+        addSubviews(exerciseImageView, liningImageView)
         NSLayoutConstraint.activate([
-            exercisePhotoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            exercisePhotoImageView.topAnchor.constraint(equalTo: topAnchor),
-            exercisePhotoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            exercisePhotoImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            exerciseImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            exerciseImageView.topAnchor.constraint(equalTo: topAnchor),
+            exerciseImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            exerciseImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             liningImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             liningImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -33,9 +33,9 @@ class ExercisePhotosCollectionsViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        exercisePhotoImageView.clipsToBounds = true
-        exercisePhotoImageView.layer.cornerRadius = 12
-        exercisePhotoImageView.contentMode = .scaleAspectFill
+        exerciseImageView.clipsToBounds = true
+        exerciseImageView.layer.cornerRadius = 12
+        exerciseImageView.contentMode = .scaleAspectFill
         
         liningImageView.clipsToBounds = false        
         layer.shadowOpacity = 0.3

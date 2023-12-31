@@ -26,9 +26,9 @@ class AddExercisePageViewController: GeneralViewController {
     private let addExercisePhotoButton = UIButton()
     
     //Фотографии упражнения
-    var exercisePhotos = [ExercisePhotosCollectionModel]()
-    var exercisePhotosData = ExerciseModel().exercisePhotosData
-    var exercisePhotoDataArray = [ExercisePhotoDataModel]()
+    var exerciseImagesArray = [ExerciseImagesCollectionModel]()
+    var exerciseImagesDataList = ExerciseModel().exerciseImagesData
+    var exerciseImagesDataArray = [ExerciseImageDataModel]()
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -60,7 +60,7 @@ extension AddExercisePageViewController {
     }
     
     @objc private func setupBackButton() {
-        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
+        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
         navigationController?.popViewController(animated: true)
     }
     
@@ -183,12 +183,12 @@ extension AddExercisePageViewController {
     
     //MARK: - Сохранение картинок упражнения
     private func saveExercisePhoto(_ image: UIImage) {
-        exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+        exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         pageSettings()
-        let photoData = image.pngData()!
-        let photoDataModel = ExercisePhotoDataModel(photo: photoData)
-        RealmDataBase.shared.set(photoDataModel)
-        exercisePhotosData.append(photoData)
+        let imageData = image.pngData()!
+        let imagesData = ExerciseImageDataModel(image: imageData)
+        RealmDataBase.shared.set(imagesData)
+        exerciseImagesDataList.append(imageData)
     }
     
     func openExerciseImagesTile(_ tapAreas: UIView...) {
@@ -201,7 +201,7 @@ extension AddExercisePageViewController {
     }
     
     @objc func openExerciseImagesTileAction() {
-        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercisePhotoDataArray: exercisePhotoDataArray)
+        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercisePhotoDataArray: exerciseImagesDataArray)
         viewController.modalPresentationStyle = .overFullScreen
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -230,7 +230,7 @@ extension AddExercisePageViewController {
         } else {
             ExerciseModel().saveExercise(exerciseTitle.text!,
                                          exerciseAbout.text!,
-                                         exercisePhotosData)
+                                         exerciseImagesDataList)
             delegate?.addExerciseToTableView()
             navigationController?.popViewController(animated: true)
         }
@@ -239,12 +239,12 @@ extension AddExercisePageViewController {
 
 extension AddExercisePageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return exercisePhotos.count
+        return exerciseImagesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID, for: indexPath) as! ExercisePhotosCollectionsViewCell
-        cell.exercisePhotoImageView.image = exercisePhotos[indexPath.row].photo
+        cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
         cell.layer.shadowRadius = 3
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
         return cell

@@ -77,7 +77,7 @@
 		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
 		A2E4C8912B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8902B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift */; };
-		A2E4C8932B36074800AC89E4 /* ExercisePhotosCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8922B36074800AC89E4 /* ExercisePhotosCollectionModel.swift */; };
+		A2E4C8932B36074800AC89E4 /* ExerciseImagesCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8922B36074800AC89E4 /* ExerciseImagesCollectionModel.swift */; };
 		A2E4C8952B362B8200AC89E4 /* GifLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8942B362B8200AC89E4 /* GifLoader.swift */; };
 		A2E4C8982B362C0900AC89E4 /* Gachigif.gif in Resources */ = {isa = PBXBuildFile; fileRef = A2E4C8972B362C0900AC89E4 /* Gachigif.gif */; };
 		A2F78D6F2B272D2E00AF35AD /* SetupExercisePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */; };
@@ -149,7 +149,7 @@
 		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
 		A2E4C8902B35F31100AC89E4 /* ExercisePhotosCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotosCollectionsViewCell.swift; sourceTree = "<group>"; };
-		A2E4C8922B36074800AC89E4 /* ExercisePhotosCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotosCollectionModel.swift; sourceTree = "<group>"; };
+		A2E4C8922B36074800AC89E4 /* ExerciseImagesCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImagesCollectionModel.swift; sourceTree = "<group>"; };
 		A2E4C8942B362B8200AC89E4 /* GifLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifLoader.swift; sourceTree = "<group>"; };
 		A2E4C8972B362C0900AC89E4 /* Gachigif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gachigif.gif; sourceTree = "<group>"; };
 		A2F78D6E2B272D2E00AF35AD /* SetupExercisePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupExercisePagePresenter.swift; sourceTree = "<group>"; };
@@ -792,7 +792,7 @@
 				A26E8F3F2A7667430054D495 /* CodableModels.swift */,
 				A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */,
 				A29B4BC52AE2DD8500C5D886 /* ExerciseModel.swift */,
-				A2E4C8922B36074800AC89E4 /* ExercisePhotosCollectionModel.swift */,
+				A2E4C8922B36074800AC89E4 /* ExerciseImagesCollectionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1035,7 +1035,7 @@
 				A23A75132AF804F900C4B178 /* SetupExercisePageViewController.swift in Sources */,
 				A290CEB32ADAB46000FE145B /* UILabelExtensions.swift in Sources */,
 				A29B4BCF2AE3F2F900C5D886 /* AddExercisePagePresenter.swift in Sources */,
-				A2E4C8932B36074800AC89E4 /* ExercisePhotosCollectionModel.swift in Sources */,
+				A2E4C8932B36074800AC89E4 /* ExerciseImagesCollectionModel.swift in Sources */,
 				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,
 				A2954F8A2A7E9035003947CF /* SchedulePagePresenter.swift in Sources */,
 				A28B7FE32A88B27800B20B5F /* MyWorkoutsPageViewController.swift in Sources */,
