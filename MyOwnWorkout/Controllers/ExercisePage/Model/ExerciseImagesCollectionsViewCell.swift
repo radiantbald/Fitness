@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExercisePhotosCollectionsViewCell: UICollectionViewCell {
+class ExerciseImagesCollectionsViewCell: UICollectionViewCell {
     
     static let cellID = "cellID"
     

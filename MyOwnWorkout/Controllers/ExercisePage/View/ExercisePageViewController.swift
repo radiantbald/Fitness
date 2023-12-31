@@ -45,7 +45,7 @@ extension ExercisePageViewController {
         setupNavigationBar()
         setupSubviews()
         setupMargins()
-        getExercisePhotosFromData()
+        getExerciseImagesFromData()
     }
     
     func setupNavigationBar() {
@@ -93,11 +93,11 @@ extension ExercisePageViewController {
         exerciseTitle.textAlignment = .center
     }
     
-    private func getExercisePhotosFromData() {
-        let photosList = exercise.imagesDataList.compactMap{Data($0)}
-        print(photosList)
-        for photo in photosList {
-            guard let image = UIImage(data: photo) else { continue }
+    private func getExerciseImagesFromData() {
+        let imagesDataList = exercise.imagesDataList.compactMap{Data($0)}
+        print(imagesDataList)
+        for imageData in imagesDataList {
+            guard let image = UIImage(data: imageData) else { continue }
             exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         }
     }
@@ -139,7 +139,7 @@ extension ExercisePageViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: Constants.leftDistanceToView, bottom: 0, right: Constants.rightDistanceToView)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(ExercisePhotosCollectionsViewCell.self, forCellWithReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID)
+        collectionView.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
         
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
@@ -154,7 +154,7 @@ extension ExercisePageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID, for: indexPath) as! ExercisePhotosCollectionsViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
         cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
         cell.layer.shadowRadius = 9
         return cell
