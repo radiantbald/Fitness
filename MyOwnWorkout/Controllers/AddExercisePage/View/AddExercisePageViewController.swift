@@ -14,6 +14,7 @@ protocol AddExercisePageViewControllerDelegate: AnyObject {
 class AddExercisePageViewController: GeneralViewController {
     
     var presenter: AddExercisePagePresenter!
+    private let exercise = ExerciseModel()
     weak var delegate: AddExercisePageViewControllerDelegate?
     
     //Название упражнения
@@ -27,6 +28,7 @@ class AddExercisePageViewController: GeneralViewController {
     //Фотографии упражнения
     var exercisePhotos = [ExercisePhotosCollectionModel]()
     var exercisePhotosData = ExerciseModel().exercisePhotosData
+    var exercisePhotoDataArray = [ExercisePhotoDataModel]()
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -42,19 +44,24 @@ class AddExercisePageViewController: GeneralViewController {
         super.viewDidLoad()
         pageSettings()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
-    }
 }
 
 extension AddExercisePageViewController {
     
     private func pageSettings() {
-        title = "Новое упражнение"
+        setupNavigationBar()
         setupSubviews()
         setupMargins()
+    }
+    
+    private func setupNavigationBar() {
+        title = "Новое упражнение"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(setupBackButton))
+    }
+    
+    @objc private func setupBackButton() {
+        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
+        navigationController?.popViewController(animated: true)
     }
     
     private func setupSubviews() {
@@ -170,6 +177,8 @@ extension AddExercisePageViewController {
         
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
+        
+        openExerciseImagesTile(collectionView)
     }
     
     //MARK: - Сохранение картинок упражнения
@@ -182,22 +191,20 @@ extension AddExercisePageViewController {
         exercisePhotosData.append(photoData)
     }
     
-    // Изменить инициализацию контроллера!!!
+    func openExerciseImagesTile(_ tapAreas: UIView...) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openExerciseImagesTileAction))
+        tapGesture.delegate = self
+        tapAreas.forEach({ tapArea in
+            tapArea.isUserInteractionEnabled = true
+            tapArea.addGestureRecognizer(tapGesture)
+        })
+    }
     
-//    func openExerciseImagesTile(_ tapAreas: UIView...) {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openExerciseImagesTileAction))
-//        tapGesture.delegate = self
-//        tapAreas.forEach({ tapArea in
-//            tapArea.isUserInteractionEnabled = true
-//            tapArea.addGestureRecognizer(tapGesture)
-//        })
-//    }
-//    
-//    @objc func openExerciseImagesTileAction() {
-//        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercise: exercise)
-//        viewController.modalPresentationStyle = .overFullScreen
-//        navigationController?.pushViewController(viewController, animated: true)
-//    }
+    @objc func openExerciseImagesTileAction() {
+        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercisePhotoDataArray: exercisePhotoDataArray)
+        viewController.modalPresentationStyle = .overFullScreen
+        navigationController?.pushViewController(viewController, animated: true)
+    }
     
     //MARK: - Поле ввода порядка выполнения упражнения
     private func setupExerciseAboutTextView() {

@@ -94,7 +94,7 @@ extension ExercisePageViewController {
     }
     
     private func getExercisePhotosFromData() {
-        let photosList = exercise.photosArray.compactMap{Data($0)}
+        let photosList = exercise.imagesDataList.compactMap{Data($0)}
         print(photosList)
         for photo in photosList {
             guard let image = UIImage(data: photo) else { continue }

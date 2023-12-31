@@ -14,12 +14,12 @@ protocol ExerciseImagesTileVeiwControllerDelegate: AnyObject {
 class ExerciseImagesTileVeiwController: GeneralViewController {
     
     var presenter: ExerciseImagesTilePresenter!
-    private let exercise: ExerciseModel
+    private var exercisePhotoDataArray: [ExercisePhotoDataModel]
     private weak var delegate: ExerciseImagesTileVeiwControllerDelegate?
     
-    init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exercise: ExerciseModel) {
-        self.exercise = exercise
+    init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exercisePhotoDataArray: [ExercisePhotoDataModel]) {
         self.delegate = parent
+        self.exercisePhotoDataArray = exercisePhotoDataArray
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,34 +45,21 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     
     private func pageSettings() {
         setupSubviews()
-        setupMargins()
     }
     
     private func setupSubviews() {
         setupCollectionView()
-        
-//        view.addSubviews(collectionView)
     }
     
-    private func setupMargins() {
-        let margins = view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-//            collectionView.leadingAnchor.constraint(equalTo: margins.trailingAnchor),
-//            collectionView.topAnchor.constraint(equalTo: margins.topAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-//            collectionView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
-        ])
-    }
+    
     private func getExercisePhotosFromData() {
-        let photosList = exercise.photosArray.compactMap{Data($0)}
-        print(photosList)
-        for photoData in photosList {
-            let photoDataModel = ExercisePhotoDataModel(photo: photoData)
-            RealmDataBase.shared.set(photoDataModel)
-            exercisePhotosDataModel.append(photoData)
-            guard let image = UIImage(data: photoData) else { continue }
-            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: image))
+        exercisePhotoDataArray = RealmDataBase.shared.get()
+        for exercisePhotoData in exercisePhotoDataArray {
+            let photoData = exercisePhotoData.photo
+            guard let photo = UIImage(data:photoData) else { continue }
+            exercisePhotos.append(ExercisePhotosCollectionModel.init(photo: photo))
         }
+        
     }
     
     private func setupCollectionView() {
@@ -92,7 +79,7 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.itemSize = CGSize(width: imageSize, height: imageSize)
         
-//        collectionView?.delegate = self
+        //        collectionView?.delegate = self
         collectionView?.dataSource = self
         
         guard let collectionView = collectionView else { return }

@@ -34,6 +34,7 @@ class SetupExercisePageViewController: GeneralViewController {
     
     var exercisePhotos: [ExercisePhotosCollectionModel] = []
     var exercisePhotosData = ExerciseModel().exercisePhotosData
+    var exercisePhotoDataArray = [ExercisePhotoDataModel]()
     var exercisePhotosDataModel = ExercisePhotoDataModel().photo
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
@@ -46,19 +47,24 @@ class SetupExercisePageViewController: GeneralViewController {
         pageSettings()
         getExercisePhotosFromData()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
-    }
 }
 
 extension SetupExercisePageViewController {
     
     private func pageSettings() {
-        title = "Редактировать"
+        setupNavigationBar()
         setupSubviews()
         setupMargins()
+    }
+    
+    private func setupNavigationBar() {
+        title = "Новое упражнение"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(setupBackButton))
+    }
+    
+    @objc private func setupBackButton() {
+        RealmDataBase.shared.deleteTable(ExercisePhotoDataModel.self)
+        navigationController?.popViewController(animated: true)
     }
     
     private func setupSubviews() {
@@ -127,7 +133,7 @@ extension SetupExercisePageViewController {
     }
     
     private func getExercisePhotosFromData() {
-        let photosList = exercise.photosArray.compactMap{Data($0)}
+        let photosList = exercise.imagesDataList.compactMap{Data($0)}
         print(photosList)
         for photoData in photosList {
             let photoDataModel = ExercisePhotoDataModel(photo: photoData)
@@ -210,7 +216,7 @@ extension SetupExercisePageViewController {
     }
     
     @objc func openExerciseImagesTileAction() {
-        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercise: exercise)
+        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercisePhotoDataArray: exercisePhotoDataArray)
         viewController.modalPresentationStyle = .overFullScreen
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -244,12 +250,12 @@ extension SetupExercisePageViewController {
     }
     
     func saveExercise(_ title: String, _ about: String) {
-        exercisePhotosData.insert(contentsOf: exercise.photosArray, at: 0)
+        exercisePhotosData.insert(contentsOf: exercise.imagesDataList, at: 0)
         let model = ExerciseModel()
         model.id = exercise.id
         model.title = title
         model.about = about
-        model.photosArray = exercisePhotosData
+        model.imagesDataList = exercisePhotosData
         
         delegate?.changeExerciseOnExercisePage(model)
     }

@@ -15,7 +15,7 @@ class ExerciseModel: Object {
     @Persisted var muscleGroup: String
     @Persisted var neededEquipment: String
     @Persisted var about: String
-    @Persisted var photosArray: List<Data>
+    @Persisted var imagesDataList: List<Data>
     
     convenience init(title: String,
                      author: String = "",
@@ -29,7 +29,7 @@ class ExerciseModel: Object {
         self.muscleGroup = muscleGroup
         self.neededEquipment = neededEquipment
         self.about = about
-        self.photosArray = photosArray
+        self.imagesDataList = photosArray
     }
     
     let exercisePhotosData = List<Data>()
@@ -41,6 +41,8 @@ class ExerciseModel: Object {
             RealmDataBase.shared.deleteTable(photosData)
     }
 }
+
+//MARK: - Временная БД для хранения данных изображений упражнения
 
 class ExercisePhotoDataModel: Object {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
