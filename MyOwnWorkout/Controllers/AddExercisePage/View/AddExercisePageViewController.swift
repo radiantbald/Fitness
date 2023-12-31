@@ -23,7 +23,7 @@ class AddExercisePageViewController: GeneralViewController {
     
     //Кнопка "Добавить фото"
     private lazy var imagePicker = UIImagePickerController()
-    private let addExercisePhotoButton = UIButton()
+    private let addExerciseImageButton = UIButton()
     
     //Фотографии упражнения
     var exerciseImagesArray = [ExerciseImagesCollectionModel]()
@@ -66,14 +66,14 @@ extension AddExercisePageViewController {
     
     private func setupSubviews() {
         setupExerciseTitleTextView()
-        setupAddExercisePhotoButton()
+        setupAddExerciseImageButton()
         setupCollectionView()
         setupExerciseAboutTextView()
         setupSaveExerciseButton()
         
         view.addSubviews(exerciseTitleLabel,
                          exerciseTitle,
-                         addExercisePhotoButton,
+                         addExerciseImageButton,
                          collectionView,
                          exerciseAboutLabel,
                          exerciseAbout,
@@ -92,18 +92,18 @@ extension AddExercisePageViewController {
             exerciseTitle.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             exerciseTitle.heightAnchor.constraint(greaterThanOrEqualToConstant: 36),
             
-            addExercisePhotoButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            addExercisePhotoButton.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
-            addExercisePhotoButton.widthAnchor.constraint(equalToConstant: 40),
-            addExercisePhotoButton.heightAnchor.constraint(equalToConstant: 60),
+            addExerciseImageButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+            addExerciseImageButton.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
+            addExerciseImageButton.widthAnchor.constraint(equalToConstant: 40),
+            addExerciseImageButton.heightAnchor.constraint(equalToConstant: 60),
             
-            collectionView.leadingAnchor.constraint(equalTo: addExercisePhotoButton.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: addExerciseImageButton.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             collectionView.heightAnchor.constraint(equalToConstant: 60),
             
             exerciseAboutLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
-            exerciseAboutLabel.topAnchor.constraint(equalTo: addExercisePhotoButton.bottomAnchor, constant: 20),
+            exerciseAboutLabel.topAnchor.constraint(equalTo: addExerciseImageButton.bottomAnchor, constant: 20),
             exerciseAboutLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             
             exerciseAbout.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
@@ -129,19 +129,19 @@ extension AddExercisePageViewController {
     }
     
     //MARK: - Кнопка добавления картинок упражнений
-    private func setupAddExercisePhotoButton() {
-        addExercisePhotoButton.setTitle("+", for: .normal)
-        addExercisePhotoButton.backgroundColor = .systemRed
-        addExercisePhotoButton.layer.cornerRadius = 12
+    private func setupAddExerciseImageButton() {
+        addExerciseImageButton.setTitle("+", for: .normal)
+        addExerciseImageButton.backgroundColor = .systemRed
+        addExerciseImageButton.layer.cornerRadius = 12
         
         imagePicker.delegate = self
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(setupAddExercisePhotoButtonAction))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(setupAddExerciseImageButtonAction))
         tapGesture.delegate = self
-        addExercisePhotoButton.isUserInteractionEnabled = true
-        addExercisePhotoButton.addGestureRecognizer(tapGesture)
+        addExerciseImageButton.isUserInteractionEnabled = true
+        addExerciseImageButton.addGestureRecognizer(tapGesture)
     }
     
-    @objc private func setupAddExercisePhotoButtonAction() {
+    @objc private func setupAddExerciseImageButtonAction() {
         let actionImage = UIAlertController(title: "Добавить фото", message: nil, preferredStyle: .actionSheet)
         
         let photoLibrary = UIAlertAction(title: "Фотоальбом", style: .default) { _ in
@@ -173,7 +173,7 @@ extension AddExercisePageViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: Constants.leftDistanceToView, bottom: 0, right: Constants.rightDistanceToView)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(ExercisePhotosCollectionsViewCell.self, forCellWithReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID)
+        collectionView.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
         
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
@@ -182,7 +182,7 @@ extension AddExercisePageViewController {
     }
     
     //MARK: - Сохранение картинок упражнения
-    private func saveExercisePhoto(_ image: UIImage) {
+    private func saveExerciseImage(_ image: UIImage) {
         exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         pageSettings()
         let imageData = image.pngData()!
@@ -201,7 +201,7 @@ extension AddExercisePageViewController {
     }
     
     @objc func openExerciseImagesTileAction() {
-        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exercisePhotoDataArray: exerciseImagesDataArray)
+        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exerciseImageDataArray: exerciseImagesDataArray)
         viewController.modalPresentationStyle = .overFullScreen
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -243,7 +243,7 @@ extension AddExercisePageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID, for: indexPath) as! ExercisePhotosCollectionsViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
         cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
         cell.layer.shadowRadius = 3
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
@@ -260,7 +260,7 @@ extension AddExercisePageViewController: UICollectionViewDelegateFlowLayout {
 extension AddExercisePageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.saveExercisePhoto(pickedImage)
+            self.saveExerciseImage(pickedImage)
             dismiss(animated: true)
         }
     }

@@ -72,7 +72,7 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.showsVerticalScrollIndicator = false
-        collectionView?.register(ExercisePhotosCollectionsViewCell.self, forCellWithReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID)
+        collectionView?.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
@@ -93,7 +93,7 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExercisePhotosCollectionsViewCell.cellID, for: indexPath) as! ExercisePhotosCollectionsViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
         cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
         cell.layer.shadowRadius = 3
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
