@@ -32,10 +32,10 @@ class SetupExercisePageViewController: GeneralViewController {
     
     private let exerciseAboutLabel = UILabel("Порядок выполнения упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
     
-    var exerciseImagesArray: [ExerciseImagesCollectionModel] = []
-    var exerciseImagesDataList = ExerciseModel().exerciseImagesData
+    var exerciseImagesArray = [ExerciseImagesCollectionModel]()
     var exerciseImagesDataArray = [ExerciseImageDataModel]()
-    var exerciseImageData = ExerciseImageDataModel().image
+    var exerciseImagesDataList = ExerciseModel().exerciseImagesData // List<Data>
+    var exerciseImageData = ExerciseImageDataModel().image //Data
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
@@ -70,14 +70,13 @@ extension SetupExercisePageViewController {
     
     private func setupSubviews() {
         setupExerciseTitleTextView()
-        setupAddExerciseImageButton()
+//        setupAddExerciseImageButton()
         setupCollectionView()
         setupExerciseAboutTextView()
         setupSaveExerciseButton()
         
         view.addSubviews(exerciseTitleLabel,
                          exerciseTitle,
-                         addExerciseImageButton,
                          collectionView,
                          exerciseAboutLabel,
                          exerciseAbout,
@@ -96,18 +95,13 @@ extension SetupExercisePageViewController {
             exerciseTitle.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             exerciseTitle.heightAnchor.constraint(greaterThanOrEqualToConstant: 36),
             
-            addExerciseImageButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
-            addExerciseImageButton.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
-            addExerciseImageButton.widthAnchor.constraint(equalToConstant: 40),
-            addExerciseImageButton.heightAnchor.constraint(equalToConstant: 60),
-            
-            collectionView.leadingAnchor.constraint(equalTo: addExerciseImageButton.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
-            collectionView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            collectionView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 60),
             
             exerciseAboutLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
-            exerciseAboutLabel.topAnchor.constraint(equalTo: addExerciseImageButton.bottomAnchor, constant: 20),
+            exerciseAboutLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20),
             exerciseAboutLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             
             exerciseAbout.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
@@ -199,12 +193,12 @@ extension SetupExercisePageViewController {
     
     //MARK: - Сохранение картинок упражнения
     private func saveExerciseImage(_ image: UIImage) {
-        exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
-        pageSettings()
-        let imageData = image.pngData()!
-        let imagesData = ExerciseImageDataModel(image: imageData)
-        RealmDataBase.shared.set(imagesData)
-        exerciseImagesDataList.append(imageData)
+//        exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+//        pageSettings()
+//        let imageData = image.pngData()!
+//        let imagesData = ExerciseImageDataModel(image: imageData)
+//        RealmDataBase.shared.set(imagesData)
+//        exerciseImagesDataList.append(imageData)
     }
     
     func openExerciseImagesTile(_ tapAreas: UIView...) {
@@ -217,7 +211,7 @@ extension SetupExercisePageViewController {
     }
     
     @objc func openExerciseImagesTileAction() {
-        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exerciseImageDataArray: exerciseImagesDataArray)
+        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exerciseImagesDataArray: exerciseImagesDataArray)
         viewController.modalPresentationStyle = .overFullScreen
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -253,7 +247,6 @@ extension SetupExercisePageViewController {
     }
     
     func saveExercise(_ title: String, _ about: String) {
-        exerciseImagesDataList.insert(contentsOf: exercise.imagesDataList, at: 0)
         let model = ExerciseModel()
         model.id = exercise.id
         model.title = title
@@ -295,8 +288,18 @@ extension SetupExercisePageViewController: UIImagePickerControllerDelegate, UINa
 }
 
 extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDelegate {
-    func updateExerciseImages(_ exercise: ExerciseModel) {
-        return
+    func updateExerciseImages(_ exerciseImagesArray: [ExerciseImagesCollectionModel]) {
+        self.exerciseImagesArray.removeAll()
+        for imageDataModel in exerciseImagesArray {
+            guard let imageData = imageDataModel.image.pngData() else { continue }
+            guard let image = UIImage(data: imageData) else { continue }
+            self.exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+            
+            let imagesData = ExerciseImageDataModel(image: imageData)
+            RealmDataBase.shared.set(imagesData)
+            exerciseImagesDataList.append(imageData)
+        }
+        pageSettings()
     }
 }
 

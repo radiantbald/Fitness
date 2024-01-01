@@ -201,7 +201,7 @@ extension AddExercisePageViewController {
     }
     
     @objc func openExerciseImagesTileAction() {
-        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exerciseImageDataArray: exerciseImagesDataArray)
+        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exerciseImagesDataArray: exerciseImagesDataArray)
         viewController.modalPresentationStyle = .overFullScreen
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -267,7 +267,7 @@ extension AddExercisePageViewController: UIImagePickerControllerDelegate, UINavi
 }
 
 extension AddExercisePageViewController: ExerciseImagesTileVeiwControllerDelegate {
-    func updateExerciseImages(_ exercise: ExerciseModel) {
+    func updateExerciseImages(_ exerciseImagesArray: [ExerciseImagesCollectionModel]) {
         return
     }
 }
