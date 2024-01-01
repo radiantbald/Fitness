@@ -131,8 +131,8 @@ class Controllers {
         return viewController
     }
     
-    class func exerciseImagesTileViewController(parent: ExerciseImagesTileVeiwControllerDelegate?, exerciseImageDataArray: [ExerciseImageDataModel]) -> ExerciseImagesTileVeiwController {
-        let viewController = ExerciseImagesTileVeiwController(parent: parent, exercisePhotoDataArray: exerciseImageDataArray)
+    class func exerciseImagesTileViewController(parent: ExerciseImagesTileVeiwControllerDelegate?, exerciseImagesDataArray: [ExerciseImageDataModel]) -> ExerciseImagesTileVeiwController {
+        let viewController = ExerciseImagesTileVeiwController(parent: parent, exerciseImagesDataArray: exerciseImagesDataArray)
         let presenter = ExerciseImagesTilePresenter(delegate: viewController)
         viewController.presenter = presenter
         return viewController

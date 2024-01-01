@@ -8,18 +8,18 @@
 import UIKit
 
 protocol ExerciseImagesTileVeiwControllerDelegate: AnyObject {
-    func updateExerciseImages(_ exercise: ExerciseModel)
+    func updateExerciseImages(_ exerciseImagesArray: [ExerciseImagesCollectionModel])
 }
 
 class ExerciseImagesTileVeiwController: GeneralViewController {
     
     var presenter: ExerciseImagesTilePresenter!
-    private var exerciseImageDataArray: [ExerciseImageDataModel]
+    private var exerciseImagesDataArray: [ExerciseImageDataModel]
     private weak var delegate: ExerciseImagesTileVeiwControllerDelegate?
     
-    init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exercisePhotoDataArray: [ExerciseImageDataModel]) {
+    init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exerciseImagesDataArray:  [ExerciseImageDataModel]) {
         self.delegate = parent
-        self.exerciseImageDataArray = exercisePhotoDataArray
+        self.exerciseImagesDataArray = exerciseImagesDataArray
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,6 +44,7 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     }
     
     private func pageSettings() {
+        setupNavigationBar()
         setupSubviews()
     }
     
@@ -51,10 +52,27 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         setupCollectionView()
     }
     
+    private func setupNavigationBar() {
+        title = "Галерея"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupBackButton))
+    }
+    
+    @objc private func setupBackButton() {
+        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
+        
+//        for image in exerciseImagesArray {
+//            guard let imageData = image.image.pngData() else { return }
+//            let imagesData = ExerciseImageDataModel(image: imageData)
+//            RealmDataBase.shared.set(imagesData)
+//        }
+        delegate?.updateExerciseImages(exerciseImagesArray)
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     private func getExercisePhotosFromData() {
-        exerciseImageDataArray = RealmDataBase.shared.get()
-        for exerciseImageData in exerciseImageDataArray {
+        exerciseImagesDataArray = RealmDataBase.shared.get()
+        for exerciseImageData in exerciseImagesDataArray {
             let imageData = exerciseImageData.image
             guard let image = UIImage(data:imageData) else { continue }
             exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
@@ -67,8 +85,6 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         let imageSize = (UIScreen.main.bounds.width - 40) / 3
         collectionView = .init(frame: .zero, collectionViewLayout: layout)
         
-        
-        
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.showsVerticalScrollIndicator = false
@@ -79,11 +95,29 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.itemSize = CGSize(width: imageSize, height: imageSize)
         
-        //        collectionView?.delegate = self
+        collectionView?.delegate = self
         collectionView?.dataSource = self
         
         guard let collectionView = collectionView else { return }
         view.addSubviews(collectionView)
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction))
+        collectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc private func longPressGestureAction(_ gesture: UILongPressGestureRecognizer) {
+        let gestureLocation = gesture.location(in: collectionView)
+        switch gesture.state {
+        case .began:
+            guard let targetIndexPath = collectionView?.indexPathForItem(at: gestureLocation) else { return }
+            collectionView?.beginInteractiveMovementForItem(at: targetIndexPath)
+        case .changed:
+            collectionView?.updateInteractiveMovementTargetPosition(gestureLocation)
+        case .ended:
+            collectionView?.endInteractiveMovement()
+        default:
+            collectionView?.cancelInteractiveMovement()
+        }
     }
 }
 
@@ -100,7 +134,12 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
         return cell
     }
 }
-
+extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let target = exerciseImagesArray.remove(at: sourceIndexPath.row)
+        exerciseImagesArray.insert(target, at: destinationIndexPath.row)
+    }
+}
 //extension ExerciseImagesTileVeiwController: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: (UIScreen.main.bounds.width - (Constants.minimumLineSpacing * 4)) / 2, height: (UIScreen.main.bounds.width - (Constants.minimumLineSpacing * 4)) / 2)
