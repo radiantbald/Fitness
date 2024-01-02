@@ -296,11 +296,10 @@ extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDeleg
             guard let imageData = imageDataModel.image.pngData() else { continue }
             guard let image = UIImage(data: imageData) else { continue }
             self.exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+            exerciseImagesDataList.append(imageData)
             
             let imagesData = ExerciseImageDataModel(image: imageData)
             RealmDataBase.shared.set(imagesData)
-            exerciseImagesDataList.append(imageData)
-            
         }
         pageSettings()
     }
