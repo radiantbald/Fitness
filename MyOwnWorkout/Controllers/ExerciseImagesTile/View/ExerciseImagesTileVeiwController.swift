@@ -59,12 +59,6 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     
     @objc private func setupBackButton() {
         RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
-        
-//        for image in exerciseImagesArray {
-//            guard let imageData = image.image.pngData() else { return }
-//            let imagesData = ExerciseImageDataModel(image: imageData)
-//            RealmDataBase.shared.set(imagesData)
-//        }
         delegate?.updateExerciseImages(exerciseImagesArray)
         navigationController?.popViewController(animated: true)
     }

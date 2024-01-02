@@ -132,6 +132,7 @@ extension SetupExercisePageViewController {
         print(imagesList)
         for imageData in imagesList {
             let imagesData = ExerciseImageDataModel(image: imageData)
+            exerciseImagesDataList.append(imageData)
             RealmDataBase.shared.set(imagesData)
             exerciseImageData.append(imageData)
             guard let image = UIImage(data: imageData) else { continue }
@@ -290,6 +291,7 @@ extension SetupExercisePageViewController: UIImagePickerControllerDelegate, UINa
 extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDelegate {
     func updateExerciseImages(_ exerciseImagesArray: [ExerciseImagesCollectionModel]) {
         self.exerciseImagesArray.removeAll()
+        self.exerciseImagesDataList.removeAll()
         for imageDataModel in exerciseImagesArray {
             guard let imageData = imageDataModel.image.pngData() else { continue }
             guard let image = UIImage(data: imageData) else { continue }
@@ -298,6 +300,7 @@ extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDeleg
             let imagesData = ExerciseImageDataModel(image: imageData)
             RealmDataBase.shared.set(imagesData)
             exerciseImagesDataList.append(imageData)
+            
         }
         pageSettings()
     }
