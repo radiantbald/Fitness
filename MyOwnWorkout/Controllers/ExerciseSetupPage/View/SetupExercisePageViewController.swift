@@ -27,18 +27,19 @@ class SetupExercisePageViewController: GeneralViewController {
     private let exerciseTitleLabel = UILabel("Название упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
     private let exerciseTitle = UITextView()
     
-    private lazy var imagePicker = UIImagePickerController()
-    private let addExerciseImageButton = UIButton()
+    private let galleryLabel = UILabel("Изображения упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 16.0)!, .black)
+    private let openGalleryButton = UIButton()
+    
+    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+    private let layout = UICollectionViewFlowLayout()
     
     private let exerciseAboutLabel = UILabel("Порядок выполнения упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
-    
     var exerciseImagesArray = [ExerciseImagesCollectionModel]()
     var exerciseImagesDataArray = [ExerciseImageDataModel]()
     var exerciseImagesDataList = ExerciseModel().exerciseImagesData // List<Data>
     var exerciseImageData = ExerciseImageDataModel().image //Data
     
-    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-    private let layout = UICollectionViewFlowLayout()
+    
     
     private let exerciseAbout = UITextView()
     private let saveExerciseButton = UIButton()
@@ -70,14 +71,14 @@ extension SetupExercisePageViewController {
     
     private func setupSubviews() {
         setupExerciseTitleTextView()
-//        setupAddExerciseImageButton()
+        setupOpenGalleryButton()
         setupCollectionView()
         setupExerciseAboutTextView()
         setupSaveExerciseButton()
         
         view.addSubviews(exerciseTitleLabel,
                          exerciseTitle,
-                         collectionView,
+                         galleryLabel,
                          exerciseAboutLabel,
                          exerciseAbout,
                          saveExerciseButton)
@@ -85,24 +86,20 @@ extension SetupExercisePageViewController {
     
     private func setupMargins() {
         let margins = view.safeAreaLayoutGuide
+        
         NSLayoutConstraint.activate([
             exerciseTitleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
             exerciseTitleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20),
-            exerciseTitleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            exerciseTitleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20),
             
             exerciseTitle.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
             exerciseTitle.topAnchor.constraint(equalTo: exerciseTitleLabel.bottomAnchor, constant: 5),
             exerciseTitle.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             exerciseTitle.heightAnchor.constraint(greaterThanOrEqualToConstant: 36),
             
-            collectionView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
-            collectionView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 60),
-            
-            exerciseAboutLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
-            exerciseAboutLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20),
-            exerciseAboutLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+            galleryLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
+            galleryLabel.topAnchor.constraint(equalTo: exerciseTitle.bottomAnchor, constant: 20),
+            galleryLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20),
             
             exerciseAbout.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
             exerciseAbout.topAnchor.constraint(equalTo: exerciseAboutLabel.bottomAnchor, constant: 5),
@@ -113,7 +110,35 @@ extension SetupExercisePageViewController {
             saveExerciseButton.topAnchor.constraint(equalTo: exerciseAbout.bottomAnchor, constant: 30),
             saveExerciseButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
-        ])
+            ])
+    
+        if exercise.imagesDataList.isEmpty {
+            view.addSubviews(openGalleryButton)
+            
+            NSLayoutConstraint.activate([
+                openGalleryButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                openGalleryButton.topAnchor.constraint(equalTo: galleryLabel.bottomAnchor, constant: 10),
+                openGalleryButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                openGalleryButton.heightAnchor.constraint(equalToConstant: 60),
+                
+                exerciseAboutLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
+                exerciseAboutLabel.topAnchor.constraint(equalTo: openGalleryButton.bottomAnchor, constant: 20),
+                exerciseAboutLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+                ])
+        } else {
+            view.addSubviews(collectionView)
+            
+            NSLayoutConstraint.activate([
+                collectionView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                collectionView.topAnchor.constraint(equalTo: galleryLabel.bottomAnchor, constant: 10),
+                collectionView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                collectionView.heightAnchor.constraint(equalToConstant: 60),
+                
+                exerciseAboutLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
+                exerciseAboutLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20),
+                exerciseAboutLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20),
+                ])
+        }
     }
     
     //MARK: - Поле ввода для названия упражнения
@@ -140,38 +165,22 @@ extension SetupExercisePageViewController {
         }
     }
     //MARK: - Кнопка добавления картинок упражнений
-    private func setupAddExerciseImageButton() {
-        addExerciseImageButton.setTitle("+", for: .normal)
-        addExerciseImageButton.backgroundColor = .systemRed
-        addExerciseImageButton.layer.cornerRadius = 12
-        
-        imagePicker.delegate = self
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(setupAddExerciseImageButtonAction))
-        tapGesture.delegate = self
-        addExerciseImageButton.isUserInteractionEnabled = true
-        addExerciseImageButton.addGestureRecognizer(tapGesture)
+    private func setupOpenGalleryButton() {
+        openGalleryButton.setTitle("Открыть галерею", for: .normal)
+        openGalleryButton.setTitleColor(.systemRed, for: .normal)
+        openExerciseImagesTile(openGalleryButton)
     }
     
-    @objc private func setupAddExerciseImageButtonAction() {
-        let actionImage = UIAlertController(title: "Добавить фото", message: nil, preferredStyle: .actionSheet)
-        
-        let photoLibrary = UIAlertAction(title: "Фотоальбом", style: .default) { _ in
-            self.imagePicker.sourceType = .savedPhotosAlbum
-            self.imagePicker.allowsEditing = true
-            self.navigationController?.present(self.imagePicker, animated:true)
-        }
-        
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
-        
-        actionImage.addAction(photoLibrary)
-        actionImage.addAction(cancel)
-        
-        if let popover = actionImage.popoverPresentationController {
-            popover.sourceView = self.view
-            let frame = view.frame
-            popover.sourceRect = CGRect(x: frame.midX, y: frame.maxY, width: 1.0, height: 1.0)
-        }
-        self.present(actionImage, animated: true)
+    private func setupAddExerciseImageButton() {
+//        addExerciseImageButton.setTitle("+", for: .normal)
+//        addExerciseImageButton.backgroundColor = .systemRed
+//        addExerciseImageButton.layer.cornerRadius = 12
+//        
+//        imagePicker.delegate = self
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(setupAddExerciseImageButtonAction))
+//        tapGesture.delegate = self
+//        addExerciseImageButton.isUserInteractionEnabled = true
+//        addExerciseImageButton.addGestureRecognizer(tapGesture)
     }
     
     //MARK: - Картинки упражнения
