@@ -17,6 +17,8 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     private var exerciseImagesDataArray: [ExerciseImageDataModel]
     private weak var delegate: ExerciseImagesTileVeiwControllerDelegate?
     
+    private lazy var imagePicker = UIImagePickerController()
+    
     init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exerciseImagesDataArray:  [ExerciseImageDataModel]) {
         self.delegate = parent
         self.exerciseImagesDataArray = exerciseImagesDataArray
@@ -55,18 +57,46 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     private func setupNavigationBar() {
         title = "Галерея"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupBackButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddButton))
     }
     
     @objc private func setupBackButton() {
         RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
-        
-//        for image in exerciseImagesArray {
-//            guard let imageData = image.image.pngData() else { return }
-//            let imagesData = ExerciseImageDataModel(image: imageData)
-//            RealmDataBase.shared.set(imagesData)
-//        }
         delegate?.updateExerciseImages(exerciseImagesArray)
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func setupAddButton() {
+        imagePicker.delegate = self
+        
+        let actionImage = UIAlertController(title: "Добавить фото", message: nil, preferredStyle: .actionSheet)
+        
+        let photoLibrary = UIAlertAction(title: "Фотоальбом", style: .default) { _ in
+            self.imagePicker.sourceType = .savedPhotosAlbum
+            self.imagePicker.allowsEditing = true
+            self.navigationController?.present(self.imagePicker, animated:true)
+        }
+        
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        
+        actionImage.addAction(photoLibrary)
+        actionImage.addAction(cancel)
+        
+        if let popover = actionImage.popoverPresentationController {
+            popover.sourceView = self.view
+            let frame = view.frame
+            popover.sourceRect = CGRect(x: frame.midX, y: frame.maxY, width: 1.0, height: 1.0)
+        }
+        self.present(actionImage, animated: true)
+        
+    }
+    
+    private func saveExerciseImage(_ image: UIImage) {
+        exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+        pageSettings()
+        let imageData = image.pngData()!
+        let imagesData = ExerciseImageDataModel(image: imageData)
+        RealmDataBase.shared.set(imagesData)
     }
     
     
@@ -145,6 +175,15 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
 //        return CGSize(width: (UIScreen.main.bounds.width - (Constants.minimumLineSpacing * 4)) / 2, height: (UIScreen.main.bounds.width - (Constants.minimumLineSpacing * 4)) / 2)
 //    }
 //}
+
+extension ExerciseImagesTileVeiwController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.saveExerciseImage(pickedImage)
+            dismiss(animated: true)
+        }
+    }
+}
 
 extension ExerciseImagesTileVeiwController: ExerciseImagesTilePresenterDelegate {
     
