@@ -138,8 +138,8 @@ class Controllers {
         return viewController
     }
     
-    class func exerciseImageViewerViewController(parent: ExerciseImageViewerViewControllerDelegate?) -> ExerciseImageViewerViewController {
-        let viewController = ExerciseImageViewerViewController(parent: parent)
+    class func exerciseImageViewerViewController(parent: ExerciseImageViewerViewControllerDelegate?, image: ExerciseImagesCollectionModel) -> ExerciseImageViewerViewController {
+        let viewController = ExerciseImageViewerViewController(parent: parent, image: image)
         let presenter = ExerciseImageViewerPresenter(delegate: viewController)
         viewController.presenter = presenter
         return viewController

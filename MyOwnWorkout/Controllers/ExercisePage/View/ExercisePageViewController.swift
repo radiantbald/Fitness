@@ -161,6 +161,14 @@ extension ExercisePageViewController: UICollectionViewDataSource {
     }
 }
 
+extension ExercisePageViewController: ExerciseImageViewerViewControllerDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = self.exerciseImagesArray[indexPath.row]
+        let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: item)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
 extension ExercisePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constants.itemWidth, height: collectionView.frame.height * 0.8)

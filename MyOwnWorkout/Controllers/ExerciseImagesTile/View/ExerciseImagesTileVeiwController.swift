@@ -13,24 +13,6 @@ protocol ExerciseImagesTileVeiwControllerDelegate: AnyObject {
 
 class ExerciseImagesTileVeiwController: GeneralViewController {
     
-    enum Mode {
-        case view
-        case multiselect
-    }
-    
-    var mMode: Mode = .view {
-        didSet {
-            switch mMode {
-            case .view:
-                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddButton))
-                collectionView?.allowsMultipleSelection = false
-            case .multiselect:
-                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
-                collectionView?.allowsMultipleSelection = true
-            }
-        }
-    }
-    
     var presenter: ExerciseImagesTilePresenter!
     private var exerciseImagesDataArray: [ExerciseImageDataModel]
     private weak var delegate: ExerciseImagesTileVeiwControllerDelegate?
@@ -57,6 +39,24 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     
     var exerciseImagesArray: [ExerciseImagesCollectionModel] = []
     var exerciseImageData = ExerciseImageDataModel().image
+    
+    enum Mode {
+        case view
+        case multiselect
+    }
+    
+    var mMode: Mode = .view {
+        didSet {
+            switch mMode {
+            case .view:
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddButton))
+                collectionView?.allowsMultipleSelection = false
+            case .multiselect:
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
+                collectionView?.allowsMultipleSelection = true
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,15 +160,12 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     
     @objc private func longPressGestureAction(_ gesture: UILongPressGestureRecognizer) {
         
-
         mMode = .multiselect
-        
         
         let gestureLocation = gesture.location(in: collectionView)
         switch gesture.state {
         case .began:
             guard let targetIndexPath = collectionView?.indexPathForItem(at: gestureLocation) else { return }
-            
             collectionView?.beginInteractiveMovementForItem(at: targetIndexPath)
         case .changed:
             collectionView?.updateInteractiveMovementTargetPosition(gestureLocation)
@@ -187,6 +184,7 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     @objc private func deleteImages() {
         mMode = .view
     }
+    
 }
 
 extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
@@ -205,14 +203,20 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch mMode {
         case .view:
-            break
+            let item = self.exerciseImagesArray[indexPath.row]
+            let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: item)
+            navigationController?.pushViewController(viewController, animated: true)
         case .multiselect:
-            break
+            let item = collectionView.cellForItem(at: indexPath)
+            
+            item?.layer.opacity = 0.4
+            
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        return
+        let item = collectionView.cellForItem(at: indexPath)
+        item?.layer.opacity = 1
     }
 }
 extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
