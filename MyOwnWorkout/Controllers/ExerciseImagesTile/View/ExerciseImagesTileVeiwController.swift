@@ -13,11 +13,34 @@ protocol ExerciseImagesTileVeiwControllerDelegate: AnyObject {
 
 class ExerciseImagesTileVeiwController: GeneralViewController {
     
+    enum Mode {
+        case view
+        case multiselect
+    }
+    
+    var mMode: Mode = .view {
+        didSet {
+            switch mMode {
+            case .view:
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddButton))
+                collectionView?.allowsMultipleSelection = false
+            case .multiselect:
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
+                collectionView?.allowsMultipleSelection = true
+            }
+        }
+    }
+    
     var presenter: ExerciseImagesTilePresenter!
     private var exerciseImagesDataArray: [ExerciseImageDataModel]
     private weak var delegate: ExerciseImagesTileVeiwControllerDelegate?
     
     private lazy var imagePicker = UIImagePickerController()
+    
+    lazy var deleteBarButton: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(cancelMultiselect))
+        return barButtonItem
+    }()
     
     init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exerciseImagesDataArray:  [ExerciseImageDataModel]) {
         self.delegate = parent
@@ -136,18 +159,33 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     }
     
     @objc private func longPressGestureAction(_ gesture: UILongPressGestureRecognizer) {
+        
+
+        mMode = .multiselect
+        
+        
         let gestureLocation = gesture.location(in: collectionView)
         switch gesture.state {
         case .began:
             guard let targetIndexPath = collectionView?.indexPathForItem(at: gestureLocation) else { return }
+            
             collectionView?.beginInteractiveMovementForItem(at: targetIndexPath)
         case .changed:
             collectionView?.updateInteractiveMovementTargetPosition(gestureLocation)
         case .ended:
+            
             collectionView?.endInteractiveMovement()
         default:
             collectionView?.cancelInteractiveMovement()
         }
+    }
+    
+    @objc private func cancelMultiselect() {
+        mMode = .view
+    }
+    
+    @objc private func deleteImages() {
+        mMode = .view
     }
 }
 
@@ -162,6 +200,19 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
         cell.layer.shadowRadius = 3
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch mMode {
+        case .view:
+            break
+        case .multiselect:
+            break
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        return
     }
 }
 extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
@@ -183,6 +234,10 @@ extension ExerciseImagesTileVeiwController: UIImagePickerControllerDelegate, UIN
             dismiss(animated: true)
         }
     }
+}
+
+extension ExerciseImagesTileVeiwController: ExerciseImageViewerViewControllerDelegate {
+    
 }
 
 extension ExerciseImagesTileVeiwController: ExerciseImagesTilePresenterDelegate {

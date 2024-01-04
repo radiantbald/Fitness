@@ -32,6 +32,8 @@
 		A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */; };
 		A28614E02B40957B0099A88F /* ExerciseImagesTileVeiwController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28614DF2B40957B0099A88F /* ExerciseImagesTileVeiwController.swift */; };
 		A28614E22B40959D0099A88F /* ExerciseImagesTilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28614E12B40959D0099A88F /* ExerciseImagesTilePresenter.swift */; };
+		A28B40B62B46E1550071FBF0 /* ExerciseImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B40B52B46E1550071FBF0 /* ExerciseImageViewerViewController.swift */; };
+		A28B40B92B46E16B0071FBF0 /* ExerciseImageViewerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B40B82B46E16B0071FBF0 /* ExerciseImageViewerPresenter.swift */; };
 		A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */; };
 		A28B7FBC2A84F85300B20B5F /* SettingsPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */; };
 		A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */; };
@@ -104,6 +106,8 @@
 		A275C9B12A2B70EB00B18420 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
 		A28614DF2B40957B0099A88F /* ExerciseImagesTileVeiwController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImagesTileVeiwController.swift; sourceTree = "<group>"; };
 		A28614E12B40959D0099A88F /* ExerciseImagesTilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImagesTilePresenter.swift; sourceTree = "<group>"; };
+		A28B40B52B46E1550071FBF0 /* ExerciseImageViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImageViewerViewController.swift; sourceTree = "<group>"; };
+		A28B40B82B46E16B0071FBF0 /* ExerciseImageViewerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImageViewerPresenter.swift; sourceTree = "<group>"; };
 		A28B7FB92A84F78600B20B5F /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
 		A28B7FBB2A84F85300B20B5F /* SettingsPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPagePresenter.swift; sourceTree = "<group>"; };
 		A28B7FC12A87DC3400B20B5F /* AboutAppPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppPageViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +451,39 @@
 			sourceTree = "<group>";
 		};
 		A28614DE2B4095680099A88F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A28B40B12B46E1050071FBF0 /* ExerciseImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				A28B40B42B46E13F0071FBF0 /* Model */,
+				A28B40B32B46E1320071FBF0 /* View */,
+				A28B40B22B46E12B0071FBF0 /* Presenter */,
+			);
+			path = ExerciseImageViewer;
+			sourceTree = "<group>";
+		};
+		A28B40B22B46E12B0071FBF0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A28B40B82B46E16B0071FBF0 /* ExerciseImageViewerPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A28B40B32B46E1320071FBF0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A28B40B52B46E1550071FBF0 /* ExerciseImageViewerViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A28B40B42B46E13F0071FBF0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -870,6 +907,7 @@
 				A29B4BD02AE5501400C5D886 /* ExercisePage */,
 				A23A750C2AF804A200C4B178 /* ExerciseSetupPage */,
 				A28614DB2B4095340099A88F /* ExerciseImagesTile */,
+				A28B40B12B46E1050071FBF0 /* ExerciseImageViewer */,
 				A28B7FCD2A87E3AE00B20B5F /* MyAchievmentsPage */,
 				A28B7FC52A87DF5E00B20B5F /* PersonalAccountPage */,
 				A28B7FBD2A87DBE700B20B5F /* AboutAppPage */,
@@ -993,12 +1031,14 @@
 				A29B4BCD2AE3F2B700C5D886 /* AddExercisePageViewController.swift in Sources */,
 				A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
+				A28B40B92B46E16B0071FBF0 /* ExerciseImageViewerPresenter.swift in Sources */,
 				A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */,
 				A28B7FED2A88B7BE00B20B5F /* TrainingProgramsPagePresenter.swift in Sources */,
 				A22101DB2B3E11C0001563EA /* UIImageExtensions.swift in Sources */,
 				A29C7D8F2A6548C20065B255 /* UserDefaultsDataBase.swift in Sources */,
 				A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */,
 				A2954F942A7E9A36003947CF /* PersonPagePresenter.swift in Sources */,
+				A28B40B62B46E1550071FBF0 /* ExerciseImageViewerViewController.swift in Sources */,
 				A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */,
 				A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */,
 				A29B4BC62AE2DD8500C5D886 /* ExerciseModel.swift in Sources */,
