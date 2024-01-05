@@ -60,3 +60,13 @@ class ExerciseImageDataModel: Object {
     }
 }
 
+//class SelectedCell: Object {
+//    @Persisted(primaryKey: true) var id: String = UUID().uuidString
+//    @Persisted var cell: Data
+//    
+//    convenience init(image: Data) {
+//        self.init()
+//        self.cell = cell
+//    }
+//}
+

@@ -40,6 +40,8 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     var exerciseImagesArray: [ExerciseImagesCollectionModel] = []
     var exerciseImageData = ExerciseImageDataModel().image
     
+    
+    
     enum Mode {
         case view
         case multiselect
@@ -49,6 +51,7 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         didSet {
             switch mMode {
             case .view:
+                title = "Галерея"
                 navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddButton))
                 collectionView?.allowsMultipleSelection = false
             case .multiselect:
@@ -160,28 +163,58 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     
     @objc private func longPressGestureAction(_ gesture: UILongPressGestureRecognizer) {
         
-        mMode = .multiselect
-        
+        guard let collectionView = collectionView else { return }
         let gestureLocation = gesture.location(in: collectionView)
+        guard let targetIndexPath = collectionView.indexPathForItem(at: gestureLocation) else { return }
+        
+        
+        switch mMode {
+        case .view:
+            mMode = .multiselect
+            collectionView.selectItem(at: targetIndexPath, animated: false, scrollPosition: [])
+            collectionView.delegate?.collectionView?(collectionView, didSelectItemAt: targetIndexPath)
+
+//            if let selectedItem = collectionView.cellForItem(at: targetIndexPath) {
+//                selectedItems.append(selectedItem)
+//                selectedItem.layer.opacity = 1
+//                collectionView.selectItem(at: targetIndexPath, animated: false, scrollPosition: [])
+//                print("selected")
+//                for item in collectionView.visibleCells {
+//                    if item == collectionView.cellForItem(at: targetIndexPath) {
+//                        item.layer.opacity = 0.4
+//                    }
+//                }
+//            }
+        case .multiselect:
+            break
+        }
+        
         switch gesture.state {
         case .began:
-            guard let targetIndexPath = collectionView?.indexPathForItem(at: gestureLocation) else { return }
-            collectionView?.beginInteractiveMovementForItem(at: targetIndexPath)
-        case .changed:
-            collectionView?.updateInteractiveMovementTargetPosition(gestureLocation)
-        case .ended:
+            title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems!.count)"
             
-            collectionView?.endInteractiveMovement()
+            collectionView.beginInteractiveMovementForItem(at: targetIndexPath)
+        case .changed:
+            collectionView.updateInteractiveMovementTargetPosition(gestureLocation)
+        case .ended:
+            collectionView.endInteractiveMovement()
         default:
-            collectionView?.cancelInteractiveMovement()
+            collectionView.cancelInteractiveMovement()
         }
     }
+
     
     @objc private func cancelMultiselect() {
         mMode = .view
     }
     
     @objc private func deleteImages() {
+        guard let selectedItems = collectionView?.indexPathsForSelectedItems else { return }
+        let items = selectedItems.map { $0.item }.sorted().reversed()
+        for item in items {
+            exerciseImagesArray.remove(at: item)
+        }
+        pageSettings()
         mMode = .view
     }
     
@@ -197,6 +230,7 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
         cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
         cell.layer.shadowRadius = 3
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+        
         return cell
     }
     
@@ -207,16 +241,32 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
             let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: item)
             navigationController?.pushViewController(viewController, animated: true)
         case .multiselect:
-            let item = collectionView.cellForItem(at: indexPath)
-            
-            item?.layer.opacity = 0.4
-            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
+            if let selectedItem = collectionView.cellForItem(at: indexPath) {
+                selectedItem.layer.opacity = 1
+                print("selected")
+                print(collectionView.indexPathsForSelectedItems?.count as Any)
+            }
+            title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems?.count as Any)"
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let item = collectionView.cellForItem(at: indexPath)
-        item?.layer.opacity = 1
+        switch mMode {
+        case .view:
+            break
+        case .multiselect:
+            if let deselectedItem = collectionView.cellForItem(at: indexPath) {
+                deselectedItem.layer.opacity = 0.4
+                print("deselected")
+                print(collectionView.indexPathsForSelectedItems?.count as Any)
+                title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems?.count as Any)"
+            }
+            if collectionView.indexPathsForSelectedItems?.count == 0 {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(deleteImages))
+            }
+        }
+        
     }
 }
 extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
@@ -224,6 +274,7 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
         let target = exerciseImagesArray.remove(at: sourceIndexPath.row)
         exerciseImagesArray.insert(target, at: destinationIndexPath.row)
     }
+
 }
 //extension ExerciseImagesTileVeiwController: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
