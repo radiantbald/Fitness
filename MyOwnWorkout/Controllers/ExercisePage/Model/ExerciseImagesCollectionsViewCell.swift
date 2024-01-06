@@ -41,6 +41,10 @@ class ExerciseImagesCollectionsViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.3
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
