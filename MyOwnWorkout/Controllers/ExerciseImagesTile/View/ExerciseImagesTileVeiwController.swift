@@ -174,17 +174,6 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
             collectionView.selectItem(at: targetIndexPath, animated: false, scrollPosition: [])
             collectionView.delegate?.collectionView?(collectionView, didSelectItemAt: targetIndexPath)
 
-//            if let selectedItem = collectionView.cellForItem(at: targetIndexPath) {
-//                selectedItems.append(selectedItem)
-//                selectedItem.layer.opacity = 1
-//                collectionView.selectItem(at: targetIndexPath, animated: false, scrollPosition: [])
-//                print("selected")
-//                for item in collectionView.visibleCells {
-//                    if item == collectionView.cellForItem(at: targetIndexPath) {
-//                        item.layer.opacity = 0.4
-//                    }
-//                }
-//            }
         case .multiselect:
             break
         }
@@ -242,12 +231,14 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
             navigationController?.pushViewController(viewController, animated: true)
         case .multiselect:
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
+            
             if let selectedItem = collectionView.cellForItem(at: indexPath) {
-                selectedItem.layer.opacity = 1
+                selectedItem.layer.cornerRadius = 12
+                selectedItem.layer.borderWidth = 2
+                selectedItem.layer.borderColor = UIColor.systemRed.cgColor
                 print("selected")
-                print(collectionView.indexPathsForSelectedItems?.count as Any)
+                title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems!.count)"
             }
-            title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems?.count as Any)"
         }
     }
     
@@ -257,10 +248,11 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
             break
         case .multiselect:
             if let deselectedItem = collectionView.cellForItem(at: indexPath) {
-                deselectedItem.layer.opacity = 0.4
+                deselectedItem.layer.cornerRadius = 12
+                deselectedItem.layer.borderWidth = 0
+                deselectedItem.layer.borderColor = UIColor.systemRed.cgColor
                 print("deselected")
-                print(collectionView.indexPathsForSelectedItems?.count as Any)
-                title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems?.count as Any)"
+                title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems!.count)"
             }
             if collectionView.indexPathsForSelectedItems?.count == 0 {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(deleteImages))

@@ -11,7 +11,6 @@ class ExerciseImagesCollectionsViewCell: UICollectionViewCell {
     
     static let cellID = "cellID"
     
-    let highlightIndicator = UIView()
     let exerciseImageView = UIImageView()
     let liningImageView = UIImageView()
     
@@ -20,11 +19,6 @@ class ExerciseImagesCollectionsViewCell: UICollectionViewCell {
         
         addSubviews(exerciseImageView, liningImageView)
         NSLayoutConstraint.activate([
-//            highlightIndicator.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            highlightIndicator.topAnchor.constraint(equalTo: topAnchor),
-//            highlightIndicator.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            highlightIndicator.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
             exerciseImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             exerciseImageView.topAnchor.constraint(equalTo: topAnchor),
             exerciseImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -43,27 +37,9 @@ class ExerciseImagesCollectionsViewCell: UICollectionViewCell {
         exerciseImageView.layer.cornerRadius = 12
         exerciseImageView.contentMode = .scaleAspectFill
         
-//        highlightIndicator.clipsToBounds = true
-//        highlightIndicator.isHidden = true
-//        highlightIndicator.layer.cornerRadius = 12
-//        highlightIndicator.backgroundColor = .white
-//        highlightIndicator.layer.opacity = 0.4
-        
         liningImageView.clipsToBounds = false        
         layer.shadowOpacity = 0.3
     }
-    
-//    override var isHighlighted: Bool {
-//        didSet {
-//            highlightIndicator.isHidden = !isHighlighted
-//        }
-//    }
-//    
-//    override var isSelected: Bool {
-//        didSet {
-//            highlightIndicator.isHidden = !isSelected
-//        }
-//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
