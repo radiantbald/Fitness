@@ -167,13 +167,9 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         let gestureLocation = gesture.location(in: collectionView)
         guard let targetIndexPath = collectionView.indexPathForItem(at: gestureLocation) else { return }
         
-        
         switch mMode {
         case .view:
             mMode = .multiselect
-            collectionView.selectItem(at: targetIndexPath, animated: false, scrollPosition: [])
-            collectionView.delegate?.collectionView?(collectionView, didSelectItemAt: targetIndexPath)
-
         case .multiselect:
             break
         }
@@ -181,6 +177,8 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         switch gesture.state {
         case .began:
             title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems!.count)"
+            collectionView.selectItem(at: targetIndexPath, animated: false, scrollPosition: [])
+            collectionView.delegate?.collectionView?(collectionView, didSelectItemAt: targetIndexPath)
             
             collectionView.beginInteractiveMovementForItem(at: targetIndexPath)
         case .changed:

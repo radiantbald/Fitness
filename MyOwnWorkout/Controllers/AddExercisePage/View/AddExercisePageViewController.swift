@@ -18,10 +18,10 @@ class AddExercisePageViewController: GeneralViewController {
     weak var delegate: AddExercisePageViewControllerDelegate?
     
     //Название упражнения
-    private let exerciseTitleLabel = UILabel("Название упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 16.0)!, .black)
+    private let exerciseTitleLabel = UILabel("Название", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
     private let exerciseTitle = UITextView()
     
-    private let galleryLabel = UILabel("Изображения упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 16.0)!, .black)
+    private let galleryLabel = UILabel("Галерея", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
     private let openGalleryButton = UIButton()
     //Фотографии упражнения
     var exerciseImagesArray = [ExerciseImagesCollectionModel]()
@@ -31,7 +31,7 @@ class AddExercisePageViewController: GeneralViewController {
     private let layout = UICollectionViewFlowLayout()
     
     //Об упражнении
-    private let exerciseAboutLabel = UILabel("Порядок выполнения упражнения", UIFont(name: Fonts.mainBold.rawValue, size: 16.0)!, .black)
+    private let exerciseAboutLabel = UILabel("Порядок выполнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
     private let exerciseAbout = UITextView()
     
     //Кнопка "Сохранить упражнение"
@@ -240,7 +240,7 @@ extension AddExercisePageViewController: UICollectionViewDataSource {
 
 extension AddExercisePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Constants.itemWidth / 4, height: collectionView.frame.height * 0.8)
+        return CGSize(width: Constants.itemWidth / 5, height: collectionView.frame.height * 0.8)
     }
 }
 
