@@ -117,7 +117,8 @@ extension SetupExercisePageViewController {
         print(exercise.imagesDataList.count)
         print(exerciseImagesArray.count)
     
-        if exercise.imagesDataList.isEmpty || exerciseImagesArray.isEmpty {
+        if exerciseImagesDataList.isEmpty {
+            print(exerciseImagesDataList.count)
             view.addSubviews(openGalleryButton)
             
             NSLayoutConstraint.activate([
@@ -286,8 +287,11 @@ extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDeleg
         }
         if exerciseImagesArray.isEmpty {
             collectionView.removeFromSuperview()
+        } else {
+            openGalleryButton.removeFromSuperview()
         }
         pageSettings()
+        
     }
 }
 
