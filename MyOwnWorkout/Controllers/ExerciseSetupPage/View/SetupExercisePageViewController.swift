@@ -285,7 +285,7 @@ extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDeleg
             let imagesData = ExerciseImageDataModel(image: imageData)
             RealmDataBase.shared.set(imagesData)
         }
-        if exerciseImagesArray.isEmpty {
+        if exerciseImagesDataList.isEmpty {
             collectionView.removeFromSuperview()
         } else {
             openGalleryButton.removeFromSuperview()
