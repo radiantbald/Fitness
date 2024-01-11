@@ -7,22 +7,17 @@
 
 import UIKit
 
+//MARK: - Протоколы класса
 protocol ExerciseImagesTileVeiwControllerDelegate: AnyObject {
     func updateExerciseImages(_ exerciseImagesArray: [ExerciseImagesCollectionModel])
 }
 
-class ExerciseImagesTileVeiwController: GeneralViewController {
+//MARK: -
+final class ExerciseImagesTileVeiwController: GeneralViewController {
     
-    var presenter: ExerciseImagesTilePresenter!
+    //MARK: - Инициализация класса
     private var exerciseImagesDataArray: [ExerciseImageDataModel]
     private weak var delegate: ExerciseImagesTileVeiwControllerDelegate?
-    
-    private lazy var imagePicker = UIImagePickerController()
-    
-    lazy var deleteBarButton: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(cancelMultiselect))
-        return barButtonItem
-    }()
     
     init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exerciseImagesDataArray:  [ExerciseImageDataModel]) {
         self.delegate = parent
@@ -33,34 +28,36 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    //MARK: - Переменные и константы класса
+    var presenter: ExerciseImagesTilePresenter!
     
     private var collectionView: UICollectionView?
     private let layout = UICollectionViewFlowLayout()
     
-    var exerciseImagesArray: [ExerciseImagesCollectionModel] = []
-    var exerciseImageData = ExerciseImageDataModel().image
+    private lazy var imagePicker = UIImagePickerController()
     
+    private var exerciseImagesArray = [ExerciseImagesCollectionModel]()
+    private var exerciseImageData = ExerciseImageDataModel().image
     
-    
-    enum Mode {
-        case view
+    private enum Mode {
+        case initial
         case multiselect
     }
     
-    var mMode: Mode = .view {
+    private var mode: Mode = .initial {
         didSet {
-            switch mMode {
-            case .view:
-                title = "Галерея"
-                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddButton))
+            switch mode {
+            case .initial:
+                setupInitialNavigationBar()
                 collectionView?.allowsMultipleSelection = false
             case .multiselect:
-                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
+                setupMultiselectNavigationBar()
                 collectionView?.allowsMultipleSelection = true
             }
         }
     }
     
+    //MARK: - Жизненный цикл класса
     override func viewDidLoad() {
         super.viewDidLoad()
         pageSettings()
@@ -70,29 +67,77 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
     override func viewDidLayoutSubviews() {
         collectionView?.frame = view.bounds
     }
+}
+//MARK: - Настройки экрана
+private extension ExerciseImagesTileVeiwController {
     
-    private func pageSettings() {
-        setupNavigationBar()
+    func pageSettings() {
+        setupInitialNavigationBar()
         setupSubviews()
     }
     
-    private func setupSubviews() {
+    func setupSubviews() {
         setupCollectionView()
     }
     
-    private func setupNavigationBar() {
+    func setupInitialNavigationBar() {
         title = "Галерея"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupBackButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddButton))
     }
     
-    @objc private func setupBackButton() {
+    func setupMultiselectNavigationBar() {
+        var selectedItemsCount = collectionView?.indexPathsForSelectedItems?.count ?? 0
+        title = "Выбрано элементов: \(selectedItemsCount)"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupBackButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
+    }
+    
+    func getExercisePhotosFromData() {
+        exerciseImagesDataArray = RealmDataBase.shared.get()
+        for exerciseImageData in exerciseImagesDataArray {
+            let imageData = exerciseImageData.image
+            guard let image = UIImage(data:imageData) else { continue }
+            exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+        }
+    }
+    
+    func setupCollectionView() {
+        
+        let imageSize = (UIScreen.main.bounds.width - 40) / 3
+        collectionView = .init(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionView?.showsHorizontalScrollIndicator = false
+        collectionView?.showsVerticalScrollIndicator = false
+        collectionView?.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        layout.itemSize = CGSize(width: imageSize, height: imageSize)
+        
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        
+        guard let collectionView = collectionView else { return }
+        view.addSubviews(collectionView)
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction))
+        collectionView.addGestureRecognizer(longPressGesture)
+    }
+}
+
+//MARK: - Селекторы
+private extension ExerciseImagesTileVeiwController {
+    
+    @objc func setupBackButton() {
         RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
         delegate?.updateExerciseImages(exerciseImagesArray)
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func setupAddButton() {
+    @objc func setupAddButton() {
         imagePicker.delegate = self
         
         let actionImage = UIAlertController(title: "Добавить фото", message: nil, preferredStyle: .actionSheet)
@@ -117,66 +162,35 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
         
     }
     
-    private func saveExerciseImage(_ image: UIImage) {
-        exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
-        pageSettings()
-        let imageData = image.pngData()!
-        let imagesData = ExerciseImageDataModel(image: imageData)
-        RealmDataBase.shared.set(imagesData)
-    }
-    
-    
-    private func getExercisePhotosFromData() {
-        exerciseImagesDataArray = RealmDataBase.shared.get()
-        for exerciseImageData in exerciseImagesDataArray {
-            let imageData = exerciseImageData.image
-            guard let image = UIImage(data:imageData) else { continue }
-            exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+    @objc func deleteImages() {
+        guard let selectedItems = collectionView?.indexPathsForSelectedItems else { return }
+        let items = selectedItems.map { $0.item }.sorted().reversed()
+        for item in items {
+            exerciseImagesArray.remove(at: item)
         }
-        
+        pageSettings()
+        mode = .initial
     }
     
-    private func setupCollectionView() {
-        
-        let imageSize = (UIScreen.main.bounds.width - 40) / 3
-        collectionView = .init(frame: .zero, collectionViewLayout: layout)
-        
-        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        collectionView?.showsHorizontalScrollIndicator = false
-        collectionView?.showsVerticalScrollIndicator = false
-        collectionView?.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        layout.itemSize = CGSize(width: imageSize, height: imageSize)
-        
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        
-        guard let collectionView = collectionView else { return }
-        view.addSubviews(collectionView)
-        
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction))
-        collectionView.addGestureRecognizer(longPressGesture)
+    @objc func cancelMultiselect() {
+        mode = .initial
     }
     
-    @objc private func longPressGestureAction(_ gesture: UILongPressGestureRecognizer) {
+    @objc func longPressGestureAction(_ gesture: UILongPressGestureRecognizer) {
         
         guard let collectionView = collectionView else { return }
         let gestureLocation = gesture.location(in: collectionView)
         guard let targetIndexPath = collectionView.indexPathForItem(at: gestureLocation) else { return }
         
-        switch mMode {
-        case .view:
-            mMode = .multiselect
+        switch mode {
+        case .initial:
+            mode = .multiselect
         case .multiselect:
             break
         }
         
         switch gesture.state {
         case .began:
-            title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems!.count)"
             collectionView.selectItem(at: targetIndexPath, animated: false, scrollPosition: [])
             collectionView.delegate?.collectionView?(collectionView, didSelectItemAt: targetIndexPath)
             
@@ -189,24 +203,9 @@ class ExerciseImagesTileVeiwController: GeneralViewController {
             collectionView.cancelInteractiveMovement()
         }
     }
-
-    
-    @objc private func cancelMultiselect() {
-        mMode = .view
-    }
-    
-    @objc private func deleteImages() {
-        guard let selectedItems = collectionView?.indexPathsForSelectedItems else { return }
-        let items = selectedItems.map { $0.item }.sorted().reversed()
-        for item in items {
-            exerciseImagesArray.remove(at: item)
-        }
-        pageSettings()
-        mMode = .view
-    }
-    
 }
 
+//MARK: - UICollectionViewDataSource
 extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return exerciseImagesArray.count
@@ -222,56 +221,52 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch mMode {
-        case .view:
+        switch mode {
+        case .initial:
             let item = self.exerciseImagesArray[indexPath.row]
             let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: item)
             navigationController?.pushViewController(viewController, animated: true)
         case .multiselect:
+            var selectedItemsCount = collectionView.indexPathsForSelectedItems?.count ?? 0
+            
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
             
             if let selectedItem = collectionView.cellForItem(at: indexPath) {
                 selectedItem.layer.cornerRadius = 12
                 selectedItem.layer.borderWidth = 2
                 selectedItem.layer.borderColor = UIColor.systemRed.cgColor
-                print("selected")
-                title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems!.count)"
+                title = "Выбрано элементов: \(selectedItemsCount)"
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        switch mMode {
-        case .view:
+        switch mode {
+        case .initial:
             break
         case .multiselect:
+            var selectedItemsCount = collectionView.indexPathsForSelectedItems?.count ?? 0
+            
             if let deselectedItem = collectionView.cellForItem(at: indexPath) {
-                deselectedItem.layer.cornerRadius = 12
                 deselectedItem.layer.borderWidth = 0
-                deselectedItem.layer.borderColor = UIColor.systemRed.cgColor
-                print("deselected")
-                title = "Выбрано элементов: \(collectionView.indexPathsForSelectedItems!.count)"
+                title = "Выбрано элементов: \(selectedItemsCount)"
             }
             if collectionView.indexPathsForSelectedItems?.count == 0 {
-                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(deleteImages))
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelMultiselect))
             }
         }
-        
     }
 }
+
+//MARK: - UICollectionViewDelegate
 extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let target = exerciseImagesArray.remove(at: sourceIndexPath.row)
         exerciseImagesArray.insert(target, at: destinationIndexPath.row)
     }
-
 }
-//extension ExerciseImagesTileVeiwController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: (UIScreen.main.bounds.width - (Constants.minimumLineSpacing * 4)) / 2, height: (UIScreen.main.bounds.width - (Constants.minimumLineSpacing * 4)) / 2)
-//    }
-//}
 
+//MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension ExerciseImagesTileVeiwController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
@@ -279,12 +274,21 @@ extension ExerciseImagesTileVeiwController: UIImagePickerControllerDelegate, UIN
             dismiss(animated: true)
         }
     }
+    func saveExerciseImage(_ image: UIImage) {
+        exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+        pageSettings()
+        let imageData = image.pngData()!
+        let imagesData = ExerciseImageDataModel(image: imageData)
+        RealmDataBase.shared.set(imagesData)
+    }
 }
 
+//MARK: - ExerciseImageViewerViewControllerDelegate
 extension ExerciseImagesTileVeiwController: ExerciseImageViewerViewControllerDelegate {
     
 }
 
+//MARK: - ExerciseImagesTilePresenterDelegate
 extension ExerciseImagesTileVeiwController: ExerciseImagesTilePresenterDelegate {
     
 }
