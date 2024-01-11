@@ -7,15 +7,18 @@
 
 import UIKit
 
+//MARK: - Протоколы класса
 protocol SetupExercisePageViewControllerDelegate: AnyObject {
     func changeExerciseOnExercisePage(_ exercise: ExerciseModel)
 }
 
+//MARK: -
 class SetupExercisePageViewController: GeneralViewController {
     
-    var presenter: SetupExercisePagePresenter!
+    //MARK: - Инициализация класса
     private let exercise: ExerciseModel
     private weak var delegate: SetupExercisePageViewControllerDelegate?
+    var presenter: SetupExercisePagePresenter!
     
     init(parent: SetupExercisePageViewControllerDelegate? = nil, exercise: ExerciseModel) {
         self.exercise = exercise
@@ -24,6 +27,7 @@ class SetupExercisePageViewController: GeneralViewController {
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+    //MARK: - Переменные и константы класса
     private let exerciseTitleLabel = UILabel("Название", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
     private let exerciseTitle = UITextView()
     
@@ -32,18 +36,17 @@ class SetupExercisePageViewController: GeneralViewController {
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
-    
+    private var exerciseImagesArray = [ExerciseImagesCollectionModel]()
+    private var exerciseImagesDataArray = [ExerciseImageDataModel]()
+    private var exerciseImagesDataList = ExerciseModel().exerciseImagesData
+    private var exerciseImageData = ExerciseImageDataModel().image
+
     private let exerciseAboutLabel = UILabel("Порядок выполнения", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
-    var exerciseImagesArray = [ExerciseImagesCollectionModel]()
-    var exerciseImagesDataArray = [ExerciseImageDataModel]()
-    var exerciseImagesDataList = ExerciseModel().exerciseImagesData // List<Data>
-    var exerciseImageData = ExerciseImageDataModel().image //Data
-    
-    
-    
     private let exerciseAbout = UITextView()
+    
     private let saveExerciseButton = UIButton()
     
+    //MARK: - Жизненный цикл класса
     override func viewDidLoad() {
         super.viewDidLoad()
         getExerciseImagesFromData()
@@ -51,25 +54,21 @@ class SetupExercisePageViewController: GeneralViewController {
     }
 }
 
-extension SetupExercisePageViewController {
+//MARK: - Настройки экрана
+private extension SetupExercisePageViewController {
     
-    private func pageSettings() {
+    func pageSettings() {
         setupNavigationBar()
         setupSubviews()
         setupMargins()
     }
     
-    private func setupNavigationBar() {
+    func setupNavigationBar() {
         title = "Редактировать"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(setupBackButton))
     }
     
-    @objc private func setupBackButton() {
-        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
-        navigationController?.popViewController(animated: true)
-    }
-    
-    private func setupSubviews() {
+    func setupSubviews() {
         setupExerciseTitleTextView()
         setupOpenGalleryButton()
         setupCollectionView()
@@ -84,9 +83,7 @@ extension SetupExercisePageViewController {
                          saveExerciseButton)
     }
     
-    
-    
-    private func setupMargins() {
+    func setupMargins() {
         let margins = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
@@ -114,10 +111,8 @@ extension SetupExercisePageViewController {
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
             ])
         
-        print(exercise.imagesDataList.count)
-        print(exerciseImagesArray.count)
-    
-        if exercise.imagesDataList.isEmpty || exerciseImagesArray.isEmpty {
+        if exerciseImagesDataList.isEmpty {
+            print(exerciseImagesDataList.count)
             view.addSubviews(openGalleryButton)
             
             NSLayoutConstraint.activate([
@@ -146,8 +141,7 @@ extension SetupExercisePageViewController {
         }
     }
     
-    //MARK: - Поле ввода для названия упражнения
-    private func setupExerciseTitleTextView() {
+    func setupExerciseTitleTextView() {
         exerciseTitle.text = exercise.title
         exerciseTitle.isSelectable = true
         exerciseTitle.isEditable = true
@@ -157,7 +151,7 @@ extension SetupExercisePageViewController {
         exerciseTitle.layer.cornerRadius = 12
     }
     
-    private func getExerciseImagesFromData() {
+    func getExerciseImagesFromData() {
         let imagesList = exercise.imagesDataList.compactMap{Data($0)}
         print(imagesList)
         for imageData in imagesList {
@@ -169,15 +163,14 @@ extension SetupExercisePageViewController {
             exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         }
     }
-    //MARK: - Кнопка добавления картинок упражнений
-    private func setupOpenGalleryButton() {
+    
+    func setupOpenGalleryButton() {
         openGalleryButton.setTitle("Открыть галерею", for: .normal)
         openGalleryButton.setTitleColor(.systemRed, for: .normal)
         openExerciseImagesTile(openGalleryButton)
     }
     
-    //MARK: - Картинки упражнения
-    private func setupCollectionView() {
+    func setupCollectionView() {
         collectionView = .init(frame: .zero, collectionViewLayout: layout)
         
         collectionView.delegate = self
@@ -203,14 +196,7 @@ extension SetupExercisePageViewController {
         })
     }
     
-    @objc func openExerciseImagesTileAction() {
-        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exerciseImagesDataArray: exerciseImagesDataArray)
-        viewController.modalPresentationStyle = .overFullScreen
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    //MARK: - Поле ввода порядка выполнения упражнения
-    private func setupExerciseAboutTextView() {
+    func setupExerciseAboutTextView() {
         exerciseAbout.text = exercise.about
         exerciseAbout.isSelectable = true
         exerciseAbout.isEditable = true
@@ -220,23 +206,11 @@ extension SetupExercisePageViewController {
         exerciseAbout.layer.cornerRadius = 12
     }
     
-    //MARK: - Кнопка сохранения упражнения
     func setupSaveExerciseButton() {
         saveExerciseButton.setTitle("Сохранить", for: .normal)
         saveExerciseButton.backgroundColor = .systemRed
         saveExerciseButton.layer.cornerRadius = 12
         saveExerciseButton.addTarget(self, action: #selector(setupSaveExerciseButtonAction), for: .touchUpInside)
-    }
-    
-    @objc func setupSaveExerciseButtonAction() {
-        if exerciseTitle.text?.count == 0 {
-            showAlert(title: "Нет названия", message: "Назовите упражнение")
-        } else {
-            saveExercise(exerciseTitle.text, exerciseAbout.text)
-            let imageData = ExerciseImageDataModel.self
-            RealmDataBase.shared.deleteTable(imageData)
-            self.navigationController?.popViewController(animated: true)
-        }
     }
     
     func saveExercise(_ title: String, _ about: String) {
@@ -251,26 +225,33 @@ extension SetupExercisePageViewController {
     
 }
 
-extension SetupExercisePageViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return exerciseImagesArray.count
+//MARK: - Селекторы
+private extension SetupExercisePageViewController {
+    
+    @objc func setupBackButton() {
+        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
+        navigationController?.popViewController(animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
-        cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
-        cell.layer.shadowRadius = 3
-        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
-        return cell
+    @objc func openExerciseImagesTileAction() {
+        let viewController = Assembler.controllers.exerciseImagesTileViewController(parent: self, exerciseImagesDataArray: exerciseImagesDataArray)
+        viewController.modalPresentationStyle = .overFullScreen
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func setupSaveExerciseButtonAction() {
+        if exerciseTitle.text?.count == 0 {
+            showAlert(title: "Нет названия", message: "Назовите упражнение")
+        } else {
+            saveExercise(exerciseTitle.text, exerciseAbout.text)
+            let imageData = ExerciseImageDataModel.self
+            RealmDataBase.shared.deleteTable(imageData)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
-extension SetupExercisePageViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Constants.itemWidth / 5, height: collectionView.frame.height * 0.8)
-    }
-}
-
+//MARK: - ExerciseImagesTileVeiwControllerDelegate
 extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDelegate {
     func updateExerciseImages(_ exerciseImagesArray: [ExerciseImagesCollectionModel]) {
         self.exerciseImagesArray.removeAll()
@@ -284,13 +265,40 @@ extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDeleg
             let imagesData = ExerciseImageDataModel(image: imageData)
             RealmDataBase.shared.set(imagesData)
         }
-        if exerciseImagesArray.isEmpty {
+        if exerciseImagesDataList.isEmpty {
             collectionView.removeFromSuperview()
+        } else {
+            openGalleryButton.removeFromSuperview()
         }
         pageSettings()
+        
     }
 }
 
+//MARK: - UICollectionViewDataSource
+extension SetupExercisePageViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return exerciseImagesArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
+        cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
+        cell.layer.shadowRadius = 3
+        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+        return cell
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension SetupExercisePageViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: Constants.itemWidth / 5, height: collectionView.frame.height * 0.8)
+    }
+}
+
+//MARK: - SetupExercisePagePresenterDelegate
 extension SetupExercisePageViewController: SetupExercisePagePresenterDelegate {
     
 }

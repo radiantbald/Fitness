@@ -7,32 +7,52 @@
 
 import UIKit
 
+//MARK: - Протоколы класса
 protocol ExerciseImageViewerViewControllerDelegate: AnyObject {
+    
 }
 
+//MARK: -
 final class ExerciseImageViewerViewController: GeneralViewController {
     
-    var presenter: ExerciseImageViewerPresenter!
-    var image: ExerciseImagesCollectionModel
+    //MARK: - Инициализация класса
+    private var image: ExerciseImagesCollectionModel
     private weak var delegate: ExerciseImageViewerViewControllerDelegate?
+    var presenter: ExerciseImageViewerPresenter!
     
     init(parent: ExerciseImageViewerViewControllerDelegate? = nil, image: ExerciseImagesCollectionModel) {
         self.image = image
         self.delegate = parent
         super.init(nibName: nil, bundle: nil)
     }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    //MARK: - Переменные и константы класса
+    private let imageView = UIImageView()
+    private let shownImage = UIImage()
     
-    let imageView = UIImageView()
-    let shownImage = UIImage()
-    
+    //MARK: - Жизненный цикл класса
     override func viewDidLoad() {
         super.viewDidLoad()
+        pageSettings()
+    }
+    
+}
+
+//MARK: - Настройки экрана
+private extension ExerciseImageViewerViewController {
+    
+    func pageSettings() {
+        setupSubviews()
+        setupMargins()
+    }
+    
+    func setupSubviews() {
+        setupImageView()
         view.addSubviews(imageView)
-        
+    }
+    
+    func setupMargins() {
         let margins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
@@ -40,12 +60,15 @@ final class ExerciseImageViewerViewController: GeneralViewController {
             imageView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
+    }
+    
+    func setupImageView() {
         imageView.image = image.image
         imageView.contentMode = .scaleAspectFit
     }
-    
 }
 
+//MARK: - ExerciseImageViewerPresenterDelegate
 extension ExerciseImageViewerViewController: ExerciseImageViewerPresenterDelegate {
     
 }
