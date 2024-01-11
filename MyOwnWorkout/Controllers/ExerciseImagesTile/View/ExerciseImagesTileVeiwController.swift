@@ -18,19 +18,16 @@ final class ExerciseImagesTileVeiwController: GeneralViewController {
     //MARK: - Инициализация класса
     private var exerciseImagesDataArray: [ExerciseImageDataModel]
     private weak var delegate: ExerciseImagesTileVeiwControllerDelegate?
+    var presenter: ExerciseImagesTilePresenter!
     
     init(parent: ExerciseImagesTileVeiwControllerDelegate? = nil, exerciseImagesDataArray:  [ExerciseImageDataModel]) {
         self.delegate = parent
         self.exerciseImagesDataArray = exerciseImagesDataArray
         super.init(nibName: nil, bundle: nil)
     }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     //MARK: - Переменные и константы класса
-    var presenter: ExerciseImagesTilePresenter!
-    
     private var collectionView: UICollectionView?
     private let layout = UICollectionViewFlowLayout()
     
@@ -68,6 +65,7 @@ final class ExerciseImagesTileVeiwController: GeneralViewController {
         collectionView?.frame = view.bounds
     }
 }
+
 //MARK: - Настройки экрана
 private extension ExerciseImagesTileVeiwController {
     
@@ -87,7 +85,7 @@ private extension ExerciseImagesTileVeiwController {
     }
     
     func setupMultiselectNavigationBar() {
-        var selectedItemsCount = collectionView?.indexPathsForSelectedItems?.count ?? 0
+        guard let selectedItemsCount = collectionView?.indexPathsForSelectedItems?.count else { return }
         title = "Выбрано элементов: \(selectedItemsCount)"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupBackButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
@@ -227,7 +225,7 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
             let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: item)
             navigationController?.pushViewController(viewController, animated: true)
         case .multiselect:
-            var selectedItemsCount = collectionView.indexPathsForSelectedItems?.count ?? 0
+            guard let selectedItemsCount = collectionView.indexPathsForSelectedItems?.count else { return }
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
             
@@ -245,7 +243,7 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
         case .initial:
             break
         case .multiselect:
-            var selectedItemsCount = collectionView.indexPathsForSelectedItems?.count ?? 0
+            guard let selectedItemsCount = collectionView.indexPathsForSelectedItems?.count else { return }
             
             if let deselectedItem = collectionView.cellForItem(at: indexPath) {
                 deselectedItem.layer.borderWidth = 0
@@ -260,6 +258,7 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegate
 extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let target = exerciseImagesArray.remove(at: sourceIndexPath.row)
         exerciseImagesArray.insert(target, at: destinationIndexPath.row)
@@ -268,12 +267,14 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension ExerciseImagesTileVeiwController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.saveExerciseImage(pickedImage)
             dismiss(animated: true)
         }
     }
+    
     func saveExerciseImage(_ image: UIImage) {
         exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         pageSettings()
