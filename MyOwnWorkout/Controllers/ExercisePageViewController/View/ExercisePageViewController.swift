@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ExercisePageViewControllerDelegate: AnyObject {
-    func changeExerciseInTableView(_ title: String, _ about: String)
+    func reloadData()
 }
 
 class ExercisePageViewController: GeneralViewController {
@@ -65,20 +65,18 @@ extension ExercisePageViewController {
     }
     
     @objc func setupSetupExerciseButton() {
-        let viewController = Assembler.controllers.setupExercisePageViewController
-        viewController.delegate = self
-        viewController.exerciseTitle.placeholder = exercise?.title
-        viewController.exerciseAbout.placeholder = exercise?.about
+        let viewController = Assembler.controllers.setupExercisePageViewController(parent: self, exercise: exercise)
         navigationController?.present(viewController, animated: true)
     }
     
 }
 
 extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
-    func changeExerciseOnExercisePage(_ title: String, _ about: String) {
-        exerciseTitle.text = title
-        exerciseAbout.text = about
-        delegate?.changeExerciseInTableView(title, about)
+    func changeExerciseOnExercisePage(_ exercise: ExerciseModel) {
+        RealmDataBase.shared.update(exercise)
+        exerciseTitle.text = exercise.title
+        exerciseAbout.text = exercise.about
+        delegate?.reloadData()
     }
 }
 

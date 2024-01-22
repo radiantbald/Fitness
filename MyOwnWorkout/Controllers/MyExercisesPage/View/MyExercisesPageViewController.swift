@@ -12,14 +12,13 @@ class MyExercisesPageViewController: GeneralViewController {
     var presenter: MyExercisesPagePresenter!
     
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private var exercises: [ExerciseModel] = []
+    private var exercises: [ExerciseModel] = RealmDataBase.shared.get()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
         tableView.delegate = self
         tableView.dataSource = self
-        exercises = RealmDataBase.shared.getExercisesData()
         MyExercisesPageDesign()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -85,8 +84,8 @@ extension MyExercisesPageViewController: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
-        RealmDataBase.shared.deleteExercisesData(exercise: exercise)
-        exercises = RealmDataBase.shared.getExercisesData()
+        RealmDataBase.shared.delete(exercise: exercise)
+        exercises = RealmDataBase.shared.get()
         tableView.reloadData()
             
     }
@@ -112,7 +111,7 @@ extension MyExercisesPageViewController: UITableViewDataSource {
 
 extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
     func addExerciseToTableView() {
-        exercises = RealmDataBase.shared.getExercisesData()
+        exercises = RealmDataBase.shared.get()
         tableView.reloadData()
     }
 }
@@ -120,8 +119,7 @@ extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
 //MARK: - Редактирование данных в таблице
 
 extension MyExercisesPageViewController: ExercisePageViewControllerDelegate {
-    func changeExerciseInTableView(_ title: String, _ about: String) {
-        exercises = RealmDataBase.shared.getExercisesData()
+    func reloadData() {
         tableView.reloadData()
     }
 }

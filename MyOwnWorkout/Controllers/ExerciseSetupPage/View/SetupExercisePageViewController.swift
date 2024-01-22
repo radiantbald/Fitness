@@ -8,14 +8,21 @@
 import UIKit
 
 protocol SetupExercisePageViewControllerDelegate: AnyObject {
-    func changeExerciseOnExercisePage(_ title: String, _ about: String)
+    func changeExerciseOnExercisePage(_ exercise: ExerciseModel)
 }
 
 class SetupExercisePageViewController: GeneralViewController {
-    
+    private let exercise: ExerciseModel
     var presenter: SetupExercisePagePresenter!
+    private weak var delegate: SetupExercisePageViewControllerDelegate?
     
-    weak var delegate: SetupExercisePageViewControllerDelegate?
+    init(parent: SetupExercisePageViewControllerDelegate? = nil, exercise: ExerciseModel) {
+        self.exercise = exercise
+        self.delegate = parent
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     let exerciseTitle = UITextField()
     let exerciseAbout = UITextField()
@@ -25,6 +32,9 @@ class SetupExercisePageViewController: GeneralViewController {
         super.viewDidLoad()
         exerciseSetupPageDesign()
         setupSaveExerciseButton()
+        
+        exerciseTitle.placeholder = exercise.title
+        exerciseAbout.placeholder = exercise.about
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,8 +58,16 @@ extension SetupExercisePageViewController {
     }
     
     func saveExercise(_ title: String, _ about: String) {
-        RealmDataBase.shared.updateExercisesData(title, about)
-        delegate?.changeExerciseOnExercisePage(title, about)
+        if exercise.about == about && title == exercise.title { return }
+        let new = ExerciseModel()
+        new.id = exercise.id
+        new.about = about
+        new.title = title
+        new.muscleGroup = exercise.muscleGroup
+        new.neededEquipment = exercise.neededEquipment
+        new.author = exercise.author
+        
+        delegate?.changeExerciseOnExercisePage(new)
     }
     
     func exerciseSetupPageDesign() {
