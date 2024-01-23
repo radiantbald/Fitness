@@ -164,7 +164,8 @@ extension ExercisePageViewController: UICollectionViewDataSource {
 extension ExercisePageViewController: ExerciseImageViewerViewControllerDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = self.exerciseImagesArray[indexPath.row]
-        let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: item)
+        let data = item.image.pngData() ?? Data()
+        let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: data)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

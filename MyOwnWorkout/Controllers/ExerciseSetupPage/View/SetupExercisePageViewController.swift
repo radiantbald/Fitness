@@ -253,18 +253,15 @@ private extension SetupExercisePageViewController {
 
 //MARK: - ExerciseImagesTileVeiwControllerDelegate
 extension SetupExercisePageViewController: ExerciseImagesTileVeiwControllerDelegate {
-    func updateExerciseImages(_ exerciseImagesArray: [ExerciseImagesCollectionModel]) {
-        self.exerciseImagesArray.removeAll()
-        self.exerciseImagesDataList.removeAll()
-        for imageDataModel in exerciseImagesArray {
-            guard let imageData = imageDataModel.image.pngData() else { continue }
-            guard let image = UIImage(data: imageData) else { continue }
-            self.exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
-            exerciseImagesDataList.append(imageData)
-            
-            let imagesData = ExerciseImageDataModel(image: imageData)
-            RealmDataBase.shared.set(imagesData)
-        }
+    func updateExerciseImages(_ exerciseImagesArray: [UIImage]) {
+        self.exerciseImagesArray = exerciseImagesArray.map({ExerciseImagesCollectionModel.init(image: $0)})
+//        self.exerciseImagesDataList.removeAll()
+//        for imageDataModel in exerciseImagesArray {
+//            guard let imageData = imageDataModel.image.pngData() else { continue }
+//            guard let image = UIImage(data: imageData) else { continue }
+//            self.exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+//            exerciseImagesDataList.append(imageData)
+//        }
         if exerciseImagesDataList.isEmpty {
             collectionView.removeFromSuperview()
         } else {

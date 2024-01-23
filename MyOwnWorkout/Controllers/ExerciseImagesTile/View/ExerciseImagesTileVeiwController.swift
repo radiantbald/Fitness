@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: - Протоколы класса
 protocol ExerciseImagesTileVeiwControllerDelegate: AnyObject {
-    func updateExerciseImages(_ exerciseImagesArray: [ExerciseImagesCollectionModel])
+    func updateExerciseImages(_ exerciseImagesArray: [UIImage])
 }
 
 //MARK: -
@@ -33,7 +33,7 @@ final class ExerciseImagesTileVeiwController: GeneralViewController {
     
     private lazy var imagePicker = UIImagePickerController()
     
-    private var exerciseImagesArray = [ExerciseImagesCollectionModel]()
+//    private var exerciseImagesArray = [ExerciseImagesCollectionModel]()
     private var exerciseImageData = ExerciseImageDataModel().image
     
     private enum Mode {
@@ -93,11 +93,11 @@ private extension ExerciseImagesTileVeiwController {
     
     func getExercisePhotosFromData() {
         exerciseImagesDataArray = RealmDataBase.shared.get()
-        for exerciseImageData in exerciseImagesDataArray {
-            let imageData = exerciseImageData.image
-            guard let image = UIImage(data:imageData) else { continue }
-            exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
-        }
+//        for exerciseImageData in exerciseImagesDataArray {
+//            let imageData = exerciseImageData.image
+//            guard let image = UIImage(data:imageData) else { continue }
+//            exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+//        }
     }
     
     func setupCollectionView() {
@@ -130,7 +130,8 @@ private extension ExerciseImagesTileVeiwController {
 private extension ExerciseImagesTileVeiwController {
     
     @objc func setupBackButton() {
-        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
+        let array = RealmDataBase.shared.set(exerciseImagesDataArray)
+        let exerciseImagesArray = array.compactMap({UIImage(data: $0.image)})
         delegate?.updateExerciseImages(exerciseImagesArray)
         navigationController?.popViewController(animated: true)
     }
@@ -163,9 +164,12 @@ private extension ExerciseImagesTileVeiwController {
     @objc func deleteImages() {
         guard let selectedItems = collectionView?.indexPathsForSelectedItems else { return }
         let items = selectedItems.map { $0.item }.sorted().reversed()
+        let deleteArray = items.compactMap({exerciseImagesDataArray[$0]})
         for item in items {
-            exerciseImagesArray.remove(at: item)
+//            exerciseImagesArray.remove(at: item)
+            exerciseImagesDataArray.remove(at: item)
         }
+        RealmDataBase.shared.delete(deleteArray)
         pageSettings()
         mode = .initial
     }
@@ -206,12 +210,14 @@ private extension ExerciseImagesTileVeiwController {
 //MARK: - UICollectionViewDataSource
 extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return exerciseImagesArray.count
+        return exerciseImagesDataArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
-        cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
+        let data = exerciseImagesDataArray[indexPath.row].image
+        let image = UIImage(data: data)
+        cell.exerciseImageView.image = image
         cell.layer.shadowRadius = 3
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
         
@@ -221,8 +227,8 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch mode {
         case .initial:
-            let item = self.exerciseImagesArray[indexPath.row]
-            let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: item)
+            let data = self.exerciseImagesDataArray[indexPath.row].image
+            let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: data)
             navigationController?.pushViewController(viewController, animated: true)
         case .multiselect:
             guard let selectedItemsCount = collectionView.indexPathsForSelectedItems?.count else { return }
@@ -260,8 +266,13 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
 extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let target = exerciseImagesArray.remove(at: sourceIndexPath.row)
-        exerciseImagesArray.insert(target, at: destinationIndexPath.row)
+        print(exerciseImagesDataArray)
+        let one = exerciseImagesDataArray[sourceIndexPath.row]
+        let two = exerciseImagesDataArray[destinationIndexPath.row]
+        let array = RealmDataBase.shared.replace(one, two)
+        print(array)
+        exerciseImagesDataArray = array
+        collectionView.reloadData()
     }
 }
 
@@ -276,11 +287,12 @@ extension ExerciseImagesTileVeiwController: UIImagePickerControllerDelegate, UIN
     }
     
     func saveExerciseImage(_ image: UIImage) {
-        exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         pageSettings()
         let imageData = image.pngData()!
         let imagesData = ExerciseImageDataModel(image: imageData)
         RealmDataBase.shared.set(imagesData)
+        exerciseImagesDataArray = RealmDataBase.shared.get()
+        collectionView?.reloadData()
     }
 }
 

@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class RealmDataBase {
-    static var shared: RealmDataBase = .init()
+    static let shared: RealmDataBase = .init()
     private init() {}
     
     static let listOfData = List<Data>()
@@ -28,12 +28,42 @@ class RealmDataBase {
         }
     }
     
+     func set<T: Object>(_ values: [T]) -> [T] {
+        let realm = try! Realm()
+         
+        try! realm.write {
+            realm.add(values, update: .modified)
+            print(realm.configuration.fileURL ?? "")
+        }
+         let array = realm.objects(T.self)
+         return Array(array)
+    }
+    
+    func replace<T: ExerciseImageDataModel>(_ one: T, _ two: T) -> [T] {
+        let realm = try! Realm()
+        try! realm.write {
+            (one.image, two.image) = (two.image, one.image)
+            print(realm.configuration.fileURL ?? "")
+        }
+         let array = realm.objects(T.self)
+         return Array(array)
+    }
+    
     func delete(_ value: Object) {
         let realm = try! Realm()
         try! realm.write {
             realm.delete(value)
         }
     }
+    
+    func delete(_ values: [Object]) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(values)
+        }
+    }
+    
+    
     
     func deleteTable(_ value: Object.Type) {
         let realm = try! Realm()
