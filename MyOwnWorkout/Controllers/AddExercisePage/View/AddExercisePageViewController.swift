@@ -23,10 +23,11 @@ class AddExercisePageViewController: GeneralViewController {
     
     private let galleryLabel = UILabel("Галерея", UIFont(name: Fonts.mainBold.rawValue, size: 14.0)!, .black)
     private let openGalleryButton = UIButton()
+    
     //Фотографии упражнения
-    var exerciseImagesArray = [ExerciseImagesCollectionModel]()
-    var exerciseImagesDataList = ExerciseModel().exerciseImagesData
+    var exerciseImagesDataList = ExerciseModel().exerciseImagesDataList
     var exerciseImagesDataArray = [ExerciseImageDataModel]()
+    
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
     
@@ -44,21 +45,22 @@ class AddExercisePageViewController: GeneralViewController {
     }
 }
 
-extension AddExercisePageViewController {
+//MARK: - Настройки экрана
+private extension AddExercisePageViewController {
     
-    private func pageSettings() {
+    func pageSettings() {
         setupNavigationBar()
         setupSubviews()
         setupMargins()
     }
     
-    private func setupNavigationBar() {
+    func setupNavigationBar() {
         title = "Новое упражнение"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(setupBackButton))
     }
     
     @objc private func setupBackButton() {
-        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
+//        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
         navigationController?.popViewController(animated: true)
     }
     
@@ -105,7 +107,8 @@ extension AddExercisePageViewController {
             saveExerciseButton.heightAnchor.constraint(equalToConstant: 50),
             ])
     
-        if exerciseImagesArray.isEmpty {
+        if exerciseImagesDataList.isEmpty {
+            print(exerciseImagesDataList.count)
             view.addSubviews(openGalleryButton)
             
             NSLayoutConstraint.activate([
@@ -120,7 +123,7 @@ extension AddExercisePageViewController {
                 ])
         } else {
             view.addSubviews(collectionView)
-            
+            print(exerciseImagesDataList.count)
             NSLayoutConstraint.activate([
                 collectionView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 collectionView.topAnchor.constraint(equalTo: galleryLabel.bottomAnchor, constant: 10),
@@ -170,7 +173,6 @@ extension AddExercisePageViewController {
     
     //MARK: - Сохранение картинок упражнения
     private func saveExerciseImage(_ image: UIImage) {
-        exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
         pageSettings()
         let imageData = image.pngData()!
         let imagesData = ExerciseImageDataModel(image: imageData)
@@ -226,12 +228,14 @@ extension AddExercisePageViewController {
 
 extension AddExercisePageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return exerciseImagesArray.count
+        return exerciseImagesDataArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
-        cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
+        let data = exerciseImagesDataArray[indexPath.row].image
+        let image = UIImage(data: data)
+        cell.exerciseImageView.image = image
         cell.layer.shadowRadius = 3
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
         return cell
@@ -253,16 +257,22 @@ extension AddExercisePageViewController: UIImagePickerControllerDelegate, UINavi
     }
 }
 
+//MARK: - ExerciseImagesTileVeiwControllerDelegate
 extension AddExercisePageViewController: ExerciseImagesTileVeiwControllerDelegate {
     func updateExerciseImages(_ exerciseImagesArray: [UIImage]) {
-        self.exerciseImagesArray = exerciseImagesArray.map({ExerciseImagesCollectionModel.init(image: $0)})
-//        for imageDataModel in exerciseImagesArray {
-//            guard let imageData = imageDataModel.image.pngData() else { continue }
-//            guard let image = UIImage(data: imageData) else { continue }
-//            self.exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
-//            exerciseImagesDataList.append(imageData)
-//            
-//        }
+        self.exerciseImagesDataList.removeAll()
+        for image in exerciseImagesArray {
+            let imageData = image.pngData()!
+            exerciseImagesDataList.append(imageData)
+        }
+        exerciseImagesDataArray = RealmDataBase.shared.get()
+        
+        if exerciseImagesDataList.isEmpty {
+            collectionView.removeFromSuperview()
+        } else {
+            openGalleryButton.removeFromSuperview()
+        }
+        
         pageSettings()
     }
 }

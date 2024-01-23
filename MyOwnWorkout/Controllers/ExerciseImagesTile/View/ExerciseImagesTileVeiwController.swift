@@ -33,8 +33,7 @@ final class ExerciseImagesTileVeiwController: GeneralViewController {
     
     private lazy var imagePicker = UIImagePickerController()
     
-//    private var exerciseImagesArray = [ExerciseImagesCollectionModel]()
-    private var exerciseImageData = ExerciseImageDataModel().image
+//    private var exerciseImageData = ExerciseImageDataModel().image
     
     private enum Mode {
         case initial
@@ -93,11 +92,6 @@ private extension ExerciseImagesTileVeiwController {
     
     func getExercisePhotosFromData() {
         exerciseImagesDataArray = RealmDataBase.shared.get()
-//        for exerciseImageData in exerciseImagesDataArray {
-//            let imageData = exerciseImageData.image
-//            guard let image = UIImage(data:imageData) else { continue }
-//            exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
-//        }
     }
     
     func setupCollectionView() {
@@ -166,7 +160,6 @@ private extension ExerciseImagesTileVeiwController {
         let items = selectedItems.map { $0.item }.sorted().reversed()
         let deleteArray = items.compactMap({exerciseImagesDataArray[$0]})
         for item in items {
-//            exerciseImagesArray.remove(at: item)
             exerciseImagesDataArray.remove(at: item)
         }
         RealmDataBase.shared.delete(deleteArray)

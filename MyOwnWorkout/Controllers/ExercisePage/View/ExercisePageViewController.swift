@@ -17,7 +17,7 @@ class ExercisePageViewController: GeneralViewController {
     weak var delegate: ExercisePageViewControllerDelegate?
     
     var exercise: ExerciseModel!
-    var exerciseImagesArray: [ExerciseImagesCollectionModel] = []
+    var exerciseImagesDataArray = [ExerciseImageDataModel]()
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
@@ -27,8 +27,8 @@ class ExercisePageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getExerciseImagesFromData()
         pageSettings()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,12 +45,12 @@ extension ExercisePageViewController {
         setupNavigationBar()
         setupSubviews()
         setupMargins()
-        getExerciseImagesFromData()
     }
     
     func setupNavigationBar() {
         title = "Упражнение"
         navigationItem.backButtonTitle = "Назад"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(setupBackButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(setupSetupExerciseButton))
     }
     
@@ -94,12 +94,14 @@ extension ExercisePageViewController {
     }
     
     private func getExerciseImagesFromData() {
+        
         let imagesDataList = exercise.imagesDataList.compactMap{Data($0)}
         print(imagesDataList)
         for imageData in imagesDataList {
-            guard let image = UIImage(data: imageData) else { continue }
-            exerciseImagesArray.append(ExerciseImagesCollectionModel.init(image: image))
+            let imagesData = ExerciseImageDataModel(image: imageData)
+            RealmDataBase.shared.set(imagesData)
         }
+        exerciseImagesDataArray = RealmDataBase.shared.get()
     }
     
     func setupExerciseAboutLabel() {
@@ -116,14 +118,22 @@ extension ExercisePageViewController {
         }
     }
     
+    @objc func setupBackButton() {
+        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
     func changeExerciseOnExercisePage(_ exercise: ExerciseModel) {
-        exerciseImagesArray.removeAll()
+//        exerciseImagesDataArray.removeAll()
+        
+        
         RealmDataBase.shared.set(exercise)
         exerciseTitle.text = exercise.title
         exerciseAbout.text = exercise.about
+        exerciseImagesDataArray = RealmDataBase.shared.get()
         pageSettings()
         delegate?.reloadTableViewData()
     }
@@ -150,12 +160,14 @@ extension ExercisePageViewController {
 
 extension ExercisePageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return exerciseImagesArray.count
+        return exerciseImagesDataArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
-        cell.exerciseImageView.image = exerciseImagesArray[indexPath.row].image
+        let data = exerciseImagesDataArray[indexPath.row].image
+        let image = UIImage(data: data)
+        cell.exerciseImageView.image = image
         cell.layer.shadowRadius = 9
         return cell
     }
@@ -163,8 +175,8 @@ extension ExercisePageViewController: UICollectionViewDataSource {
 
 extension ExercisePageViewController: ExerciseImageViewerViewControllerDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = self.exerciseImagesArray[indexPath.row]
-        let data = item.image.pngData() ?? Data()
+        let item = self.exerciseImagesDataArray[indexPath.row]
+        let data = item.image
         let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: data)
         navigationController?.pushViewController(viewController, animated: true)
     }

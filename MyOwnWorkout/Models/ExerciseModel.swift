@@ -32,7 +32,7 @@ class ExerciseModel: Object {
         self.imagesDataList = imagesDataList
     }
     
-    let exerciseImagesData = List<Data>()
+    let exerciseImagesDataList = List<Data>()
     
     
     
