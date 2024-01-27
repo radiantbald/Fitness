@@ -7,23 +7,23 @@
 
 import UIKit
 
-class MyExercisesPageViewController: GeneralViewController {
+//MARK: -
+final class MyExercisesPageViewController: GeneralViewController {
     
     var presenter: MyExercisesPagePresenter!
     
+    //MARK: - Переменные и константы класса
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private var exercises: [ExerciseModel] = RealmDataBase.shared.get()
     
-    let dismissedExercisesLabel = UILabel()
-    let addExerciseButton = UIButton()
+    private let dismissedExercisesLabel = UILabel()
+    private let addExerciseButton = UIButton()
     
+    //MARK: - Жизненный цикл класса
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
-        tableView.delegate = self
-        tableView.dataSource = self
-        myExercisesPageDesign()
-        setupAddExerciseButton()
+        pageSettings()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,75 +31,90 @@ class MyExercisesPageViewController: GeneralViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    private func registerCell() {
-        tableView.register(ExerciseTableViewCell.self, forCellReuseIdentifier: ExerciseTableViewCell.cellID)
-    }
 }
 
-extension MyExercisesPageViewController {
+//MARK: - Настройки экрана
+private extension MyExercisesPageViewController {
     
-    func myExercisesPageDesign() {
+    func pageSettings() {
+        setupNavigationBar()
+        setupSubviews()
+        setupMargins()
+    }
+    
+    func setupNavigationBar() {
         title = "Мои упражнения"
         navigationItem.backButtonTitle = "Назад"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddExerciseButtons))
-        
-        setSubviews()
-        
-        dismissedExercisesLabel.text = "Пока нет упражнений"
-        dismissedExercisesLabel.textAlignment = .center
-        
-        addExerciseButton.setTitle("Добавить", for: .normal)
-        addExerciseButton.backgroundColor = .systemRed
-        addExerciseButton.layer.cornerRadius = 12
     }
     
-    func setSubviews() {
-        
+    func setupSubviews() {
+        setupTableView()
+        setupDismissedExercisesLabel()
+        setupAddExerciseButton()
+    }
+    
+    func setupMargins() {
         let margins = view.safeAreaLayoutGuide
         
         if exercises.isEmpty {
-            
             view.addSubviews(dismissedExercisesLabel, addExerciseButton)
-
             NSLayoutConstraint.activate([
                 dismissedExercisesLabel.heightAnchor.constraint(equalToConstant: 50),
                 dismissedExercisesLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100),
                 dismissedExercisesLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
                 dismissedExercisesLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
-
+                
                 addExerciseButton.heightAnchor.constraint(equalToConstant: 50),
                 addExerciseButton.topAnchor.constraint(equalTo: dismissedExercisesLabel.bottomAnchor, constant: 10),
                 addExerciseButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
                 addExerciseButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30)
             ])
-            
             tableView.removeFromSuperview()
-            
         } else {
-            
             view.addSubviews(tableView)
-            
             NSLayoutConstraint.activate([
                 tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0),
                 tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
                 tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
             ])
-            
             dismissedExercisesLabel.removeFromSuperview()
             addExerciseButton.removeFromSuperview()
         }
     }
     
+    func setupTableView() {
+        registerCell()
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    private func registerCell() {
+        tableView.register(ExerciseTableViewCell.self, forCellReuseIdentifier: ExerciseTableViewCell.cellID)
+    }
+    
+    func setupDismissedExercisesLabel() {
+        dismissedExercisesLabel.text = "Пока нет упражнений"
+        dismissedExercisesLabel.textAlignment = .center
+    }
+    
     func setupAddExerciseButton() {
+        addExerciseButton.setTitle("Добавить", for: .normal)
+        addExerciseButton.backgroundColor = .systemRed
+        addExerciseButton.layer.cornerRadius = 12
+        
         addExerciseButton.addTarget(self, action: #selector(setupAddExerciseButtons), for: .touchUpInside)
     }
+}
+
+//MARK: - Селекторы
+private extension MyExercisesPageViewController {
     @objc func setupAddExerciseButtons() {
         let viewController = Assembler.controllers.addExercisePageViewController
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
 }
 
 //MARK: - Делегаты протокола MyExercisesTableViewDelegate
@@ -119,9 +134,7 @@ extension MyExercisesPageViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         let exercise = exercises[indexPath.row]
-        
         if editingStyle == .delete {
             tableView.beginUpdates()
             exercises.remove(at: indexPath.row)
@@ -132,14 +145,13 @@ extension MyExercisesPageViewController: UITableViewDelegate {
         exercises = RealmDataBase.shared.get()
         tableView.reloadData()
         
-        setSubviews()
+        pageSettings()
     }
 }
 
 //MARK: - Делегаты протокола MyExercisesTableViewDataSource
 
 extension MyExercisesPageViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
@@ -152,26 +164,23 @@ extension MyExercisesPageViewController: UITableViewDataSource {
     }
 }
 
-//MARK: - Добавление данных в таблицу
-
+//MARK: - AddExercisePageViewControllerDelegate
 extension MyExercisesPageViewController: AddExercisePageViewControllerDelegate {
     func addExerciseToTableView() {
         exercises = RealmDataBase.shared.get()
         tableView.reloadData()
-        setSubviews()
+        pageSettings()
     }
 }
 
-//MARK: - Редактирование данных в таблице
-
+//MARK: - ExercisePageViewControllerDelegate
 extension MyExercisesPageViewController: ExercisePageViewControllerDelegate {
     func reloadTableViewData() {
         tableView.reloadData()
-        
     }
 }
 
-//MARK: - Делегаты Презентера
+//MARK: - MyExercisesPagePresenterDelegate
 extension MyExercisesPageViewController: MyExercisesPagePresenterDelegate {
     
 }

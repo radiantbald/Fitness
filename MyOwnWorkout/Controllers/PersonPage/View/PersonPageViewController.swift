@@ -132,7 +132,7 @@ extension PersonPageViewController {
         let aboutApp = UIAction(title: "О приложении",image: UIImage(systemName: "apple.logo"), handler: { _ in self.openAboutPagePageAction()})
         let exit = UIAction(title: "Выход", image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), attributes: .destructive, handler: { _ in self.exitAction()})
         
-        let menu = UIMenu(title: "Меню", children: [trainingPrograms, myWorkouts, myExercises, myAchievments, personalAccount, settings, aboutApp, exit])
+        let menu = UIMenu(title: "Меню", children: [/*trainingPrograms,*/ myWorkouts, myExercises, /*myAchievments, personalAccount, settings, aboutApp, exit*/])
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), menu: menu)
     }
     

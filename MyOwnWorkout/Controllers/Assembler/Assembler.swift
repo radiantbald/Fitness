@@ -75,6 +75,13 @@ class Controllers {
         return viewController
     }
     
+    class var workoutPageViewController: WorkoutPageViewController {
+        let viewController = WorkoutPageViewController()
+        let presenter = WorkoutPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
+    }
+    
     class var myExercisesPageViewController: MyExercisesPageViewController {
         let viewController = MyExercisesPageViewController()
         let presenter = MyExercisesPagePresenter(delegate: viewController)
@@ -138,7 +145,7 @@ class Controllers {
         return viewController
     }
     
-    class func exerciseImageViewerViewController(parent: ExerciseImageViewerViewControllerDelegate?, image: ExerciseImagesCollectionModel) -> ExerciseImageViewerViewController {
+    class func exerciseImageViewerViewController(parent: ExerciseImageViewerViewControllerDelegate?, image: Data) -> ExerciseImageViewerViewController {
         let viewController = ExerciseImageViewerViewController(parent: parent, image: image)
         let presenter = ExerciseImageViewerPresenter(delegate: viewController)
         viewController.presenter = presenter

@@ -16,12 +16,12 @@ protocol ExerciseImageViewerViewControllerDelegate: AnyObject {
 final class ExerciseImageViewerViewController: GeneralViewController {
     
     //MARK: - Инициализация класса
-    private var image: ExerciseImagesCollectionModel
+    private var image: UIImage?
     private weak var delegate: ExerciseImageViewerViewControllerDelegate?
     var presenter: ExerciseImageViewerPresenter!
     
-    init(parent: ExerciseImageViewerViewControllerDelegate? = nil, image: ExerciseImagesCollectionModel) {
-        self.image = image
+    init(parent: ExerciseImageViewerViewControllerDelegate? = nil, image: Data) {
+        self.image = UIImage(data: image)
         self.delegate = parent
         super.init(nibName: nil, bundle: nil)
     }
@@ -63,7 +63,7 @@ private extension ExerciseImageViewerViewController {
     }
     
     func setupImageView() {
-        imageView.image = image.image
+        imageView.image = image
         imageView.contentMode = .scaleAspectFit
     }
 }

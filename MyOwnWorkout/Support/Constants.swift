@@ -1,20 +1,11 @@
 //
-//  ExercisePhotosCollectionModel.swift
+//  UICollectionViewExtentions.swift
 //  MyOwnWorkout
 //
 //  Created by Олег Попов on 22.12.2023.
 //
 
 import UIKit
-
-class ExerciseImagesCollectionModel {
-    
-    var image: UIImage
-    
-    init(image: UIImage) {
-        self.image = image
-    }
-}
 
 struct Constants {
     static let leftDistanceToView: CGFloat = 30
