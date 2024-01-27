@@ -33,8 +33,6 @@ final class ExerciseImagesTileVeiwController: GeneralViewController {
     
     private lazy var imagePicker = UIImagePickerController()
     
-//    private var exerciseImageData = ExerciseImageDataModel().image
-    
     private enum Mode {
         case initial
         case multiselect

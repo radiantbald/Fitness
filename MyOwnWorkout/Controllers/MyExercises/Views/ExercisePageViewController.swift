@@ -7,17 +7,20 @@
 
 import UIKit
 
+//MARK: - Протоколы класса
 protocol ExercisePageViewControllerDelegate: AnyObject {
     func reloadTableViewData()
 }
 
+//MARK: -
 class ExercisePageViewController: GeneralViewController {
     
     var presenter: ExercisePagePresenter!
-    weak var delegate: ExercisePageViewControllerDelegate?
-    
     var exercise: ExerciseModel!
-    var exerciseImagesDataArray = [ExerciseImageDataModel]()
+    
+    //MARK: - Переменные и константы класса
+    private var exerciseImagesDataArray = [ExerciseImageDataModel]()
+    weak var delegate: ExercisePageViewControllerDelegate?
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let layout = UICollectionViewFlowLayout()
@@ -25,21 +28,16 @@ class ExercisePageViewController: GeneralViewController {
     private var exerciseTitle = UILabel("", UIFont(name: Fonts.main.rawValue, size: 20.0)!, .black)
     private var exerciseAbout = UILabel("", UIFont(name: Fonts.main.rawValue, size: 16.0)!, .black)
     
+    //MARK: - Жизненный цикл класса
     override func viewDidLoad() {
         super.viewDidLoad()
         getExerciseImagesFromData()
         pageSettings()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
 }
-extension ExercisePageViewController {
+
+//MARK: - Настройки экрана
+private extension ExercisePageViewController {
     
     func pageSettings() {
         setupNavigationBar()
@@ -52,11 +50,6 @@ extension ExercisePageViewController {
         navigationItem.backButtonTitle = "Назад"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(setupBackButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(setupSetupExerciseButton))
-    }
-    
-    @objc func setupSetupExerciseButton() {
-        let viewController = Assembler.controllers.setupExercisePageViewController(parent: self, exercise: exercise)
-        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func setupSubviews() {
@@ -88,12 +81,12 @@ extension ExercisePageViewController {
         ])
     }
     
-    private func setupExerciseTitleLabel() {
+    func setupExerciseTitleLabel() {
         exerciseTitle.text = exercise?.title
         exerciseTitle.textAlignment = .center
     }
     
-    private func getExerciseImagesFromData() {
+    func getExerciseImagesFromData() {
         
         let imagesDataList = exercise.imagesDataList.compactMap{Data($0)}
         print(imagesDataList)
@@ -102,6 +95,21 @@ extension ExercisePageViewController {
             RealmDataBase.shared.set(imagesData)
         }
         exerciseImagesDataArray = RealmDataBase.shared.get()
+    }
+    
+    func setupCollectionView() {
+        collectionView = .init(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: Constants.leftDistanceToView, bottom: 0, right: Constants.rightDistanceToView)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
+        
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = Constants.minimumLineSpacing
     }
     
     func setupExerciseAboutLabel() {
@@ -117,19 +125,25 @@ extension ExercisePageViewController {
             exerciseAbout.textAlignment = .justified
         }
     }
+}
+
+//MARK: - Селекторы
+private extension ExercisePageViewController {
+    
+    @objc func setupSetupExerciseButton() {
+        let viewController = Assembler.controllers.setupExercisePageViewController(parent: self, exercise: exercise)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
     
     @objc func setupBackButton() {
         RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
         navigationController?.popViewController(animated: true)
     }
-    
 }
 
+//MARK: - SetupExercisePageViewControllerDelegate
 extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
     func changeExerciseOnExercisePage(_ exercise: ExerciseModel) {
-//        exerciseImagesDataArray.removeAll()
-        
-        
         RealmDataBase.shared.set(exercise)
         exerciseTitle.text = exercise.title
         exerciseAbout.text = exercise.about
@@ -139,25 +153,17 @@ extension ExercisePageViewController: SetupExercisePageViewControllerDelegate {
     }
 }
 
-extension ExercisePageViewController {
-    func setupCollectionView() {
-        collectionView = .init(frame: .zero, collectionViewLayout: layout)
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: Constants.leftDistanceToView, bottom: 0, right: Constants.rightDistanceToView)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
-        
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = Constants.minimumLineSpacing
-        
+//MARK: - ExerciseImageViewerViewControllerDelegate
+extension ExercisePageViewController: ExerciseImageViewerViewControllerDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = self.exerciseImagesDataArray[indexPath.row]
+        let data = item.image
+        let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: data)
+        navigationController?.pushViewController(viewController, animated: true)
     }
-    
 }
 
+//MARK: - UICollectionViewDataSource
 extension ExercisePageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return exerciseImagesDataArray.count
@@ -173,21 +179,14 @@ extension ExercisePageViewController: UICollectionViewDataSource {
     }
 }
 
-extension ExercisePageViewController: ExerciseImageViewerViewControllerDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = self.exerciseImagesDataArray[indexPath.row]
-        let data = item.image
-        let viewController = Assembler.controllers.exerciseImageViewerViewController(parent: self, image: data)
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-}
-
+//MARK: - UICollectionViewDelegateFlowLayout
 extension ExercisePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constants.itemWidth, height: collectionView.frame.height * 0.8)
     }
 }
 
+//MARK: - ExercisePagePresenterDelegate
 extension ExercisePageViewController: ExercisePagePresenterDelegate {
     
 }

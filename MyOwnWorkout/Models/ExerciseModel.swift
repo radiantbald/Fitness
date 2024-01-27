@@ -34,17 +34,11 @@ class ExerciseModel: Object {
     
     let exerciseImagesDataList = List<Data>()
     
-    
-    
     func saveExercise(_ title: String, _ about: String, _ imagesDataList: List<Data>) {
             let exercise = ExerciseModel(title: title, about: about, imagesDataList: imagesDataList)
             RealmDataBase.shared.set(exercise)
             let imageData = ExerciseImageDataModel.self
             RealmDataBase.shared.deleteTable(imageData)
-    }
-    
-    func updateExerciseImages(_ imagesDataList: List<Data>) {
-        
     }
 }
 

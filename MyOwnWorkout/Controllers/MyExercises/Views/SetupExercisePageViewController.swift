@@ -13,7 +13,7 @@ protocol SetupExercisePageViewControllerDelegate: AnyObject {
 }
 
 //MARK: -
-class SetupExercisePageViewController: GeneralViewController {
+final class SetupExercisePageViewController: GeneralViewController {
     
     //MARK: - Инициализация класса
     private let exercise: ExerciseModel
@@ -159,7 +159,6 @@ private extension SetupExercisePageViewController {
         exerciseImagesDataArray = RealmDataBase.shared.get()
     }
     
-    //MARK: - Картинки упражнения
     func setupOpenGalleryButton() {
         openGalleryButton.setTitle("Открыть галерею", for: .normal)
         openGalleryButton.setTitleColor(.systemRed, for: .normal)
@@ -226,7 +225,6 @@ private extension SetupExercisePageViewController {
 private extension SetupExercisePageViewController {
     
     @objc func setupBackButton() {
-//        RealmDataBase.shared.deleteTable(ExerciseImageDataModel.self)
         navigationController?.popViewController(animated: true)
     }
     
@@ -241,8 +239,6 @@ private extension SetupExercisePageViewController {
             showAlert(title: "Нет названия", message: "Назовите упражнение")
         } else {
             saveExercise(exerciseTitle.text, exerciseAbout.text)
-//            let imageData = ExerciseImageDataModel.self
-//            RealmDataBase.shared.deleteTable(imageData)
             self.navigationController?.popViewController(animated: true)
         }
     }
