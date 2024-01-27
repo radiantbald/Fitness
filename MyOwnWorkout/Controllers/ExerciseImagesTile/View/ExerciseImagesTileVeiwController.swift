@@ -176,6 +176,7 @@ private extension ExerciseImagesTileVeiwController {
         guard let collectionView = collectionView else { return }
         let gestureLocation = gesture.location(in: collectionView)
         guard let targetIndexPath = collectionView.indexPathForItem(at: gestureLocation) else { return }
+        guard let selectedItems = collectionView.indexPathsForSelectedItems else { return }
         
         switch mode {
         case .initial:
@@ -188,7 +189,7 @@ private extension ExerciseImagesTileVeiwController {
         case .began:
             collectionView.selectItem(at: targetIndexPath, animated: false, scrollPosition: [])
             collectionView.delegate?.collectionView?(collectionView, didSelectItemAt: targetIndexPath)
-            
+        
             collectionView.beginInteractiveMovementForItem(at: targetIndexPath)
         case .changed:
             collectionView.updateInteractiveMovementTargetPosition(gestureLocation)
@@ -260,12 +261,13 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print(exerciseImagesDataArray)
+        
         let one = exerciseImagesDataArray[sourceIndexPath.row]
         let two = exerciseImagesDataArray[destinationIndexPath.row]
+        
         let array = RealmDataBase.shared.replace(one, two)
         print(array)
         exerciseImagesDataArray = array
-        collectionView.reloadData()
     }
 }
 
