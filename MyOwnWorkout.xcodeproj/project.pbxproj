@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C612B632B67FB2200643577 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C612B622B67FB2200643577 /* CalendarView.swift */; };
+		5C612B652B6801D800643577 /* UICollectionViewCell-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C612B642B6801D800643577 /* UICollectionViewCell-Ext.swift */; };
 		5CA23CDB2AACA9C800E47A9F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDA2AACA9C800E47A9F /* FirebaseAnalytics */; };
 		5CA23CDD2AACA9C800E47A9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDC2AACA9C800E47A9F /* FirebaseAuth */; };
 		5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */; };
@@ -90,6 +92,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C612B622B67FB2200643577 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		5C612B642B6801D800643577 /* UICollectionViewCell-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell-Ext.swift"; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A20A117C2AEF87AE00E86B95 /* VerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextField.swift; sourceTree = "<group>"; };
 		A20A117E2AEF891C00E86B95 /* VerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyView.swift; sourceTree = "<group>"; };
@@ -185,6 +189,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C612B612B67FB0A00643577 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				5C612B622B67FB2200643577 /* CalendarView.swift */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
 		A201C87F2A2B590D006B1781 /* SchedulePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +385,7 @@
 		A26E8F3E2A7666F50054D495 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5C612B612B67FB0A00643577 /* CalendarView */,
 				A20A117B2AEF879400E86B95 /* VerifyViews */,
 				A28B7FB42A83C55B00B20B5F /* Buttons */,
 			);
@@ -706,6 +719,7 @@
 				A290CEB82ADABD8F00FE145B /* UIStackViewExtensions.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
 				A2E4C8942B362B8200AC89E4 /* GifLoader.swift */,
+				5C612B642B6801D800643577 /* UICollectionViewCell-Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -907,6 +921,7 @@
 			files = (
 				A29B4BC42AE2DC5000C5D886 /* RealmDataBase.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
+				5C612B632B67FB2200643577 /* CalendarView.swift in Sources */,
 				A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */,
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
@@ -950,6 +965,7 @@
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A2E4C8952B362B8200AC89E4 /* GifLoader.swift in Sources */,
 				A23A750B2AF803BC00C4B178 /* ExercisePageViewController.swift in Sources */,
+				5C612B652B6801D800643577 /* UICollectionViewCell-Ext.swift in Sources */,
 				A26635B32AB2FCE000040DCF /* Keys.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
 				A26635B12AB2F37300040DCF /* NotificationSettings.swift in Sources */,
@@ -1121,7 +1137,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6GN2TT83FY;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyOwnWorkout/Support/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Camera";
@@ -1155,7 +1171,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6GN2TT83FY;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyOwnWorkout/Support/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Camera";
