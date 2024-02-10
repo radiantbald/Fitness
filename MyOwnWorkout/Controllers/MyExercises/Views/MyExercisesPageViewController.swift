@@ -35,7 +35,7 @@ final class MyExercisesPageViewController: GeneralViewController {
 
 //MARK: - Настройки экрана
 private extension MyExercisesPageViewController {
-    
+   
     func pageSettings() {
         setupNavigationBar()
         setupSubviews()

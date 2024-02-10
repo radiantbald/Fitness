@@ -25,6 +25,8 @@
 		A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B52AB2FDE800040DCF /* Assembler.swift */; };
 		A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B72AB30B6B00040DCF /* TabBarController.swift */; };
 		A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */; };
+		A269E3142B734A690029020D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E3132B734A690029020D /* CalendarView.swift */; };
+		A269E3162B7356840029020D /* UICollectionViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E3152B7356840029020D /* UICollectionViewCellExtensions.swift */; };
 		A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */; };
 		A26E8F402A7667430054D495 /* CodableModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3F2A7667430054D495 /* CodableModels.swift */; };
 		A26E8F422A766ABB0054D495 /* KeychainDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */; };
@@ -103,6 +105,8 @@
 		A26635B52AB2FDE800040DCF /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		A26635B72AB30B6B00040DCF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuModel.swift; sourceTree = "<group>"; };
+		A269E3132B734A690029020D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		A269E3152B7356840029020D /* UICollectionViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3F2A7667430054D495 /* CodableModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableModels.swift; sourceTree = "<group>"; };
 		A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDataBase.swift; sourceTree = "<group>"; };
@@ -370,9 +374,18 @@
 			path = Assembler;
 			sourceTree = "<group>";
 		};
+		A269E3122B734A560029020D /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				A269E3132B734A690029020D /* CalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		A26E8F3E2A7666F50054D495 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A269E3122B734A560029020D /* Calendar */,
 				A20A117B2AEF879400E86B95 /* VerifyViews */,
 				A28B7FB42A83C55B00B20B5F /* Buttons */,
 			);
@@ -699,6 +712,7 @@
 			children = (
 				A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */,
 				A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */,
+				A269E3152B7356840029020D /* UICollectionViewCellExtensions.swift */,
 				A290CEB02ADAAE0000FE145B /* UIViewExtensions.swift */,
 				A290CEB22ADAB46000FE145B /* UILabelExtensions.swift */,
 				A290CEB62ADABAFF00FE145B /* UImageViewExtensions.swift */,
@@ -907,6 +921,7 @@
 			files = (
 				A29B4BC42AE2DC5000C5D886 /* RealmDataBase.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
+				A269E3142B734A690029020D /* CalendarView.swift in Sources */,
 				A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */,
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
@@ -914,6 +929,7 @@
 				A290CEBF2ADC42E800FE145B /* ExerciseTableViewCell.swift in Sources */,
 				A29B4BCD2AE3F2B700C5D886 /* AddExercisePageViewController.swift in Sources */,
 				A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */,
+				A269E3162B7356840029020D /* UICollectionViewCellExtensions.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A28B40B92B46E16B0071FBF0 /* ExerciseImageViewerPresenter.swift in Sources */,
 				A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */,

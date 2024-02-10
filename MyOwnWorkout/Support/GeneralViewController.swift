@@ -8,10 +8,8 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
-    
-    var doNotUseAuth: Bool {
-        return true
-    }
+
+    var doNotUseAuth = true
     //MARK: - get/set статуса авторизациии
     
     var isAuth: Bool {
