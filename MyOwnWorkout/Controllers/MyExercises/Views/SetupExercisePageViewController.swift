@@ -174,7 +174,7 @@ private extension SetupExercisePageViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: Constants.leftDistanceToView, bottom: 0, right: Constants.rightDistanceToView)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
+        collectionView.register(ExerciseImagesCollectionViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionViewCell.cellID)
         
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = Constants.minimumLineSpacing
@@ -273,7 +273,7 @@ extension SetupExercisePageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionViewCell
         let data = exerciseImagesDataArray[indexPath.row].image
         let image = UIImage(data: data)
         cell.exerciseImageView.image = image

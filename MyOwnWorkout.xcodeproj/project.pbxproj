@@ -25,6 +25,8 @@
 		A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B52AB2FDE800040DCF /* Assembler.swift */; };
 		A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B72AB30B6B00040DCF /* TabBarController.swift */; };
 		A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */; };
+		A269E3142B734A690029020D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E3132B734A690029020D /* CalendarView.swift */; };
+		A269E3162B7356840029020D /* UICollectionViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E3152B7356840029020D /* UICollectionViewCellExtensions.swift */; };
 		A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */; };
 		A26E8F402A7667430054D495 /* CodableModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3F2A7667430054D495 /* CodableModels.swift */; };
 		A26E8F422A766ABB0054D495 /* KeychainDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */; };
@@ -70,6 +72,9 @@
 		A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */; };
 		A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */; };
 		A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */; };
+		A2B68CC22B80B62200E3BE0A /* AddWorkoutPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B68CC12B80B62200E3BE0A /* AddWorkoutPageViewController.swift */; };
+		A2B68CC42B80B63800E3BE0A /* AddWorkoutPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B68CC32B80B63800E3BE0A /* AddWorkoutPagePresenter.swift */; };
+		A2B68CC62B80C39D00E3BE0A /* UITableViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B68CC52B80C39D00E3BE0A /* UITableViewExtentions.swift */; };
 		A2C3FF822A18E71400231082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF812A18E71400231082 /* AppDelegate.swift */; };
 		A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF832A18E71400231082 /* SceneDelegate.swift */; };
 		A2C3FF862A18E71400231082 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C3FF852A18E71400231082 /* MainPageViewController.swift */; };
@@ -82,7 +87,7 @@
 		A2C9E11D2B654B3F006D1A84 /* WorkoutPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C9E11C2B654B3F006D1A84 /* WorkoutPagePresenter.swift */; };
 		A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */; };
 		A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */; };
-		A2E4C8912B35F31100AC89E4 /* ExerciseImagesCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8902B35F31100AC89E4 /* ExerciseImagesCollectionsViewCell.swift */; };
+		A2E4C8912B35F31100AC89E4 /* ExerciseImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8902B35F31100AC89E4 /* ExerciseImagesCollectionViewCell.swift */; };
 		A2E4C8932B36074800AC89E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8922B36074800AC89E4 /* Constants.swift */; };
 		A2E4C8952B362B8200AC89E4 /* GifLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E4C8942B362B8200AC89E4 /* GifLoader.swift */; };
 		A2E4C8982B362C0900AC89E4 /* Gachigif.gif in Resources */ = {isa = PBXBuildFile; fileRef = A2E4C8972B362C0900AC89E4 /* Gachigif.gif */; };
@@ -103,6 +108,8 @@
 		A26635B52AB2FDE800040DCF /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		A26635B72AB30B6B00040DCF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuModel.swift; sourceTree = "<group>"; };
+		A269E3132B734A690029020D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		A269E3152B7356840029020D /* UICollectionViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3F2A7667430054D495 /* CodableModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableModels.swift; sourceTree = "<group>"; };
 		A26E8F412A766ABB0054D495 /* KeychainDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDataBase.swift; sourceTree = "<group>"; };
@@ -146,6 +153,9 @@
 		A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButtonView.swift; sourceTree = "<group>"; };
+		A2B68CC12B80B62200E3BE0A /* AddWorkoutPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutPageViewController.swift; sourceTree = "<group>"; };
+		A2B68CC32B80B63800E3BE0A /* AddWorkoutPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutPagePresenter.swift; sourceTree = "<group>"; };
+		A2B68CC52B80C39D00E3BE0A /* UITableViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtentions.swift; sourceTree = "<group>"; };
 		A2C3FF7E2A18E71400231082 /* MyOwnWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyOwnWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C3FF812A18E71400231082 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2C3FF832A18E71400231082 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,7 +170,7 @@
 		A2C9E11C2B654B3F006D1A84 /* WorkoutPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPagePresenter.swift; sourceTree = "<group>"; };
 		A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		A2D601B42A1E273E001E7EE3 /* PersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPageViewController.swift; sourceTree = "<group>"; };
-		A2E4C8902B35F31100AC89E4 /* ExerciseImagesCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImagesCollectionsViewCell.swift; sourceTree = "<group>"; };
+		A2E4C8902B35F31100AC89E4 /* ExerciseImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2E4C8922B36074800AC89E4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A2E4C8942B362B8200AC89E4 /* GifLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifLoader.swift; sourceTree = "<group>"; };
 		A2E4C8972B362C0900AC89E4 /* Gachigif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gachigif.gif; sourceTree = "<group>"; };
@@ -370,9 +380,18 @@
 			path = Assembler;
 			sourceTree = "<group>";
 		};
+		A269E3122B734A560029020D /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				A269E3132B734A690029020D /* CalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		A26E8F3E2A7666F50054D495 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A269E3122B734A560029020D /* Calendar */,
 				A20A117B2AEF879400E86B95 /* VerifyViews */,
 				A28B7FB42A83C55B00B20B5F /* Buttons */,
 			);
@@ -610,7 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				A290CEBE2ADC42E800FE145B /* ExerciseTableViewCell.swift */,
-				A2E4C8902B35F31100AC89E4 /* ExerciseImagesCollectionsViewCell.swift */,
+				A2E4C8902B35F31100AC89E4 /* ExerciseImagesCollectionViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -629,6 +648,7 @@
 			isa = PBXGroup;
 			children = (
 				A28B7FE42A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift */,
+				A2B68CC32B80B63800E3BE0A /* AddWorkoutPagePresenter.swift */,
 				A2C9E11C2B654B3F006D1A84 /* WorkoutPagePresenter.swift */,
 			);
 			path = Presenters;
@@ -638,6 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				A28B7FE22A88B27800B20B5F /* MyWorkoutsPageViewController.swift */,
+				A2B68CC12B80B62200E3BE0A /* AddWorkoutPageViewController.swift */,
 				A2C9E11A2B654A4A006D1A84 /* WorkoutPageViewController.swift */,
 			);
 			path = ViewControllers;
@@ -699,6 +720,8 @@
 			children = (
 				A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */,
 				A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */,
+				A2B68CC52B80C39D00E3BE0A /* UITableViewExtentions.swift */,
+				A269E3152B7356840029020D /* UICollectionViewCellExtensions.swift */,
 				A290CEB02ADAAE0000FE145B /* UIViewExtensions.swift */,
 				A290CEB22ADAB46000FE145B /* UILabelExtensions.swift */,
 				A290CEB62ADABAFF00FE145B /* UImageViewExtensions.swift */,
@@ -907,13 +930,16 @@
 			files = (
 				A29B4BC42AE2DC5000C5D886 /* RealmDataBase.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
+				A269E3142B734A690029020D /* CalendarView.swift in Sources */,
 				A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */,
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
 				A2D2E4532A6DB36E002E5467 /* GeneralViewController.swift in Sources */,
 				A290CEBF2ADC42E800FE145B /* ExerciseTableViewCell.swift in Sources */,
 				A29B4BCD2AE3F2B700C5D886 /* AddExercisePageViewController.swift in Sources */,
+				A2B68CC42B80B63800E3BE0A /* AddWorkoutPagePresenter.swift in Sources */,
 				A28B7FD32A87E42100B20B5F /* MyAchievmentsPageViewController.swift in Sources */,
+				A269E3162B7356840029020D /* UICollectionViewCellExtensions.swift in Sources */,
 				A275C9B22A2B70EB00B18420 /* EntryPageViewController.swift in Sources */,
 				A28B40B92B46E16B0071FBF0 /* ExerciseImageViewerPresenter.swift in Sources */,
 				A2954F902A7E994B003947CF /* EntryPagePresenter.swift in Sources */,
@@ -947,6 +973,7 @@
 				A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */,
 				A28614E22B40959D0099A88F /* ExerciseImagesTilePresenter.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
+				A2B68CC22B80B62200E3BE0A /* AddWorkoutPageViewController.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
 				A2E4C8952B362B8200AC89E4 /* GifLoader.swift in Sources */,
 				A23A750B2AF803BC00C4B178 /* ExercisePageViewController.swift in Sources */,
@@ -971,8 +998,9 @@
 				A20A117D2AEF87AE00E86B95 /* VerifyTextField.swift in Sources */,
 				A22BCDCD2A3713ED001071BE /* SMSCodeApprovePageViewController.swift in Sources */,
 				A28B7FC42A87DC9200B20B5F /* AboutAppPagePresenter.swift in Sources */,
-				A2E4C8912B35F31100AC89E4 /* ExerciseImagesCollectionsViewCell.swift in Sources */,
+				A2E4C8912B35F31100AC89E4 /* ExerciseImagesCollectionViewCell.swift in Sources */,
 				A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */,
+				A2B68CC62B80C39D00E3BE0A /* UITableViewExtentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

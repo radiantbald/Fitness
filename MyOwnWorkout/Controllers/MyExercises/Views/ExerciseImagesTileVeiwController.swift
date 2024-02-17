@@ -100,7 +100,7 @@ private extension ExerciseImagesTileVeiwController {
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.showsVerticalScrollIndicator = false
-        collectionView?.register(ExerciseImagesCollectionsViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID)
+        collectionView?.register(ExerciseImagesCollectionViewCell.self, forCellWithReuseIdentifier: ExerciseImagesCollectionViewCell.cellID)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
@@ -206,7 +206,7 @@ extension ExerciseImagesTileVeiwController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionsViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionsViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseImagesCollectionViewCell.cellID, for: indexPath) as! ExerciseImagesCollectionViewCell
         let data = exerciseImagesDataArray[indexPath.row].image
         let image = UIImage(data: data)
         cell.exerciseImageView.image = image
