@@ -11,7 +11,7 @@ import UIKit
 
 class WorkoutTableViewCell: UITableViewCell {
     
-    static let cellID = "cellID"
+    static let cellID = WorkoutTableViewCell.identifier
     
     private let workoutID = UILabel()
     private let workoutTitle = UILabel()

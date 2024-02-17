@@ -19,33 +19,99 @@ class MyWorkoutsPageViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
-        tableView.delegate = self
-        tableView.dataSource = self
-        navigationItem.title = "Мои тренировки"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddWorkoutButtons))
-        view.backgroundColor = .white
+        pageSettings()
+
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+}
+
+//MARK: - Настройки экрана
+private extension MyWorkoutsPageViewController {
+   
+    func pageSettings() {
+        setupNavigationBar()
+        setupSubviews()
+        setupMargins()
+    }
+    
+    func setupNavigationBar() {
+        title = "Мои тренировки"
+        navigationItem.backButtonTitle = "Назад"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setupAddWorkoutButtons))
+    }
+    
+    func setupSubviews() {
+        setupTableView()
+        setupDismissedExercisesLabel()
+        setupAddWorkoutButton()
+    }
+    
+    func setupMargins() {
+        let margins = view.safeAreaLayoutGuide
+        
+        if workouts.isEmpty {
+            view.addSubviews(dismissedWorkoutLabel, addWorkoutButton)
+            NSLayoutConstraint.activate([
+                dismissedWorkoutLabel.heightAnchor.constraint(equalToConstant: 50),
+                dismissedWorkoutLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100),
+                dismissedWorkoutLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+                dismissedWorkoutLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+                
+                addWorkoutButton.heightAnchor.constraint(equalToConstant: 50),
+                addWorkoutButton.topAnchor.constraint(equalTo: dismissedWorkoutLabel.bottomAnchor, constant: 10),
+                addWorkoutButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+                addWorkoutButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30)
+            ])
+            tableView.removeFromSuperview()
+        } else {
+            view.addSubviews(tableView)
+            NSLayoutConstraint.activate([
+                tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0),
+                tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+            ])
+            dismissedWorkoutLabel.removeFromSuperview()
+            addWorkoutButton.removeFromSuperview()
+        }
+    }
+    
+    func setupTableView() {
+        registerCell()
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
     private func registerCell() {
-        tableView.register(ExerciseTableViewCell.self, forCellReuseIdentifier: ExerciseTableViewCell.cellID)
+        tableView.register(WorkoutTableViewCell.self, forCellReuseIdentifier: WorkoutTableViewCell.identifier)
+    }
+    
+    func setupDismissedExercisesLabel() {
+        dismissedWorkoutLabel.text = "Пока нет тренировок"
+        dismissedWorkoutLabel.textAlignment = .center
     }
     
     func setupAddWorkoutButton() {
+        addWorkoutButton.setTitle("Добавить", for: .normal)
+        addWorkoutButton.backgroundColor = .systemRed
+        addWorkoutButton.layer.cornerRadius = 12
+        
         addWorkoutButton.addTarget(self, action: #selector(setupAddWorkoutButtons), for: .touchUpInside)
     }
+}
+
+//MARK: - Селекторы
+private extension MyWorkoutsPageViewController {
     @objc func setupAddWorkoutButtons() {
-//        let viewController = Assembler.controllers.addWorkoutPageViewController
-//        viewController.delegate = self
-//        navigationController?.pushViewController(viewController, animated: true)
+        let viewController = Assembler.controllers.addWorkoutPageViewController
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
     }
-    
 }
 
 //MARK: - Делегаты протокола MyExercisesTableViewDelegate
@@ -95,6 +161,14 @@ extension MyWorkoutsPageViewController: UITableViewDataSource {
         let workout = workouts[indexPath.row]
         cell.configure(workout: workout)
         return cell
+    }
+}
+
+extension MyWorkoutsPageViewController: AddWorkoutPageViewControllerDelegate {
+    func addWorkoutToTableView() {
+        workouts = RealmDataBase.shared.get()
+        tableView.reloadData()
+        pageSettings()
     }
 }
 

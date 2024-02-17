@@ -75,6 +75,13 @@ class Controllers {
         return viewController
     }
     
+    class var addWorkoutPageViewController: AddWorkoutPageViewController {
+        let viewController = AddWorkoutPageViewController()
+        let presenter = AddWorkoutPagePresenter(delegate: viewController)
+        viewController.presenter = presenter
+        return viewController
+    }
+    
     class var workoutPageViewController: WorkoutPageViewController {
         let viewController = WorkoutPageViewController()
         let presenter = WorkoutPagePresenter(delegate: viewController)

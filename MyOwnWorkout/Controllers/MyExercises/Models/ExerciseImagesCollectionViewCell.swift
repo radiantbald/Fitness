@@ -1,5 +1,5 @@
 //
-//  ExercisePhotosCollectionsViewCell.swift
+//  ExercisePhotosCollectionViewCell.swift
 //  MyOwnWorkout
 //
 //  Created by Олег Попов on 22.12.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExerciseImagesCollectionsViewCell: UICollectionViewCell {
+class ExerciseImagesCollectionViewCell: UICollectionViewCell {
     
     static let cellID = "cellID"
     
