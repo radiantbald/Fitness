@@ -12,6 +12,8 @@
 		5CA23CDF2AACA9C800E47A9F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CDE2AACA9C800E47A9F /* FirebaseDatabase */; };
 		5CA23CE12AACA9C800E47A9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA23CE02AACA9C800E47A9F /* FirebaseMessaging */; };
 		5CAF07B32ADA82A00009BED6 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CAF07B22ADA82A00009BED6 /* KeychainSwift */; };
+		5CAF08532B83B1F1009F6E53 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF08522B83B1F1009F6E53 /* Formatter.swift */; };
+		5CAF08552B83B208009F6E53 /* Date-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF08542B83B208009F6E53 /* Date-Ext.swift */; };
 		A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */; };
 		A20A117D2AEF87AE00E86B95 /* VerifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A117C2AEF87AE00E86B95 /* VerifyTextField.swift */; };
 		A20A117F2AEF891C00E86B95 /* VerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A117E2AEF891C00E86B95 /* VerifyView.swift */; };
@@ -95,6 +97,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5CAF08522B83B1F1009F6E53 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		5CAF08542B83B208009F6E53 /* Date-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date-Ext.swift"; sourceTree = "<group>"; };
 		A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		A20A117C2AEF87AE00E86B95 /* VerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextField.swift; sourceTree = "<group>"; };
 		A20A117E2AEF891C00E86B95 /* VerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyView.swift; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				A269E3132B734A690029020D /* CalendarView.swift */,
+				5CAF08522B83B1F1009F6E53 /* Formatter.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 				A290CEB82ADABD8F00FE145B /* UIStackViewExtensions.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
 				A2E4C8942B362B8200AC89E4 /* GifLoader.swift */,
+				5CAF08542B83B208009F6E53 /* Date-Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -964,8 +970,10 @@
 				A28B7FCA2A87DF9A00B20B5F /* PersonalAccountPageViewController.swift in Sources */,
 				A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */,
 				A2F78D6F2B272D2E00AF35AD /* SetupExercisePagePresenter.swift in Sources */,
+				5CAF08532B83B1F1009F6E53 /* Formatter.swift in Sources */,
 				A290CEB12ADAAE0000FE145B /* UIViewExtensions.swift in Sources */,
 				A2C9E11B2B654A4A006D1A84 /* WorkoutPageViewController.swift in Sources */,
+				5CAF08552B83B208009F6E53 /* Date-Ext.swift in Sources */,
 				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,
 				A28B7FCC2A87E02B00B20B5F /* PersonalAccountPagePresenter.swift in Sources */,
 				A20A117F2AEF891C00E86B95 /* VerifyView.swift in Sources */,
