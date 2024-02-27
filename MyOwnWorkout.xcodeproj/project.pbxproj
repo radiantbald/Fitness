@@ -25,7 +25,7 @@
 		A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B52AB2FDE800040DCF /* Assembler.swift */; };
 		A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B72AB30B6B00040DCF /* TabBarController.swift */; };
 		A26635BA2AB3199B00040DCF /* TabBarMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */; };
-		A269E3142B734A690029020D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E3132B734A690029020D /* CalendarView.swift */; };
+		A269E3142B734A690029020D /* CalendarView old.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E3132B734A690029020D /* CalendarView old.swift */; };
 		A269E3162B7356840029020D /* UICollectionViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E3152B7356840029020D /* UICollectionViewCellExtensions.swift */; };
 		A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */; };
 		A26E8F402A7667430054D495 /* CodableModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E8F3F2A7667430054D495 /* CodableModels.swift */; };
@@ -74,6 +74,11 @@
 		A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */; };
 		A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */; };
 		A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */; };
+		A2B078492B8E4DD0001B5D02 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B078482B8E4DD0001B5D02 /* CalendarViewController.swift */; };
+		A2B0784B2B8E4DFA001B5D02 /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0784A2B8E4DFA001B5D02 /* CalendarCollectionView.swift */; };
+		A2B0784D2B8E5198001B5D02 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0784C2B8E5198001B5D02 /* CalendarCollectionViewCell.swift */; };
+		A2B0784F2B8E5B66001B5D02 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0784E2B8E5B66001B5D02 /* CalendarModel.swift */; };
+		A2B078512B8E5C55001B5D02 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B078502B8E5C55001B5D02 /* DateModel.swift */; };
 		A2B68CC22B80B62200E3BE0A /* AddWorkoutPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B68CC12B80B62200E3BE0A /* AddWorkoutPageViewController.swift */; };
 		A2B68CC42B80B63800E3BE0A /* AddWorkoutPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B68CC32B80B63800E3BE0A /* AddWorkoutPagePresenter.swift */; };
 		A2B68CC62B80C39D00E3BE0A /* UITableViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B68CC52B80C39D00E3BE0A /* UITableViewExtentions.swift */; };
@@ -110,7 +115,7 @@
 		A26635B52AB2FDE800040DCF /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		A26635B72AB30B6B00040DCF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuModel.swift; sourceTree = "<group>"; };
-		A269E3132B734A690029020D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		A269E3132B734A690029020D /* CalendarView old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarView old.swift"; sourceTree = "<group>"; };
 		A269E3152B7356840029020D /* UICollectionViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3C2A7507AD0054D495 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		A26E8F3F2A7667430054D495 /* CodableModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableModels.swift; sourceTree = "<group>"; };
@@ -157,6 +162,11 @@
 		A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButtonView.swift; sourceTree = "<group>"; };
+		A2B078482B8E4DD0001B5D02 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		A2B0784A2B8E4DFA001B5D02 /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
+		A2B0784C2B8E5198001B5D02 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		A2B0784E2B8E5B66001B5D02 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		A2B078502B8E5C55001B5D02 /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		A2B68CC12B80B62200E3BE0A /* AddWorkoutPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutPageViewController.swift; sourceTree = "<group>"; };
 		A2B68CC32B80B63800E3BE0A /* AddWorkoutPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutPagePresenter.swift; sourceTree = "<group>"; };
 		A2B68CC52B80C39D00E3BE0A /* UITableViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtentions.swift; sourceTree = "<group>"; };
@@ -272,6 +282,9 @@
 			isa = PBXGroup;
 			children = (
 				A201C8802A2B5953006B1781 /* SchedulePageViewController.swift */,
+				A2B0784C2B8E5198001B5D02 /* CalendarCollectionViewCell.swift */,
+				A2B0784A2B8E4DFA001B5D02 /* CalendarCollectionView.swift */,
+				A2B078482B8E4DD0001B5D02 /* CalendarViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -387,7 +400,7 @@
 		A269E3122B734A560029020D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				A269E3132B734A690029020D /* CalendarView.swift */,
+				A269E3132B734A690029020D /* CalendarView old.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -745,6 +758,8 @@
 				A26635B92AB3199B00040DCF /* TabBarMenuModel.swift */,
 				A29B4BC52AE2DD8500C5D886 /* ExerciseModel.swift */,
 				A2C9E1162B654735006D1A84 /* WorkoutModel.swift */,
+				A2B0784E2B8E5B66001B5D02 /* CalendarModel.swift */,
+				A2B078502B8E5C55001B5D02 /* DateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -936,7 +951,7 @@
 			files = (
 				A29B4BC42AE2DC5000C5D886 /* RealmDataBase.swift in Sources */,
 				A201C8812A2B5953006B1781 /* SchedulePageViewController.swift in Sources */,
-				A269E3142B734A690029020D /* CalendarView.swift in Sources */,
+				A269E3142B734A690029020D /* CalendarView old.swift in Sources */,
 				A28B7FE52A88B2D400B20B5F /* MyWorkoutsPagePresenter.swift in Sources */,
 				A28B7FDD2A88AC7200B20B5F /* MyExercisesPagePresenter.swift in Sources */,
 				A2954F922A7E99B9003947CF /* SMSCodeApprovePagePresenter.swift in Sources */,
@@ -959,6 +974,7 @@
 				A28B7FBA2A84F78600B20B5F /* SettingsPageViewController.swift in Sources */,
 				A29B4BC62AE2DD8500C5D886 /* ExerciseModel.swift in Sources */,
 				A290CEB72ADABAFF00FE145B /* UImageViewExtensions.swift in Sources */,
+				A2B078512B8E5C55001B5D02 /* DateModel.swift in Sources */,
 				A290CEB92ADABD8F00FE145B /* UIStackViewExtensions.swift in Sources */,
 				A2C3FF842A18E71400231082 /* SceneDelegate.swift in Sources */,
 				A26635B62AB2FDE800040DCF /* Assembler.swift in Sources */,
@@ -982,10 +998,13 @@
 				A28614E22B40959D0099A88F /* ExerciseImagesTilePresenter.swift in Sources */,
 				A2954F882A7E8B9C003947CF /* MainPagePresenter.swift in Sources */,
 				A2B68CC22B80B62200E3BE0A /* AddWorkoutPageViewController.swift in Sources */,
+				A2B078492B8E4DD0001B5D02 /* CalendarViewController.swift in Sources */,
 				A2D601B52A1E273E001E7EE3 /* PersonPageViewController.swift in Sources */,
+				A2B0784B2B8E4DFA001B5D02 /* CalendarCollectionView.swift in Sources */,
 				A2E4C8952B362B8200AC89E4 /* GifLoader.swift in Sources */,
 				A23A750B2AF803BC00C4B178 /* ExercisePageViewController.swift in Sources */,
 				A26635B32AB2FCE000040DCF /* Keys.swift in Sources */,
+				A2B0784D2B8E5198001B5D02 /* CalendarCollectionViewCell.swift in Sources */,
 				A275C9AC2A2B5CAF00B18420 /* FeedPageViewController.swift in Sources */,
 				A26635B12AB2F37300040DCF /* NotificationSettings.swift in Sources */,
 				A26E8F402A7667430054D495 /* CodableModels.swift in Sources */,
@@ -996,6 +1015,7 @@
 				A23A75132AF804F900C4B178 /* SetupExercisePageViewController.swift in Sources */,
 				A290CEB32ADAB46000FE145B /* UILabelExtensions.swift in Sources */,
 				A29B4BCF2AE3F2F900C5D886 /* AddExercisePagePresenter.swift in Sources */,
+				A2B0784F2B8E5B66001B5D02 /* CalendarModel.swift in Sources */,
 				A2E4C8932B36074800AC89E4 /* Constants.swift in Sources */,
 				A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */,
 				A2C9E1172B654735006D1A84 /* WorkoutModel.swift in Sources */,
