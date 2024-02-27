@@ -69,6 +69,8 @@
 		A29B4BCF2AE3F2F900C5D886 /* AddExercisePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BCE2AE3F2F900C5D886 /* AddExercisePagePresenter.swift */; };
 		A29B4BD72AE550EA00C5D886 /* ExercisePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29B4BD62AE550EA00C5D886 /* ExercisePagePresenter.swift */; };
 		A29C7D8F2A6548C20065B255 /* UserDefaultsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C7D8E2A6548C20065B255 /* UserDefaultsDataBase.swift */; };
+		A2A7674C2B8BB8730056FB1A /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7674B2B8BB8730056FB1A /* Formatter.swift */; };
+		A2A7674E2B8BB8AC0056FB1A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7674D2B8BB8AC0056FB1A /* DateExtensions.swift */; };
 		A2ACA93E2A3C72CA0028F9FD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */; };
 		A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */; };
 		A2ACA9472A3F26E30028F9FD /* EyeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */; };
@@ -150,6 +152,8 @@
 		A29B4BCE2AE3F2F900C5D886 /* AddExercisePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercisePagePresenter.swift; sourceTree = "<group>"; };
 		A29B4BD62AE550EA00C5D886 /* ExercisePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePagePresenter.swift; sourceTree = "<group>"; };
 		A29C7D8E2A6548C20065B255 /* UserDefaultsDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataBase.swift; sourceTree = "<group>"; };
+		A2A7674B2B8BB8730056FB1A /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		A2A7674D2B8BB8AC0056FB1A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93D2A3C72CA0028F9FD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A2ACA9462A3F26E30028F9FD /* EyeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButtonView.swift; sourceTree = "<group>"; };
@@ -729,6 +733,7 @@
 				A290CEB82ADABD8F00FE145B /* UIStackViewExtensions.swift */,
 				A2ACA93F2A3C75650028F9FD /* StringExtensions.swift */,
 				A2E4C8942B362B8200AC89E4 /* GifLoader.swift */,
+				A2A7674D2B8BB8AC0056FB1A /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -784,6 +789,7 @@
 				A26635B72AB30B6B00040DCF /* TabBarController.swift */,
 				A2D2E4522A6DB36E002E5467 /* GeneralViewController.swift */,
 				A2E4C8922B36074800AC89E4 /* Constants.swift */,
+				A2A7674B2B8BB8730056FB1A /* Formatter.swift */,
 				A26635B22AB2FCE000040DCF /* Keys.swift */,
 				A2C3FF8A2A18E71500231082 /* Assets.xcassets */,
 				A2C3FF8F2A18E71500231082 /* Info.plist */,
@@ -961,9 +967,11 @@
 				A28B7FC22A87DC3400B20B5F /* AboutAppPageViewController.swift in Sources */,
 				A26E8F3D2A7507AD0054D495 /* FileManagerExtensions.swift in Sources */,
 				A2ACA9402A3C75650028F9FD /* StringExtensions.swift in Sources */,
+				A2A7674E2B8BB8AC0056FB1A /* DateExtensions.swift in Sources */,
 				A28B7FCA2A87DF9A00B20B5F /* PersonalAccountPageViewController.swift in Sources */,
 				A2954F8C2A7E90AB003947CF /* FeedPagePresenter.swift in Sources */,
 				A2F78D6F2B272D2E00AF35AD /* SetupExercisePagePresenter.swift in Sources */,
+				A2A7674C2B8BB8730056FB1A /* Formatter.swift in Sources */,
 				A290CEB12ADAAE0000FE145B /* UIViewExtensions.swift in Sources */,
 				A2C9E11B2B654A4A006D1A84 /* WorkoutPageViewController.swift in Sources */,
 				A26635B82AB30B6B00040DCF /* TabBarController.swift in Sources */,

@@ -19,8 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.bounds = windowScene.screen.bounds
         
-        let rootViewController = Assembler.controllers.tabBarController
+//        let rootViewController = Assembler.controllers.tabBarController
 //        let rootViewController = Assembler.controllers.smsCodeApprovePageViewController
+        let rootViewController = CalendarViewController()
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
 
